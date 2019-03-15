@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{3060c2ac-45ad-4113-9dab-37bd5e20be8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{88be3ade-01cc-40b0-a3a1-5955b53caf08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\simpleGUI">
+      <UniqueIdentifier>{6dab17d5-342f-4563-ae9f-626da38c191a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\libgraphics">
+      <UniqueIdentifier>{9f5a3805-fd90-4875-9400-f7512162f506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\libgraphics\headers">
+      <UniqueIdentifier>{1bce9a66-4419-4286-977f-b71522d639f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\libgraphics\sources">
+      <UniqueIdentifier>{b31a5063-35c3-4501-878b-0b63c10f03cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Vector">
+      <UniqueIdentifier>{07e3cad4-193f-416a-8aff-fbfd8db96273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\FunctionDrawer">
+      <UniqueIdentifier>{ba262239-d3c9-4a25-b74b-8777d50c4eac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\LinkedList">
+      <UniqueIdentifier>{0fd24bfe-a899-435a-90c8-e007af3d8883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest">
+      <UniqueIdentifier>{a3f86266-a88a-4af9-9a25-5591190ad0ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\VectorTest">
+      <UniqueIdentifier>{7440404e-d9bf-4cd6-a078-c33d26e5e2e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
+      <Filter>Libs\simpleGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\exception.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\extgraph.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\gcalloc.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\genlib.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\graphics.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\random.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\simpio.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\libgraphics\strlib.h">
+      <Filter>Libs\libgraphics\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\function_drawer.h">
+      <Filter>Modules\FunctionDrawer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\linked_list.h">
+      <Filter>Modules\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\vector.h">
+      <Filter>Modules\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\vector_test.h">
+      <Filter>UnitTest\VectorTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\main_test.h">
+      <Filter>UnitTest</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
+      <Filter>Libs\simpleGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\libgraphics\exceptio.c">
+      <Filter>Libs\libgraphics\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\libgraphics\genlib.c">
+      <Filter>Libs\libgraphics\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\libgraphics\graphics.c">
+      <Filter>Libs\libgraphics\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\libgraphics\random.c">
+      <Filter>Libs\libgraphics\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\libgraphics\simpio.c">
+      <Filter>Libs\libgraphics\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\libgraphics\strlib.c">
+      <Filter>Libs\libgraphics\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\function_drawer.c">
+      <Filter>Modules\FunctionDrawer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\linked_list.c">
+      <Filter>Modules\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\vector.c">
+      <Filter>Modules\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\vector_test.c">
+      <Filter>UnitTest\VectorTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\main.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\main_test.c">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
