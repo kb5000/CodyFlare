@@ -11,10 +11,14 @@ typedef struct _My_Linked_List_Handler {
 	/*public*/Node* nowpos; //i.e. position now, can be modified as you wish
 	/*public*/unsigned (*len)(struct _My_Linked_List_Handler* self);
 	/*public*/Node* (*at)(struct _My_Linked_List_Handler* self, unsigned position);
-	/*public*/void (*push)(struct _My_Linked_List_Handler* self, void* data);
+	/*public*/void (*push_back)(struct _My_Linked_List_Handler* self, void* data);
+	/*public*/void (*push_front)(struct _My_Linked_List_Handler* self, void* data);
+	/*public*/void (*pop_front)(struct _My_Linked_List_Handler* self);
+	/*public*/void (*pop_back)(struct _My_Linked_List_Handler* self);
 	/*public*/void (*insert_after)(struct _My_Linked_List_Handler* self, void* data);
 	/*public*/void (*remove_after)(struct _My_Linked_List_Handler* self);
 	/*public*/void (*destroy)(struct _My_Linked_List_Handler* self);
+	/*public*/void (*for_each)(struct _My_Linked_List_Handler* self, void func(void*));
 } ListHandler;
 
 Node* new_node(void* initData);
