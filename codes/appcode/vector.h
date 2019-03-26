@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdlib.h>
 #include <stdint.h>
 
 typedef struct _My_Vector {

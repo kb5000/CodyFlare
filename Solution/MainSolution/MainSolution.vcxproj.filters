@@ -42,6 +42,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Modules\Timer">
+      <UniqueIdentifier>{d3a8cf1f-ec6e-4358-9cb0-aaa6ad900ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Point">
+      <UniqueIdentifier>{35a7b80a-65d3-4dcb-8694-843d42f3f602}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -86,6 +92,12 @@
     <ClInclude Include="..\..\codes\appcode\main_test.h">
       <Filter>UnitTest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\timer.h">
+      <Filter>Modules\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\point.h">
+      <Filter>Modules\Point</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
@@ -126,6 +138,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\main_test.c">
       <Filter>UnitTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\timer.c">
+      <Filter>Modules\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\point.c">
+      <Filter>Modules\Point</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
