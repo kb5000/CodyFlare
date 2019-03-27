@@ -1,3 +1,4 @@
 #include "timer.h"
-#include <Windows.h>
+#include <windows.h>
+#include <process.h>
 

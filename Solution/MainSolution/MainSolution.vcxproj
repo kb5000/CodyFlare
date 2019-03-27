@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
+    <ClInclude Include="..\..\codes\appcode\list_test.h" />
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
     <ClInclude Include="..\..\codes\appcode\point.h" />
     <ClInclude Include="..\..\codes\appcode\timer.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="..\..\codes\appcode\main.c" />
     <ClCompile Include="..\..\codes\appcode\main_test.c" />
     <ClCompile Include="..\..\codes\appcode\point.c" />
+    <ClCompile Include="..\..\codes\appcode\list_test.c" />
     <ClCompile Include="..\..\codes\appcode\timer.c" />
     <ClCompile Include="..\..\codes\appcode\vector.c" />
     <ClCompile Include="..\..\codes\appcode\vector_test.c" />

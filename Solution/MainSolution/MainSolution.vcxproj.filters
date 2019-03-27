@@ -48,6 +48,9 @@
     <Filter Include="Modules\Point">
       <UniqueIdentifier>{35a7b80a-65d3-4dcb-8694-843d42f3f602}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitTest\LinkedListTest">
+      <UniqueIdentifier>{b212febf-e79f-4a70-a47f-adff04322866}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -92,11 +95,14 @@
     <ClInclude Include="..\..\codes\appcode\main_test.h">
       <Filter>UnitTest</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\codes\appcode\timer.h">
-      <Filter>Modules\Timer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\codes\appcode\point.h">
       <Filter>Modules\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\list_test.h">
+      <Filter>UnitTest\LinkedListTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\timer.h">
+      <Filter>Modules\Timer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +150,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\point.c">
       <Filter>Modules\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\list_test.c">
+      <Filter>UnitTest\LinkedListTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
