@@ -127,6 +127,11 @@ void my_list_pop_back(ListHandler* self, void* data) {
 }
 
 void my_list_insert_after(ListHandler* self, void* data) {
+	if (!self->nowpos) {
+		Node* node = insert_node_after(NULL, data);
+		self->head = self->tail = self->nowpos = node;
+		return;
+	}
 	insert_node_after(self->nowpos, data);
 	if (self->tail == self->nowpos) {
 		self->tail = self->tail->next;

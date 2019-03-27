@@ -21,30 +21,51 @@ typedef struct _My_Linked_List_Handler {
 	///visb: public
 	///warn: if position is greater than the length, it will return the last node
 	Node* (*at)(struct _My_Linked_List_Handler* self, unsigned position);
-	///name: push
-	///func: 
+	///name: push_back
+	///func: push data to the end of the list
+	///para: self expects the ListHandler itself, data expects a data malloced independently
+	///visb: public
+	void (*push_back)(struct _My_Linked_List_Handler* self, void* data);
+	///name: push_front
+	///func: push data to the begin of the list
+	///para: self expects the ListHandler itself, data expects a data malloced independently
+	///visb: public
+	void (*push_front)(struct _My_Linked_List_Handler* self, void* data);
+	///name: pop_front
+	///func: pop data from the begin of the list
 	///para: self expects the ListHandler itself
-	///visb: 
-	///warn: 
-	void (*push)(struct _My_Linked_List_Handler* self, void* data);
-	///name: 
-	///func: 
+	///visb: public
+	void (*pop_front)(struct _My_Linked_List_Handler* self);
+	///name: pop_back
+	///func: pop data from the end of the list
 	///para: self expects the ListHandler itself
-	///visb: 
-	///warn: 
+	///visb: public
+	///warn: O(n)
+	void (*pop_back)(struct _My_Linked_List_Handler* self);
+	///name: insert_after
+	///func: insert data to the next of member nowpos
+	///para: self expects the ListHandler itself, data expects a data malloced independently
+	///visb: public
+	///warn: nowpos must be a valid node of this list, or NULL create a new node and throw the previous list
 	void (*insert_after)(struct _My_Linked_List_Handler* self, void* data);
-	///name: 
-	///func: 
+	///name: remove_after
+	///func: remove data after the nowpos
 	///para: self expects the ListHandler itself
-	///visb: 
-	///warn: 
+	///visb: public
+	///warn: if nowpos is the last node, it will be O(n)
 	void (*remove_after)(struct _My_Linked_List_Handler* self);
-	///name: 
-	///func: 
+	///name: destroy
+	///func: destroy the whole list
 	///para: self expects the ListHandler itself
-	///visb: 
-	///warn: 
+	///visb: public
+	///warn: it will also free the data inside
 	void (*destroy)(struct _My_Linked_List_Handler* self);
+	///name: for_each
+	///func: apply func for every data in the list
+	///para: self expects the ListHandler itself
+	///visb: public
+	///warn: you can change the data
+	void (*for_each)(struct _My_Linked_List_Handler* self, void func(void*));
 } ListHandler;
 
 ///name: new_node
