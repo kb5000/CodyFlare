@@ -1,12 +1,12 @@
 #include "linked_list.h"
 #include <stdlib.h>
 
-unsigned my_list_len(ListHandler * self);
-Node * my_list_at(ListHandler * self, unsigned position);
-void my_list_push(ListHandler * self, void * data);
-void my_list_insert_after(ListHandler * self, void * data);
-void my_list_remove_after(ListHandler * self);
-void my_list_destroy(ListHandler * self);
+unsigned my_list_len(ListHandler* self);
+Node* my_list_at(ListHandler* self, unsigned position);
+void my_list_push(ListHandler* self, void* data);
+void my_list_insert_after(ListHandler* self, void* data);
+void my_list_remove_after(ListHandler* self);
+void my_list_destroy(ListHandler* self);
 
 Node* new_node(void* initData) {
 	Node* head = (Node*)malloc(sizeof(Node));

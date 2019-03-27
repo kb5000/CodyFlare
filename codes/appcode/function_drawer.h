@@ -3,9 +3,14 @@
 #include "graphics.h"
 #include "point.h"
 
+typedef struct _My_Function_Holder {
+	Pos (*func)(struct _My_Function_Holder* para);
+	Pos originPosition, drawPositionBias;
+	double size;
+	double tNow, tStep, tMax;
+	double rotate;
+} DrawFuncHolder;
 
-void function_drawer(double x_fun(double t), double y_fun(double t), Pos bias);
+void draw_function(DrawFuncHolder* drawFuncHolder);
 
-void polar_function_drawer(double func(double theta, Pos circle), Pos circle);
-
-
+void draw_function_one_step(void* drawFuncHolder);
