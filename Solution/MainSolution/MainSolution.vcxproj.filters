@@ -104,6 +104,9 @@
     <ClInclude Include="..\..\codes\appcode\timer.h">
       <Filter>Modules\Timer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\honoi.h">
+      <Filter>UnitTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
@@ -153,6 +156,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\list_test.c">
       <Filter>UnitTest\LinkedListTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\hanoi.c">
+      <Filter>UnitTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

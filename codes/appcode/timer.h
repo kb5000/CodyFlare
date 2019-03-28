@@ -1,4 +1,5 @@
 #pragma once
+#include <Windows.h>
 
 typedef struct _My_Timer {
 	UINT_PTR id;
