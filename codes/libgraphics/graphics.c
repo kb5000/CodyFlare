@@ -214,8 +214,8 @@ static bool initialized = FALSE;
 static bool pauseOnExit = TRUE;
 
 static HWND consoleWindow, graphicsWindow;
-static HDC gdc, osdc, osdc_b;
-static HBITMAP osBits, osBits_b;
+static HDC gdc, osdc;
+static HBITMAP osBits;
 static HPEN drawPen, erasePen, nullPen;
 static COLORREF drawColor, eraseColor;
 static PAINTSTRUCT ps;
@@ -903,18 +903,15 @@ static void InitDisplay(void)
     UpdateWindow(graphicsWindow);
     
     osdc = CreateCompatibleDC(gdc);
-    //osdc_b = CreateCompatibleDC(gdc);
     
     if (osdc == NULL) {
         Error("Internal error: Can't create offscreen device");
     }
     osBits = CreateCompatibleBitmap(gdc, pixelWidth, pixelHeight);
-    //osBits_b = CreateCompatibleBitmap(gdc, pixelWidth, pixelHeight);
     if (osBits == NULL) {
         Error("Internal error: Can't create offscreen bitmap");
     }
     (void) SelectObject(osdc, osBits);
-    //(void) SelectObject(osdc_b, osBits_b);
     
     top = TopMargin + WindowSep + PixelsY(windowHeight) + dy;
     /*
@@ -1075,10 +1072,16 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
 {
     switch(msg)
     {
+		// 刘新国：使用了double buffer, 手动清屏，
+		//         无需系统擦除背景，避免闪烁
+		//         感谢18级石蒙同学，提供这个方法解决刷新闪烁问题
+		case WM_ERASEBKGND: 
+			return 0; 
+
         case WM_PAINT:
              DoUpdate();
              return 0;
-             
+
         case WM_CHAR:
     		if (g_char != NULL)
     			g_char((char) wParam);
@@ -1160,6 +1163,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
         case WM_DESTROY:
             PostQuitMessage(0);
             return 0;   
+
         default:
             return DefWindowProc(hwnd, msg, wParam, lParam);
     }                                     
@@ -1213,21 +1217,13 @@ static void CheckEvents(void)
  * actual display context.
  */
 
-//static int count = 0;
-
 static void DoUpdate(void)
 {
     HDC dc;
 
-
     dc = BeginPaint(graphicsWindow, &ps);
-	BitBlt(dc, 0, 0, pixelWidth, pixelHeight, osdc, 0, 0, SRCCOPY);
+    BitBlt(dc, 0, 0, pixelWidth, pixelHeight, osdc, 0, 0, SRCCOPY);
     EndPaint(graphicsWindow, &ps);
-
-
-	//HDC bak = osdc;
-	//osdc = osdc_b;
-	//osdc_b = bak;
 }
 
 /*
@@ -1240,10 +1236,10 @@ static void DoUpdate(void)
 void DisplayClear(void)
 {
     RECT r;
+
     SetRect(&r, 0, 0, pixelWidth, pixelHeight);
     InvalidateRect(graphicsWindow, &r, TRUE);
-    BitBlt(osdc, 0, 0, pixelWidth, pixelHeight, osdc, 0, 0, WHITENESS);
-
+    BitBlt(osdc, 0, 0, pixelWidth, pixelHeight, NULL, 0, 0, WHITENESS);
 }
 
 /*

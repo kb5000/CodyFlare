@@ -89,7 +89,7 @@ void uiGetChar(int ch);
  *
  * 功能：显示一个按钮（button）
  *
- * 用法：if( button(GenUUID(0),x,y,w,h,label) ) {
+ * 用法：if( button(GenUIID(0),x,y,w,h,label) ) {
  *           执行语句，响应用户按下该按钮
  *       }
  *
