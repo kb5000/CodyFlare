@@ -22,6 +22,7 @@
 #include "gcalloc.h"
 #include "strlib.h"
 #include "extgraph.h"
+#include "graphics.h"
 
 /*
  * Parameters
@@ -819,7 +820,7 @@ void repaint()
 static void InitDisplay(void)
 {
     WNDCLASS wndcls;
-    RECT bounds, consoleRect, graphicsRect;
+    RECT bounds, /*consoleRect,*/ graphicsRect;
     double screenHeight, screenWidth, xSpace, ySpace;
     double xScale, yScale, scaleFactor;
     DWORD style;
@@ -1264,9 +1265,9 @@ static void PrepareToDraw(void)
         SetTextColor(osdc, eraseColor);
     } else {
         if (penColor != previousColor) {
-            red = colorTable[penColor].red * 256 - Epsilon;
-            green = colorTable[penColor].green * 256 - Epsilon;
-            blue = colorTable[penColor].blue * 256 - Epsilon;
+            red = (int)(colorTable[penColor].red * 256 - Epsilon);
+            green = (int)(colorTable[penColor].green * 256 - Epsilon);
+            blue = (int)(colorTable[penColor].blue * 256 - Epsilon);
             drawColor = RGB(red, green, blue);
             previousColor = penColor;
         }
@@ -1652,7 +1653,7 @@ static void DisplayPolygon(void)
         px = 0;
         fillPen = erasePen;
     } else {
-        px = regionDensity * (NFills - 1) + 0.5 - Epsilon;
+        px = (int)(regionDensity * (NFills - 1) + 0.5 - Epsilon);
         fillPen = drawPen;
     }
     oldPen = (HPEN) SelectObject(osdc, fillPen);

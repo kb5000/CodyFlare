@@ -1,6 +1,7 @@
 #include "list_test.h"
 #include "linked_list.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void display_node(void* data) {
 	printf("%d, ", *(int*)data);

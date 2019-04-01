@@ -5,8 +5,8 @@ unsigned my_list_len(ListHandler* self);
 Node* my_list_at(ListHandler* self, unsigned position);
 void my_list_push_back(ListHandler* self, void* data);
 void my_list_push_front(ListHandler* self, void* data);
-void my_list_pop_front(ListHandler* self, void* data);
-void my_list_pop_back(ListHandler* self, void* data);
+void my_list_pop_front(ListHandler* self);
+void my_list_pop_back(ListHandler* self);
 void my_list_insert_after(ListHandler* self, void * data);
 void my_list_remove_after(ListHandler* self);
 void my_list_destroy(ListHandler* self);
@@ -40,7 +40,7 @@ Node* insert_node_after(Node* node, void* data) {
 
 void remove_node_after(Node* node) {
 	if (!node || !node->next) {
-		return NULL;
+		return;
 	}
 	Node* to_delete = node->next;
 	node->next = node->next->next;
@@ -63,16 +63,16 @@ ListHandler new_list(void* initData) {
 		head,
 		head,
 		head,
-		my_list_len,
-		my_list_at,
-		my_list_push_back,
-		my_list_push_front,
-		my_list_pop_front,
-		my_list_pop_back,
-		my_list_insert_after,
-		my_list_remove_after,
-		my_list_destroy,
-		my_list_for_each,
+		&my_list_len,
+		&my_list_at,
+		&my_list_push_back,
+		&my_list_push_front,
+		&my_list_pop_front,
+		&my_list_pop_back,
+		&my_list_insert_after,
+		&my_list_remove_after,
+		&my_list_destroy,
+		&my_list_for_each,
 	};
 	return listHandler;
 }
@@ -103,7 +103,7 @@ void my_list_push_front(ListHandler* self, void* data) {
 	}
 }
 
-void my_list_pop_front(ListHandler* self, void* data) {
+void my_list_pop_front(ListHandler* self) {
 	if (!self->head) return;
 	Node* to_pop = self->head;
 	if (self->tail == self->head) {
@@ -114,7 +114,7 @@ void my_list_pop_front(ListHandler* self, void* data) {
 	free(to_pop);
 }
 
-void my_list_pop_back(ListHandler* self, void* data) {
+void my_list_pop_back(ListHandler* self) {
 	if (!self->tail) return;
 	if (self->head == self->tail) {
 		self->head = NULL;

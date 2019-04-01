@@ -136,7 +136,7 @@ int FindChar(char ch, string text, int start)
 
     if (text == NULL) Error("NULL string passed to FindChar");
     if (start < 0) start = 0;
-    if (start > strlen(text)) return (-1);
+    if ((unsigned)start > strlen(text)) return (-1);
     cptr = strchr(text + start, ch);
     if (cptr == NULL) return (-1);
     return ((int) (cptr - text));
@@ -149,7 +149,7 @@ int FindString(string str, string text, int start)
     if (str == NULL) Error("NULL pattern string in FindString");
     if (text == NULL) Error("NULL text string in FindString");
     if (start < 0) start = 0;
-    if (start > strlen(text)) return (-1);
+    if ((unsigned)start > strlen(text)) return (-1);
     cptr = strstr(text + start, str);
     if (cptr == NULL) return (-1);
     return ((int) (cptr - text));
