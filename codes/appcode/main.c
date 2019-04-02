@@ -2,6 +2,6 @@
 
 #include "hanoi.h"
 
-void Main() {
-	hanoi();
-}
+//void Main() {
+//	hanoi();
+//}
