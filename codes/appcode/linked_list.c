@@ -184,18 +184,21 @@ Node* my_list_sort_merge(Node* lhs, Node* rhs, int func(void*, void*)) {
 
 Node* sort_list(Node* head, int func(void*, void*)) {
 	if (!head || !head->next) return head;
-	Node* lastMid = head;
+	//Node* lastMid = head;
 	Node* mid = head;
 	Node* tail = head->next;
 	while (1) {
-		lastMid = mid;
+		//lastMid = mid;
+		tail = tail->next;
+		if (!tail) break;
 		mid = mid->next;
 		tail = tail->next;
 		if (!tail) break;
-		tail = tail->next;
-		if (!tail) break;
 	}
-	lastMid->next = NULL;
+	//lastMid->next = NULL;
+	tail = mid;
+	mid = mid->next;
+	tail->next = NULL;
 	Node* hd = sort_list(head, func);
 	Node* md = sort_list(mid, func);
 	return my_list_sort_merge(hd, md, func);
