@@ -109,44 +109,55 @@ bool move_element() {
 			}
 			break;
 		}
-		currentMovingPiece->data.x -= 0.04;
+		currentMovingPiece->data.x -= 0.02;
 		currentMovingFlag = true;
 	}
 	if (!currentMovingPiece) {
+		startMovingFlag = false;
 		return true;
 	}
 	//if (elementMovingFlag) return false;
 	if (currentMovingPiece->data.y < heightWhenTurning && !elementTurningFlag) {
 		currentMovingPiece->data.y += 0.05;
-		if (currentMovingPiece->data.y >= heightWhenTurning) {
-			//changeNumOfPN(currentMovingDirector->data.position, currentMovingDirector->data.towardsPosition);
-		}
+		//if (currentMovingPiece->data.y >= heightWhenTurning) {
+		//	//changeNumOfPN(currentMovingDirector->data.position, currentMovingDirector->data.towardsPosition);
+		//}
 	} else if (!elementTurningFlag) {
 		const double moveRate = 0.1;
 		if (currentMovingDirector->data.position == PILLAR_A && currentMovingDirector->data.towardsPosition == PILLAR_B ||
 			currentMovingDirector->data.position == PILLAR_B && currentMovingDirector->data.towardsPosition == PILLAR_C) {
 			if (currentMovingPiece->data.x >= 4.78 && currentMovingDirector->data.position == PILLAR_A ||
 				currentMovingPiece->data.x >= 7.4 && currentMovingDirector->data.position == PILLAR_B) {
+				if (currentMovingDirector->data.towardsPosition == PILLAR_B) currentMovingPiece->data.x = 4.95;
+				if (currentMovingDirector->data.towardsPosition == PILLAR_C) currentMovingPiece->data.x = 7.46;
 				elementTurningFlag = true;
+				return false;
 			}
 			currentMovingPiece->data.x += moveRate;
 		} else if (currentMovingDirector->data.position == PILLAR_B && currentMovingDirector->data.towardsPosition == PILLAR_A ||
 				   currentMovingDirector->data.position == PILLAR_C && currentMovingDirector->data.towardsPosition == PILLAR_B) {
 			if (currentMovingPiece->data.x <= 2.6 && currentMovingDirector->data.position == PILLAR_B ||
 				currentMovingPiece->data.x <= 5.1 && currentMovingDirector->data.position == PILLAR_C) {
+				if (currentMovingDirector->data.towardsPosition == PILLAR_B) currentMovingPiece->data.x = 4.95;
+				if (currentMovingDirector->data.towardsPosition == PILLAR_A) currentMovingPiece->data.x = 2.44;
 				elementTurningFlag = true;
+				return false;
 			}
 			currentMovingPiece->data.x -= moveRate;
 		} else if (currentMovingDirector->data.position == PILLAR_A && currentMovingDirector->data.towardsPosition == PILLAR_C) {
 			if (currentMovingPiece->data.x >= 7.15) {
+				if (currentMovingDirector->data.towardsPosition == PILLAR_C) currentMovingPiece->data.x = 7.46;
 				elementTurningFlag = true;
+				return false;
 			}
 			currentMovingPiece->data.x += 2 * moveRate;
 		} else if (currentMovingDirector->data.position == PILLAR_C && currentMovingDirector->data.towardsPosition == PILLAR_A) {
 			if (currentMovingPiece->data.x <= 2.8) {
+				if (currentMovingDirector->data.towardsPosition == PILLAR_A) currentMovingPiece->data.x = 2.44;
 				elementTurningFlag = true;
+				return false;
 			}
-			currentMovingPiece->data.x -= 2 * moveRate;
+			//currentMovingPiece->data.x -= 2 * moveRate;
 		}
 	} else {
 		double height = 1.2;
@@ -362,7 +373,7 @@ void draw_all_pieces() {
 	Node* nodeOfPiece = reverse_nodeh(clone_nodeh(stkHeadA));
 	int i = 0;
 	while (nodeOfPiece) {
-		nodeOfPiece->data.x = 2.43;
+		nodeOfPiece->data.x = 2.44;
 		nodeOfPiece->data.y = height + heightOfPiece * i++;
 		draw_piece(nodeOfPiece->data.size, nodeOfPiece->data.x, nodeOfPiece->data.y);
 		nodeOfPiece = nodeOfPiece->next;
@@ -378,7 +389,7 @@ void draw_all_pieces() {
 	nodeOfPiece = reverse_nodeh(clone_nodeh(stkHeadC));
 	i = 0;
 	while (nodeOfPiece) {
-		nodeOfPiece->data.x = 7.45;
+		nodeOfPiece->data.x = 7.46;
 		nodeOfPiece->data.y = height + heightOfPiece * i++;
 		draw_piece(nodeOfPiece->data.size, nodeOfPiece->data.x, nodeOfPiece->data.y);
 		nodeOfPiece = nodeOfPiece->next;
