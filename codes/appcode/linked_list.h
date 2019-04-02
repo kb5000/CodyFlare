@@ -66,6 +66,7 @@ typedef struct _My_Linked_List_Handler {
 	///visb: public
 	///warn: you can change the data
 	void (*for_each)(struct _My_Linked_List_Handler* self, void func(void*));
+	void (*sort_by)(struct _My_Linked_List_Handler* self, int func(void*, void*));
 } ListHandler;
 
 ///name: new_node
@@ -102,6 +103,14 @@ void remove_node_after(Node* node);
 ///visb: public
 ///warn: it will also destroy the data
 void destroy_linked_list(Node* head);
+
+///name: sort_list
+///func: it will sort a list by func
+///para: head expects a node, func expects to return negtive num when left para is smaller than right para, 
+///      0 if they are equal, positive num if left para is bigger than right para
+///visb: public
+///warn: it uses merge sort
+Node* sort_list(Node* head, int func(void*, void*));
 
 ///name: new_list
 ///func: it will create a new ListHandler, which contains a lot of useful info about the list

@@ -11,6 +11,7 @@ void my_list_insert_after(ListHandler* self, void * data);
 void my_list_remove_after(ListHandler* self);
 void my_list_destroy(ListHandler* self);
 void my_list_for_each(ListHandler* self, void func(void*));
+void my_list_sort(ListHandler* self, int func(void*, void*));
 
 Node* new_node(void* initData) {
 	Node* head = (Node*)malloc(sizeof(Node));
@@ -73,6 +74,7 @@ ListHandler new_list(void* initData) {
 		&my_list_remove_after,
 		&my_list_destroy,
 		&my_list_for_each,
+		&my_list_sort,
 	};
 	return listHandler;
 }
@@ -157,4 +159,52 @@ void my_list_for_each(ListHandler* self, void func(void*)) {
 		func(node->data);
 		node = node->next;
 	}
+}
+
+Node* my_list_sort_merge(Node* lhs, Node* rhs, int func(void*, void*)) {
+	Node nullHead;
+	Node* pTail = &nullHead;
+	while (lhs) {
+		if (!rhs) {
+			pTail->next = lhs;
+			return nullHead.next;
+		}
+		if (func(lhs->data, rhs->data) <= 0) {
+			pTail->next = lhs;
+			lhs = lhs->next;
+		} else {
+			pTail->next = rhs;
+			rhs = rhs->next;
+		}
+		pTail = pTail->next;
+	}
+	pTail->next = rhs;
+	return nullHead.next;
+}
+
+Node* sort_list(Node* head, int func(void*, void*)) {
+	if (!head || !head->next) return head;
+	Node* lastMid = head;
+	Node* mid = head;
+	Node* tail = head->next;
+	while (1) {
+		lastMid = mid;
+		mid = mid->next;
+		tail = tail->next;
+		if (!tail) break;
+		tail = tail->next;
+		if (!tail) break;
+	}
+	lastMid->next = NULL;
+	Node* hd = sort_list(head, func);
+	Node* md = sort_list(mid, func);
+	return my_list_sort_merge(hd, md, func);
+}
+
+void my_list_sort(ListHandler* self, int func(void*, void*)) {
+	Node* head = sort_list(self->head, func);
+	Node* tail = head;
+	for (; tail->next; tail = tail->next);
+	self->head = head;
+	self->tail = tail;
 }
