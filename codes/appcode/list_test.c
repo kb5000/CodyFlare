@@ -7,6 +7,13 @@ void display_node(void* data) {
 	printf("%d, ", *(int*)data);
 }
 
+int comp(void* lhs, void* rhs) {
+	int a = *(int*)lhs, b = *(int*)rhs;
+	if (a < b) return 1;
+	if (a > b) return -1;
+	return 0;
+}
+
 void test_of_list() {
 	int* c[10];
 	for (int i = 0; i < 10; i++) {
@@ -22,6 +29,7 @@ void test_of_list() {
 	listHandler.nowpos = listHandler.at(&listHandler, 3);
 	listHandler.remove_after(&listHandler);
 	listHandler.insert_after(&listHandler, c[1]);
+	listHandler.sort_by(&listHandler, comp);
 	listHandler.for_each(&listHandler, display_node);
 	listHandler.destroy(&listHandler);
 }
