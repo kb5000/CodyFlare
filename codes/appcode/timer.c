@@ -66,7 +66,7 @@ void remove_funcs_from_timer(int id) {
 	while (gFL->nowpos) {
 		if (gFL->nowpos->next && ((TimerFunc*)gFL->nowpos->next->data)->id == id) {
 			gFL->remove_after(gFL);
-			break;
+			continue;
 		}
 		gFL->nowpos = gFL->nowpos->next;
 	}
@@ -80,7 +80,7 @@ void remove_invalid_funcs() {
 	while (gFL->nowpos) {
 		if (gFL->nowpos->next && ((TimerFunc*)gFL->head->data)->callCount == ((TimerFunc*)gFL->head->data)->maxCallCount) {
 			gFL->remove_after(gFL);
-			break;
+			continue;
 		}
 		gFL->nowpos = gFL->nowpos->next;
 	}

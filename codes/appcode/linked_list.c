@@ -163,6 +163,7 @@ void my_list_for_each(ListHandler* self, void func(void*)) {
 
 Node* my_list_sort_merge(Node* lhs, Node* rhs, int func(void*, void*)) {
 	Node nullHead;
+	nullHead.next = NULL;
 	Node* pTail = &nullHead;
 	while (lhs) {
 		if (!rhs) {
