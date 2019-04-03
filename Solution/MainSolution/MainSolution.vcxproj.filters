@@ -54,6 +54,9 @@
     <Filter Include="headersd">
       <UniqueIdentifier>{4ade862d-79fa-470f-bafa-6b57b1dcb7cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\CollisionDection">
+      <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -107,6 +110,9 @@
     <ClInclude Include="..\..\codes\appcode\timer.h">
       <Filter>Modules\Timer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\collision.h">
+      <Filter>Modules\CollisionDection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
@@ -156,6 +162,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\list_test.c">
       <Filter>UnitTest\LinkedListTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\collision.c">
+      <Filter>Modules\CollisionDection</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

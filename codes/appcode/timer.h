@@ -2,7 +2,7 @@
 
 #include "linked_list.h"
 
-extern ListHandler* globalTimerFunctionList;
+extern ListHandler globalTimerFunctionList;
 extern int globalTimerInterval;
 
 typedef struct {

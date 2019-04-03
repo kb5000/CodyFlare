@@ -81,6 +81,27 @@ ListHandler new_list(void* initData) {
 	return listHandler;
 }
 
+ListHandler new_empty_list() {
+	ListHandler listHandler = {
+		NULL,
+		NULL,
+		NULL,
+		&my_list_len,
+		&my_list_at,
+		&my_list_push_back,
+		&my_list_push_front,
+		&my_list_pop_front,
+		&my_list_pop_back,
+		&my_list_insert_after,
+		&my_list_remove_after,
+		&my_list_destroy,
+		&my_list_for_each,
+		&my_list_sort,
+		&my_list_find_if,
+	};
+	return listHandler;
+}
+
 unsigned my_list_len(ListHandler* self) {
 	Node* head = self->head;
 	unsigned length = 0;
@@ -96,6 +117,7 @@ Node* my_list_at(ListHandler* self, unsigned position) {
 
 void my_list_push_back(ListHandler* self, void* data) {
 	self->tail = push_node(self->tail, data);
+	if (!self->head) self->head = self->tail;
 }
 
 void my_list_push_front(ListHandler* self, void* data) {

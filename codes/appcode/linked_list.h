@@ -120,3 +120,5 @@ Node* sort_list(Node* head, int func(void*, void*));
 ///warn: recommand use this instead of node
 ListHandler new_list(void* initData);
 
+ListHandler new_empty_list();
+

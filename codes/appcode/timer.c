@@ -2,7 +2,7 @@
 #include "timer.h"
 #include "graphics.h"
 
-ListHandler* globalTimerFunctionList = NULL;
+ListHandler globalTimerFunctionList;
 int globalTimerInterval = 16;
 
 static int globalTimerID = 1;
@@ -20,19 +20,12 @@ void timer_func_caller_helper(void* data) {
 }
 
 void timer_func_caller(int id) {
-	globalTimerFunctionList->for_each(globalTimerFunctionList, timer_func_caller_helper);
+	globalTimerFunctionList.for_each(&globalTimerFunctionList, timer_func_caller_helper);
 	globalTickCount++;
 }
 
 void init_global_timer() {
-	TimerFunc* timerFunc = (TimerFunc*)malloc(sizeof(TimerFunc));
-	timerFunc->func = NULL;
-	timerFunc->paras = NULL;
-	timerFunc->tickInterval = 2147483647;
-	timerFunc->id = -1;
-	timerFunc->callCount = 0;
-	timerFunc->maxCallCount = 1;
-	new_list((void*)timerFunc);
+	globalTimerFunctionList = new_empty_list();
 	registerTimerEvent(timer_func_caller);
 }
 
@@ -57,11 +50,11 @@ void add_func_to_timer(void func(void*), void* paras, int tickInterval, int id, 
 	timerFunc->id = id;
 	timerFunc->callCount = 0;
 	timerFunc->maxCallCount = maxCallCount;
-	globalTimerFunctionList->push_back(globalTimerFunctionList, (void*)timerFunc);
+	globalTimerFunctionList.push_back(&globalTimerFunctionList, (void*)timerFunc);
 }
 
 void remove_funcs_from_timer(int id) {
-	ListHandler* gFL = globalTimerFunctionList;
+	ListHandler* gFL = &globalTimerFunctionList;
 	while (gFL->head && ((TimerFunc*)gFL->head->data)->id == id) {
 		if (((TimerFunc*)gFL->head->data)->paras)
 			free(((TimerFunc*)gFL->head->data)->paras);
@@ -79,7 +72,7 @@ void remove_funcs_from_timer(int id) {
 }
 
 void remove_invalid_funcs() {
-	ListHandler* gFL = globalTimerFunctionList;
+	ListHandler* gFL = &globalTimerFunctionList;
 	while (gFL->head && ((TimerFunc*)gFL->head->data)->callCount == ((TimerFunc*)gFL->head->data)->maxCallCount) {
 		if (((TimerFunc*)gFL->head->data)->paras)
 			free(((TimerFunc*)gFL->head->data)->paras);
