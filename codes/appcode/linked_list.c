@@ -12,6 +12,7 @@ void my_list_remove_after(ListHandler* self);
 void my_list_destroy(ListHandler* self);
 void my_list_for_each(ListHandler* self, void func(void*));
 void my_list_sort(ListHandler* self, int func(void*, void*));
+void* my_list_find_if(ListHandler* self, int func(const ListHandler*, void*));
 
 Node* new_node(void* initData) {
 	Node* head = (Node*)malloc(sizeof(Node));
@@ -75,6 +76,7 @@ ListHandler new_list(void* initData) {
 		&my_list_destroy,
 		&my_list_for_each,
 		&my_list_sort,
+		&my_list_find_if,
 	};
 	return listHandler;
 }
@@ -211,4 +213,13 @@ void my_list_sort(ListHandler* self, int func(void*, void*)) {
 	for (; tail->next; tail = tail->next);
 	self->head = head;
 	self->tail = tail;
+}
+
+void* my_list_find_if(ListHandler* self, int func(const ListHandler*, void*)) {
+	Node* node = self->head;
+	while (node) {
+		if (func(self, node->data)) return node->data;
+		node = node->next;
+	}
+	return NULL;
 }

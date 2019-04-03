@@ -67,6 +67,7 @@ typedef struct _My_Linked_List_Handler {
 	///warn: you can change the data
 	void (*for_each)(struct _My_Linked_List_Handler* self, void func(void*));
 	void (*sort_by)(struct _My_Linked_List_Handler* self, int func(void*, void*));
+	void* (*find_if)(struct _My_Linked_List_Handler* self, int func(const struct _My_Linked_List_Handler*, void*));
 } ListHandler;
 
 ///name: new_node
