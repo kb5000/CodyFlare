@@ -51,9 +51,6 @@
     <Filter Include="UnitTest\LinkedListTest">
       <UniqueIdentifier>{b212febf-e79f-4a70-a47f-adff04322866}</UniqueIdentifier>
     </Filter>
-    <Filter Include="headersd">
-      <UniqueIdentifier>{4ade862d-79fa-470f-bafa-6b57b1dcb7cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\CollisionDection">
       <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
     </Filter>
