@@ -11,11 +11,11 @@ void init_collision_detector(void func(int groupID1, int groupID2, int id1, int 
 	globalCollisionList = new_empty_list();
 }
 
-void add_group_to_list(CollisionGroup* group) {
+void add_col_group_to_list(CollisionGroup* group) {
 	globalCollisionList.push_back(&globalCollisionList, (void*)group);
 }
 
-void remove_group(int groupID) {
+void remove_col_group(int groupID) {
 	while (((CollisionGroup*)globalCollisionList.head->data)->groupID == groupID) {
 		globalCollisionList.pop_front(&globalCollisionList);
 	}
@@ -54,11 +54,25 @@ CollisionGroup* create_collision_group(ListHandler boxes, int groupID) {
 	return res;
 }
 
-int have_collision(CollisionBox lhs, CollisionBox rhs) {
-	return (abs(lhs.position.x - rhs.position.x) < (lhs.size.x + rhs.size.x) ||
-			abs(lhs.position.y - rhs.position.y) < (lhs.size.y + rhs.size.y));
-	//TODO: fix bug
+int have_collision(CollisionBox* lhs, CollisionBox* rhs) {
+	return (lhs->position.x < rhs->position.x + rhs->size.x) && (rhs->position.x < lhs->position.x + lhs->size.x) &&
+		   (lhs->position.y < rhs->position.y + rhs->size.y) && (rhs->position.y < lhs->position.y + lhs->size.y);
 }
 
 void detect_collision() {
+	for (Node* i = globalCollisionList.head; i; i = i->next) {
+		for (Node* j = globalCollisionList.head; j; j = j->next) {
+			CollisionGroup* a = (CollisionGroup*)(i->data);
+			CollisionGroup* b = (CollisionGroup*)(j->data);
+			if (a->groupID < b->groupID) {
+				for (Node* p = a->boxes.head; p; p = p->next) {
+					for (Node* q = b->boxes.head; q; q = q->next) {
+						CollisionBox* m = (CollisionBox*)(p->data);
+						CollisionBox* n = (CollisionBox*)(q->data);
+						if (have_collision(m, n)) collision_handler(a->groupID, b->groupID, m->id, n->id);
+					}
+				}
+			}
+		}
+	}
 }
