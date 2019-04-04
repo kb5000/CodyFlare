@@ -5,6 +5,7 @@ void draw_function(DrawFuncHolder* drawHd) {
 	Pos startPos = { drawHd->originPosition.x + drawHd->drawPositionBias.x,
 					 drawHd->originPosition.y + drawHd->drawPositionBias.y };
 	MovePen(startPos.x, startPos.y);
+	//the step should be as big as possible, as the window could only hold 7000 lines or it will be slow
 	for (drawHd->tNow = 0; drawHd->tNow < drawHd->tMax; drawHd->tNow += drawHd->tStep) {
 		Pos delta = drawHd->func(drawHd);
 		DrawLine(delta.x, delta.y);

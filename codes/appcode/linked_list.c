@@ -1,6 +1,7 @@
 #include "linked_list.h"
 #include <stdlib.h>
 
+///these are functions packed and could be called by structs
 unsigned my_list_len(ListHandler* self);
 Node* my_list_at(ListHandler* self, unsigned position);
 void my_list_push_back(ListHandler* self, void* data);

@@ -14,11 +14,44 @@ typedef struct {
 } TimerFunc;
 
 
+///these are functions to control the timer
+
+///name: init_global_timer
+///func: init the global timer
+///visb: public
+///warn: must be called before the timer was started
 void init_global_timer();
+///name: start_global_timer
+///func: start the timer and start to call function registered
+///visb: public
 void start_global_timer();
+///name: restart_global_timer
+///func: reset the timer and can change the timer interval
+///visb: public
+///warn: when you changed the interval, you must call this to apply the change
 void restart_global_timer();
+///name: stop_global_timer
+///func: stop the timer
+///visb: public
 void stop_global_timer();
 
+///these are functions to control the funcs to be called by the timer
+
+///name: add_func_to_timer
+///func: register a func to the timer
+///para: func expects the function to be called, paras expects paras passed to the function, 
+///      tickInterval expects how many ticks between 2 calls, 1 means each tick will call it,
+///      id expects a unique id to identify it, if you dont want to remove it, you can share the same id,
+///      maxCallCount expects how many times will the function be called, -1 means infinity
+///visb: public
+///warn: paras must be a pointer refers to a malloced memory or NULL, or it will cause CRASH
 void add_func_to_timer(void func(void*), void* paras, int tickInterval, int id, int maxCallCount);
+///name: remove_funcs_from_timer
+///func: remove all funcs have the id
+///para: id expects a valid id in the func list
+///visb: public
 void remove_funcs_from_timer(int id);
+///name: remove_invalid_funcs
+///func: remove all funcs whose call time equals the maxCallCount, which means it wont be called later
+///visb: public
 void remove_invalid_funcs();

@@ -66,7 +66,16 @@ typedef struct _My_Linked_List_Handler {
 	///visb: public
 	///warn: you can change the data
 	void (*for_each)(struct _My_Linked_List_Handler* self, void func(void*));
+	///name: sort_by
+	///func: sort the list by func
+	///para: self expects the ListHandler itself, func expects to return negtive num when left para is smaller than right para, 
+	///      0 if they are equal, positive num if left para is bigger than right para
+	///visb: public
 	void (*sort_by)(struct _My_Linked_List_Handler* self, int func(void*, void*));
+	///name: find_if
+	///func: return the data of the first node matches
+	///para: self expects the ListHandler itself, func expects to return 1 if match successful, 0 if match failed
+	///visb: public
 	void* (*find_if)(struct _My_Linked_List_Handler* self, int func(const struct _My_Linked_List_Handler*, void*));
 } ListHandler;
 
@@ -120,5 +129,9 @@ Node* sort_list(Node* head, int func(void*, void*));
 ///warn: recommand use this instead of node
 ListHandler new_list(void* initData);
 
+///name: new_empty_list
+///func: it will create a new empty ListHandler, which contains a lot of useful info about the list
+///visb: public
+///warn: recommand use this instead of node
 ListHandler new_empty_list();
 
