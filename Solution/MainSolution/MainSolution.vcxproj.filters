@@ -54,6 +54,15 @@
     <Filter Include="Modules\CollisionDection">
       <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitTest\TimerTest">
+      <UniqueIdentifier>{fec07d56-fdbd-4b47-b27a-9df6b130fda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\CollisionTest">
+      <UniqueIdentifier>{c989d415-b56b-425e-be8d-ba57c85f52a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\FunctionTest">
+      <UniqueIdentifier>{3e3a7c79-4937-4b58-acd6-28d1f09e9f60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -110,6 +119,12 @@
     <ClInclude Include="..\..\codes\appcode\collision.h">
       <Filter>Modules\CollisionDection</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\timer_test.h">
+      <Filter>UnitTest\TimerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\function_test.h">
+      <Filter>UnitTest\FunctionTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
@@ -162,6 +177,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\collision.c">
       <Filter>Modules\CollisionDection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\timer_test.c">
+      <Filter>UnitTest\TimerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\function_test.c">
+      <Filter>UnitTest\FunctionTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

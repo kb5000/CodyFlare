@@ -1,8 +1,10 @@
 #include "vector.h"
 #include "vector_test.h"
 #include <stdio.h>
+#include "graphics.h"
 
 void test_of_vector() {
+	InitConsole();
 	Vector v = new_zero_vector(sizeof(int), 1);
 	int num = *(int*)v.at(&v, 0);
 	for (int i = 0; i < 5; i++) {

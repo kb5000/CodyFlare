@@ -2,6 +2,7 @@
 #include "linked_list.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "graphics.h"
 
 void display_node(void* data) {
 	printf("%d, ", *(int*)data);
@@ -15,6 +16,7 @@ int comp(void* lhs, void* rhs) {
 }
 
 void test_of_list() {
+	InitConsole();
 	int* c[10];
 	for (int i = 0; i < 10; i++) {
 		c[i] = (int*)malloc(sizeof(int));
