@@ -63,6 +63,12 @@
     <Filter Include="UnitTest\FunctionTest">
       <UniqueIdentifier>{3e3a7c79-4937-4b58-acd6-28d1f09e9f60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Animes">
+      <UniqueIdentifier>{d1a9aae0-ba8d-44a2-bcce-6de082f2ecf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\AnimeTest">
+      <UniqueIdentifier>{f39a0996-d21d-4d25-a40a-7c628d658179}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -125,6 +131,15 @@
     <ClInclude Include="..\..\codes\appcode\function_test.h">
       <Filter>UnitTest\FunctionTest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\animes.h">
+      <Filter>Modules\Animes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\anime_test.h">
+      <Filter>UnitTest\AnimeTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\collision_test.h">
+      <Filter>UnitTest\CollisionTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
@@ -183,6 +198,18 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\function_test.c">
       <Filter>UnitTest\FunctionTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_bomb.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_shield.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_test.c">
+      <Filter>UnitTest\AnimeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\collision_test.c">
+      <Filter>UnitTest\CollisionTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

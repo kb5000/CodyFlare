@@ -151,7 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\codes\appcode\animes.h" />
+    <ClInclude Include="..\..\codes\appcode\anime_test.h" />
     <ClInclude Include="..\..\codes\appcode\collision.h" />
+    <ClInclude Include="..\..\codes\appcode\collision_test.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
@@ -173,7 +176,11 @@
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\codes\appcode\anime_bomb.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_shield.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_test.c" />
     <ClCompile Include="..\..\codes\appcode\collision.c" />
+    <ClCompile Include="..\..\codes\appcode\collision_test.c" />
     <ClCompile Include="..\..\codes\appcode\function_drawer.c" />
     <ClCompile Include="..\..\codes\appcode\function_test.c" />
     <ClCompile Include="..\..\codes\appcode\linked_list.c" />

@@ -6,8 +6,6 @@
 #include "timer.h"
 #include <stdlib.h>
 
-DrawFuncHolder dd;
-
 Pos funcCircle(DrawFuncHolder* dfh) {
 	return new_pos(2 * cos(dfh->tNow), sin(dfh->tNow));
 }
