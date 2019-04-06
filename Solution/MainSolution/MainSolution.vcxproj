@@ -160,9 +160,14 @@
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
     <ClInclude Include="..\..\codes\appcode\list_test.h" />
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
+    <ClInclude Include="..\..\codes\appcode\menu.h" />
     <ClInclude Include="..\..\codes\appcode\point.h" />
+    <ClInclude Include="..\..\codes\appcode\start_page.h" />
+    <ClInclude Include="..\..\codes\appcode\status_line.h" />
     <ClInclude Include="..\..\codes\appcode\timer.h" />
     <ClInclude Include="..\..\codes\appcode\timer_test.h" />
+    <ClInclude Include="..\..\codes\appcode\tool_box.h" />
+    <ClInclude Include="..\..\codes\appcode\ui.h" />
     <ClInclude Include="..\..\codes\appcode\vector.h" />
     <ClInclude Include="..\..\codes\appcode\vector_test.h" />
     <ClInclude Include="..\..\codes\libgraphics\exception.h" />
@@ -178,10 +183,21 @@
   <ItemGroup>
     <ClCompile Include="..\..\codes\appcode\anime_ammo.c" />
     <ClCompile Include="..\..\codes\appcode\anime_bomb.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_advanced.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_base.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_bonus.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_boss.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_player.c" />
     <ClCompile Include="..\..\codes\appcode\anime_shield.c" />
     <ClCompile Include="..\..\codes\appcode\anime_test.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_victory.c" />
     <ClCompile Include="..\..\codes\appcode\collision.c" />
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
+    <ClCompile Include="..\..\codes\appcode\menu.c" />
+    <ClCompile Include="..\..\codes\appcode\start_page.c" />
+    <ClCompile Include="..\..\codes\appcode\status_line.c" />
+    <ClCompile Include="..\..\codes\appcode\tool_box.c" />
+    <ClCompile Include="..\..\codes\appcode\ui.c" />
     <ClCompile Include="..\..\codes\appcode\function_drawer.c" />
     <ClCompile Include="..\..\codes\appcode\function_test.c" />
     <ClCompile Include="..\..\codes\appcode\linked_list.c" />

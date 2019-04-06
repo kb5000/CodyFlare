@@ -69,6 +69,21 @@
     <Filter Include="UnitTest\AnimeTest">
       <UniqueIdentifier>{f39a0996-d21d-4d25-a40a-7c628d658179}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\UI">
+      <UniqueIdentifier>{9f6c733b-e870-4100-9fbd-9915480bf0b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\UI\Menu">
+      <UniqueIdentifier>{fdde2562-7406-4b80-a6f1-bff5bd1bc0dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\UI\ToolBox">
+      <UniqueIdentifier>{ba8df76b-3492-4815-ac21-b88b43de7993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\UI\StatusLine">
+      <UniqueIdentifier>{c9f4e5e6-5722-4897-b3b3-30ce606e483d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\UI\StartPage">
+      <UniqueIdentifier>{7492884a-e304-44c2-b53a-ef08dc2386dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -139,6 +154,21 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\collision_test.h">
       <Filter>UnitTest\CollisionTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\ui.h">
+      <Filter>Modules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\menu.h">
+      <Filter>Modules\UI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\start_page.h">
+      <Filter>Modules\UI\StartPage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\status_line.h">
+      <Filter>Modules\UI\StatusLine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\tool_box.h">
+      <Filter>Modules\UI\ToolBox</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +243,39 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_ammo.c">
       <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_player.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_base.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_advanced.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_boss.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_enemy_bonus.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_victory.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\ui.c">
+      <Filter>Modules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\menu.c">
+      <Filter>Modules\UI\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\start_page.c">
+      <Filter>Modules\UI\StartPage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\status_line.c">
+      <Filter>Modules\UI\StatusLine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\tool_box.c">
+      <Filter>Modules\UI\ToolBox</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
