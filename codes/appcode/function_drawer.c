@@ -1,8 +1,14 @@
 #include "function_drawer.h"
 #include "graphics.h"
 #include <math.h>
+#include <string.h>
+
+void SetPenColor(const char* color);
+void SetPenSize(int size);
 
 void draw_function(DrawFuncHolder* drawHd) {
+	SetPenColor(drawHd->color);
+	SetPenSize(drawHd->penSize);
 	Pos newBias = drawHd->drawPositionBias;
 	if (drawHd->rotate != 0) {
 		newBias.x = cos(drawHd->rotate) * drawHd->drawPositionBias.x - sin(drawHd->rotate) * drawHd->drawPositionBias.y;
@@ -27,6 +33,8 @@ void draw_function(DrawFuncHolder* drawHd) {
 void draw_function_one_step(void* drawFuncHolder) {
 	DrawFuncHolder* drawHd = (DrawFuncHolder*)drawFuncHolder;
 	if (drawHd->tNow > drawHd->tMax) return;
+	SetPenColor(drawHd->color);
+	SetPenSize(drawHd->penSize);
 	Pos newBias = drawHd->drawPositionBias;
 	if (drawHd->rotate != 0) {
 		newBias.x = cos(drawHd->rotate) * drawHd->drawPositionBias.x - sin(drawHd->rotate) * drawHd->drawPositionBias.y;
@@ -50,7 +58,7 @@ void draw_function_one_step(void* drawFuncHolder) {
 	MovePen(drawHd->originPosition.x, drawHd->originPosition.y);
 }
 
-DrawFuncHolder create_function_holder(Pos(*func)(DrawFuncHolder* para), Pos originPosition, Pos drawPositionBias, double size, double tNow, double tMax, double tStep, double rotate) {
+DrawFuncHolder create_function_holder(Pos(*func)(DrawFuncHolder* para), Pos originPosition, Pos drawPositionBias, double size, double tNow, double tMax, double tStep, double rotate, const char* color, int penSize) {
 	DrawFuncHolder res = {
 		func,
 		originPosition,
@@ -59,7 +67,9 @@ DrawFuncHolder create_function_holder(Pos(*func)(DrawFuncHolder* para), Pos orig
 		tNow,
 		tMax,
 		tStep,
-		rotate
+		rotate,
 	};
+	strcpy(res.color, color);
+	res.penSize = penSize;
 	return res;
 }

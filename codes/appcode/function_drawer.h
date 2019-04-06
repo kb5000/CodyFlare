@@ -9,6 +9,8 @@ typedef struct _My_Function_Holder {
 	double size;
 	double tNow, tMax, tStep;
 	double rotate;
+	char color[16];
+	int penSize;
 } DrawFuncHolder;
 
 ///name: draw_function
@@ -39,4 +41,6 @@ DrawFuncHolder create_function_holder(
 	Pos originPosition, Pos drawPositionBias,
 	double size,
 	double tNow, double tMax, double tStep,
-	double rotate);
+	double rotate, const char* color, int penSize);
+
+

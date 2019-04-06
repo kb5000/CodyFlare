@@ -23,7 +23,7 @@ void tts(void* dds) {
 void test_of_function() {
 	InitGraphics();
 	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
-	*dfh = create_function_holder(funcCircle, new_pos(5, 3.5), new_pos(-0.1, -1), 0.1, 0, 6.28, 0.1, 0);
+	*dfh = create_function_holder(funcCircle, new_pos(5, 3.5), new_pos(-0.1, -1), 0.1, 0, 6.28, 0.1, 0, "Black", 1);
 	draw_function(dfh);
 	
 	init_global_timer();

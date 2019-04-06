@@ -233,7 +233,7 @@ Node* sort_list(Node* head, int func(void*, void*)) {
 void my_list_sort(ListHandler* self, int func(void*, void*)) {
 	Node* head = sort_list(self->head, func);
 	Node* tail = head;
-	for (; tail->next; tail = tail->next);
+	if (tail) for (; tail->next; tail = tail->next);
 	self->head = head;
 	self->tail = tail;
 }

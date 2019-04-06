@@ -1,17 +1,45 @@
 #include "animes.h"
 
 #define PI 3.1415926
+static const double rotateRate = 0.01;
+static const int ticksBetweenDraw = 1;
 
 Pos draw_curve_sin(DrawFuncHolder* dfh);
 Pos draw_curve_circle(DrawFuncHolder* dfh);
 
 void sins_drawer(void* dfhv) {
-	
+	DrawFuncHolder* dfh = (DrawFuncHolder*)dfhv;
+	draw_function(dfh);
+	dfh->rotate += rotateRate;
 }
 
-
-void draw_anime_shield(int id, Pos position, double size) {
-
+void draw_anime_shield(int id, Pos position, double size, int existTicks) {
+	DrawFuncHolder* dfh[6];
+	for (int i = 0; i < 6; i++) {
+		dfh[i] = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
+	}
+	for (int i = 0; i < 3; i++) {
+		*dfh[i] = create_function_holder(draw_curve_sin, position, new_pos(size * 1, 0), size * 0.01, 0, 2 * PI, 0.02, 0, "Red", 2);
+	}
+	for (int i = 3; i < 6; i++) {
+		*dfh[i] = create_function_holder(draw_curve_circle, position, new_pos(size * 1.26, size * -0.06), size * 0.126, 0, 2 * PI, 0.1, 0, "Black", 2);
+	}
+	dfh[1]->rotate = 2 * PI / 9;
+	dfh[2]->rotate = 4 * PI / 9;
+	strcpy(dfh[1]->color, "Green");
+	strcpy(dfh[2]->color, "Blue");
+	strcpy(dfh[4]->color, "Blue");
+	strcpy(dfh[5]->color, "Red");
+	dfh[4]->drawPositionBias = new_pos(size * 0.747, size * -0.04);
+	dfh[5]->drawPositionBias = new_pos(size * 1.04, size * -0.06);
+	dfh[4]->size = size * 0.075;
+	dfh[5]->size = size * 0.103;
+	add_func_to_timer(sins_drawer, dfh[0], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	add_func_to_timer(sins_drawer, dfh[1], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	add_func_to_timer(sins_drawer, dfh[2], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	add_func_to_timer(draw_function, dfh[3], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	add_func_to_timer(draw_function, dfh[4], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	add_func_to_timer(draw_function, dfh[5], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 }
 
 Pos draw_curve_sin(DrawFuncHolder* dfh) {

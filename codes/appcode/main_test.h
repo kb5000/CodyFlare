@@ -5,5 +5,6 @@
 #include "timer_test.h"
 #include "function_test.h"
 #include "graphics.h"
+#include "anime_test.h"
 
 void tests();

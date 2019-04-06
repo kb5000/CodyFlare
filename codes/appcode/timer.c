@@ -3,13 +3,15 @@
 #include "graphics.h"
 
 ListHandler globalTimerFunctionList;
-int globalTimerInterval = 16;
+int globalTimerInterval = 32;
 
 static int globalTimerID = 1;
 static int globalTickCount = 0;
 
 void startTimer(int id, int timeinterval);
 void cancelTimer(int id);
+
+void DisplayClear();
 
 void timer_func_caller_helper(void* data) {
 	TimerFunc* tmf = (TimerFunc*)data;
@@ -71,7 +73,7 @@ void remove_funcs_from_timer(int id) {
 	}
 }
 
-void remove_invalid_funcs() {
+void remove_invalid_funcs(void* unuseful) {
 	ListHandler* gFL = &globalTimerFunctionList;
 	while (gFL->head && ((TimerFunc*)gFL->head->data)->callCount == ((TimerFunc*)gFL->head->data)->maxCallCount) {
 		if (((TimerFunc*)gFL->head->data)->paras)
@@ -88,4 +90,8 @@ void remove_invalid_funcs() {
 		gFL->nowpos = gFL->nowpos->next;
 	}
 
+}
+
+void auto_clear_display(void* unuseful) {
+	DisplayClear();
 }
