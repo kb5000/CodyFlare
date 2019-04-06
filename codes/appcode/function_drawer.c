@@ -25,7 +25,7 @@ void draw_function(DrawFuncHolder* drawHd) {
 			delta.x = cos(drawHd->rotate) * temp.x - sin(drawHd->rotate) * temp.y;
 			delta.y = sin(drawHd->rotate) * temp.x + cos(drawHd->rotate) * temp.y;
 		}
-		DrawLine(delta.x * drawHd->size, delta.y * drawHd->size);
+		DrawLine(delta.x * drawHd->size * drawHd->tStep, delta.y * drawHd->size * drawHd->tStep);
 	}
 	MovePen(drawHd->originPosition.x, drawHd->originPosition.y);
 }
@@ -44,8 +44,8 @@ void draw_function_one_step(void* drawFuncHolder) {
 					 drawHd->originPosition.y + newBias.y};
 	MovePen(startPos.x, startPos.y);
 	Pos delta = drawHd->func(drawHd);
-	delta.x *= drawHd->size;
-	delta.y *= drawHd->size;
+	delta.x *= drawHd->size * drawHd->tStep;
+	delta.y *= drawHd->size * drawHd->tStep;
 	Pos temp = delta;
 	if (drawHd->rotate != 0) {
 		delta.x = cos(drawHd->rotate) * temp.x - sin(drawHd->rotate) * temp.y;

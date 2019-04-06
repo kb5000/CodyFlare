@@ -19,10 +19,10 @@ void draw_anime_shield(int id, Pos position, double size, int existTicks) {
 		dfh[i] = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
 	}
 	for (int i = 0; i < 3; i++) {
-		*dfh[i] = create_function_holder(draw_curve_sin, position, new_pos(size * 1, 0), size * 0.01, 0, 2 * PI, 0.02, 0, "Red", 2);
+		*dfh[i] = create_function_holder(draw_curve_sin, position, new_pos(size * 1, 0), size * 0.5, 0, 2 * PI, 0.02, 0, "Red", 2);
 	}
 	for (int i = 3; i < 6; i++) {
-		*dfh[i] = create_function_holder(draw_curve_circle, position, new_pos(size * 1.26, size * -0.06), size * 0.126, 0, 2 * PI, 0.1, 0, "Black", 2);
+		*dfh[i] = create_function_holder(draw_curve_circle, position, new_pos(size * 1.26, size * -0.06), size * 1.26, 0, 2 * PI, 0.1, 0, "Black", 2);
 	}
 	dfh[1]->rotate = 2 * PI / 9;
 	dfh[2]->rotate = 4 * PI / 9;
@@ -32,8 +32,8 @@ void draw_anime_shield(int id, Pos position, double size, int existTicks) {
 	strcpy(dfh[5]->color, "Red");
 	dfh[4]->drawPositionBias = new_pos(size * 0.747, size * -0.04);
 	dfh[5]->drawPositionBias = new_pos(size * 1.04, size * -0.06);
-	dfh[4]->size = size * 0.075;
-	dfh[5]->size = size * 0.103;
+	dfh[4]->size = size * 0.75;
+	dfh[5]->size = size * 1.03;
 	add_func_to_timer(sins_drawer, dfh[0], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	add_func_to_timer(sins_drawer, dfh[1], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	add_func_to_timer(sins_drawer, dfh[2], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
