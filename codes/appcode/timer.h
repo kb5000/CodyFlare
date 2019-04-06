@@ -51,8 +51,13 @@ void add_func_to_timer(void func(void*), void* paras, int tickInterval, int id, 
 ///para: id expects a valid id in the func list
 ///visb: public
 void remove_funcs_from_timer(int id);
-void auto_clear_display(void * unuseful);
 ///name: remove_invalid_funcs
 ///func: remove all funcs whose call time equals the maxCallCount, which means it wont be called later
 ///visb: public
 void remove_invalid_funcs(void* unuseful);
+
+///name: auto_clear_display
+///func: perform a full display clear, can be called by the global timer
+///para: just pass NULL
+///visb: public
+void auto_clear_display(void* unuseful);

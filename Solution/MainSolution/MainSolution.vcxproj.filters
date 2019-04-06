@@ -211,5 +211,8 @@
     <ClCompile Include="..\..\codes\appcode\collision_test.c">
       <Filter>UnitTest\CollisionTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_ammo.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

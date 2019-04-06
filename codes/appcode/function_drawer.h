@@ -33,7 +33,8 @@ void draw_function_one_step(void* drawFuncHolder);
 ///      size expects a positive number,
 ///      tNow expects the initial para t and it will be updated while drawing,
 ///      tMax expects the max para t, and tStep expects how much will the para t increase each time,
-///      rotate expects the angle rotated
+///      rotate expects the angle rotated, 
+///      color and penSize will be passed to libgraphics
 ///visb: public
 ///warn: the para func dont need to consider the value of size and rotate, as it will be automatically caculated
 DrawFuncHolder create_function_holder(
