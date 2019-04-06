@@ -168,6 +168,7 @@
     <ClInclude Include="..\..\codes\appcode\timer_test.h" />
     <ClInclude Include="..\..\codes\appcode\tool_box.h" />
     <ClInclude Include="..\..\codes\appcode\ui.h" />
+    <ClInclude Include="..\..\codes\appcode\ui_test.h" />
     <ClInclude Include="..\..\codes\appcode\vector.h" />
     <ClInclude Include="..\..\codes\appcode\vector_test.h" />
     <ClInclude Include="..\..\codes\libgraphics\exception.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\start_page.c" />
     <ClCompile Include="..\..\codes\appcode\status_line.c" />
+    <ClCompile Include="..\..\codes\appcode\ui_test.c" />
     <ClCompile Include="..\..\codes\appcode\tool_box.c" />
     <ClCompile Include="..\..\codes\appcode\ui.c" />
     <ClCompile Include="..\..\codes\appcode\function_drawer.c" />
