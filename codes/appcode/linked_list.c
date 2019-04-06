@@ -169,7 +169,7 @@ void my_list_remove_after(ListHandler* self) {
 	remove_node_after(self->nowpos);
 	if (self->tail == self->nowpos) {
 		Node* new_tail = self->head;
-		for (; new_tail; new_tail = new_tail->next);
+		if (new_tail) for (; new_tail->next; new_tail = new_tail->next);
 		self->tail = new_tail;
 	}
 }
