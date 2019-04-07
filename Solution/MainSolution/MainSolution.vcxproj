@@ -155,6 +155,7 @@
     <ClInclude Include="..\..\codes\appcode\anime_test.h" />
     <ClInclude Include="..\..\codes\appcode\collision.h" />
     <ClInclude Include="..\..\codes\appcode\collision_test.h" />
+    <ClInclude Include="..\..\codes\appcode\color.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="..\..\codes\appcode\anime_victory.c" />
     <ClCompile Include="..\..\codes\appcode\collision.c" />
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
+    <ClCompile Include="..\..\codes\appcode\color.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\start_page.c" />
     <ClCompile Include="..\..\codes\appcode\status_line.c" />

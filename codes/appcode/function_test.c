@@ -1,3 +1,4 @@
+
 #include "function_test.h"
 #include "function_drawer.h"
 #include <math.h>
@@ -13,13 +14,13 @@ static int flagb = 1;
 
 Pos funcCircle(DrawFuncHolder* dfh) {
 	double t = dfh->tNow;
-	return new_pos(-1 * sin(3 * t) * cos(4 * dfh->rotate + 3.1416 * 1.5),
+	return new_pos(-1 * sin(3 * t) * cos(4 * dfh->rotate + 3.1416 * 1.5 * 3),
 				   0.5 - 0.5 * sin(3 * t) * cos(para * t));
 }
 
 void tts(void* dds) {
 	DrawFuncHolder* dfh = (DrawFuncHolder*)dds;
-	for (; dfh->rotate < 3.1416 * 2; dfh->rotate += 3.1416 / 45) {
+	for (; dfh->rotate < 3.1416 * 2 ; dfh->rotate += 3.1416 / 45) {
 		draw_function(dfh);
 		//if (dfh->tNow >= dfh->tMax && dfh->rotate < 3.1416 * 2) {
 		dfh->tNow = 0;
@@ -27,9 +28,9 @@ void tts(void* dds) {
 		dfh->drawPositionBias = new_pos(0, 0);
 		//}
 	}
-	dfh->rotate = 0;
+	dfh->rotate = 0.02;
 	//if (count % )
-	if (para < 64.8 && para >= 60.8) para += 0.1 * flag;
+	if (para < 65.6 && para >= 60.8) para += 0.1 * flag;
 	else {
 		flag = -flag;
 		para += 0.1 * flag;

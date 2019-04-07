@@ -1,5 +1,8 @@
 #include "animes.h"
 
+
+
+
 #define PI 3.1415926
 static const double rotateRate = 0.01;
 static const int ticksBetweenDraw = 1;
@@ -56,3 +59,5 @@ Pos draw_curve_sin(DrawFuncHolder* dfh) {
 Pos draw_curve_circle(DrawFuncHolder* dfh) {
 	return new_pos(-sin(dfh->tNow), cos(dfh->tNow));
 }
+
+

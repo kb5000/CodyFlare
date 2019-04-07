@@ -87,6 +87,9 @@
     <Filter Include="UnitTest\UITest">
       <UniqueIdentifier>{4c83326f-8370-4b4b-a325-8b6697846ae4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Color">
+      <UniqueIdentifier>{d1091bda-4d4d-4f0c-909b-17664db58a83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ui_test.h">
       <Filter>UnitTest\UITest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\color.h">
+      <Filter>Modules\Color</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +291,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ui_test.c">
       <Filter>UnitTest\UITest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\color.c">
+      <Filter>Modules\Color</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

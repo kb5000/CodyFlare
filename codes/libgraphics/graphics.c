@@ -24,6 +24,11 @@
 #include "extgraph.h"
 #include "graphics.h"
 
+
+
+
+
+
 /*
  * Parameters
  * ----------
@@ -305,6 +310,52 @@ static int ScaleX(double x);
 static int ScaleY(double y);
 static int Min(int x, int y);
 static int Max(int x, int y);
+
+
+
+
+////HOOK WARNING
+
+
+///This is a modify to the libgraphics
+///This is a modify which promoted the drawing performance
+///It can increase the max lines in the screen from 5000 to 7500!
+///Just define PERFORMANCE_DRAWING to activate it
+///But you should manually call this function when change the color or the penSize
+
+#ifdef PERFORMANCE_DRAWING
+
+void update_drawing_info() {
+	DeleteObject(drawPen);
+	drawPen = (HPEN) CreatePen(PS_SOLID, penSize, drawColor);
+}
+
+#endif //end of PERFORMANCE_DRAWING
+
+///This is a modify to the color system
+///It will change how the color function behaves
+///If you want to use the new color system
+///Please just define NEW_COLOR_SYSTEM
+///But remember, the two systems are not compatible
+///So only use one system
+//#define NEW_COLOR_SYSTEM
+
+#ifdef NEW_COLOR_SYSTEM
+
+void set_global_color_handler(int r, int g, int b) {
+	drawColor = RGB(r, g, b);
+#ifdef PERFORMANCE_DRAWING
+	update_drawing_info();
+#endif //end of PERFORMANCE_DRAWING
+}
+
+unsigned long get_global_color_handler() {
+	return (unsigned long)drawColor;
+}
+
+#endif //end of NEW_COLOR_SYSTEM
+
+
 
 /* Exported entries */
 
@@ -600,6 +651,10 @@ void DefineColor(string name,
 void SetPenSize(int size)
 {
     penSize = size;
+#ifdef PERFORMANCE_DRAWING
+		DeleteObject(drawPen);
+		drawPen = (HPEN) CreatePen(PS_SOLID, penSize, drawColor);
+#endif //end of PERFORMANCE_DRAWING
 }
 
 int GetPenSize(void)
@@ -1243,6 +1298,8 @@ void DisplayClear(void)
     BitBlt(osdc, 0, 0, pixelWidth, pixelHeight, NULL, 0, 0, WHITENESS);
 }
 
+
+
 /*
  * Function: PrepareToDraw
  * Usage: PrepareToDraw();
@@ -1253,7 +1310,6 @@ void DisplayClear(void)
 
 static void PrepareToDraw(void)
 {
-    int red, green, blue;
 /*
     HPEN oldPen;
 */
@@ -1264,6 +1320,8 @@ static void PrepareToDraw(void)
         (void) SelectObject(osdc, erasePen);
         SetTextColor(osdc, eraseColor);
     } else {
+#ifndef NEW_COLOR_SYSTEM
+		int red, green, blue;
         if (penColor != previousColor) {
             red = (int)(colorTable[penColor].red * 256 - Epsilon);
             green = (int)(colorTable[penColor].green * 256 - Epsilon);
@@ -1271,12 +1329,19 @@ static void PrepareToDraw(void)
             drawColor = RGB(red, green, blue);
             previousColor = penColor;
         }
-        DeleteObject(drawPen);
+#endif //end of NEW_COLOR_SYSTEM
+#ifndef PERFORMANCE_DRAWING
+		DeleteObject(drawPen);
 		drawPen = (HPEN) CreatePen(PS_SOLID, penSize, drawColor);
+#endif //end of PERFORMANCE_DRAWING
         (void) SelectObject(osdc, drawPen);
         (void) SetTextColor(osdc, drawColor);
     }
 }
+
+
+
+////END OF HOOK
 
 /*
  * Function: DisplayLine
@@ -1299,7 +1364,10 @@ static void DisplayLine(double x, double y, double dx, double dy)
     y1 = ScaleY(y + dy);
     if (regionState == NoRegion) {
         SetLineBB(&r, x, y, dx, dy);
+////HOOK LINE
+#ifndef PERFORMANCE_DRAWING
         InvalidateRect(graphicsWindow, &r, TRUE);
+#endif //end of PERFORMANCE_DRAWING
         MoveToEx(osdc, x0, y0, NULL);
         LineTo(osdc, x1, y1);
     } else {
@@ -1327,7 +1395,10 @@ static void DisplayArc(double xc, double yc, double rx, double ry,
 
     PrepareToDraw();
     SetArcBB(&r, xc, yc, rx, ry, start, sweep);
-    InvalidateRect(graphicsWindow, &r, TRUE);
+////HOOK LINE
+#ifndef PERFORMANCE_DRAWING
+	InvalidateRect(graphicsWindow, &r, TRUE);
+#endif //end of PERFORMANCE_DRAWING
     xmin = ScaleX(xc - rx);
     ymin = ScaleY(yc + ry);
     xmax = xmin + PixelsX(2 * rx);
@@ -1403,7 +1474,10 @@ static void DisplayText(double x, double y, string text)
 
     PrepareToDraw();
     SetTextBB(&r, x, y, text);
-    InvalidateRect(graphicsWindow, &r, TRUE);
+////HOOK LINE
+#ifndef PERFORMANCE_DRAWING
+	InvalidateRect(graphicsWindow, &r, TRUE);
+#endif //end of PERFORMANCE_DRAWING
     SetBkMode(osdc, TRANSPARENT);
     TextOut(osdc, ScaleX(x), ScaleY(y) - fontTable[currentFont].ascent, text, strlen(text));
     SetBkMode(osdc, OPAQUE);
@@ -1648,6 +1722,7 @@ static void DisplayPolygon(void)
     HPEN oldPen, fillPen;
 
     PrepareToDraw();
+	
     InvalidateRect(graphicsWindow, &polygonBounds, TRUE);
     if (eraseMode) {
         px = 0;
