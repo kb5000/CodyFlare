@@ -11,10 +11,12 @@ typedef struct {
 
 Color get_color();
 void set_color(Color color);
-Color create_color(int r, int g, int b);
-Color create_color_by_real(double r, double g, double b);
+Color color_by_rgb(int r, int g, int b);
+Color color_by_real(double r, double g, double b);
 void assign_to_color(Color* target, int r, int g, int b);
 Color color_by_name(const char* name);
+
+Color color_by_yuv(int y, int u, int v);
 
 #endif //end of NEW_COLOR_SYSTEM
 

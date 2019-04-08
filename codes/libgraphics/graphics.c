@@ -650,6 +650,8 @@ void DefineColor(string name,
 
 void SetPenSize(int size)
 {
+	int ps = GetPenSize();
+	if (ps == size) return;
     penSize = size;
 #ifdef PERFORMANCE_DRAWING
 		DeleteObject(drawPen);

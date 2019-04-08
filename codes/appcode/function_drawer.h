@@ -2,6 +2,21 @@
 
 #include "graphics.h"
 #include "point.h"
+#include "color.h"
+
+#ifdef NEW_COLOR_SYSTEM
+
+typedef struct _My_Function_Holder {
+	Pos (*func)(struct _My_Function_Holder* para);
+	Pos originPosition, drawPositionBias;
+	double size;
+	double tNow, tMax, tStep;
+	double rotate;
+	Color color;
+	int penSize;
+} DrawFuncHolder;
+
+#else
 
 typedef struct _My_Function_Holder {
 	Pos (*func)(struct _My_Function_Holder* para);
@@ -12,6 +27,8 @@ typedef struct _My_Function_Holder {
 	char color[16];
 	int penSize;
 } DrawFuncHolder;
+
+#endif
 
 ///name: draw_function
 ///func: draw a function using the infomation
@@ -35,13 +52,25 @@ void draw_function_one_step(void* drawFuncHolder);
 ///      tMax expects the max para t, and tStep expects how much will the para t increase each time,
 ///      rotate expects the angle rotated, 
 ///      color and penSize will be passed to libgraphics
+///      for new color system, color will receive a Color defined by RGB
 ///visb: public
 ///warn: the para func dont need to consider the value of size and rotate, as it will be automatically caculated
+#ifdef NEW_COLOR_SYSTEM
+DrawFuncHolder create_function_holder(
+	Pos(*func)(DrawFuncHolder* para),
+	Pos originPosition, Pos drawPositionBias,
+	double size,
+	double tNow, double tMax, double tStep,
+	double rotate, Color color, int penSize);
+#else
 DrawFuncHolder create_function_holder(
 	Pos(*func)(DrawFuncHolder* para),
 	Pos originPosition, Pos drawPositionBias,
 	double size,
 	double tNow, double tMax, double tStep,
 	double rotate, const char* color, int penSize);
+#endif // NEW_COLOR_SYSTEM
+
+
 
 

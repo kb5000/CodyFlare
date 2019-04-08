@@ -1,5 +1,6 @@
-#ifdef NEW_COLOR_SYSTEM
 #include "color.h"
+
+#ifdef NEW_COLOR_SYSTEM
 #include "graphics.h"
 #include <string.h>
 
@@ -42,14 +43,24 @@ void set_color(Color color) {
 	set_global_color_handler(color.r, color.g, color.b);
 }
 
-Color create_color(int r, int g, int b) {
+static Color normalize_color(Color color) {
+	if (color.r < 0) color.r = 0;
+	if (color.g < 0) color.g = 0;
+	if (color.b < 0) color.b = 0;
+	if (color.r > 255) color.r = 255;
+	if (color.g > 255) color.g = 255;
+	if (color.b > 255) color.b = 255;
+	return color;
+}
+
+Color color_by_rgb(int r, int g, int b) {
 	Color color = {r, g, b};
 	return color;
 }
 
-Color create_color_by_real(double r, double g, double b) {
-	Color color = {(int)(r * 256), (int)(r * 256), (int)(r * 256)};
-	return color;
+Color color_by_real(double r, double g, double b) {
+	Color color = {(int)(r * 256), (int)(g * 256), (int)(b * 256)};
+	return normalize_color(color);
 }
 
 void assign_to_color(Color* target, int r, int g, int b) {
@@ -67,5 +78,15 @@ Color color_by_name(const char* name) {
 	return globalColorTable[0].color;
 }
 
+Color color_by_yuv(int y, int u, int v) {
+	u -= 128;
+	v -= 128;
+	Color res = {
+		(int)(y + 1.403 * v),
+		(int)(y - 0.343 * u - 0.714 * v),
+		(int)(y + 1.77 * u)
+	};
+	return normalize_color(res);
+}
 
 #endif //end of NEW_COLOR_SYSTEM
