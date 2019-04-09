@@ -90,6 +90,9 @@
     <Filter Include="Modules\Color">
       <UniqueIdentifier>{d1091bda-4d4d-4f0c-909b-17664db58a83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\UI\SlideBar">
+      <UniqueIdentifier>{73aef577-468e-4cff-8aa4-90196667a54b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\color.h">
       <Filter>Modules\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\slide_bar.h">
+      <Filter>Modules\UI\SlideBar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -294,6 +300,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\color.c">
       <Filter>Modules\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\slide_bar.c">
+      <Filter>Modules\UI\SlideBar</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
