@@ -7,6 +7,7 @@ int globalTimerInterval = 32;
 
 static int globalTimerID = 1;
 static int globalTickCount = 0;
+static int functionDisableFlag = 0;
 
 void startTimer(int id, int timeinterval);
 void cancelTimer(int id);
@@ -15,9 +16,13 @@ void DisplayClear();
 
 void timer_func_caller_helper(void* data) {
 	TimerFunc* tmf = (TimerFunc*)data;
-	if (globalTickCount % tmf->tickInterval == 0 && tmf->func && tmf->callCount != tmf->maxCallCount) {
+	if (globalTickCount % tmf->tickInterval == 0 && tmf->callCount != tmf->maxCallCount && tmf->func) {
 		tmf->func(tmf->paras);
 		tmf->callCount++;
+		if (functionDisableFlag) {
+			tmf->callCount = tmf->maxCallCount;
+			functionDisableFlag = 0;
+		}
 	}
 }
 
@@ -62,6 +67,7 @@ void remove_funcs_from_timer(int id) {
 			free(((TimerFunc*)gFL->head->data)->paras);
 		gFL->pop_front(gFL);
 	}
+	gFL->nowpos = gFL->head;
 	while (gFL->nowpos) {
 		if (gFL->nowpos->next && ((TimerFunc*)gFL->nowpos->next->data)->id == id) {
 			if (((TimerFunc*)gFL->nowpos->next->data)->paras)
@@ -80,6 +86,7 @@ void remove_invalid_funcs(void* unuseful) {
 			free(((TimerFunc*)gFL->head->data)->paras);
 		gFL->pop_front(gFL);
 	}
+	gFL->nowpos = gFL->head;
 	while (gFL->nowpos) {
 		if (gFL->nowpos->next && ((TimerFunc*)gFL->head->data)->callCount == ((TimerFunc*)gFL->head->data)->maxCallCount) {
 			if (((TimerFunc*)gFL->nowpos->next->data)->paras)
@@ -94,4 +101,8 @@ void remove_invalid_funcs(void* unuseful) {
 
 void auto_clear_display(void* unuseful) {
 	DisplayClear();
+}
+
+void disable_me_in_timer() {
+	functionDisableFlag = 1;
 }
