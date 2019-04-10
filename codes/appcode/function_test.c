@@ -39,7 +39,7 @@ Pos calc_det(DrawFuncHolder* dfh) {
 	//you can comment the below line to see another color mode
 	set_color(color_by_hsl(r, (int)(t / 6.28 * 256), 160 - (int)(t / 6.28 * 32)));
 	//you can change the formula as your wish to see what it will draw
-	return new_pos(-1 * sin(3 * t) * cos(4 * dfh->rotate + 3.1416 * 1.5 * 3),
+	return new_pos(-1 * sin(3 * t - (get_tick() % 10) / 100.0) * cos(4 * dfh->rotate + 3.1416 * 1.5 * 3),
 				   0.5 - 0.5 * sin(3 * t) * cos(para * t));
 }
 
@@ -66,6 +66,7 @@ void tts(void* dds) {
 		para += 0.1 * flag;
 	}
 	//We can use either of them to disable the function, recommand to use disable_me_in_timer()
+	//If you just want to count like this, just pass to the timer
 	if (n++ > 500) {
 		//remove_funcs_from_timer(1);
 		disable_me_in_timer();

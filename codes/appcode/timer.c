@@ -48,6 +48,10 @@ void timer_func_caller(int id) {
 	globalTickCount++;
 }
 
+int get_tick() {
+	return globalTickCount;
+}
+
 void init_global_timer() {
 	globalTimerFunctionList = new_empty_list();
 	registerTimerEvent(timer_func_caller);

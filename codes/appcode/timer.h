@@ -35,6 +35,7 @@ void restart_global_timer();
 ///visb: public
 void stop_global_timer();
 
+
 ///these are functions to control the funcs to be called by the timer
 
 ///name: add_func_to_timer
@@ -52,7 +53,6 @@ void add_func_to_timer(void func(void*), void* paras, int tickInterval, int id, 
 ///visb: public
 ///warn: never call it by the timer or it will cause CRASH
 void remove_funcs_from_timer(int id);
-
 ///name: remove_invalid_funcs
 ///func: remove all funcs whose call time equals the maxCallCount, which means it wont be called later
 ///para: just pass NULL
@@ -67,9 +67,12 @@ void remove_invalid_funcs(void* unuseful);
 ///visb: public
 ///warn: best to make it be the first function in the timer function list
 void auto_clear_display(void* unuseful);
-
 ///name: disable_me_in_timer
 ///func: to disable a function in the timer, stop call it later
 ///visb: public
 ///warn: you may want to call remove_invalid_funcs(NULL) to delete the invalid function
 void disable_me_in_timer();
+///name: get_tick
+///func: get the ticks since the timer was started
+///visb: public
+int get_tick();
