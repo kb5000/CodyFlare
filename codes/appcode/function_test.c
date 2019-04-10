@@ -39,16 +39,18 @@ Pos calc_det(DrawFuncHolder* dfh) {
 	//you can comment the below line to see another color mode
 	set_color(color_by_hsl(r, (int)(t / 6.28 * 256), 160 - (int)(t / 6.28 * 32)));
 	//you can change the formula as your wish to see what it will draw
-	return new_pos(-1 * sin(3 * t - (get_tick() % 10) / 100.0) * cos(4 * dfh->rotate + 3.1416 * 1.5 * 3),
+	return new_pos(-1 * sin(3 * t) * cos(4 * dfh->rotate + 3.1416 * 1.5 * 3),
 				   0.5 - 0.5 * sin(3 * t) * cos(para * t));
 }
 
 void tts(void* dds) {
 	DrawFuncHolder* dfh = (DrawFuncHolder*)dds;
 	Color c;
+	//expand
+	dfh->tMax = (dfh->tMax > 6 ? 6 : dfh->tMax + 0.1);
 	//rotate a circle, drawing 90 times
 	//remember to clear the rotate after drawing
-	for (dfh->rotate = 0.02; dfh->rotate < 3.1416 * 2 ; dfh->rotate += 3.1416 / 45) {
+	for (dfh->rotate = 0.02; dfh->rotate < 3.1416 * 2; dfh->rotate += 3.1416 / 45) {
 		draw_function(dfh);
 		//need to clear the t and the bias to redraw it
 		dfh->tNow = 0;
@@ -78,7 +80,7 @@ void test_of_function() {
 	//We must use malloc to create parameters if it will be passed by the timer
 	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
 	//paras: func to call, origin, bias, size, t start, t max, t step, rotate radius, color, pen size
-	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 6, 0.1, 0, color_by_name("Black"), 1);
+	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.1, 0, color_by_name("Black"), 1);
 	//this should be called only once, best in the main function
 	init_global_timer();
 	//recommand to add this as the first function to call in the timer
