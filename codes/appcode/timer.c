@@ -8,6 +8,7 @@ int globalTimerInterval = 32;
 static int globalTimerID = 1;
 static int globalTickCount = 0;
 static int functionDisableFlag = 0;
+static int functionRemoveFlag = 0;
 
 void startTimer(int id, int timeinterval);
 void cancelTimer(int id);
@@ -27,7 +28,23 @@ void timer_func_caller_helper(void* data) {
 }
 
 void timer_func_caller(int id) {
-	globalTimerFunctionList.for_each(&globalTimerFunctionList, timer_func_caller_helper);
+	//globalTimerFunctionList.for_each(&globalTimerFunctionList, timer_func_caller_helper);
+	Node* last = NULL;
+	Node* node = globalTimerFunctionList.head;
+	while (node) {
+		timer_func_caller_helper(node->data);
+		if (functionRemoveFlag) {
+			functionRemoveFlag = 0;
+			if (last) {
+				node = last->next;
+				last = node;
+			}
+			else node = globalTimerFunctionList.head;
+			continue;
+		}
+		last = node;
+		if (node) node = node->next;
+	}
 	globalTickCount++;
 }
 
@@ -77,6 +94,7 @@ void remove_funcs_from_timer(int id) {
 		}
 		gFL->nowpos = gFL->nowpos->next;
 	}
+	functionRemoveFlag = 1;
 }
 
 void remove_invalid_funcs(void* unuseful) {
@@ -88,7 +106,7 @@ void remove_invalid_funcs(void* unuseful) {
 	}
 	gFL->nowpos = gFL->head;
 	while (gFL->nowpos) {
-		if (gFL->nowpos->next && ((TimerFunc*)gFL->head->data)->callCount == ((TimerFunc*)gFL->head->data)->maxCallCount) {
+		if (gFL->nowpos->next && ((TimerFunc*)gFL->nowpos->data)->callCount == ((TimerFunc*)gFL->nowpos->data)->maxCallCount) {
 			if (((TimerFunc*)gFL->nowpos->next->data)->paras)
 				free(((TimerFunc*)gFL->nowpos->next->data)->paras);
 			gFL->remove_after(gFL);
@@ -96,7 +114,7 @@ void remove_invalid_funcs(void* unuseful) {
 		}
 		gFL->nowpos = gFL->nowpos->next;
 	}
-
+	functionRemoveFlag = 1;
 }
 
 void auto_clear_display(void* unuseful) {

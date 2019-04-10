@@ -93,6 +93,9 @@
     <Filter Include="Modules\UI\SlideBar">
       <UniqueIdentifier>{73aef577-468e-4cff-8aa4-90196667a54b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Save">
+      <UniqueIdentifier>{85582994-5255-4baf-ae00-7be7086d2bd0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\slide_bar.h">
       <Filter>Modules\UI\SlideBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\save.h">
+      <Filter>Modules\Save</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -303,6 +309,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\slide_bar.c">
       <Filter>Modules\UI\SlideBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\save.c">
+      <Filter>Modules\Save</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

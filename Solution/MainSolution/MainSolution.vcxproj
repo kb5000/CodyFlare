@@ -166,6 +166,7 @@
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
     <ClInclude Include="..\..\codes\appcode\menu.h" />
     <ClInclude Include="..\..\codes\appcode\point.h" />
+    <ClInclude Include="..\..\codes\appcode\save.h" />
     <ClInclude Include="..\..\codes\appcode\slide_bar.h" />
     <ClInclude Include="..\..\codes\appcode\start_page.h" />
     <ClInclude Include="..\..\codes\appcode\status_line.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
     <ClCompile Include="..\..\codes\appcode\color.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
+    <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />
     <ClCompile Include="..\..\codes\appcode\start_page.c" />
     <ClCompile Include="..\..\codes\appcode\status_line.c" />
