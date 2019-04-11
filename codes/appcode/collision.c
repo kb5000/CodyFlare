@@ -15,6 +15,10 @@ void add_col_group_to_list(CollisionGroup* group) {
 	globalCollisionList.push_back(&globalCollisionList, (void*)group);
 }
 
+void add_col_to_group(CollisionGroup* target, CollisionObj* source) {
+	target->boxes.push_back(&target->boxes, source);
+}
+
 void remove_col_group(int groupID) {
 	while (((CollisionGroup*)globalCollisionList.head->data)->groupID == groupID) {
 		globalCollisionList.pop_front(&globalCollisionList);
@@ -39,8 +43,8 @@ void destroy_collision_list() {
 	globalCollisionList.destroy(&globalCollisionList);
 }
 
-CollisionBox* create_collision_box(Pos position, Pos size, int id) {
-	CollisionBox* res = (CollisionBox*)malloc(sizeof(CollisionBox));
+CollisionObj* create_collision_box(Pos position, Pos size, int id) {
+	CollisionObj* res = (CollisionObj*)malloc(sizeof(CollisionObj));
 	res->position = position;
 	res->size = size;
 	res->id = id;
@@ -54,12 +58,12 @@ CollisionGroup* create_collision_group(ListHandler boxes, int groupID) {
 	return res;
 }
 
-int have_collision(CollisionBox* lhs, CollisionBox* rhs) {
+int have_collision(CollisionObj* lhs, CollisionObj* rhs) {
 	return (lhs->position.x < rhs->position.x + rhs->size.x) && (rhs->position.x < lhs->position.x + lhs->size.x) &&
 		   (lhs->position.y < rhs->position.y + rhs->size.y) && (rhs->position.y < lhs->position.y + lhs->size.y);
 }
 
-void detect_collision() {
+void detect_collision(void* unuseful) {
 	for (Node* i = globalCollisionList.head; i; i = i->next) {
 		for (Node* j = globalCollisionList.head; j; j = j->next) {
 			CollisionGroup* a = (CollisionGroup*)(i->data);
@@ -67,8 +71,8 @@ void detect_collision() {
 			if (a->groupID < b->groupID) {
 				for (Node* p = a->boxes.head; p; p = p->next) {
 					for (Node* q = b->boxes.head; q; q = q->next) {
-						CollisionBox* m = (CollisionBox*)(p->data);
-						CollisionBox* n = (CollisionBox*)(q->data);
+						CollisionObj* m = (CollisionObj*)(p->data);
+						CollisionObj* n = (CollisionObj*)(q->data);
 						if (have_collision(m, n)) collision_handler(a->groupID, b->groupID, m->id, n->id);
 					}
 				}

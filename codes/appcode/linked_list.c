@@ -181,8 +181,9 @@ void my_list_destroy(ListHandler* self) {
 void my_list_for_each(ListHandler* self, void func(void*)) {
 	Node* node = self->head;
 	while (node) {
+		Node* next = node->next;
 		func(node->data);
-		node = node->next;
+		node = next;
 	}
 }
 

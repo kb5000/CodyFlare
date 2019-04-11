@@ -161,11 +161,13 @@
     <ClInclude Include="..\..\codes\appcode\color.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
+    <ClInclude Include="..\..\codes\appcode\input.h" />
+    <ClInclude Include="..\..\codes\appcode\input_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
     <ClInclude Include="..\..\codes\appcode\list_test.h" />
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
     <ClInclude Include="..\..\codes\appcode\menu.h" />
-    <ClInclude Include="..\..\codes\appcode\point.h" />
+    <ClInclude Include="..\..\codes\appcode\utility.h" />
     <ClInclude Include="..\..\codes\appcode\save.h" />
     <ClInclude Include="..\..\codes\appcode\slide_bar.h" />
     <ClInclude Include="..\..\codes\appcode\start_page.h" />
@@ -201,6 +203,8 @@
     <ClCompile Include="..\..\codes\appcode\collision.c" />
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
     <ClCompile Include="..\..\codes\appcode\color.c" />
+    <ClCompile Include="..\..\codes\appcode\input.c" />
+    <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />
@@ -214,7 +218,7 @@
     <ClCompile Include="..\..\codes\appcode\linked_list.c" />
     <ClCompile Include="..\..\codes\appcode\main.c" />
     <ClCompile Include="..\..\codes\appcode\main_test.c" />
-    <ClCompile Include="..\..\codes\appcode\point.c" />
+    <ClCompile Include="..\..\codes\appcode\utility.c" />
     <ClCompile Include="..\..\codes\appcode\list_test.c" />
     <ClCompile Include="..\..\codes\appcode\timer.c" />
     <ClCompile Include="..\..\codes\appcode\timer_test.c" />

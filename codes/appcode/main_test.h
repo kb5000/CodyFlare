@@ -9,5 +9,6 @@
 #include "anime_test.h"
 #include "collision_test.h"
 #include "ui_test.h"
+#include "input_test.h"
 
 void tests();

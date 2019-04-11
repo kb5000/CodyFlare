@@ -38,6 +38,13 @@
 
 #include "imgui.h"
 
+
+#ifdef NEW_COLOR_SYSTEM
+#include "color.h"
+#endif // NEW_COLOR_SYSTEM
+
+
+
 #define KMOD_SHIFT 0x01
 #define KMOD_CTRL  0x02
 
@@ -71,7 +78,13 @@ void InitGUI()
 
 void mySetPenColor(char *color)
 {
-	if( color && strlen(color)>0 ) SetPenColor(color);
+	if (color && strlen(color) > 0) {
+#ifdef NEW_COLOR_SYSTEM
+		set_color(color_by_name(color));
+#else
+		SetPenColor(color);
+#endif // NEW_COLOR_SYSTEM
+	}
 }
 
 /* 

@@ -2,7 +2,7 @@
 
 #include "function_drawer.h"
 #include "timer.h"
-#include "point.h"
+#include "utility.h"
 #include "color.h"
 #include <stdlib.h>
 #include <math.h>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "graphics.h"
-#include "point.h"
+#include "utility.h"
 #include "color.h"
 
 #ifdef NEW_COLOR_SYSTEM

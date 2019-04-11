@@ -1,7 +1,7 @@
 #include "timer_test.h"
 #include "graphics.h"
 #include "timer.h"
-#include "point.h"
+#include "utility.h"
 #include <stdlib.h>
 
 void func(void* paras) {
