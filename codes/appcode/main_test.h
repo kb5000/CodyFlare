@@ -10,5 +10,6 @@
 #include "collision_test.h"
 #include "ui_test.h"
 #include "input_test.h"
+#include "save_test.h"
 
 void tests();

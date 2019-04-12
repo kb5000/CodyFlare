@@ -2,6 +2,8 @@
 #include "graphics.h"
 #include "imgui.h"
 #include <Windows.h>
+//#include <WinUser.h>
+#include "extgraph.h"
 
 static void (*keyToCallFunc[256])(void* para, int keyEvent);
 static void* keyFuncDatas[256];
@@ -28,7 +30,7 @@ void MouseEventProcess(int x, int y, int button, int event) {
 	if (button == VK_LBUTTON) mouseKeys.left = event;
 	else if (button == VK_MBUTTON) mouseKeys.middle = event;
 	else if (button == VK_RBUTTON) mouseKeys.right = event;
-	set_pos(&mouseKeys.pos, x, y);
+	set_pos(&mouseKeys.pos, ScaleXInches(x), ScaleYInches(y));
 }
 
 void init_input() {

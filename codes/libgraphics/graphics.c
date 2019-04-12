@@ -319,9 +319,10 @@ static int Max(int x, int y);
 
 ///This is a modify to the libgraphics
 ///This is a modify which promoted the drawing performance
-///It can increase the max lines in the screen from 5000 to 7500!
+///It can increase the max lines in the screen from 7000 to 50000!
 ///Just define PERFORMANCE_DRAWING to activate it
 ///But you should manually call this function when change the color or the penSize
+///Using my libs, you dont need to call it.
 
 #ifdef PERFORMANCE_DRAWING
 

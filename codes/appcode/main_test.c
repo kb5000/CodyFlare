@@ -7,5 +7,6 @@ void tests() {
 	//test_of_timer();
 	//test_of_function();
 	//test_of_anime_shield();
-	test_of_input();
+	//test_of_input();
+	test_of_save();
 }

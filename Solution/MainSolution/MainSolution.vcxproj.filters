@@ -102,6 +102,9 @@
     <Filter Include="UnitTest\InputTest">
       <UniqueIdentifier>{b7a374d8-ca8b-4ace-a45e-e43d1a8d4eb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitTest\SaveTest">
+      <UniqueIdentifier>{f6a74eaf-787a-4df3-ad6a-e7f78bb5f606}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -205,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\input_test.h">
       <Filter>UnitTest\InputTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\save_test.h">
+      <Filter>UnitTest\SaveTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +336,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\input_test.c">
       <Filter>UnitTest\InputTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\save_test.c">
+      <Filter>UnitTest\SaveTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
