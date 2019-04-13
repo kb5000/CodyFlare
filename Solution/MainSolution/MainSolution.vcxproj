@@ -164,6 +164,7 @@
     <ClInclude Include="..\..\codes\appcode\input.h" />
     <ClInclude Include="..\..\codes\appcode\input_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
+    <ClInclude Include="..\..\codes\appcode\listbox.h" />
     <ClInclude Include="..\..\codes\appcode\list_test.h" />
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
     <ClInclude Include="..\..\codes\appcode\menu.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="..\..\codes\appcode\color.c" />
     <ClCompile Include="..\..\codes\appcode\input.c" />
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
+    <ClCompile Include="..\..\codes\appcode\listbox.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />

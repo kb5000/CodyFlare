@@ -105,6 +105,9 @@
     <Filter Include="UnitTest\SaveTest">
       <UniqueIdentifier>{f6a74eaf-787a-4df3-ad6a-e7f78bb5f606}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\UI\ListBox">
+      <UniqueIdentifier>{a1bff709-2892-4ffb-935b-f7b28efcaa64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -211,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\save_test.h">
       <Filter>UnitTest\SaveTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\listbox.h">
+      <Filter>Modules\UI\ListBox</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -339,6 +345,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\save_test.c">
       <Filter>UnitTest\SaveTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\listbox.c">
+      <Filter>Modules\UI\ListBox</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
