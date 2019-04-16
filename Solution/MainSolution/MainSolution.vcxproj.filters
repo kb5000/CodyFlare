@@ -45,9 +45,6 @@
     <Filter Include="Modules\Timer">
       <UniqueIdentifier>{d3a8cf1f-ec6e-4358-9cb0-aaa6ad900ff7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UnitTest\LinkedListTest">
-      <UniqueIdentifier>{b212febf-e79f-4a70-a47f-adff04322866}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\CollisionDection">
       <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
     </Filter>
@@ -107,6 +104,18 @@
     </Filter>
     <Filter Include="Modules\UI\ListBox">
       <UniqueIdentifier>{a1bff709-2892-4ffb-935b-f7b28efcaa64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\AI">
+      <UniqueIdentifier>{520436f9-d458-4d2d-a2fe-651480bd2778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\GCTest">
+      <UniqueIdentifier>{32c9c34c-2bc0-4bfe-8d13-4aa0cdfc28e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GC">
+      <UniqueIdentifier>{559cd5cc-b828-4942-b6ca-c1f960016ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\LinkedListTest">
+      <UniqueIdentifier>{b212febf-e79f-4a70-a47f-adff04322866}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +226,15 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\listbox.h">
       <Filter>Modules\UI\ListBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\ai.h">
+      <Filter>Modules\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\gc_test.h">
+      <Filter>UnitTest\GCTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\gc.h">
+      <Filter>Modules\GC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +366,15 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\listbox.c">
       <Filter>Modules\UI\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\ai.c">
+      <Filter>Modules\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\gc_test.c">
+      <Filter>UnitTest\GCTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\gc.c">
+      <Filter>Modules\GC</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,5 +11,6 @@
 #include "ui_test.h"
 #include "input_test.h"
 #include "save_test.h"
+#include "gc_test.h"
 
 void tests();

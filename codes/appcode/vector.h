@@ -81,3 +81,9 @@ Vector new_vector(unsigned sizeOfElement, unsigned numOfElement, void* content);
 ///visb: public
 Vector new_zero_vector(unsigned sizeOfElement, unsigned numOfElement);
 
+///name: gen_empty_vector
+///func: construct a new empty vector with the type
+///para: type expects a typename
+///visb: public
+///exam: Vector v = gen_empty_vector(int);
+#define gen_empty_vector(type) new_zero_vector(0, sizeof(type))

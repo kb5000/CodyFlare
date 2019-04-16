@@ -140,6 +140,6 @@ int base64_decode(void* buffer, const void* source, int size) {
 	if (size != length) {
 		int8_t sorc[4], buff[3];
 	}
-
+	//unimplemented!
 	return 0;
 }

@@ -13,7 +13,8 @@ void my_list_remove_after(ListHandler* self);
 void my_list_destroy(ListHandler* self);
 void my_list_for_each(ListHandler* self, void func(void*));
 void my_list_sort(ListHandler* self, int func(void*, void*));
-void* my_list_find_if(ListHandler* self, int func(const ListHandler*, void*));
+void* my_list_find_if(ListHandler* self, int func(const ListHandler*, void*, void*), void* para);
+void my_list_remove_if(ListHandler* self, int func(void*, void*), void* para);
 
 Node* new_node(void* initData) {
 	Node* head = (Node*)malloc(sizeof(Node));
@@ -78,6 +79,7 @@ ListHandler new_list(void* initData) {
 		&my_list_for_each,
 		&my_list_sort,
 		&my_list_find_if,
+		&my_list_remove_if,
 	};
 	return listHandler;
 }
@@ -99,6 +101,7 @@ ListHandler new_empty_list() {
 		&my_list_for_each,
 		&my_list_sort,
 		&my_list_find_if,
+		&my_list_remove_if,
 	};
 	return listHandler;
 }
@@ -167,7 +170,7 @@ void my_list_insert_after(ListHandler* self, void* data) {
 
 void my_list_remove_after(ListHandler* self) {
 	remove_node_after(self->nowpos);
-	if (self->tail == self->nowpos) {
+	if (self->nowpos && self->nowpos->next == self->tail) {
 		Node* new_tail = self->head;
 		if (new_tail) for (; new_tail->next; new_tail = new_tail->next);
 		self->tail = new_tail;
@@ -239,11 +242,28 @@ void my_list_sort(ListHandler* self, int func(void*, void*)) {
 	self->tail = tail;
 }
 
-void* my_list_find_if(ListHandler* self, int func(const ListHandler*, void*)) {
+void* my_list_find_if(ListHandler* self, int func(const ListHandler*, void*, void*), void* para) {
 	Node* node = self->head;
 	while (node) {
-		if (func(self, node->data)) return node->data;
+		if (func(self, node->data, para)) return node->data;
 		node = node->next;
 	}
 	return NULL;
+}
+
+void my_list_remove_if(ListHandler* self, int func(void*, void*), void* para) {
+	Node* node = self->head;
+	while (node && func(node->data, para)) {
+		node = node->next;
+		self->pop_front(self);
+	}
+	if (!node) return;
+	while (node->next) {
+		if (func(node->next->data, para)) {
+			self->nowpos = node;
+			self->remove_after(self);
+		} else {
+			node = node->next;
+		}
+	}
 }

@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\codes\appcode\ai.h" />
     <ClInclude Include="..\..\codes\appcode\animes.h" />
     <ClInclude Include="..\..\codes\appcode\anime_test.h" />
     <ClInclude Include="..\..\codes\appcode\collision.h" />
@@ -161,6 +162,8 @@
     <ClInclude Include="..\..\codes\appcode\color.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
+    <ClInclude Include="..\..\codes\appcode\gc.h" />
+    <ClInclude Include="..\..\codes\appcode\gc_test.h" />
     <ClInclude Include="..\..\codes\appcode\input.h" />
     <ClInclude Include="..\..\codes\appcode\input_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
@@ -192,6 +195,7 @@
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\codes\appcode\ai.c" />
     <ClCompile Include="..\..\codes\appcode\anime_ammo.c" />
     <ClCompile Include="..\..\codes\appcode\anime_bomb.c" />
     <ClCompile Include="..\..\codes\appcode\anime_enemy_advanced.c" />
@@ -205,6 +209,8 @@
     <ClCompile Include="..\..\codes\appcode\collision.c" />
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
     <ClCompile Include="..\..\codes\appcode\color.c" />
+    <ClCompile Include="..\..\codes\appcode\gc.c" />
+    <ClCompile Include="..\..\codes\appcode\gc_test.c" />
     <ClCompile Include="..\..\codes\appcode\input.c" />
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\listbox.c" />
