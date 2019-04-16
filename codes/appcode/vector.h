@@ -86,4 +86,10 @@ Vector new_zero_vector(unsigned sizeOfElement, unsigned numOfElement);
 ///para: type expects a typename
 ///visb: public
 ///exam: Vector v = gen_empty_vector(int);
-#define gen_empty_vector(type) new_zero_vector(0, sizeof(type))
+#define gen_empty_vector(type) new_zero_vector(sizeof(type), 0)
+
+///name: cast
+///func: cast var from void* to type
+///para: type expects a typename, var expects void* data
+///visb: public
+#define cast(type, var) (*(type*)(var))

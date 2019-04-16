@@ -18,6 +18,7 @@ void my_list_remove_if(ListHandler* self, int func(void*, void*), void* para);
 
 Node* new_node(void* initData) {
 	Node* head = (Node*)malloc(sizeof(Node));
+	if (!head) exit(-1);
 	head->data = initData;
 	head->next = NULL;
 	return head;

@@ -19,7 +19,7 @@ void* add_to_gc_data(void* data, unsigned size);
 ///warn: never make it be part of expression
 #define gen_gc_data(type, variable, value) \
 	type* variable = (type*)malloc(sizeof(type)); \
-	*variable = value; \
+	*variable = (value); \
 	add_to_gc_data(variable, sizeof(type));
 
 ///name: gen_gc_raw

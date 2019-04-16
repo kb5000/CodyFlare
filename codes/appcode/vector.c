@@ -59,11 +59,11 @@ Vector new_zero_vector(unsigned sizeOfElement, unsigned numOfElement) {
 void my_vector_push(Vector* self, void* content) {
 	if (self->poolLength == 0) {
 		self->content = malloc(self->sizeOfElement);
-		self->poolLength = 1;
+		self->poolLength = self->sizeOfElement;
 	}
 	if (self->poolLength - self->sizeOfElement * self->numOfElement < self->sizeOfElement) {
-		self->content = realloc(self->content, 2 * self->poolLength);
 		self->poolLength *= 2;
+		self->content = realloc(self->content, self->poolLength);
 	}
 	int8_t* pool = (int8_t*)self->content;
 	for (unsigned i = 0; i < self->sizeOfElement; i++) {

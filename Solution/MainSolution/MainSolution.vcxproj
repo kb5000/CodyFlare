@@ -171,6 +171,8 @@
     <ClInclude Include="..\..\codes\appcode\list_test.h" />
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
     <ClInclude Include="..\..\codes\appcode\menu.h" />
+    <ClInclude Include="..\..\codes\appcode\rbtree.h" />
+    <ClInclude Include="..\..\codes\appcode\rbtree_test.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
     <ClInclude Include="..\..\codes\appcode\utility.h" />
     <ClInclude Include="..\..\codes\appcode\save.h" />
@@ -215,6 +217,8 @@
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\listbox.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
+    <ClCompile Include="..\..\codes\appcode\rbtree.c" />
+    <ClCompile Include="..\..\codes\appcode\rbtree_test.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />
