@@ -8,6 +8,7 @@
 static void (*keyToCallFunc[256])(void* para, int keyEvent);
 static void* keyFuncDatas[256];
 static DirKeys dirKeys = {-1, -1, -1, -1};
+static int llast = -1, rlast = -1;
 static MouseKeys mouseKeys;
 
 void CharEventProcess(char ch) {
@@ -27,9 +28,13 @@ void KeyboardEventProcess(int key, int event) {
 
 void MouseEventProcess(int x, int y, int button, int event) {
 	uiGetMouse(x, y, button, event);
-	if (button == 1) mouseKeys.left = event;
+	if (button == 1) {
+		mouseKeys.left = event;
+	}
 	else if (button == 2) mouseKeys.middle = event;
-	else if (button == 3) mouseKeys.right = event;
+	else if (button == 3) {
+		mouseKeys.right = event;
+	}
 	set_pos(&mouseKeys.pos, ScaleXInches(x), ScaleYInches(y));
 }
 
@@ -52,8 +57,20 @@ MouseKeys get_mouse_key() {
 	return mouseKeys;
 }
 
-void reset_roll() {
-	mouseKeys.middle = -1;
+void reset_mouse_key(int key) {
+	switch (key) {
+	case 1:
+		mouseKeys.left = -1;
+		break;
+	case 2:
+		mouseKeys.middle = -1;
+		break;
+	case 3:
+		mouseKeys.right = -1;
+		break;
+	default:
+		break;
+	}
 }
 
 void destroy_input_process() {

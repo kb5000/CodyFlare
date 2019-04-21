@@ -23,11 +23,11 @@ void draw_and_update(void* unuseful) {
 	const double rate = 0.1;
 	if (ms.middle == 3) {
 		pos.y += 5 * rate;
-		reset_roll();
+		reset_mouse_key(2);
 	}
 	if (ms.middle == 4) {
 		pos.y -= 5 * rate;
-		reset_roll();
+		reset_mouse_key(2);
 	}
 	DirKeys d = get_dir_key();
 	if (d.down == 0) pos.y -= rate;

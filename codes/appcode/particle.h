@@ -5,7 +5,7 @@
 
 typedef struct {
 	Pos bias;
-	Pos momantum;
+	Pos momentum;
 	int existTime;
 	Color color;
 } Particle;
@@ -28,8 +28,16 @@ typedef struct {
 ///visb: public
 ParticleGroup* create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time));
 
+///name: ball_particle
+///func: make particles like a ball
+///para: parts expects a ParticleGroup, maxSpeed expects the max initial speed
+///visb: public
 void ball_particle(ParticleGroup* parts, double maxSpeed);
 
+///name: uniform_particle
+///func: make particles move randomly in a box and the lower left corner is the value of center 
+///para: parts expects a ParticleGroup, size expects the w and h of the box, minSpeed and maxSpeed expects the speed limit
+///visb: public
 void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed);
 
 ///name: show_particles

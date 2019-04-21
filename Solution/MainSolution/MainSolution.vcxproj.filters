@@ -129,6 +129,12 @@
     <Filter Include="UnitTest\ParticleTest">
       <UniqueIdentifier>{a920e873-b11c-45ff-83cf-0840fb27ca84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Missile">
+      <UniqueIdentifier>{cd15743c-6ef0-40f7-83c2-2d4840927329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\MissileTest">
+      <UniqueIdentifier>{af30ca4c-2fba-4c16-9551-486f8e50a626}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -259,6 +265,12 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\particle_test.h">
       <Filter>UnitTest\ParticleTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\missile.h">
+      <Filter>Modules\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\missile_test.h">
+      <Filter>UnitTest\MissileTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -411,6 +423,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\particle_test.c">
       <Filter>UnitTest\ParticleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\missile.c">
+      <Filter>Modules\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\missile_test.c">
+      <Filter>UnitTest\MissileTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

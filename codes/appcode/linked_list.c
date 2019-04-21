@@ -171,10 +171,8 @@ void my_list_insert_after(ListHandler* self, void* data) {
 
 void my_list_remove_after(ListHandler* self) {
 	remove_node_after(self->nowpos);
-	if (self->nowpos && self->nowpos->next == self->tail) {
-		Node* new_tail = self->head;
-		if (new_tail) for (; new_tail->next; new_tail = new_tail->next);
-		self->tail = new_tail;
+	if (self->nowpos && !self->nowpos->next) {
+		self->tail = self->nowpos;
 	}
 }
 

@@ -3,6 +3,7 @@
 
 ///messages: KEY_DOWN == 0, KEY_UP == 1
 ///mouse: BUTTON_DOWN 0, BUTTON_UP 2, BUTTON_DOUBLECLICK 1, ROLL_UP 3, ROLL_DOWN 4, MOUSEMOVE 5
+///			CLICK 6
 
 
 typedef struct {
@@ -38,8 +39,8 @@ DirKeys get_dir_key();
 ///visb: public
 MouseKeys get_mouse_key();
 
-///name: reset_roll
+///name: reset_mouse_key
 ///func: reset the state of middle button
 ///visb: public
 ///warn: always call it after the roll handle
-void reset_roll();
+void reset_mouse_key(int key);

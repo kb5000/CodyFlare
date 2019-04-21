@@ -172,6 +172,8 @@
     <ClInclude Include="..\..\codes\appcode\list_test.h" />
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
     <ClInclude Include="..\..\codes\appcode\menu.h" />
+    <ClInclude Include="..\..\codes\appcode\missile.h" />
+    <ClInclude Include="..\..\codes\appcode\missile_test.h" />
     <ClInclude Include="..\..\codes\appcode\particle.h" />
     <ClInclude Include="..\..\codes\appcode\particle_test.h" />
     <ClInclude Include="..\..\codes\appcode\rbtree.h" />
@@ -220,6 +222,8 @@
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\listbox.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
+    <ClCompile Include="..\..\codes\appcode\missile.c" />
+    <ClCompile Include="..\..\codes\appcode\missile_test.c" />
     <ClCompile Include="..\..\codes\appcode\particle.c" />
     <ClCompile Include="..\..\codes\appcode\particle_test.c" />
     <ClCompile Include="..\..\codes\appcode\rbtree.c" />

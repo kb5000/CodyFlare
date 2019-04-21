@@ -29,7 +29,7 @@ ParticleGroup* create_particle_group(Pos center, int life, int number, double ma
 void ball_particle(ParticleGroup* parts, double maxSpeed) {
 	for (unsigned i = 0; i < parts->parts.len(&parts->parts); i++) {
 		Particle* pt = parts->parts.at(&parts->parts, i);
-		pt->momantum = polar_to_rect(new_pos(RandomReal(0, maxSpeed), RandomReal(-PI, PI)));
+		pt->momentum = polar_to_rect(new_pos(RandomReal(0, maxSpeed), RandomReal(-PI, PI)));
 	}
 }
 
@@ -38,7 +38,7 @@ void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed
 		Particle* pt = parts->parts.at(&parts->parts, i);
 		Pos start = parts->center;
 		pt->bias = new_pos(RandomReal(start.x, start.x + size.x), RandomReal(start.y, start.y + size.y));
-		pt->momantum = new_pos(RandomReal(minSpeed.x, maxSpeed.x), RandomReal(minSpeed.y, maxSpeed.y));
+		pt->momentum = new_pos(RandomReal(minSpeed.x, maxSpeed.x), RandomReal(minSpeed.y, maxSpeed.y));
 	}
 
 }
@@ -53,9 +53,9 @@ void show_particles_tick(void* para) {
 		SetPenSize(3);
 		MovePen(part->center.x + p->bias.x, part->center.y + p->bias.y);
 		DrawLine(0, 0);
-		p->bias = add_pos(p->bias, p->momantum);
-		if (fabs(p->momantum.y) < part->maxSpeed)
-			p->momantum.y += part->gravity;
+		p->bias = add_pos(p->bias, p->momentum);
+		if (fabs(p->momentum.y) < part->maxSpeed)
+			p->momentum.y += part->gravity;
 	}
 }
 
