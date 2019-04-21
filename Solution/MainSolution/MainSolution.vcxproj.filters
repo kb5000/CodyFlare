@@ -123,6 +123,12 @@
     <Filter Include="UnitTest\RBTreeTest">
       <UniqueIdentifier>{e5cf9644-01dd-4919-86d7-dd3fb3e7ed9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Particle">
+      <UniqueIdentifier>{663f0cb5-c9b4-4600-ae1c-33e0dbb0a602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\ParticleTest">
+      <UniqueIdentifier>{a920e873-b11c-45ff-83cf-0840fb27ca84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -247,6 +253,12 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\rbtree_test.h">
       <Filter>UnitTest\RBTreeTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\particle.h">
+      <Filter>Modules\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\particle_test.h">
+      <Filter>UnitTest\ParticleTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +405,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\rbtree_test.c">
       <Filter>UnitTest\RBTreeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\particle.c">
+      <Filter>Modules\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\particle_test.c">
+      <Filter>UnitTest\ParticleTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

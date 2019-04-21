@@ -34,13 +34,13 @@ static int flag = 1;
 static int n = 0;
 
 Pos calc_det(DrawFuncHolder* dfh) {
-	double t = dfh->tNow;
+	float t = (float)dfh->tNow;
 	int r = (int)(dfh->rotate * 360 / 6.283);
 	//you can comment the below line to see another color mode
 	set_color(color_by_hsl(r, (int)(t / 6.28 * 256), 160 - (int)(t / 6.28 * 32)));
 	//you can change the formula as your wish to see what it will draw
-	return new_pos(-1 * sin(3 * t) * cos(4 * dfh->rotate + 3.1416 * 1.5 * 3),
-				   0.5 - 0.5 * sin(3 * t) * cos(para * t));
+	return new_pos(-sinf(3 * t) * cosf(4 * (float)dfh->rotate + 3.1416f * 1.5f * 3),
+					0.5f - 0.5f * sinf(3 * t) * cosf(10 * (float)para * t));
 }
 
 void tts(void* dds) {
@@ -62,8 +62,7 @@ void tts(void* dds) {
 		//uncomment set_color in calc_det to see the effect
 		c = color_by_real(0.6 - (para - 60.7) / 4.8 * 0.2, sin(para), cos(para));
 		dfh->color = c;
-	}
-	else {
+	} else {
 		flag = -flag;
 		para += 0.1 * flag;
 	}
@@ -80,7 +79,7 @@ void test_of_function() {
 	//We must use malloc to create parameters if it will be passed by the timer
 	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
 	//paras: func to call, origin, bias, size, t start, t max, t step, rotate radius, color, pen size
-	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.1, 0, color_by_name("Black"), 1);
+	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.01, 0, color_by_name("Black"), 1);
 	//this should be called only once, best in the main function
 	init_global_timer();
 	//recommand to add this as the first function to call in the timer
