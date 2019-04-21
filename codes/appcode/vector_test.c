@@ -4,6 +4,7 @@
 #include "graphics.h"
 #include "gc.h"
 #include <stdlib.h>
+#include "utility.h"
 
 void test_of_vector() {
 	InitConsole();
