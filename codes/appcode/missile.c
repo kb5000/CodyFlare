@@ -20,10 +20,11 @@ typedef struct {
 	Color color;
 	double speed;
 	int life;
+	double flexibility;
 	void(*explodeAnime)(int id, Pos position);
 } Missiles;
 
-void move_missile(Missile* missile, Pos b, double drawSpeed) {
+void move_missile(Missile* missile, Pos b, double drawSpeed, double flexibility) {
 	//double det = 12 * drawSpeed * 2 * pos_length(missile->momentum) *
 	//	sin(pos_arc(missile->momentum) - pos_arc(size)) / pos_length(size);
 	//missile->momentum = add_pos(missile->momentum, new_pos(det * missile->momentum.y, -det * missile->momentum.x));
@@ -31,7 +32,7 @@ void move_missile(Missile* missile, Pos b, double drawSpeed) {
 	double theta = pos_arc(missile->momentum) - pos_arc(sub_pos(b, missile->position));
 	if (theta < -PI / 2) theta = -PI - theta;
 	if (theta > PI / 2) theta = PI - theta;
-	Pos p = sub_pos(rect_to_polar(missile->momentum), new_pos(0, 1.5 * drawSpeed * theta));// fmin(theta, theta - PI)));
+	Pos p = sub_pos(rect_to_polar(missile->momentum), new_pos(0, flexibility * drawSpeed * theta));// fmin(theta, theta - PI)));
 	missile->momentum = polar_to_rect(p);
 	MovePen(missile->position.x, missile->position.y);
 	//Pos pp = 
@@ -61,12 +62,12 @@ void update_missile(void* missiles) {
 			miss->explodeAnime(Unique_ID("Missile"), m->position);
 		}
 		m->position = add_pos(m->position, m->momentum);
-		move_missile(m, miss->b, miss->speed);// sub_pos(miss->b, miss->a), 1);
+		move_missile(m, miss->b, miss->speed, miss->flexibility);// sub_pos(miss->b, miss->a), 1);
 	}
 }
 
 void show_missile(Pos a, Pos b, int num, Color color, double speed, double maxAngle, 
-				  int life, void explodeAnime(int id, Pos position)) {
+				  double flexibility, int life, void explodeAnime(int id, Pos position)) {
 	Missile m = {
 		a,
 		new_pos(0, 0),
@@ -79,6 +80,7 @@ void show_missile(Pos a, Pos b, int num, Color color, double speed, double maxAn
 		color,
 		speed,
 		life,
+		flexibility,
 		explodeAnime,
 	};
 	for (int i = 0; i < num; i++) {
