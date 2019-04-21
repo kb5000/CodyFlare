@@ -6,7 +6,7 @@ typedef struct _My_Vector {
 	//it contains the content of the vector
 	/*private*/void* content;
 	//it means the size of a single element, it shouldn't be changed by the user
-	const unsigned sizeOfElement;
+	/*private const*/unsigned sizeOfElement;
 	//don't change it mannually, use len function to get the length
 	/*protected*/unsigned numOfElement;
 	/*private*/unsigned poolLength;
@@ -88,8 +88,3 @@ Vector new_zero_vector(unsigned sizeOfElement, unsigned numOfElement);
 ///exam: Vector v = gen_empty_vector(int);
 #define gen_empty_vector(type) new_zero_vector(sizeof(type), 0)
 
-///name: cast
-///func: cast var from void* to type
-///para: type expects a typename, var expects void* data
-///visb: public
-#define cast(type, var) (*(type*)(var))

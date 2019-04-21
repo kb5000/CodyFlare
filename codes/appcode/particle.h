@@ -20,7 +20,21 @@ typedef struct {
 	int startTime;
 } ParticleGroup;
 
-ParticleGroup create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time));
+///name: create_particle_group
+///func: create a struct contains random particles
+///para: center expects the center of the particles, life expects how long the particle will exist, 
+///      number expects the num of particles, maxSpeed expects the max Speed the particle will have,
+///      gravity exptects the y accceleration, color_generator expects the function to give every particle color
+///visb: public
+ParticleGroup* create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time));
 
+void ball_particle(ParticleGroup* parts, double maxSpeed);
+
+void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed);
+
+///name: show_particles
+///func: add particle anime to timer
+///para: part expects a ParticleGroup malloced
+///visb: public
 void show_particles(ParticleGroup* part);
 

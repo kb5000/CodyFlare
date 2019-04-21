@@ -3,8 +3,9 @@
 #include "random.h"
 #include "timer.h"
 #include "extgraph.h"
+#include <math.h>
 
-ParticleGroup create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time)) {
+ParticleGroup* create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time)) {
 	Particle p = {
 		new_pos(0, 0),
 		new_pos(0, 0),
@@ -20,25 +21,41 @@ ParticleGroup create_particle_group(Pos center, int life, int number, double max
 		color_generator,
 		0,
 	};
-	for (unsigned i = 0; i < res.parts.len(&res.parts); i++) {
-		Particle* pt = res.parts.at(&res.parts, i);
-		pt->momantum = polar_to_rect(new_pos(RandomReal(-maxSpeed, maxSpeed), RandomReal(-PI, PI)));
+	ParticleGroup* pars = (ParticleGroup*)malloc(sizeof(ParticleGroup));
+	*pars = res;
+	return pars;
+}
+
+void ball_particle(ParticleGroup* parts, double maxSpeed) {
+	for (unsigned i = 0; i < parts->parts.len(&parts->parts); i++) {
+		Particle* pt = parts->parts.at(&parts->parts, i);
+		pt->momantum = polar_to_rect(new_pos(RandomReal(0, maxSpeed), RandomReal(-PI, PI)));
 	}
-	return res;
+}
+
+void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed) {
+	for (unsigned i = 0; i < parts->parts.len(&parts->parts); i++) {
+		Particle* pt = parts->parts.at(&parts->parts, i);
+		Pos start = parts->center;
+		pt->bias = new_pos(RandomReal(start.x, start.x + size.x), RandomReal(start.y, start.y + size.y));
+		pt->momantum = new_pos(RandomReal(minSpeed.x, maxSpeed.x), RandomReal(minSpeed.y, maxSpeed.y));
+	}
+
 }
 
 void show_particles_tick(void* para) {
 	ParticleGroup* part = (ParticleGroup*)para;
 	for (unsigned i = 0; i < part->parts.len(&part->parts); i++) {
 		Particle* p = part->parts.at(&part->parts, i);
-		if (p->existTime > part->life) continue;
+		if (++p->existTime == part->life) continue;
 		p->color = part->color_generator(p, get_tick() - part->startTime);
 		set_color(p->color);
-		SetPenSize(2);
+		SetPenSize(3);
 		MovePen(part->center.x + p->bias.x, part->center.y + p->bias.y);
-		DrawLine(0.01, 0.01);
+		DrawLine(0, 0);
 		p->bias = add_pos(p->bias, p->momantum);
-		p->momantum.y += part->gravity;
+		if (fabs(p->momantum.y) < part->maxSpeed)
+			p->momantum.y += part->gravity;
 	}
 }
 
