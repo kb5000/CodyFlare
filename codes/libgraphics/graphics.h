@@ -24,6 +24,11 @@
 ///func: update the color and the penSize, no need to call it manually
 ///visb: private
 void update_drawing_info();
+
+///name: show_all_now
+///func: update the screen
+///visb: private
+void show_all_now();
 #endif //end of PERFORMANCE_DRAWING
 
 #ifdef NEW_COLOR_SYSTEM

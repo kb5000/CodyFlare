@@ -3,12 +3,11 @@
 #include "graphics.h"
 
 ListHandler globalTimerFunctionList;
-int globalTimerInterval = 32;
+int globalTimerInterval = 32;		//can change
 
-static int globalTimerID = 1;
-static int globalTickCount = 0;
-static int functionDisableFlag = 0;
-static int functionRemoveFlag = 0;
+static int globalTimerID = 1;		//only one timer
+static int globalTickCount = 0;		//every tick it will add 1
+static int functionDisableFlag = 0;	//used by disable_me_from_timer
 
 void startTimer(int id, int timeinterval);
 void cancelTimer(int id);
@@ -17,9 +16,11 @@ void DisplayClear();
 
 void timer_func_caller_helper(void* data) {
 	TimerFunc* tmf = (TimerFunc*)data;
+	//every tickInterval ticks it will call
 	if (globalTickCount % tmf->tickInterval == 0 && tmf->callCount != tmf->maxCallCount && tmf->func) {
 		tmf->func(tmf->paras);
 		tmf->callCount++;
+		//disable_me_from_timer
 		if (functionDisableFlag) {
 			tmf->callCount = tmf->maxCallCount;
 			functionDisableFlag = 0;
@@ -28,23 +29,7 @@ void timer_func_caller_helper(void* data) {
 }
 
 void timer_func_caller(int id) {
-	//globalTimerFunctionList.for_each(&globalTimerFunctionList, timer_func_caller_helper);
-	Node* last = NULL;
-	Node* node = globalTimerFunctionList.head;
-	while (node) {
-		timer_func_caller_helper(node->data);
-		if (functionRemoveFlag) {
-			functionRemoveFlag = 0;
-			if (last) {
-				node = last->next;
-				last = node;
-			}
-			else node = globalTimerFunctionList.head;
-			continue;
-		}
-		last = node;
-		if (node) node = node->next;
-	}
+	globalTimerFunctionList.for_each(&globalTimerFunctionList, timer_func_caller_helper);
 	globalTickCount++;
 }
 
@@ -83,12 +68,14 @@ void add_func_to_timer(void func(void*), void* paras, int tickInterval, int id, 
 
 void remove_funcs_from_timer(int id) {
 	ListHandler* gFL = &globalTimerFunctionList;
+	//remove heads
 	while (gFL->head && ((TimerFunc*)gFL->head->data)->id == id) {
 		if (((TimerFunc*)gFL->head->data)->paras)
 			free(((TimerFunc*)gFL->head->data)->paras);
 		gFL->pop_front(gFL);
 	}
 	gFL->nowpos = gFL->head;
+	//remove others
 	while (gFL->nowpos) {
 		if (gFL->nowpos->next && ((TimerFunc*)gFL->nowpos->next->data)->id == id) {
 			if (((TimerFunc*)gFL->nowpos->next->data)->paras)
@@ -98,17 +85,18 @@ void remove_funcs_from_timer(int id) {
 		}
 		gFL->nowpos = gFL->nowpos->next;
 	}
-	functionRemoveFlag = 1;
 }
 
 void remove_invalid_funcs(void* unuseful) {
 	ListHandler* gFL = &globalTimerFunctionList;
+	//remove heads
 	while (gFL->head && ((TimerFunc*)gFL->head->data)->callCount == ((TimerFunc*)gFL->head->data)->maxCallCount) {
 		if (((TimerFunc*)gFL->head->data)->paras)
 			free(((TimerFunc*)gFL->head->data)->paras);
 		gFL->pop_front(gFL);
 	}
 	gFL->nowpos = gFL->head;
+	//remove others
 	while (gFL->nowpos) {
 		if (gFL->nowpos->next && ((TimerFunc*)gFL->nowpos->data)->callCount == ((TimerFunc*)gFL->nowpos->data)->maxCallCount) {
 			if (((TimerFunc*)gFL->nowpos->next->data)->paras)
@@ -118,7 +106,6 @@ void remove_invalid_funcs(void* unuseful) {
 		}
 		gFL->nowpos = gFL->nowpos->next;
 	}
-	functionRemoveFlag = 1;
 }
 
 void auto_clear_display(void* unuseful) {

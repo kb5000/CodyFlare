@@ -1,6 +1,10 @@
 #pragma once
 #include "utility.h"
 
+///messages: KEY_DOWN == 0, KEY_UP == 1
+///mouse: BUTTON_DOWN 0, BUTTON_UP 2, BUTTON_DOUBLECLICK 1, ROLL_UP 3, ROLL_DOWN 4, MOUSEMOVE 5
+
+
 typedef struct {
 	int up, down, left, right;
 } DirKeys;
@@ -33,3 +37,9 @@ DirKeys get_dir_key();
 ///func: get the status of the mouse
 ///visb: public
 MouseKeys get_mouse_key();
+
+///name: reset_roll
+///func: reset the state of middle button
+///visb: public
+///warn: always call it after the roll handle
+void reset_roll();

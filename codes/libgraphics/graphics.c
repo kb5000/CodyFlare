@@ -331,6 +331,11 @@ void update_drawing_info() {
 	drawPen = (HPEN) CreatePen(PS_SOLID, penSize, drawColor);
 }
 
+void show_all_now() {
+    RECT r;
+    SetRect(&r, 0, 0, pixelWidth, pixelHeight);
+	InvalidateRect(graphicsWindow, &r, TRUE);
+}
 #endif //end of PERFORMANCE_DRAWING
 
 ///This is a modify to the color system

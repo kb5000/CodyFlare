@@ -1,5 +1,6 @@
 #include "utility.h"
 #include <math.h>
+#include "graphics.h"
 
 Pos new_pos(double x, double y)
 {
@@ -34,4 +35,8 @@ Pos rect_to_polar(Pos pos) {
 
 Pos polar_to_rect(Pos pos) {
 	return new_pos(pos.x * cos(pos.y), pos.x * sin(pos.y));
+}
+
+void show_now() {
+	show_all_now();
 }

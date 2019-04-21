@@ -53,6 +53,11 @@ Pos rect_to_polar(Pos pos);
 ///visb: public
 Pos polar_to_rect(Pos pos);
 
+///name: show_now
+///func: update the screen
+///visb: public
+void show_now();
+
 ///func: generate a unique id, inspired by the Gen_UIID(n)
 ///usage: just pass a char*, like Unique_ID("name1")
 ///explanation: there is a unique pointer for any string literals, which cant have
@@ -66,3 +71,4 @@ Pos polar_to_rect(Pos pos);
 ///para: type expects a typename, var expects void* data
 ///visb: public
 #define cast(type, var) (*(type*)(var))
+
