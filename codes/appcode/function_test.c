@@ -79,7 +79,7 @@ void test_of_function() {
 	//We must use malloc to create parameters if it will be passed by the timer
 	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
 	//paras: func to call, origin, bias, size, t start, t max, t step, rotate radius, color, pen size
-	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.1, 0, color_by_name("Black"), 1);
+	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.1, 0, color_by_name("Black"), 1, 0);
 	//this should be called only once, best in the main function
 	init_global_timer();
 	//recommand to add this as the first function to call in the timer

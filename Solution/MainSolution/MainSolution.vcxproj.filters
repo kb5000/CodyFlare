@@ -430,5 +430,8 @@
     <ClCompile Include="..\..\codes\appcode\missile_test.c">
       <Filter>UnitTest\MissileTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_explode.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

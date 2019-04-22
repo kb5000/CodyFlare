@@ -73,7 +73,7 @@ void draw_function_one_step(void* drawFuncHolder) {
 
 
 #ifdef NEW_COLOR_SYSTEM
-DrawFuncHolder create_function_holder(Pos(*func)(DrawFuncHolder* para), Pos originPosition, Pos drawPositionBias, double size, double tNow, double tMax, double tStep, double rotate, Color color, int penSize) {
+DrawFuncHolder create_function_holder(Pos(*func)(DrawFuncHolder* para), Pos originPosition, Pos drawPositionBias, double size, double tNow, double tMax, double tStep, double rotate, Color color, int penSize, double extraPara) {
 	DrawFuncHolder res = {
 		func,
 		originPosition,
@@ -83,13 +83,14 @@ DrawFuncHolder create_function_holder(Pos(*func)(DrawFuncHolder* para), Pos orig
 		tMax,
 		tStep,
 		rotate,
+		color,
+		penSize,
+		extraPara,
 	};
-	res.color = color;
-	res.penSize = penSize;
 	return res;
 }
 #else
-DrawFuncHolder create_function_holder(Pos(*func)(DrawFuncHolder* para), Pos originPosition, Pos drawPositionBias, double size, double tNow, double tMax, double tStep, double rotate, const char* color, int penSize) {
+DrawFuncHolder create_function_holder, 0(Pos(*func)(DrawFuncHolder* para), Pos originPosition, Pos drawPositionBias, double size, double tNow, double tMax, double tStep, double rotate, const char* color, int penSize) {
 	DrawFuncHolder res = {
 		func,
 		originPosition,

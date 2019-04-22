@@ -43,6 +43,6 @@ void boss_drawer(void* dds) {
 
 void draw_anime_enemy_boss(int id, Pos position, double size, int existTicks) {
 	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
-	*dfh = create_function_holder(boss_body_calculate, position, new_pos(0, 0), size, 0, 6, 0.1, 0, color_by_name("Black"), 1);
+	*dfh = create_function_holder(boss_body_calculate, position, new_pos(0, 0), size, 0, 6, 0.1, 0, color_by_name("Black"), 1, 0);
 	add_func_to_timer(boss_drawer, dfh, 1, id, existTicks);
 }

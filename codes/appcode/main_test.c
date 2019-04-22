@@ -12,4 +12,5 @@ void tests() {
 	//test_of_gc();
 	//test_of_particle();
 	test_of_missile();
+	//test_of_anime_explode();
 }

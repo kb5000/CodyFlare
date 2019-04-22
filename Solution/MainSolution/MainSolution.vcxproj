@@ -209,6 +209,7 @@
     <ClCompile Include="..\..\codes\appcode\anime_enemy_base.c" />
     <ClCompile Include="..\..\codes\appcode\anime_enemy_bonus.c" />
     <ClCompile Include="..\..\codes\appcode\anime_enemy_boss.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_explode.c" />
     <ClCompile Include="..\..\codes\appcode\anime_player.c" />
     <ClCompile Include="..\..\codes\appcode\anime_shield.c" />
     <ClCompile Include="..\..\codes\appcode\anime_test.c" />

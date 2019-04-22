@@ -35,7 +35,7 @@ void timer_func_caller(int id) {
 		timer_func_caller_helper(n->data);
 		if (functionRemoveFlag) {
 			functionRemoveFlag = 0;
-			n && (n = n->next);
+			//n && (n = n->next);
 		}
 	}
 	globalTickCount++;
