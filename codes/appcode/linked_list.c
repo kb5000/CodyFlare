@@ -183,10 +183,8 @@ void my_list_destroy(ListHandler* self) {
 void my_list_for_each(ListHandler* self, void func(void*)) {
 	Node* node = self->head;
 	while (node) {
-		//if dont use this, and func destroyed node, it will cause crash
-		Node* next = node->next;
 		func(node->data);
-		node = next;
+		node && (node = node->next);
 	}
 }
 

@@ -25,7 +25,7 @@ void lanunch_missile(void* unuseful) {
 	}
 }
 
-void smash(void* unuseful) {
+void smash(void* unuseful, int event) {
 	MouseKeys m = get_mouse_key();
 	show_missile(m.pos, &b, 8, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5);
 }
@@ -46,5 +46,7 @@ void test_of_missile() {
 	add_func_to_timer(remove_invalid_funcs, 0, 30, 12, -1);
 	add_func_to_timer(show_circle, 0, 1, 12, -1);
 	add_to_key_process(' ', smash, 0);
+
+
 	start_global_timer();
 }

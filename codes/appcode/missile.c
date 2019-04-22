@@ -65,7 +65,7 @@ void update_missile(void* missiles) {
 
 void show_missile(Pos a, Pos* b, int num, Color color, double speed, double maxAngle,
 				  double flexibility, int life, int isDirectAttack, 
-				  void explodeAnime(int id, Pos position), double explodeSize) {
+				  void explodeAnime(int id, Pos position, double size), double explodeSize) {
 	Missile m = {
 		a,
 		new_pos(0, 0),

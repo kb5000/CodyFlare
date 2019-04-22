@@ -8,7 +8,7 @@ int globalTimerInterval = 32;		//can change
 static int globalTimerID = 1;		//only one timer
 static int globalTickCount = 0;		//every tick it will add 1
 static int functionDisableFlag = 0;	//used by disable_me_from_timer
-static int functionRemoveFlag = 0;
+//static int functionRemoveFlag = 0;
 
 void startTimer(int id, int timeinterval);
 void cancelTimer(int id);
@@ -30,14 +30,14 @@ void timer_func_caller_helper(void* data) {
 }
 
 void timer_func_caller(int id) {
-	//globalTimerFunctionList.for_each(&globalTimerFunctionList, timer_func_caller_helper);
-	for (Node* n = globalTimerFunctionList.head; n; n && (n = n->next)) {
-		timer_func_caller_helper(n->data);
-		if (functionRemoveFlag) {
-			functionRemoveFlag = 0;
-			//n && (n = n->next);
-		}
-	}
+	globalTimerFunctionList.for_each(&globalTimerFunctionList, timer_func_caller_helper);
+	//for (Node* n = globalTimerFunctionList.head; n; n && (n = n->next)) {
+	//	timer_func_caller_helper(n->data);
+	//	if (functionRemoveFlag) {
+	//		functionRemoveFlag = 0;
+	//		//n && (n = n->next);
+	//	}
+	//}
 	globalTickCount++;
 }
 
@@ -81,7 +81,7 @@ void remove_funcs_from_timer(int id) {
 		if (((TimerFunc*)gFL->head->data)->paras)
 			free(((TimerFunc*)gFL->head->data)->paras);
 		gFL->pop_front(gFL);
-		functionRemoveFlag = 1;
+		//functionRemoveFlag = 1;
 	}
 	gFL->nowpos = gFL->head;
 	//remove others
@@ -90,7 +90,7 @@ void remove_funcs_from_timer(int id) {
 			if (((TimerFunc*)gFL->nowpos->next->data)->paras)
 				free(((TimerFunc*)gFL->nowpos->next->data)->paras);
 			gFL->remove_after(gFL);
-			functionRemoveFlag = 1;
+			//functionRemoveFlag = 1;
 			continue;
 		}
 		gFL->nowpos = gFL->nowpos->next;
@@ -104,7 +104,7 @@ void remove_invalid_funcs(void* unuseful) {
 		if (((TimerFunc*)gFL->head->data)->paras)
 			free(((TimerFunc*)gFL->head->data)->paras);
 		gFL->pop_front(gFL);
-		functionRemoveFlag = 1;
+		//functionRemoveFlag = 1;
 	}
 	gFL->nowpos = gFL->head;
 	//remove others
@@ -113,7 +113,7 @@ void remove_invalid_funcs(void* unuseful) {
 			if (((TimerFunc*)gFL->nowpos->next->data)->paras)
 				free(((TimerFunc*)gFL->nowpos->next->data)->paras);
 			gFL->remove_after(gFL);
-			functionRemoveFlag = 1;
+			//functionRemoveFlag = 1;
 			continue;
 		}
 		gFL->nowpos = gFL->nowpos->next;

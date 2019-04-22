@@ -30,7 +30,7 @@ void test_of_vector() {
 		vb.push(&vb, p);
 		can_destroy_data(p);
 	}
-	perform_gc();
+	perform_gc(0);
 	for (unsigned i = 0; i < vb.len(&vb); i++) {
 		printf("%d\n", cast(int, vb.at(&vb, i)));
 	}

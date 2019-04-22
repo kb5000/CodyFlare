@@ -47,7 +47,7 @@ int is_safe_to_use(void* data);
 ///name: perform_gc
 ///func: free all data signed to destroy
 ///visb: public
-void perform_gc();
+void perform_gc(void* unuseful);
 
 ///name: gc_all_clear
 ///func: free all data

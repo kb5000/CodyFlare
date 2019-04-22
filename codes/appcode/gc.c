@@ -45,7 +45,7 @@ int perform_gc_handler(void* data, void* unuseful) {
 	return gcdp->size == 0;
 }
 
-void perform_gc() {
+void perform_gc(void* unuseful) {
 	globalVaribleList.remove_if(&globalVaribleList, perform_gc_handler, NULL);
 }
 
