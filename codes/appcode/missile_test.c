@@ -5,9 +5,18 @@
 #include "input.h"
 #include "imgui.h"
 #include "animes.h"
+#include <stdio.h>
+
+static char buffer[40] = "No hit";
 
 void bb(int id, Pos pos, double size) {
 	draw_anime_explode(id, pos, size);
+}
+
+void exp_handler(Pos pos) {
+	static int n = 0;
+	n++;
+	sprintf(buffer, "Hit on (%.2lf, %.2lf), %d times", pos.x, pos.y, n);
 }
 
 static Pos a, b = {5, 3.5};
@@ -17,7 +26,7 @@ void lanunch_missile(void* unuseful) {
 	MouseKeys m = get_mouse_key();
 	a = m.pos;
 	if (m.left == 2) {
-		show_missile(b, &a, 1, color_by_name("Blue"), 0.12, 1.5, 1.5, 120, 1, bb, 0.6);
+		show_missile(b, &a, 1, color_by_name("Blue"), 0.12, 1.5, 1.5, 120, 1, bb, 0.6, exp_handler);
 		reset_mouse_key(1);
 	}
 	//b = add_pos(m.pos, new_pos(0, 2));
@@ -30,13 +39,15 @@ void lanunch_missile(void* unuseful) {
 void smash(void* unuseful, int event) {
 	MouseKeys m = get_mouse_key();
 	a = m.pos;
-	show_missile(b, &a, 5, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5);
+	show_missile(b, &a, 7, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5, exp_handler);
 }
 
 void show_circle(void* unuseful) {
 	MovePen(b.x + 0.1, b.y);
 	set_color(color_by_name("Green"));
 	DrawArc(0.1, 0, 360);
+	set_color(color_by_name("Brown"));
+	drawLabel(0.1, 0.1, buffer);
 }
 
 void test_of_missile() {

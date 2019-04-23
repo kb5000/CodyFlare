@@ -22,8 +22,9 @@ typedef struct {
 	int life;
 	double flexibility;
 	int isDirectAttack;
-	void(*explodeAnime)(int id, Pos position, double size);
+	void (*explode_anime)(int id, Pos position, double size);
 	double explodeSize;
+	void (*hit_handler)(Pos position);
 } Missiles;
 
 void move_missile(Missile* missile, Pos b, double drawSpeed, double flexibility, int isDirectAttack) {
@@ -49,7 +50,7 @@ void update_missile(void* missiles) {
 		allInvalid = 0;
 		if (m->valid++ >= miss->life) {
 			m->valid = 0;
-			miss->explodeAnime(Unique_ID("Missile"), m->position, miss->explodeSize);
+			miss->explode_anime(Unique_ID("Missile"), m->position, miss->explodeSize);
 			continue;
 		}
 		MovePen(m->position.x, m->position.y);
@@ -57,7 +58,8 @@ void update_missile(void* missiles) {
 		DrawLine(0.1 * cos(angle), 0.1 * sin(angle));
 		if (pos_length(sub_pos(*miss->b, m->position)) <= 0.1) {
 			m->valid = 0;
-			miss->explodeAnime(Unique_ID("Missile"), m->position, miss->explodeSize);
+			miss->explode_anime(Unique_ID("Missile"), m->position, miss->explodeSize);
+			if (miss->hit_handler) miss->hit_handler(m->position);
 		}
 		m->position = add_pos(m->position, m->momentum);
 		move_missile(m, *miss->b, miss->speed, miss->flexibility, miss->isDirectAttack);// sub_pos(miss->b, miss->a), 1);
@@ -65,9 +67,11 @@ void update_missile(void* missiles) {
 	if (allInvalid) miss->missile.destroy(&miss->missile);
 }
 
-void show_missile(Pos a, Pos* b, int num, Color color, double speed, double maxAngle,
-				  double flexibility, int life, int isDirectAttack, 
-				  void explodeAnime(int id, Pos position, double size), double explodeSize) {
+void show_missile(Pos a, Pos* b, int num, Color color, double speed,
+ double maxAngle,
+				  double flexibility, int life,
+ int isDirectAttack, 
+				  void explode_anime(int id, Pos position, double size), double explodeSize, void hit_handler(Pos position)) {
 	Missile m = {
 		a,
 		new_pos(0, 0),
@@ -82,8 +86,9 @@ void show_missile(Pos a, Pos* b, int num, Color color, double speed, double maxA
 		life,
 		flexibility,
 		isDirectAttack,
-		explodeAnime,
+		explode_anime,
 		explodeSize,
+		hit_handler,
 	};
 	for (int i = 0; i < num; i++) {
 		Missile* ms = (Missile*)miss.missile.at(&miss.missile, i);

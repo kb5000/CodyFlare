@@ -8,7 +8,6 @@
 static void (*keyToCallFunc[256])(void* para, int keyEvent);
 static void* keyFuncDatas[256];
 static DirKeys dirKeys = {-1, -1, -1, -1};
-//static int llast = -1, rlast = -1;
 static MouseKeys mouseKeys;
 
 void CharEventProcess(char ch) {

@@ -14,5 +14,6 @@
 #include "gc_test.h"
 #include "particle_test.h"
 #include "missile_test.h"
+#include "rbtree_test.h"
 
 void tests();
