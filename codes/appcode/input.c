@@ -8,7 +8,7 @@
 static void (*keyToCallFunc[256])(void* para, int keyEvent);
 static void* keyFuncDatas[256];
 static DirKeys dirKeys = {-1, -1, -1, -1};
-static int llast = -1, rlast = -1;
+//static int llast = -1, rlast = -1;
 static MouseKeys mouseKeys;
 
 void CharEventProcess(char ch) {
@@ -71,6 +71,14 @@ void reset_mouse_key(int key) {
 	default:
 		break;
 	}
+}
+
+void move_by_dir_key(Pos* target, Pos speed) {
+	DirKeys key = get_dir_key();
+	if (key.left == 0) target->x -= speed.x;
+	if (key.right == 0) target->x += speed.x;
+	if (key.up == 0) target->y += speed.y;
+	if (key.down == 0) target->y -= speed.y;
 }
 
 void destroy_input_process() {

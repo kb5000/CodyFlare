@@ -10,12 +10,14 @@ void bb(int id, Pos pos, double size) {
 	draw_anime_explode(id, pos, size);
 }
 
-static Pos b = {5, 2};
+static Pos a, b = {5, 3.5};
 
 void lanunch_missile(void* unuseful) {
+	move_by_dir_key(&b, new_pos(0.08, 0.08));
 	MouseKeys m = get_mouse_key();
+	a = m.pos;
 	if (m.left == 2) {
-		show_missile(m.pos, &b, 1, color_by_name("Blue"), 0.12, 2.5, 1.5, 120, 1, bb, 0.6);
+		show_missile(b, &a, 1, color_by_name("Blue"), 0.12, 1.5, 1.5, 120, 1, bb, 0.6);
 		reset_mouse_key(1);
 	}
 	//b = add_pos(m.pos, new_pos(0, 2));
@@ -27,11 +29,12 @@ void lanunch_missile(void* unuseful) {
 
 void smash(void* unuseful, int event) {
 	MouseKeys m = get_mouse_key();
-	show_missile(m.pos, &b, 8, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5);
+	a = m.pos;
+	show_missile(b, &a, 5, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5);
 }
 
 void show_circle(void* unuseful) {
-	MovePen(b.x, b.y);
+	MovePen(b.x + 0.1, b.y);
 	set_color(color_by_name("Green"));
 	DrawArc(0.1, 0, 360);
 }

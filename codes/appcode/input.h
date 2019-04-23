@@ -44,3 +44,7 @@ MouseKeys get_mouse_key();
 ///visb: public
 ///warn: always call it after the roll handle
 void reset_mouse_key(int key);
+
+void move_by_dir_key(Pos* target, Pos speed);
+
+void destroy_input_process();

@@ -42,14 +42,15 @@ void update_missile(void* missiles) {
 
 	//MovePen(miss->b->x, miss->b->y);
 	//DrawLine(0.1, 0.1);
-
+	int allInvalid = 1;
 	for (unsigned i = 0; i < miss->missile.len(&miss->missile); i++) {
 		Missile* m = (Missile*)miss->missile.at(&miss->missile, i);
 		if (!m->valid) continue;
+		allInvalid = 0;
 		if (m->valid++ >= miss->life) {
 			m->valid = 0;
 			miss->explodeAnime(Unique_ID("Missile"), m->position, miss->explodeSize);
-			return;
+			continue;
 		}
 		MovePen(m->position.x, m->position.y);
 		double angle = pos_arc(m->momentum);
@@ -61,6 +62,7 @@ void update_missile(void* missiles) {
 		m->position = add_pos(m->position, m->momentum);
 		move_missile(m, *miss->b, miss->speed, miss->flexibility, miss->isDirectAttack);// sub_pos(miss->b, miss->a), 1);
 	}
+	if (allInvalid) miss->missile.destroy(&miss->missile);
 }
 
 void show_missile(Pos a, Pos* b, int num, Color color, double speed, double maxAngle,
