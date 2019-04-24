@@ -129,6 +129,9 @@ void my_vector_shrink_to(Vector* self, unsigned length) {
 	if (length >= self->numOfElement) {
 		self->content = realloc(self->content, length * self->sizeOfElement);
 		self->poolLength = length * self->sizeOfElement;
+	} else {
+		self->destroy(self);
+		*self = new_zero_vector(self->sizeOfElement, 0);
 	}
 }
 
