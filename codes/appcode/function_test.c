@@ -29,13 +29,14 @@
 ///但是为了让定时器使用，就必须改为void*
 ///只要把这个函数用add_func_to_timer添加即可
 
-static double para = 62.8;
+//static double para = 62.8;
 static int flag = 1;
 static int n = 0;
 
 Pos calc_det(DrawFuncHolder* dfh) {
 	double t = dfh->tNow;
 	int r = (int)(dfh->rotate * 360 / 6.283);
+	double para = dfh->extraPara;
 	//you can comment the below line to see another color mode
 	set_color(color_by_hsl(r, (int)(t / 6.28 * 256), 160 - (int)(t / 6.28 * 32)));
 	//you can change the formula as your wish to see what it will draw
@@ -57,8 +58,9 @@ void tts(void* dds) {
 		dfh->drawPositionBias = new_pos(0, 0);
 	}
 	//the para runs from 65.6 to 60.8
+	double para = dfh->extraPara;
 	if (para < 65.6 && para > 60.8) {
-		para += 0.1 * flag;
+		dfh->extraPara += 0.1 * flag;
 		//uncomment set_color in calc_det to see the effect
 		c = color_by_real(0.6 - (para - 60.7) / 4.8 * 0.2, sin(para), cos(para));
 		dfh->color = c;
@@ -78,8 +80,8 @@ void test_of_function() {
 	InitGraphics();
 	//We must use malloc to create parameters if it will be passed by the timer
 	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
-	//paras: func to call, origin, bias, size, t start, t max, t step, rotate radius, color, pen size
-	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.1, 0, color_by_name("Black"), 1, 0);
+	//paras: func to call, origin, bias, size, t start, t max, t step, rotate radius, color, pen size, extra para
+	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.1, 0, color_by_name("Black"), 1, 62.8);
 	//this should be called only once, best in the main function
 	init_global_timer();
 	//recommand to add this as the first function to call in the timer

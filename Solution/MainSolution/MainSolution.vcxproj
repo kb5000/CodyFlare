@@ -165,6 +165,8 @@
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
     <ClInclude Include="..\..\codes\appcode\gc.h" />
     <ClInclude Include="..\..\codes\appcode\gc_test.h" />
+    <ClInclude Include="..\..\codes\appcode\hashmap.h" />
+    <ClInclude Include="..\..\codes\appcode\hashmap_test.h" />
     <ClInclude Include="..\..\codes\appcode\input.h" />
     <ClInclude Include="..\..\codes\appcode\input_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
@@ -219,6 +221,8 @@
     <ClCompile Include="..\..\codes\appcode\color.c" />
     <ClCompile Include="..\..\codes\appcode\gc.c" />
     <ClCompile Include="..\..\codes\appcode\gc_test.c" />
+    <ClCompile Include="..\..\codes\appcode\hashmap.c" />
+    <ClCompile Include="..\..\codes\appcode\hashmap_test.c" />
     <ClCompile Include="..\..\codes\appcode\input.c" />
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\listbox.c" />

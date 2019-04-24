@@ -11,7 +11,8 @@ void tests() {
 	//test_of_save();
 	//test_of_gc();
 	//test_of_particle();
-	//test_of_missile();
+	test_of_missile();
 	//test_of_anime_explode();
-	test_of_rb_tree();
+	//test_of_rb_tree();
+	//test_of_hashmap();
 }

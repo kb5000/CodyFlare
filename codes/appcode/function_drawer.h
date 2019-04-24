@@ -54,6 +54,7 @@ void draw_function_one_step(void* drawFuncHolder);
 ///      rotate expects the angle rotated, 
 ///      color and penSize will be passed to libgraphics
 ///      for new color system, color will receive a Color defined by RGB
+///      extraPara expects extra variable to draw
 ///visb: public
 ///warn: the para func dont need to consider the value of size and rotate, as it will be automatically caculated
 #ifdef NEW_COLOR_SYSTEM

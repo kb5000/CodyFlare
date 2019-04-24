@@ -24,15 +24,15 @@ void test_of_vector() {
 	///there is a vector with gc example
 	init_gc();
 	Vector vb = gen_empty_vector(int);
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 100000; i++) {
 		gen_gc_data(int, p, 5 * i);
 		add_to_gc_data(p, sizeof(int));
 		vb.push(&vb, p);
 		can_destroy_data(p);
 	}
 	perform_gc(0);
-	for (unsigned i = 0; i < vb.len(&vb); i++) {
-		printf("%d\n", cast(int, vb.at(&vb, i)));
-	}
+	//for (unsigned i = 0; i < vb.len(&vb); i++) {
+	//	printf("%d\n", cast(int, vb.at(&vb, i)));
+	//}
 	
 }

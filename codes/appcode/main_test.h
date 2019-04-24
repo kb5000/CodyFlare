@@ -15,5 +15,6 @@
 #include "particle_test.h"
 #include "missile_test.h"
 #include "rbtree_test.h"
+#include "hashmap_test.h"
 
 void tests();

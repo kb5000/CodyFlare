@@ -135,6 +135,12 @@
     <Filter Include="UnitTest\MissileTest">
       <UniqueIdentifier>{af30ca4c-2fba-4c16-9551-486f8e50a626}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\HashMap">
+      <UniqueIdentifier>{3b956dc1-fc23-4172-adb0-aa5e2fac5afa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\HashMapTest">
+      <UniqueIdentifier>{20daeef9-43f8-431b-9e95-712ae6e04625}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -271,6 +277,12 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\missile_test.h">
       <Filter>UnitTest\MissileTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\hashmap.h">
+      <Filter>Modules\HashMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\hashmap_test.h">
+      <Filter>UnitTest\HashMapTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -432,6 +444,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_explode.c">
       <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\hashmap.c">
+      <Filter>Modules\HashMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\hashmap_test.c">
+      <Filter>UnitTest\HashMapTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,12 +3,8 @@
 #include <math.h>
 #include <string.h>
 #include <color.h>
+#include "extgraph.h"
 
-#ifndef NEW_COLOR_SYSTEM
-void SetPenColor(const char* color);
-#endif // !NEW_COLOR_SYSTEM
-
-void SetPenSize(int size);
 
 void draw_function(DrawFuncHolder* drawHd) {
 #ifdef NEW_COLOR_SYSTEM

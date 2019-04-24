@@ -7,7 +7,7 @@
 void test_of_gc() {
 	InitConsole();
 	init_gc();
-	gen_gc_data(int, a, 3);
+	gen_gc_data(int, a, 6);
 	gen_gc_data(int, b, 5);
 	printf("%d, %d\n", *a, *b);
 	can_destroy_data(a);
