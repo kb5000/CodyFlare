@@ -59,7 +59,7 @@ Pos polar_to_rect(Pos pos);
 void show_now();
 
 ///func: generate a unique id, inspired by the Gen_UIID(n)
-///usage: just pass a char*, like Unique_ID("name1")
+///usage: just pass a const char*, like Unique_ID("name1")
 ///explanation: there is a unique pointer for any string literals, which cant have
 ///             repetation with others
 #define Unique_ID(n) ((int)n)
@@ -69,6 +69,16 @@ void show_now();
 ///name: cast
 ///func: cast var from void* to type
 ///para: type expects a typename, var expects void* data
-///visb: public
 #define cast(type, var) (*(type*)(var))
 
+///name: call 0 to 3, pcall 0 to 3
+///func: a simple way to call member function
+///example: call0(vector, len); pcall2(map, insert, 1, NULL);
+#define call0(type, func) (type).func(&(type))
+#define call1(type, func, p1) (type).func(&(type), p1)
+#define call2(type, func, p1, p2) (type).func(&(type), p1, p2)
+#define call3(type, func, p1, p2, p3) (type).func(&(type), p1, p2, p3)
+#define pcall0(type, func) (type)->func(type)
+#define pcall1(type, func, p1) (type)->func(type, p1)
+#define pcall2(type, func, p1, p2) (type)->func(type, p1, p2)
+#define pcall3(type, func, p1, p2, p3) (type)->func(type, p1, p2, p3)
