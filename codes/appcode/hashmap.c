@@ -12,6 +12,7 @@ typedef struct _My_Hash_Node {
 
 
 int my_map_hash_func(HashMap* self, int key);
+unsigned my_map_len(HashMap* self);
 void my_map_insert_data(HashMap* self, int key, void* data);
 void my_map_insert_key(HashMap* self, int key);
 int my_map_exist_data(HashMap* self, int key);
@@ -44,7 +45,9 @@ HashMap new_hash_map() {
 	HNode* h = NULL;
 	HashMap res = {
 		new_vector(sizeof(HNode*), 65536, &h),
+		0,
 		my_map_hash_func,
+		my_map_len,
 		my_map_insert_data,
 		my_map_insert_key,
 		my_map_exist_data,
@@ -58,32 +61,65 @@ HashMap new_hash_map() {
 	return res;
 }
 
-void chg_hash_func(HashMap* map, int hash_func(HashMap* self, int key), unsigned bucketCap) {
-	map->hash_func = hash_func;
-	map->mapData.shrink_to(&map->mapData, bucketCap);
+HashMap custom_hash_map(int hash_func(HashMap* self, int key), unsigned bucketCap) {
+	HNode* h = NULL;
+	HashMap res = {
+		new_vector(sizeof(HNode*), bucketCap, &h),
+		0,
+		hash_func,
+		my_map_len,
+		my_map_insert_data,
+		my_map_insert_key,
+		my_map_exist_data,
+		my_map_get_data,
+		my_map_remove_data,
+		my_map_for_each,
+		my_map_remove_if,
+		my_map_destroy,
+		my_map_find_if,
+	};
+	return res;
 }
 
 int my_map_hash_func(HashMap* self, int key) {
-	int code = (key ^ (key >> 16)) & 0xFFFF;
+	int code = ((key ^ (key >> 16)) & 0xFFFF);
 	return code;
+}
+
+unsigned my_map_len(HashMap* self) {
+	return self->contents;
 }
 
 void my_map_insert_data(HashMap* self, int key, void* data) {
 	unsigned code = (unsigned)self->hash_func(self, key);
 	HNode* head = cast(HNode*,self->mapData.at(&self->mapData, code));
 	while (head && head->next) {
-		if (head->key == key) return;
+		if (head->key == key) {
+			if (head->data != data) {
+				if (head->data) free(head->data);
+				head->data = data;
+			}
+			return;
+		}
 		head = head->next;
 	}
 	if (!head) {
 		HNode** p = (HNode**)self->mapData.at(&self->mapData, code);
 		*p = new_hash_node(key, data);
+		self->contents++;
 		return;
 	}
-	if (head->key == key) return;
+	if (head->key == key) {
+		if (head->data != data) {
+			if (head->data) free(head->data);
+			head->data = data;
+		}
+		return;
+	}
 	HNode* next = head->next;
 	head->next = new_hash_node(key, data);
 	head->next->next = next;
+	self->contents++;
 }
 
 void my_map_insert_key(HashMap* self, int key) {
@@ -122,6 +158,7 @@ int my_map_remove_data(HashMap* self, int key) {
 		cast(HNode*, self->mapData.at(&self->mapData, code)) = head->next;
 		if (head->data) free(head->data);
 		free(head);
+		self->contents--;
 		return 1;
 	}
 	while (head && head->next) {
@@ -130,6 +167,7 @@ int my_map_remove_data(HashMap* self, int key) {
 			head->next = head->next->next;
 			if (next->data) free(next->data);
 			free(next);
+			self->contents--;
 			return 1;
 		}
 		head = head->next;
@@ -156,6 +194,7 @@ int my_map_remove_if(HashMap* self, int func(void* data, void* para), void* para
 			if (head->data) free(head->data);
 			free(head);
 			head = p;
+			self->contents--;
 		}
 		while (head && head->next) {
 			if (func(head->next->data, para)) {
@@ -163,6 +202,7 @@ int my_map_remove_if(HashMap* self, int func(void* data, void* para), void* para
 				head->next = head->next->next;
 				if (next->data) free(next->data);
 				free(next);
+				self->contents--;
 			}
 			head = head->next;
 		}
@@ -175,6 +215,7 @@ void my_map_destroy(HashMap* self) {
 		HNode* node = cast(HNode*,self->mapData.at(&self->mapData, i));
 		destroy_hash_nodes(node);
 	}
+	self->contents = 0;
 	self->mapData.destroy(&self->mapData);
 }
 

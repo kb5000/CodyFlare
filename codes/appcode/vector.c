@@ -58,8 +58,8 @@ Vector new_zero_vector(unsigned sizeOfElement, unsigned numOfElement) {
 
 void my_vector_push(Vector* self, void* content) {
 	if (self->poolLength == 0) {
-		self->content = malloc(self->sizeOfElement);
-		self->poolLength = self->sizeOfElement;
+		self->content = malloc(self->sizeOfElement * 4);
+		self->poolLength = self->sizeOfElement * 4;
 	}
 	if (self->poolLength - self->sizeOfElement * self->numOfElement < self->sizeOfElement) {
 		self->poolLength *= 2;
@@ -87,8 +87,8 @@ void* my_vector_at(Vector* self, unsigned number) {
 
 void my_vector_insert(Vector* self, unsigned number, void* content) {
 	if (self->poolLength == 0) {
-		self->content = malloc(self->sizeOfElement);
-		self->poolLength = 1;
+		self->content = malloc(self->sizeOfElement * 4);
+		self->poolLength = self->sizeOfElement * 4;
 	}
 	if (number >= self->numOfElement) {
 		self->push(self, content);
@@ -131,7 +131,7 @@ void my_vector_shrink_to(Vector* self, unsigned length) {
 		self->poolLength = length * self->sizeOfElement;
 	} else {
 		self->destroy(self);
-		*self = new_zero_vector(self->sizeOfElement, 0);
+		*self = new_zero_vector(self->sizeOfElement, length);
 	}
 }
 

@@ -3,11 +3,17 @@
 
 typedef struct _My_Hash_Map {
 	/*private*/Vector mapData;
+	/*private*/unsigned contents;
 	///name: hash_func
 	///func: return the hash code of key
 	///para: self expects the HashMap itself, key expects the key of data
 	///visb: private
 	int (*hash_func)(struct _My_Hash_Map* self, int key);
+	///name: len
+	///func: return the amount of elements
+	///para: self expects the HashMap itself
+	///visb: public
+	unsigned (*len)(struct _My_Hash_Map* self);
 	///name: insert_data
 	///func: insert data to hash map
 	///para: self expects the HashMap itself, key expects the key, data expects memory malloced
@@ -64,11 +70,9 @@ typedef struct _My_Hash_Map {
 ///visb: public
 HashMap new_hash_map();
 
-///name: chg_hash_func
-///func: change the default hash func
-///para: map expects a hashmap, hash_func expects the new hash_func, bucketCap expects the new capacity of the
-///      hash map vector
+///name: custom_hash_map
+///func: create a hashmap by hash_func and its bucket capacity
+///para: hash_func expects the new hash_func, bucketCap expects the new capacity of the hash map vector
 ///visb: public
-///warn: only to call it when the map is empty
-void chg_hash_func(HashMap* map, int hash_func(HashMap* self, int key), unsigned bucketCap);
+HashMap custom_hash_map(int hash_func(HashMap* self, int key), unsigned bucketCap);
 

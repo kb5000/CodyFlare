@@ -10,7 +10,7 @@ void init_gc();
 ///func: add a data to the gc system, but recommand to use gen_gc_data instead
 ///para: data expects memory malloced, size expects the size of the memory
 ///visb: public but not recommand
-void* add_to_gc_data(void* data, unsigned size);
+void* add_to_gc_data(void* data, unsigned short size);
 
 ///name: gen_gc_data
 ///func: create a memory handled by the system and defined a varible
@@ -35,18 +35,18 @@ void* add_to_gc_data(void* data, unsigned size);
 ///func: sign a variable that gc can collect it
 ///para: data expects data allocated by the gc system
 ///visb: public
-///warn: it's not so fast so dont call it frequency
 void can_destroy_data(void* data);
 
 ///name: is_safe_to_use
 ///func: return whether the data handled was signed to destroy
 ///visb: public
-///warn: always use it if you dont sure whether its valid, but dont call it too many times
+///warn: always use it if you dont sure whether its valid
 int is_safe_to_use(void* data);
 
 ///name: perform_gc
 ///func: free all data signed to destroy
 ///visb: public
+///warn: best to call every 32 ticks or more
 void perform_gc(void* unuseful);
 
 ///name: gc_all_clear

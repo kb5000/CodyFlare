@@ -7,7 +7,7 @@
 
 typedef struct {
 	void* data;
-	unsigned size;
+	unsigned short size;
 } GCDataPack;
 
 //ListHandler globalVaribleList;
@@ -17,7 +17,7 @@ void init_gc() {
 	globalVaribleSet = new_hash_map();
 }
 
-void* add_to_gc_data(void* data, unsigned size) {
+void* add_to_gc_data(void* data, unsigned short size) {
 	GCDataPack* gcdp = (GCDataPack*)malloc(sizeof(GCDataPack));
 	gcdp->data = data;
 	gcdp->size = size;

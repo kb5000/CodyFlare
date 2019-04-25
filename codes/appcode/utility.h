@@ -74,11 +74,11 @@ void show_now();
 ///name: call 0 to 3, pcall 0 to 3
 ///func: a simple way to call member function
 ///example: call0(vector, len); pcall2(map, insert, 1, NULL);
-#define call0(type, func) (type).func(&(type))
-#define call1(type, func, p1) (type).func(&(type), p1)
-#define call2(type, func, p1, p2) (type).func(&(type), p1, p2)
-#define call3(type, func, p1, p2, p3) (type).func(&(type), p1, p2, p3)
-#define pcall0(type, func) (type)->func(type)
-#define pcall1(type, func, p1) (type)->func(type, p1)
-#define pcall2(type, func, p1, p2) (type)->func(type, p1, p2)
-#define pcall3(type, func, p1, p2, p3) (type)->func(type, p1, p2, p3)
+#define call0(obj, func) (obj).func(&(obj))
+#define call1(obj, func, p1) (obj).func(&(obj), p1)
+#define call2(obj, func, p1, p2) (obj).func(&(obj), p1, p2)
+#define call3(obj, func, p1, p2, p3) (obj).func(&(obj), p1, p2, p3)
+#define pcall0(obj, func) (obj)->func(obj)
+#define pcall1(obj, func, p1) (obj)->func(obj, p1)
+#define pcall2(obj, func, p1, p2) (obj)->func(obj, p1, p2)
+#define pcall3(obj, func, p1, p2, p3) (obj)->func(obj, p1, p2, p3)
