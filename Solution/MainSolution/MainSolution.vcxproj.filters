@@ -117,12 +117,6 @@
     <Filter Include="UnitTest\LinkedListTest">
       <UniqueIdentifier>{b212febf-e79f-4a70-a47f-adff04322866}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\RBTree">
-      <UniqueIdentifier>{b31f3274-5efa-48ba-ba3f-dd955794fde6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UnitTest\RBTreeTest">
-      <UniqueIdentifier>{e5cf9644-01dd-4919-86d7-dd3fb3e7ed9f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\Particle">
       <UniqueIdentifier>{663f0cb5-c9b4-4600-ae1c-33e0dbb0a602}</UniqueIdentifier>
     </Filter>
@@ -259,12 +253,6 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\gc.h">
       <Filter>Modules\GC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\codes\appcode\rbtree.h">
-      <Filter>Modules\RBTree</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\codes\appcode\rbtree_test.h">
-      <Filter>UnitTest\RBTreeTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\particle.h">
       <Filter>Modules\Particle</Filter>
@@ -424,12 +412,6 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\gc.c">
       <Filter>Modules\GC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\rbtree.c">
-      <Filter>Modules\RBTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\rbtree_test.c">
-      <Filter>UnitTest\RBTreeTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\particle.c">
       <Filter>Modules\Particle</Filter>
