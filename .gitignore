@@ -1,5 +1,6 @@
 /Solution/MainSolution/.vs/*
 /Solution/MainSolution/Debug/*
 /Solution/MainSolution/Release/*
+/Solution/MainSolution/x64/*
 /Solution/MainSolution/save*.sav
 /.vs/*

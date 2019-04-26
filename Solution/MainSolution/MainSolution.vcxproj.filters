@@ -284,6 +284,7 @@
     <ClInclude Include="..\..\codes\appcode\hashmap_test.h">
       <Filter>UnitTest\HashMapTest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\common_anime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">

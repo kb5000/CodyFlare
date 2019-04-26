@@ -161,6 +161,7 @@
     <ClInclude Include="..\..\codes\appcode\collision.h" />
     <ClInclude Include="..\..\codes\appcode\collision_test.h" />
     <ClInclude Include="..\..\codes\appcode\color.h" />
+    <ClInclude Include="..\..\codes\appcode\common_anime.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
     <ClInclude Include="..\..\codes\appcode\gc.h" />
