@@ -219,6 +219,7 @@
     <ClCompile Include="..\..\codes\appcode\collision.c" />
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
     <ClCompile Include="..\..\codes\appcode\color.c" />
+    <ClCompile Include="..\..\codes\appcode\common_anime.c" />
     <ClCompile Include="..\..\codes\appcode\gc.c" />
     <ClCompile Include="..\..\codes\appcode\gc_test.c" />
     <ClCompile Include="..\..\codes\appcode\hashmap.c" />

@@ -451,5 +451,8 @@
     <ClCompile Include="..\..\codes\appcode\hashmap_test.c">
       <Filter>UnitTest\HashMapTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\common_anime.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
