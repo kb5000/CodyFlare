@@ -22,7 +22,8 @@ void test_of_hashmap() {
 	for (int i = 0; i < 5; i++) {
 		t[i] = (int*)malloc(sizeof(int));
 		*t[i] = 2 * i;
-		map.insert_data(&map, c[i], t[i]);
+		//map.insert_data(&map, c[i], t[i]);
+		calls(map, insert_data, c[i], t[i]);
 	}
 	map.remove_data(&map, 22);
 	for (int i = 0; i < 5; i++) { 

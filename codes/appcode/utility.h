@@ -28,6 +28,18 @@ Pos add_pos(Pos a, Pos b);
 ///visb: public
 Pos sub_pos(Pos a, Pos b);
 
+///name: pos_mut
+///func: return a multiplyed by num
+///para: a expects to be Pos, num expects a double
+///visb: public
+Pos pos_mut(Pos p, double num);
+
+///name: pos_dot
+///func: return a dot b, eg. a.x * b.x + a.y * b.y
+///para: a and b expects to be Pos
+///visb: public
+double pos_dot(Pos a, Pos b);
+
 ///name: pos_length
 ///func: return sqrt(x^2 + y^2)
 ///para: pos expects to be Pos
@@ -56,7 +68,7 @@ Pos polar_to_rect(Pos pos);
 ///name: show_now
 ///func: update the screen
 ///visb: public
-void show_now();
+void show_now(void* unuseful);
 
 ///func: generate a unique id, inspired by the Gen_UIID(n)
 ///usage: just pass a const char*, like Unique_ID("name1")
@@ -64,7 +76,7 @@ void show_now();
 ///             repetation with others
 #define Unique_ID(n) ((int)n)
 
-#define PI 3.1415926
+#define PI 3.141592653589793
 
 ///name: cast
 ///func: cast var from void* to type
@@ -82,3 +94,7 @@ void show_now();
 #define pcall1(obj, func, p1) (obj)->func(obj, p1)
 #define pcall2(obj, func, p1, p2) (obj)->func(obj, p1, p2)
 #define pcall3(obj, func, p1, p2, p3) (obj)->func(obj, p1, p2, p3)
+
+#define calls(obj, func, ...) (obj).func(&(obj), ##__VA_ARGS__)
+#define pcalls(obj, func, ...) (obj)->func((obj), ##__VA_ARGS__)
+

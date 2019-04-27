@@ -66,13 +66,13 @@ void tts(void* dds) {
 		dfh->color = c;
 	} else {
 		flag = -flag;
-		para += 0.1 * flag;
+		dfh->extraPara += 0.1 * flag;
 	}
 	//We can use either of them to disable the function, recommand to use disable_me_in_timer()
 	//If you just want to count like this, just pass to the timer
 	if (n++ > 500) {
-		remove_funcs_from_timer(1);
-		//disable_me_in_timer();
+		//remove_funcs_from_timer(1);
+		disable_me_in_timer();
 	}
 }
 
@@ -88,10 +88,10 @@ void test_of_function() {
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	//paras: func, para(must be malloced or NULL), tick between called(if this draws something, it should be 1),
 	//       funcid, max call time(-1 means infinity)
-	add_func_to_timer(tts, dfh, 1, 1, -1);
+	add_func_to_timer(tts, dfh, 1, Unique_ID("BossAnime"), -1);
 	//clear it in a long time interval, this can increase the performance
 	//In fact, it is a GC(garbage collection) function
-	add_func_to_timer(remove_invalid_funcs, NULL, 10, 3, -1);
+	add_func_to_timer(remove_invalid_funcs, NULL, 30, Unique_ID("Remove"), -1);
 	start_global_timer();
 	//drawRectangle(5, 3.5, 2, 1.993, 0);
 }

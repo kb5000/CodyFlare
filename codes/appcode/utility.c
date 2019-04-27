@@ -21,6 +21,14 @@ Pos sub_pos(Pos a, Pos b) {
 	return new_pos(a.x - b.x, a.y - b.y);
 }
 
+Pos pos_mut(Pos p, double num) {
+	return new_pos(p.x * num, p.y * num);
+}
+
+double pos_dot(Pos a, Pos b) {
+	return a.x * b.x + a.y * b.y;
+}
+
 double pos_length(Pos pos) {
 	return sqrt(pos.x * pos.x + pos.y * pos.y);
 }
@@ -37,6 +45,6 @@ Pos polar_to_rect(Pos pos) {
 	return new_pos(pos.x * cos(pos.y), pos.x * sin(pos.y));
 }
 
-void show_now() {
+void show_now(void* unuseful) {
 	show_all_now();
 }
