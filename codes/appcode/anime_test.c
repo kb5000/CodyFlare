@@ -16,7 +16,7 @@ void test_of_anime_shield() {
 
 void test_of_anime_explode() {
 	common_anime_test_init();
-	draw_anime_explode(12, new_pos(5, 3.5), 0.5);
+	draw_anime_explode(12, new_pos(5, 3.5), 1, 3);
 }
 
 void test_of_anime_boss() {
@@ -41,5 +41,5 @@ void test_of_anime_accelerate() {
 
 void test_of_anime_bomb() {
 	common_anime_test_init();
-	draw_anime_bomb(12, new_pos(5, 3.5), 1, -1);
+	draw_anime_bomb(12, new_pos(5, 3.5), 1, 1);
 }

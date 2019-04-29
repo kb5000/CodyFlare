@@ -10,7 +10,7 @@
 static char buffer[40] = "No hit";
 
 void bb(int id, Pos pos, double size) {
-	draw_anime_explode(id, pos, size);
+	draw_anime_explode(id, pos, size, 3);
 }
 
 void exp_handler(Pos pos) {
