@@ -51,17 +51,18 @@ int save_data(FILE* file, const void* data, int size);
 ///visb: public
 int get_data(FILE* file, void* buffer, int maxSize);
 
-///name: base64_encode
-///func: encode binary bits to base64
-///para: buffer expects the memory to write, data expects the memory to encode, 
-///      size expects the length of data
-///visb: public
-void base64_encode(void* buffer, const void* data, int size);
 
-///name: base64_decode
-///func: decode base64 to binary bits, return 1 means success, 0 means it's not a valid base64
-///para: buffer expects the memory to write, source expects the memory contains base64, 
-///      size expects the length of source
-///visb: public
-int base64_decode(void* buffer, const void* source, int size);
-
+/////name: base64_encode
+/////func: encode binary bits to base64
+/////para: buffer expects the memory to write, data expects the memory to encode, 
+/////      size expects the length of data
+/////visb: public
+//void base64_encode(void* buffer, const void* data, int size);
+//
+/////name: base64_decode
+/////func: decode base64 to binary bits, return 1 means success, 0 means it's not a valid base64
+/////para: buffer expects the memory to write, source expects the memory contains base64, 
+/////      size expects the length of source
+/////visb: public
+//int base64_decode(void* buffer, const void* source, int size);
+//

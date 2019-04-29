@@ -48,3 +48,39 @@ Pos polar_to_rect(Pos pos) {
 void show_now(void* unuseful) {
 	show_all_now();
 }
+
+double evaluate_polynomia(double* coeff, int n, double x) {
+	double res = coeff[0];
+	for (int i = 1; i <= n; i++) {
+		res = res * x + coeff[i];
+	}
+	return res;
+}
+
+int my_bit_map_get(BitMap* self, int n);
+void my_bit_map_set(BitMap* self, int n, int bit);
+void my_bit_map_flip(BitMap* self, int n);
+
+BitMap new_bit_map() {
+	BitMap res = {
+		0,
+		my_bit_map_get,
+		my_bit_map_set,
+		my_bit_map_flip,
+	};
+	return res;
+}
+
+int my_bit_map_get(BitMap* self, int n) {
+	return !!(self->bits & (1 << n)); //find the nth bit and turn it into 0 or 1
+}
+
+void my_bit_map_set(BitMap* self, int n, int bit) {
+	bit = !!bit;				//make bit be 0 or 1
+	self->bits &= ~(1 << n);	//set nth bit to 0
+	self->bits |= bit << n;		//set nth bit to the value of bit
+}
+
+void my_bit_map_flip(BitMap* self, int n) {
+	self->bits ^= 1 << n;	//flip nth bit
+}

@@ -70,6 +70,22 @@ Pos polar_to_rect(Pos pos);
 ///visb: public
 void show_now(void* unuseful);
 
+///name: evaluate_polynomia
+///func: return the value of a polynomia on x
+///para: coeff expects an array contains n + 1 terms, coeff[0] means the highest term and 
+///      coeff[n] is constant term. n expects the highest term exp, x expects a double
+///visb: public
+double evaluate_polynomia(double* coeff, int n, double x);
+
+typedef struct _My_Bit_Map{
+	int bits;
+	int (*get)(struct _My_Bit_Map* self, int n);
+	void (*set)(struct _My_Bit_Map* self, int n, int bit);
+	void (*flip)(struct _My_Bit_Map* self, int n);
+} BitMap;
+
+BitMap new_bit_map();
+
 ///func: generate a unique id, inspired by the Gen_UIID(n)
 ///usage: just pass a const char*, like Unique_ID("name1")
 ///explanation: there is a unique pointer for any string literals, which cant have

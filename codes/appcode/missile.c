@@ -25,6 +25,7 @@ typedef struct {
 	void (*explode_anime)(int id, Pos position, double size);
 	double explodeSize;
 	void (*hit_handler)(Pos position);
+	double explodeRadius;
 } Missiles;
 
 void move_missile(Missile* missile, Pos b, double drawSpeed, double flexibility, int isDirectAttack) {
@@ -56,7 +57,7 @@ void update_missile(void* missiles) {
 		MovePen(m->position.x, m->position.y);
 		double angle = pos_arc(m->momentum);
 		DrawLine(0.1 * cos(angle), 0.1 * sin(angle));
-		if (pos_length(sub_pos(*miss->b, m->position)) <= 0.1) {
+		if (pos_length(sub_pos(*miss->b, m->position)) <= miss->explodeRadius) {
 			m->valid = 0;
 			miss->explode_anime(Unique_ID("Missile"), m->position, miss->explodeSize);
 			if (miss->hit_handler) miss->hit_handler(m->position);
@@ -67,11 +68,15 @@ void update_missile(void* missiles) {
 	if (allInvalid) miss->missile.destroy(&miss->missile);
 }
 
-void show_missile(Pos a, Pos* b, int num, Color color, double speed,
+void show_missile(Pos a, Pos* b, int num, Color color,
+ double speed,
+
  double maxAngle,
+
 				  double flexibility, int life,
+
  int isDirectAttack, 
-				  void explode_anime(int id, Pos position, double size), double explodeSize, void hit_handler(Pos position)) {
+				  void explode_anime(int id, Pos position, double size), double explodeSize, void hit_handler(Pos position), double explodeRadius) {
 	Missile m = {
 		a,
 		new_pos(0, 0),
@@ -89,6 +94,7 @@ void show_missile(Pos a, Pos* b, int num, Color color, double speed,
 		explode_anime,
 		explodeSize,
 		hit_handler,
+		explodeRadius,
 	};
 	for (int i = 0; i < num; i++) {
 		Missile* ms = (Missile*)miss.missile.at(&miss.missile, i);

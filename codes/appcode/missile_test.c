@@ -26,7 +26,7 @@ void lanunch_missile(void* unuseful) {
 	MouseKeys m = get_mouse_key();
 	a = m.pos;
 	if (m.left == 2) {
-		show_missile(b, &a, 1, color_by_name("Blue"), 0.12, 1.5, 1.5, 120, 1, bb, 0.6, exp_handler);
+		show_missile(b, &a, 1, color_by_name("Blue"), 0.12, 1.5, 1.5, 120, 1, bb, 0.6, exp_handler, 0.1);
 		reset_mouse_key(1);
 	}
 	//b = add_pos(m.pos, new_pos(0, 2));
@@ -39,7 +39,7 @@ void lanunch_missile(void* unuseful) {
 void smash(void* unuseful, int event) {
 	MouseKeys m = get_mouse_key();
 	a = m.pos;
-	show_missile(b, &a, 7, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5, exp_handler);
+	show_missile(b, &a, 7, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5, exp_handler, 0.12);
 }
 
 void show_circle(void* unuseful) {

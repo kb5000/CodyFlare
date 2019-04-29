@@ -6,7 +6,7 @@ static int n = 0;
 
 Pos boss_body_calculate(DrawFuncHolder* dfh) {
 	double t = dfh->tNow;
-	int r = (int)(dfh->rotate * 360 / 6.283);
+	int r = (int)(t * para - 20);
 	set_color(color_by_hsl(r, (int)(t / 6.28 * 256), 160 - (int)(t / 6.28 * 32)));
 	//you can change the formula as your wish to see what will draw
 	return new_pos(-1 * sin(3 * t) * cos(4 * dfh->rotate + PI * 1.5 * 3),
@@ -18,7 +18,7 @@ void boss_drawer(void* dds) {
 	Color c;
 	//rotate a circle, drawing 90 times
 	//remember to clear the rotate after drawing
-	for (dfh->rotate = PI / 4 * 7; dfh->rotate < PI/  4 * 9 ; dfh->rotate += PI / 45) {
+	for (dfh->rotate = PI / 4 * 7 + 0.05; dfh->rotate < PI/  4 * 9 ; dfh->rotate += PI / 45) {
 		draw_function(dfh);
 		//need to clear the t and the bias to redraw it
 		dfh->tNow = 0;
@@ -28,16 +28,12 @@ void boss_drawer(void* dds) {
 	if (para < 65.6 && para > 60.8) {
 		para += 0.1 * flag;
 		//uncomment set_color in calc_det to see the effect
-		c = color_by_real(0.6 - (para - 60.7) / 4.8 * 0.2, sin(para), cos(para));
+		c = color_by_real(0.6 - (para - 60.7) / 4.8 * 0.5, sin(para), cos(2 * para));
 		dfh->color = c;
 	}
 	else {
 		flag = -flag;
 		para += 0.1 * flag;
-	}
-	//We recommand to use this to disable a function, dont use others like remove_funcs_from_timer
-	if (n++ > 500) {
-		disable_me_in_timer();
 	}
 }
 

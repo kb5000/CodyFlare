@@ -36,6 +36,6 @@ void draw_anime_accelerate(Pos* start, Pos end, double accu) {
 	};
 	AccuAnime* para = (AccuAnime*)malloc(sizeof(AccuAnime));
 	*para = acc;
-	int t = 2 * sqrt((end.x - start->x) / acc.accu.x) + 1;
+	int t = (int)(2 * sqrt((end.x - start->x) / acc.accu.x) + 1);
 	add_func_to_timer(accelerate_anime_drawer, para, 1, Unique_ID("Accu"), t);
 }
