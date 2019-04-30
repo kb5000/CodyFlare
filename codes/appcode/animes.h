@@ -19,3 +19,14 @@ void draw_anime_enemy_bonus(int id, Pos position, double size, int existTicks);
 void draw_anime_victory(int id, Pos position, double size, int existTicks);
 void draw_anime_explode(int id, Pos position, double size, int explodeComp);
 void draw_anime_accelerate(Pos* start, Pos end, double accu);
+
+typedef struct {
+	int id;
+	DrawFuncHolder dfh;
+	Color (*color_fun)(DrawFuncHolder* dfh);
+	Pos a, b;
+	Pos p1, p2, p3;
+} ParabolaHolder;
+
+ParabolaHolder create_parabola(int id, Pos p1, Pos p2, Pos p3, Color color_fun(DrawFuncHolder* dfh), int penSize);
+void draw_parabola(ParabolaHolder ph, int existInteval);

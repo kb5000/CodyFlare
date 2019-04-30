@@ -79,7 +79,8 @@ void tts(void* dds) {
 void test_of_function() {
 	InitGraphics();
 	//We must use malloc to create parameters if it will be passed by the timer
-	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
+	//DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
+	hnew(DrawFuncHolder, dfh);
 	//paras: func to call, origin, bias, size, t start, t max, t step, rotate radius, color, pen size, extra para
 	*dfh = create_function_holder(calc_det, new_pos(5, 3.5), new_pos(-0.0, -0), 0.9, 0, 1, 0.1, 0, color_by_name("Black"), 1, 62.8);
 	//this should be called only once, best in the main function

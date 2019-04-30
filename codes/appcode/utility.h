@@ -99,6 +99,11 @@ BitMap new_bit_map();
 ///para: type expects a typename, var expects void* data
 #define cast(type, var) (*(type*)(var))
 
+///name: hnew
+///func: define a var on the heap
+///warn: you should remember to free it
+#define hnew(type, var) type* var = (type*)malloc(sizeof(type));
+
 ///name: call 0 to 3, pcall 0 to 3
 ///func: a simple way to call member function
 ///example: call0(vector, len); pcall2(map, insert, 1, NULL);

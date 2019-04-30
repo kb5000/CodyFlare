@@ -1363,7 +1363,7 @@ static void PrepareToDraw(void)
 static void DisplayLine(double x, double y, double dx, double dy)
 {
     int x0, y0, x1, y1;
-    RECT r;
+    //RECT r;
 
     PrepareToDraw();
     x0 = ScaleX(x);
@@ -1371,7 +1371,7 @@ static void DisplayLine(double x, double y, double dx, double dy)
     x1 = ScaleX(x + dx);
     y1 = ScaleY(y + dy);
     if (regionState == NoRegion) {
-        SetLineBB(&r, x, y, dx, dy);
+        //SetLineBB(&r, x, y, dx, dy); //This line is unuseful, just delete it ^o^
 ////HOOK LINE
 #ifndef PERFORMANCE_DRAWING
         InvalidateRect(graphicsWindow, &r, TRUE);
@@ -1397,12 +1397,12 @@ static void DisplayLine(double x, double y, double dx, double dy)
 static void DisplayArc(double xc, double yc, double rx, double ry,
                        double start, double sweep)
 {
-    RECT r;
+    //RECT r;
     int xmax, xmin, ymax, ymin;
     int ix0, iy0, ix1, iy1;
 
     PrepareToDraw();
-    SetArcBB(&r, xc, yc, rx, ry, start, sweep);
+    //SetArcBB(&r, xc, yc, rx, ry, start, sweep);
 ////HOOK LINE
 #ifndef PERFORMANCE_DRAWING
 	InvalidateRect(graphicsWindow, &r, TRUE);

@@ -29,11 +29,12 @@ void draw_and_update(void* unuseful) {
 		pos.y -= 5 * rate;
 		reset_mouse_key(2);
 	}
-	DirKeys d = get_dir_key();
-	if (d.down == 0) pos.y -= rate;
-	if (d.up == 0) pos.y += rate;
-	if (d.left == 0) pos.x -= rate;
-	if (d.right == 0) pos.x += rate;
+	//DirKeys d = get_dir_key();
+	//if (d.down == 0) pos.y -= rate;
+	//if (d.up == 0) pos.y += rate;
+	//if (d.left == 0) pos.x -= rate;
+	//if (d.right == 0) pos.x += rate;
+	move_by_dir_key(&pos, new_pos(rate, rate));
 	if (button(Unique_ID("mybut"), pos.x, pos.y, 0.8, 0.3, "Click")) {
 		drawLabel(0.2, 0.8, "clicked!");
 	}

@@ -9,3 +9,5 @@ void test_of_anime_boss();
 void test_of_anime_accelerate();
 
 void test_of_anime_bomb();
+
+void test_of_parabola();

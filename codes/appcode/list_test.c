@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graphics.h"
+#include "utility.h"
 
 void display_node(void* data) {
 	printf("%d, ", *(int*)data);
@@ -24,7 +25,8 @@ void test_of_list() {
 	}
 	ListHandler listHandler = new_list(c[0]);
 	for (int i = 2; i < 10; i++) {
-		listHandler.push_back(&listHandler, c[i]);
+		//listHandler.push_back(&listHandler, c[i]);
+		calls(listHandler, push_back, c[i]);
 	}
 	printf("len = %u\n", listHandler.len(&listHandler));
 	printf("tail is %d\n", *(int*)listHandler.tail->data);

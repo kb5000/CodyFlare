@@ -102,9 +102,6 @@
     <Filter Include="UnitTest\SaveTest">
       <UniqueIdentifier>{f6a74eaf-787a-4df3-ad6a-e7f78bb5f606}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\UI\ListBox">
-      <UniqueIdentifier>{a1bff709-2892-4ffb-935b-f7b28efcaa64}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\AI">
       <UniqueIdentifier>{520436f9-d458-4d2d-a2fe-651480bd2778}</UniqueIdentifier>
     </Filter>
@@ -134,6 +131,9 @@
     </Filter>
     <Filter Include="UnitTest\HashMapTest">
       <UniqueIdentifier>{20daeef9-43f8-431b-9e95-712ae6e04625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\UI\ListBox">
+      <UniqueIdentifier>{a1bff709-2892-4ffb-935b-f7b28efcaa64}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -434,6 +434,9 @@
       <Filter>UnitTest\HashMapTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\common_anime.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\parabola.c">
       <Filter>Modules\Animes</Filter>
     </ClCompile>
   </ItemGroup>

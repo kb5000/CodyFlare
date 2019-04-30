@@ -311,6 +311,7 @@
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\missile.c" />
     <ClCompile Include="..\..\codes\appcode\missile_test.c" />
+    <ClCompile Include="..\..\codes\appcode\parabola.c" />
     <ClCompile Include="..\..\codes\appcode\particle.c" />
     <ClCompile Include="..\..\codes\appcode\particle_test.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />

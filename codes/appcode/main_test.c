@@ -8,7 +8,7 @@ void tests() {
 	//test_of_function();
 	//test_of_anime_shield();
 	//test_of_anime_boss();
-	//test_of_input();
+	test_of_input();
 	//test_of_save();
 	//test_of_gc();
 	//test_of_particle();
@@ -17,5 +17,6 @@ void tests() {
 	//test_of_rb_tree();
 	//test_of_hashmap();
 	//test_of_anime_accelerate();
-	test_of_anime_bomb();
+	//test_of_anime_bomb();
+	//test_of_parabola();
 }
