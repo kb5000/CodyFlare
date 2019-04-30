@@ -8,7 +8,7 @@ typedef struct {
 	Vector points;
 	Vector parameters;
 	Color (*color_fun)(DrawFuncHolder* dfh);
-	double t;
+	int isClosed;
 } Spline;
 
 ///name: create_spline

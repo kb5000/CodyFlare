@@ -36,6 +36,10 @@ void draw_spline(Spline* spline) {
 		//extraPara means the i_th point
 		dfh->extraPara++;
 	}
+	if (spline->isClosed) {
+		Pos start = *(Pos*)calls(spline->points, at, 1);
+		DrawLine(start.x - GetCurrentX(), start.y - GetCurrentY());
+	}
 }
 
 Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder *dfh), int isClosed) {
@@ -85,7 +89,7 @@ Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder *dfh), int 
 		*points,
 		parameters,
 		color_fun,
-		0
+		isClosed
 	};
 	hnew(Spline, res);
 	*res = spline;
