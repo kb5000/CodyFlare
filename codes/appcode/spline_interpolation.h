@@ -15,7 +15,8 @@ typedef struct {
 ///func: return a spline drawer by points provided, you can customize your color
 ///para: points expects a Vector contains Pos, and the order of points matters, 
 ///      color_fun expects a function, if you want to just black, you can pass NULL
-Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder* dfh));
+///      isClosed means if it is a closed curve
+Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder* dfh), int isClosed);
 
 ///name: draw_spline
 ///func: draw a curve by points provided, you can add it into the timer
