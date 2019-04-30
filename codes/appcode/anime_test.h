@@ -1,5 +1,7 @@
 #pragma once
 
+void common_anime_test_init();
+
 void test_of_anime_shield();
 
 void test_of_anime_explode();

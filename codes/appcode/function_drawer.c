@@ -32,7 +32,7 @@ void draw_function(DrawFuncHolder* drawHd) {
 		}
 		DrawLine(delta.x * drawHd->size * drawHd->tStep, delta.y * drawHd->size * drawHd->tStep);
 	}
-	MovePen(drawHd->originPosition.x, drawHd->originPosition.y);
+	//MovePen(drawHd->originPosition.x, drawHd->originPosition.y);
 }
 
 void draw_function_one_step(void* drawFuncHolder) {
@@ -64,7 +64,7 @@ void draw_function_one_step(void* drawFuncHolder) {
 	drawHd->tNow += drawHd->tStep;
 	drawHd->drawPositionBias.x += temp.x;
 	drawHd->drawPositionBias.y += temp.y;
-	MovePen(drawHd->originPosition.x, drawHd->originPosition.y);
+	//MovePen(drawHd->originPosition.x, drawHd->originPosition.y);
 }
 
 

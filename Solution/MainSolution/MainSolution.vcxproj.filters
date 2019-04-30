@@ -135,6 +135,18 @@
     <Filter Include="Modules\UI\ListBox">
       <UniqueIdentifier>{a1bff709-2892-4ffb-935b-f7b28efcaa64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\SplineInterpolation">
+      <UniqueIdentifier>{711afd44-8945-472d-aaac-41e0d3753654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\SplineInterpolationTest">
+      <UniqueIdentifier>{75c19f95-3d0c-424b-a88c-42fa3cbe7425}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Fonts">
+      <UniqueIdentifier>{d8a00eed-a6ef-4205-8246-9d7940aba4cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\FontsTest">
+      <UniqueIdentifier>{bcd74ba0-1ceb-4e4f-873b-3579c44990a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -271,6 +283,18 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\hashmap_test.h">
       <Filter>UnitTest\HashMapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\spline_interpolation.h">
+      <Filter>Modules\SplineInterpolation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\spline_test.h">
+      <Filter>UnitTest\SplineInterpolationTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\font.h">
+      <Filter>Modules\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\font_test.h">
+      <Filter>UnitTest\FontsTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -438,6 +462,18 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\parabola.c">
       <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\spline_interpolation.c">
+      <Filter>Modules\SplineInterpolation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\spline_test.c">
+      <Filter>UnitTest\SplineInterpolationTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\font.c">
+      <Filter>Modules\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\font_test.c">
+      <Filter>UnitTest\FontsTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -244,6 +244,8 @@
     <ClInclude Include="..\..\codes\appcode\collision.h" />
     <ClInclude Include="..\..\codes\appcode\collision_test.h" />
     <ClInclude Include="..\..\codes\appcode\color.h" />
+    <ClInclude Include="..\..\codes\appcode\font.h" />
+    <ClInclude Include="..\..\codes\appcode\font_test.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
     <ClInclude Include="..\..\codes\appcode\gc.h" />
@@ -262,6 +264,8 @@
     <ClInclude Include="..\..\codes\appcode\particle.h" />
     <ClInclude Include="..\..\codes\appcode\particle_test.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
+    <ClInclude Include="..\..\codes\appcode\spline_interpolation.h" />
+    <ClInclude Include="..\..\codes\appcode\spline_test.h" />
     <ClInclude Include="..\..\codes\appcode\utility.h" />
     <ClInclude Include="..\..\codes\appcode\save.h" />
     <ClInclude Include="..\..\codes\appcode\slide_bar.h" />
@@ -301,6 +305,8 @@
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
     <ClCompile Include="..\..\codes\appcode\color.c" />
     <ClCompile Include="..\..\codes\appcode\common_anime.c" />
+    <ClCompile Include="..\..\codes\appcode\font.c" />
+    <ClCompile Include="..\..\codes\appcode\font_test.c" />
     <ClCompile Include="..\..\codes\appcode\gc.c" />
     <ClCompile Include="..\..\codes\appcode\gc_test.c" />
     <ClCompile Include="..\..\codes\appcode\hashmap.c" />
@@ -317,6 +323,8 @@
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />
+    <ClCompile Include="..\..\codes\appcode\spline_interpolation.c" />
+    <ClCompile Include="..\..\codes\appcode\spline_test.c" />
     <ClCompile Include="..\..\codes\appcode\start_page.c" />
     <ClCompile Include="..\..\codes\appcode\status_line.c" />
     <ClCompile Include="..\..\codes\appcode\ui_test.c" />

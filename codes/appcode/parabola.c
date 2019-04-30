@@ -1,7 +1,7 @@
 #include "animes.h"
 
 
-Color default_color_fun(DrawFuncHolder* dfh) {
+static Color default_color_fun(DrawFuncHolder* dfh) {
 	return color_by_name("Black");
 }
 
@@ -25,7 +25,7 @@ ParabolaHolder create_parabola(int id, Pos p1, Pos p2, Pos p3, Color color_fun(D
 	ParabolaHolder ph = {
 		id,
 		create_function_holder(parabola_drawer, p1, new_pos(0, 0),
-			1, 0, 1, 0.01, 0, color_by_name("Black"), penSize, 0),
+			1, 0, 1, 0.1, 0, color_by_name("Black"), penSize, 0),
 		color_fun,
 		add_pos(add_pos(pos_mut(p1, 4), pos_mut(p2, -8)), pos_mut(p3, 4)),
 		add_pos(add_pos(pos_mut(p1, -3), pos_mut(p2, 4)), pos_mut(p3, -1)),

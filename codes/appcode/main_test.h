@@ -16,5 +16,7 @@
 #include "missile_test.h"
 #include "rbtree_test.h"
 #include "hashmap_test.h"
+#include "spline_test.h"
+#include "font_test.h"
 
 void tests();
