@@ -20,6 +20,6 @@ void test_of_spline() {
 	calls(v, push, (temp = new_pos(4.7, 1.8), &temp));
 	calls(v, push, (temp = new_pos(6, 6), &temp));
 	//create a spline, you may want to customize you color function
-	Spline* sp = create_spline(&v, NULL, 0);
+	Spline* sp = create_spline(&v, NULL, 1);
 	add_func_to_timer(draw_spline, sp, 1, 1, -1);
 }

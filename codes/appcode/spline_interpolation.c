@@ -61,7 +61,7 @@ Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder *dfh), int 
 	int times = n - 3;
 	//closed curve has one more spline
 	if (isClosed) times++;
-	for (unsigned i = 1; i < times; i++) {
+	for (int i = 1; i < times; i++) {
 		//one spline is determined by 4 points
 		Pos pots[4] = {
 			*(Pos*)pcalls(points, at, i - 1),
