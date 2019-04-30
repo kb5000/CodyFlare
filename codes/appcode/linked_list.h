@@ -73,7 +73,7 @@ typedef struct _My_Linked_List_Handler {
 	///visb: public
 	void (*sort_by)(struct _My_Linked_List_Handler* self, int func(void*, void*));
 	///name: find_if
-	///func: return the data of the first node matches
+	///func: return the data of the first node matches, NULL if no match
 	///para: self expects the ListHandler itself, func expects to return 1 if match successful, 0 if match failed
 	///visb: public
 	void* (*find_if)(struct _My_Linked_List_Handler* self, int func(const struct _My_Linked_List_Handler*, void*, void*), void* para);

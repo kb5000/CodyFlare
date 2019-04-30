@@ -43,7 +43,7 @@ void draw_spline(Spline* spline) {
 }
 
 Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder *dfh), int isClosed) {
-	//dont draw if it is only 1 point
+	//wont draw if it is only 1 point
 	if (pcall0(points, len) < 2) return NULL;
 	//handle the bound
 	if (isClosed) {

@@ -34,6 +34,11 @@ void restart_global_timer();
 ///func: stop the timer
 ///visb: public
 void stop_global_timer();
+///name: change_timer_stack
+///func: switch the timer to another stack
+///para: id expects the timer stack id
+///warn: you need to add all timer functions in the new stack
+void change_timer_stack(int id);
 
 
 ///these are functions to control the funcs to be called by the timer

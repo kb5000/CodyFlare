@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "timer.h"
 #include "graphics.h"
+#include "utility.h"
 
 ListHandler globalTimerFunctionList;
 int globalTimerInterval = 32;		//can change
@@ -9,6 +10,14 @@ static int globalTimerID = 1;		//only one timer
 static int globalTickCount = 0;		//every tick it will add 1
 static int functionDisableFlag = 0;	//used by disable_me_from_timer
 //static int functionRemoveFlag = 0;
+
+typedef struct {
+	int id;
+	ListHandler timerFuncs;
+} TimerStack;
+
+static ListHandler timerStacks;
+static int currentTimerStack = 0;
 
 void startTimer(int id, int timeinterval);
 void cancelTimer(int id);
@@ -48,6 +57,11 @@ int get_tick() {
 void init_global_timer() {
 	globalTimerFunctionList = new_empty_list();
 	registerTimerEvent(timer_func_caller);
+	hnew(TimerStack, timerStk);
+	timerStk->id = 0;
+	timerStk->timerFuncs = globalTimerFunctionList;
+	timerStacks = new_empty_list();
+	calls(timerStacks, push_back, timerStk);
 }
 
 void start_global_timer() {
@@ -126,4 +140,27 @@ void auto_clear_display(void* unuseful) {
 
 void disable_me_in_timer() {
 	functionDisableFlag = 1;
+}
+
+static int id_equal(const ListHandler* unuseful, TimerStack* a, int* id) {
+	return a->id == *id;
+}
+
+void change_timer_stack(int id) {
+	stop_global_timer();
+	TimerStack* tnow = calls(timerStacks, find_if, id_equal, &currentTimerStack);
+	TimerStack* tms = calls(timerStacks, find_if, id_equal, &id);
+	tnow->timerFuncs = globalTimerFunctionList;
+	if (tms) {
+		globalTimerFunctionList = tms->timerFuncs;
+		currentTimerStack = id;
+	} else {
+		hnew(TimerStack, tmstk);
+		tmstk->id = id;
+		tmstk->timerFuncs = new_empty_list();
+		calls(timerStacks, push_back, tmstk);
+		globalTimerFunctionList = tmstk->timerFuncs;
+		currentTimerStack = id;
+	}
+	start_global_timer();
 }
