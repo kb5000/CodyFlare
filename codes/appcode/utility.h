@@ -77,6 +77,12 @@ void show_now(void* unuseful);
 ///visb: public
 double evaluate_polynomia(double* coeff, int n, double x);
 
+typedef struct {
+	int a, b;
+} IntPair;
+
+int crash_now(const char* info);
+
 typedef struct _My_Bit_Map{
 	int bits;
 	int (*get)(struct _My_Bit_Map* self, int n);

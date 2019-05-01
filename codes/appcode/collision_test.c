@@ -28,10 +28,5 @@ void draw_rec(void* rect) {
 
 void test_of_collision() {
 	init_global_timer();
-	init_collision_detector(collision_handler);
-	CollisionGroup* cg1, *cg2;
-	cg1 = create_collision_group(new_empty_list(), 1);
-	cg2 = create_collision_group(new_empty_list(), 2);
-	add_col_to_group(cg1, create_collision_box(r1.start, r1.size, 1));
 	
 }

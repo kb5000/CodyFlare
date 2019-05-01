@@ -1,28 +1,32 @@
 #pragma once
 #include "linked_list.h"
 #include "utility.h"
+#include "vector.h"
 
-extern ListHandler globalCollisionList;
+typedef enum {
+	Col_Box, Col_Line
+} ColType;
 
 typedef struct {
-	Pos position, size;
 	int id;
+	ColType colType;
+	Pos start, end;
 } CollisionObj;
 
 typedef struct {
-	ListHandler boxes;
-	int groupID;
+	int id;
+	ListHandler objs;
 } CollisionGroup;
 
-void init_collision_detector(void collision_handler(int groupID1, int groupID2, int id1, int id2));
-void add_col_group_to_list(CollisionGroup* group);
-void add_col_to_group(CollisionGroup * target, CollisionObj * source);
-void remove_col_group(int groupID);
-void destroy_collision_list();
-CollisionObj* create_collision_box(Pos position, Pos size, int id);
-CollisionGroup* create_collision_group(ListHandler boxes, int groupID);
+typedef void ColHandler(int id1, int id2, void* para);
 
-int have_collision(CollisionObj* lhs, CollisionObj* rhs);
-
-void detect_collision(void* unuseful);
-
+void init_col_dector();
+void add_col_group(int id);
+void add_col_obj_to_group(int objID, int groupID, CollisionObj colObj);
+CollisionObj create_col_obj(ColType colType, Pos start, Pos end, int id);
+void add_col_handler(int groupID1, int groupID2, ColHandler func, void* para);
+CollisionObj* find_col_obj(int groupID, int objID);
+void remove_col_obj(int groupID, int objID);
+void destroy_col_detector();
+void start_detection();
+void end_detection();

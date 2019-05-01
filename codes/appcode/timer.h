@@ -38,6 +38,7 @@ void stop_global_timer();
 ///func: switch the timer to another stack
 ///para: id expects the timer stack id
 ///warn: you need to add all timer functions in the new stack
+///note: in fact, this is a simple version of coroutine
 void change_timer_stack(int id);
 
 

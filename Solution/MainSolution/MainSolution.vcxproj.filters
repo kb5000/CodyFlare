@@ -45,9 +45,6 @@
     <Filter Include="Modules\Timer">
       <UniqueIdentifier>{d3a8cf1f-ec6e-4358-9cb0-aaa6ad900ff7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\CollisionDection">
-      <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UnitTest\TimerTest">
       <UniqueIdentifier>{fec07d56-fdbd-4b47-b27a-9df6b130fda3}</UniqueIdentifier>
     </Filter>
@@ -147,6 +144,9 @@
     <Filter Include="UnitTest\FontsTest">
       <UniqueIdentifier>{bcd74ba0-1ceb-4e4f-873b-3579c44990a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\CollisionDetection">
+      <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -198,7 +198,7 @@
       <Filter>Modules\Timer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\collision.h">
-      <Filter>Modules\CollisionDection</Filter>
+      <Filter>Modules\CollisionDetection</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\timer_test.h">
       <Filter>UnitTest\TimerTest</Filter>
@@ -344,7 +344,7 @@
       <Filter>UnitTest\LinkedListTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\collision.c">
-      <Filter>Modules\CollisionDection</Filter>
+      <Filter>Modules\CollisionDetection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\timer_test.c">
       <Filter>UnitTest\TimerTest</Filter>

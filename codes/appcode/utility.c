@@ -1,6 +1,7 @@
 #include "utility.h"
 #include <math.h>
 #include "graphics.h"
+#include <stdlib.h>
 
 Pos new_pos(double x, double y)
 {
@@ -55,6 +56,11 @@ double evaluate_polynomia(double* coeff, int n, double x) {
 		res = res * x + coeff[i];
 	}
 	return res;
+}
+
+int crash_now(const char* info) {
+	exit(-1);
+	return -1; //Never return
 }
 
 int my_bit_map_get(BitMap* self, int n);
