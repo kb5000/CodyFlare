@@ -16,7 +16,7 @@ typedef struct {
 static ListHandler globalCollisionList;
 static ListHandler globalCollisionHandler;
 
-void init_col_dector() {
+void init_col_detector() {
 	globalCollisionList = new_empty_list();
 	globalCollisionHandler = new_empty_list();
 }
@@ -200,7 +200,7 @@ static void destroy_col_objs(CollisionGroup* cg) {
 }
 
 void destroy_col_detector() {
-	end_detection();
+	stop_detection();
 	call0(globalCollisionHandler, destroy);
 	calls(globalCollisionList, for_each, destroy_col_objs);
 	call0(globalCollisionList, destroy);
@@ -210,7 +210,7 @@ void start_detection() {
 	add_func_to_timer(col_detection, NULL, 1, 16777216, -1);
 }
 
-void end_detection() {
+void stop_detection() {
 	remove_funcs_from_timer(16777216);
 }
 
