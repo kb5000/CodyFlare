@@ -26,9 +26,10 @@ void init_col_detector();
 void destroy_col_detector();
 ///name: start_detection
 ///func: start to detect collision
+///para: detectInterval expects during how long it will detect collision
 ///visb: public
 ///warn: timerID 16777216 will be occupied
-void start_detection();
+void start_detection(int detectInterval);
 ///name: stop_detection
 ///func: stop the detection
 ///visb: public

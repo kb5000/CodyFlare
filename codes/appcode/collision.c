@@ -158,8 +158,9 @@ static int line_line_col_dec(CollisionObj* a, CollisionObj* b) {
 }
 
 static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode* colNode) {
-	for (Node* l = lhs->objs.head; l; l = l->next) {
-		for (Node* r = rhs->objs.head; r; r = r->next) {
+	//l && (l = l->next) prevents delete object crash
+	for (Node* l = lhs->objs.head; l; l && (l = l->next)) {
+		for (Node* r = rhs->objs.head; l && r; l && r && (r = r->next)) {
 			CollisionObj* lc = (CollisionObj*)l->data;
 			CollisionObj* rc = (CollisionObj*)r->data;
 			int collsionFlag = 0;
@@ -206,8 +207,8 @@ void destroy_col_detector() {
 	call0(globalCollisionList, destroy);
 }
 
-void start_detection() {
-	add_func_to_timer(col_detection, NULL, 1, 16777216, -1);
+void start_detection(int detectInterval) {
+	add_func_to_timer(col_detection, NULL, detectInterval, 16777216, -1);
 }
 
 void stop_detection() {

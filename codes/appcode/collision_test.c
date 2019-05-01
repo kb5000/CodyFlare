@@ -32,7 +32,7 @@ void draw_line(Rect* r) {
 	DrawLine(r->size.x, r->size.y);
 }
 
-void col_testt(void* unuseful) {
+void col_test(void* unuseful) {
 	draw_rec(&r1);
 	draw_line(&r2);
 	move_by_dir_key(&r2.start, new_pos(0.1, 0.1));
@@ -68,8 +68,8 @@ void test_of_collision() {
 	//add collision handler, you can pass a para
 	add_col_handler(1, 2, collision_handler, NULL);
 	add_func_to_timer(auto_clear_display, NULL, 1, 1, -1);
-	add_func_to_timer(col_testt, NULL, 1, 1, -1);
+	add_func_to_timer(col_test, NULL, 1, 1, -1);
 	//finally start detection
-	start_detection();
+	start_detection(1);
 	start_global_timer();
 }

@@ -10,7 +10,7 @@ static Color(*color_fun)(DrawFuncHolder* dfh) = default_color_fun;
 
 
 Pos parabola_drawer(DrawFuncHolder* dfh) {
-	//color_fun(dfh);
+	color_fun(dfh);
 	return new_pos(pa.x * dfh->tNow + pb.x, pa.y * dfh->tNow + pb.y);
 }
 
@@ -25,7 +25,7 @@ ParabolaHolder create_parabola(int id, Pos p1, Pos p2, Pos p3, Color color_fun(D
 	ParabolaHolder ph = {
 		id,
 		create_function_holder(parabola_drawer, p1, new_pos(0, 0),
-			1, 0, 1, 0.05, 0, color_by_name("Black"), penSize, 0),
+			1, 0, 1, 0.02, 0, color_by_name("Black"), penSize, 0),
 		color_fun,
 		add_pos(add_pos(pos_mut(p1, 4), pos_mut(p2, -8)), pos_mut(p3, 4)),
 		add_pos(add_pos(pos_mut(p1, -3), pos_mut(p2, 4)), pos_mut(p3, -1)),
