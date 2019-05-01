@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "graphics.h"
 #include "imgui.h"
+#include "input.h"
 
 
 char lebalText[50];
@@ -16,17 +17,51 @@ typedef struct {
 
 Rect r1, r2;
 
-void collision_handler(int groupID1, int groupID2, int id1, int id2) {
-	sprintf(lebalText, "the %d of %d coled with %d of %d", id1, groupID1, id2, groupID2);
+void collision_handler(int id1, int id2, void* unuseful) {
+	sprintf(lebalText, "the %d coled with %d", id1, id2);
 }
 
-void draw_rec(void* rect) {
-	Rect* r = (Rect*)rect;
+void draw_rec(Rect* r) {
 	set_color(r->color);
 	drawRectangle(r->start.x, r->start.y, r->size.x, r->size.y, 0);
 }
 
+void draw_line(Rect* r) {
+	set_color(r->color);
+	MovePen(r->start.x, r->start.y);
+	DrawLine(r->size.x, r->size.y);
+}
+
+void col_testt(void* unuseful) {
+	draw_line(&r1);
+	draw_line(&r2);
+	move_by_dir_key(&r2.start, new_pos(0.1, 0.1));
+	update_col_info(2, 1, r2.start, add_pos(r2.start, r2.size));
+	drawLabel(0.1, 0.1, lebalText);
+	sprintf(lebalText, "No collision now");
+}
+
 void test_of_collision() {
+	InitGraphics();
 	init_global_timer();
-	
+	init_col_dector();
+	init_input();
+	r1.start = new_pos(1, 1);
+	r1.size = new_pos(2, 3);
+	r1.color = color_by_name("Black");
+	r2.start = new_pos(5, 2);
+	r2.size = new_pos(1, 1);
+	r2.color = color_by_name("Blue");
+	add_col_group(1);
+	add_col_group(2);
+	//add_col_group(2);
+	CollisionObj r1c = create_col_obj(Col_Line, r1.start, add_pos(r1.start, r1.size), 1);
+	CollisionObj r2c = create_col_obj(Col_Line, r2.start, add_pos(r2.start, r2.size), 1);
+	add_col_obj_to_group(1, r1c);
+	add_col_obj_to_group(2, r2c);
+	add_col_handler(1, 2, collision_handler, NULL);
+	add_func_to_timer(auto_clear_display, NULL, 1, 1, -1);
+	add_func_to_timer(col_testt, NULL, 1, 1, -1);
+	start_detection();
+	start_global_timer();
 }

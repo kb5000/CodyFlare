@@ -1,6 +1,5 @@
 #include "collision.h"
 #include <stdlib.h>
-#include "hashmap.h"
 #include "timer.h"
 
 typedef struct {
@@ -9,18 +8,28 @@ typedef struct {
 	void* para;
 } ColNode;
 
+typedef struct {
+	int id;
+	ListHandler objs;
+} CollisionGroup;
+
 static ListHandler globalCollisionList;
 static ListHandler globalCollisionHandler;
 
 void init_col_dector() {
 	globalCollisionList = new_empty_list();
+	globalCollisionHandler = new_empty_list();
 }
 
-static void col_group_equal(CollisionGroup* cg, int* groupID) {
+static int col_group_equal(const ListHandler* lh, CollisionGroup* cg, int* groupID) {
 	return cg->id == *groupID;
 }
 
-static void col_obj_equal(CollisionGroup* co, int* objID) {
+static int col_obj_equal(const ListHandler* lh, CollisionObj* co, int* objID) {
+	return co->id == *objID;
+}
+
+static int col_obj_rm_equal(CollisionObj* co, int* objID) {
 	return co->id == *objID;
 }
 
@@ -35,11 +44,11 @@ void add_col_group(int id) {
 	}
 }
 
-void add_col_obj_to_group(int objID, int groupID, CollisionObj colObj) {
+void add_col_obj_to_group(int groupID, CollisionObj colObj) {
 	CollisionGroup* cg;
 	CollisionObj* cob;
 	if (cg = calls(globalCollisionList, find_if, col_group_equal, &groupID)) {
-		if (cob = calls(cg->objs, find_if, col_obj_equal, &objID)) {
+		if (cob = calls(cg->objs, find_if, col_obj_equal, &colObj.id)) {
 			crash_now("obj id already exists when adding obj");
 		}
 		hnew(CollisionObj, co);
@@ -59,7 +68,7 @@ CollisionObj create_col_obj(ColType colType, Pos start, Pos end, int id) {
 	return res;
 }
 
-static void col_handler_equal(ColNode* cg, IntPair* groupID) {
+static int col_handler_equal(const ListHandler* lh, ColNode* cg, IntPair* groupID) {
 	return (cg->ids.a == groupID->a && cg->ids.b == groupID->b) || 
 		   (cg->ids.a == groupID->b && cg->ids.b == groupID->a);
 }
@@ -85,9 +94,9 @@ void add_col_handler(int groupID1, int groupID2, ColHandler func, void* para) {
 	calls(globalCollisionHandler, push_back, ch);
 }
 
-static ColHandler* find_col_handler(int groupID1, int groupID2) {
+static ColNode* find_col_handler(int groupID1, int groupID2) {
 	IntPair ids = {groupID1, groupID2};
-	return calls(globalCollisionHandler, find_if, col_handler_equal, &ids);
+	return (ColNode*)calls(globalCollisionHandler, find_if, col_handler_equal, &ids);
 }
 
 CollisionObj* find_col_obj(int groupID, int objID) {
@@ -104,7 +113,7 @@ CollisionObj* find_col_obj(int groupID, int objID) {
 void remove_col_obj(int groupID, int objID) {
 	CollisionGroup* cg;
 	if (cg = calls(globalCollisionList, find_if, col_group_equal, &groupID)) {
-		calls(cg->objs, remove_if, col_obj_equal, &objID);
+		calls(cg->objs, remove_if, col_obj_rm_equal, &objID);
 	}
 }
 
@@ -113,16 +122,16 @@ static double det_2_dim(Pos a, Pos b) {
 }
 
 static int box_box_col_dec(CollisionObj* a, CollisionObj* b) {
-	return a->start.x <= b->end.x && b->start.x <= b->end.x &&
+	return a->start.x <= b->end.x && b->start.x <= a->end.x &&
 		   a->start.y <= b->end.y && b->start.y <= a->end.y;
 }
 
 static int line_line_base_dec(Pos A, Pos B, Pos C, Pos D) {
 	const double zero = 1e-9;
 	Pos AC = sub_pos(C, A);
-	Pos AD = sub_pos(C, A);
-	Pos BC = sub_pos(C, A);
-	Pos BD = sub_pos(C, A);
+	Pos AD = sub_pos(D, A);
+	Pos BC = sub_pos(C, B);
+	Pos BD = sub_pos(D, B);
 	return det_2_dim(AC, AD) * det_2_dim(BC, BD) <= zero &&
 		   det_2_dim(AC, BC) * det_2_dim(AD, BD) <= zero;
 }
@@ -148,20 +157,22 @@ static int line_line_col_dec(CollisionObj* a, CollisionObj* b) {
 	return line_line_base_dec(a->start, a->end, b->start, b->end);
 }
 
-static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColHandler* func) {
+static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode* colNode) {
 	for (Node* l = lhs->objs.head; l; l = l->next) {
 		for (Node* r = rhs->objs.head; r; r = r->next) {
 			CollisionObj* lc = (CollisionObj*)l->data;
 			CollisionObj* rc = (CollisionObj*)r->data;
+			int collsionFlag = 0;
 			if (lc->colType == Col_Line && rc->colType == Col_Line) {
-				if (line_line_col_dec(lc, rc)) func(lc->id, rc->id, lhs->id, rhs->id);
+				if (line_line_col_dec(lc, rc)) collsionFlag = 1;
 			} else if (lc->colType == Col_Box && rc->colType == Col_Box) {
-				if (box_box_col_dec(lc, rc)) func(lc->id, rc->id, lhs->id, rhs->id);
+				if (box_box_col_dec(lc, rc)) collsionFlag = 1;
 			} else if (lc->colType == Col_Box && rc->colType == Col_Line) {
-				if (box_line_col_dec(lc, rc)) func(lc->id, rc->id, lhs->id, rhs->id);
+				if (box_line_col_dec(lc, rc)) collsionFlag = 1;
 			} else if (lc->colType == Col_Line && rc->colType == Col_Box) {
-				if (box_line_col_dec(rc, lc)) func(lc->id, rc->id, lhs->id, rhs->id);
+				if (box_line_col_dec(rc, lc)) collsionFlag = 1;
 			}
+			if (collsionFlag) colNode->colHandler(lc->id, rc->id, colNode->para);
 		}
 	}
 }
@@ -172,10 +183,10 @@ static void col_detection(void* unuseful) {
 	Node* floater = stabler->next;
 	while (stabler && stabler->next) {
 		while (floater) {
-			ColHandler* func;
-			if (func = find_col_handler(((CollisionGroup*)stabler->data)->id, 
+			ColNode* colNode;
+			if (colNode = find_col_handler(((CollisionGroup*)stabler->data)->id, 
 				((CollisionGroup*)floater->data)->id)) {
-				col_obj_detection((CollisionGroup*)stabler->data, (CollisionGroup*)floater->data, func);
+				col_obj_detection((CollisionGroup*)stabler->data, (CollisionGroup*)floater->data, colNode);
 			}
 			floater = floater->next;
 		}

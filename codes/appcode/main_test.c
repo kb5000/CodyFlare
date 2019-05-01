@@ -17,6 +17,7 @@ void tests() {
 	//test_of_anime_accelerate();
 	//test_of_anime_bomb();
 	//test_of_parabola();
-	test_of_spline();
+	//test_of_spline();
 	//test_of_font();
+	test_of_collision();
 }
