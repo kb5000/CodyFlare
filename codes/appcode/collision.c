@@ -202,3 +202,9 @@ void start_detection() {
 void end_detection() {
 	remove_funcs_from_timer(16777216);
 }
+
+void update_col_info(int groupID, int objID, Pos start, Pos end) {
+	CollisionObj* obj = find_col_obj(groupID, objID);
+	obj->start = start;
+	obj->end = end;
+}

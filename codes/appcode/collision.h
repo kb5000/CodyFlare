@@ -30,3 +30,4 @@ void remove_col_obj(int groupID, int objID);
 void destroy_col_detector();
 void start_detection();
 void end_detection();
+void update_col_info(int groupID, int objID, Pos start, Pos end);
