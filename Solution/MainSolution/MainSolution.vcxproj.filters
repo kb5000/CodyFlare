@@ -147,6 +147,9 @@
     <Filter Include="Modules\CollisionDetection">
       <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Plane">
+      <UniqueIdentifier>{712f8bb2-155b-4552-8f55-63c47f957d1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">

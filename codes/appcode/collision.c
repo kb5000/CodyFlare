@@ -164,6 +164,7 @@ static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode*
 			CollisionObj* lc = (CollisionObj*)l->data;
 			CollisionObj* rc = (CollisionObj*)r->data;
 			int collsionFlag = 0;
+			//call corresponding function by their colType
 			if (lc->colType == Col_Line && rc->colType == Col_Line) {
 				if (line_line_col_dec(lc, rc)) collsionFlag = 1;
 			} else if (lc->colType == Col_Box && rc->colType == Col_Box) {
