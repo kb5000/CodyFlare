@@ -36,7 +36,7 @@ void lanunch_missile(void* unuseful) {
 	}
 }
 
-void smash(void* unuseful, int event) {
+void smash(int key, void* unuseful, int event) {
 	MouseKeys m = get_mouse_key();
 	a = m.pos;
 	show_missile(b, &a, 7, color_by_name("Red"), 0.16, -1.5, 1.2, 50, 1, bb, 0.5, exp_handler, 0.12);

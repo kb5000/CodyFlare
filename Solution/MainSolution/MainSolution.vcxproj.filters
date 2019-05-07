@@ -150,6 +150,9 @@
     <Filter Include="Modules\Plane">
       <UniqueIdentifier>{712f8bb2-155b-4552-8f55-63c47f957d1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Game">
+      <UniqueIdentifier>{e185090c-aacb-4461-bc7d-46cfa8e13a70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -298,6 +301,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\font_test.h">
       <Filter>UnitTest\FontsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="ingame.h">
+      <Filter>Modules\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -477,6 +483,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\font_test.c">
       <Filter>UnitTest\FontsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="ingame.c">
+      <Filter>Modules\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

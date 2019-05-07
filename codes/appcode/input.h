@@ -12,7 +12,7 @@ typedef struct {
 
 typedef struct {
 	int left, middle, right;
-	Pos pos;
+	Pos pos, dpos;
 } MouseKeys;
 
 ///name: init_input
@@ -27,7 +27,7 @@ void init_input();
 ///      to the func
 ///visb: public
 ///warn: you cant pass a stack memory(not malloced) to the para, or it will cause CRASH
-void add_to_key_process(char key, void(*func)(void*, int), void* para);
+void add_to_key_process(char key, void(*func)(int, void*, int), void* para);
 
 ///name: get_dir_key
 ///func: get the status of four direction keys
@@ -48,3 +48,7 @@ void reset_mouse_key(int key);
 void move_by_dir_key(Pos* target, Pos speed);
 
 void destroy_input_process();
+
+int get_last_key();
+
+int mouse_at_edge();

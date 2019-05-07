@@ -15,9 +15,9 @@ void test_of_spline() {
 	//This is because vector only receive pointers
 	Pos temp;
 	calls(v, push, (temp = new_pos(2, 6), &temp));
-	calls(v, push, (temp = new_pos(3.3, 1.8), &temp));
+	calls(v, push, (temp = new_pos(2.3, 1.8), &temp));
 	calls(v, push, (temp = new_pos(4, 1), &temp));
-	calls(v, push, (temp = new_pos(4.7, 1.8), &temp));
+	calls(v, push, (temp = new_pos(5.7, 1.8), &temp));
 	calls(v, push, (temp = new_pos(6, 6), &temp));
 	//create a spline, you may want to customize you color function
 	Spline* sp = create_spline(&v, NULL, 1);

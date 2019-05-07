@@ -11,7 +11,7 @@ static char buffer[32];
 static int spaceNum = 0;
 static Pos pos = {2, 2};
 
-void key_process(void* n, int event) {
+void key_process(int key, void* n, int event) {
 	if (event) spaceNum++;
 }
 

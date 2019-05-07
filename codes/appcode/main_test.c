@@ -19,5 +19,6 @@ void tests() {
 	//test_of_parabola();
 	//test_of_spline();
 	//test_of_font();
-	test_of_collision();
+	//test_of_collision();
+	test_of_slide_bar();
 }

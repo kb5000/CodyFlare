@@ -287,6 +287,7 @@
     <ClInclude Include="..\..\codes\libgraphics\simpio.h" />
     <ClInclude Include="..\..\codes\libgraphics\strlib.h" />
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
+    <ClInclude Include="ingame.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\appcode\ai.c" />
@@ -348,6 +349,7 @@
     <ClCompile Include="..\..\codes\libgraphics\simpio.c" />
     <ClCompile Include="..\..\codes\libgraphics\strlib.c" />
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c" />
+    <ClCompile Include="ingame.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
