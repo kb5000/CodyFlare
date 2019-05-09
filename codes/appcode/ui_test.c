@@ -5,7 +5,9 @@
 #include <stdio.h>
 #include "timer.h"
 #include "input.h"
+#include "save.h"
 #include <stdlib.h>
+#include "listbox.h"
 
 static char labelText[64];
 
@@ -24,4 +26,10 @@ void test_of_slide_bar() {
 	hnew(double, n);
 	*n = 0.2;
 	add_func_to_timer(slide_bar_test_call, n, 1, 1, -1);
+}
+
+void test_of_list_box() {
+	common_anime_test_init();
+	ListHandler lh = explore_files();
+	show_list_box(1, lh, new_pos(1, 1), 0);
 }
