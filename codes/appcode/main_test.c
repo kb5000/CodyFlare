@@ -11,7 +11,7 @@ void tests() {
 	//test_of_save();
 	//test_of_gc();
 	//test_of_particle();
-	test_of_missile();
+	//test_of_missile();
 	//test_of_anime_explode();
 	//test_of_hashmap();
 	//test_of_anime_accelerate();
@@ -22,4 +22,5 @@ void tests() {
 	//test_of_collision();
 	//test_of_slide_bar();
 	//test_of_list_box();
+	test_of_ammo();
 }

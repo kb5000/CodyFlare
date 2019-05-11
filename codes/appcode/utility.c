@@ -46,6 +46,10 @@ Pos polar_to_rect(Pos pos) {
 	return new_pos(pos.x * cos(pos.y), pos.x * sin(pos.y));
 }
 
+int pos_in_rect(Pos pos, Pos downLeft, Pos upRight) {
+	return pos.x >= downLeft.x && pos.x <= upRight.x && pos.y >= downLeft.y && pos.y <= upRight.y;
+}
+
 void show_now(void* unuseful) {
 	show_all_now();
 }

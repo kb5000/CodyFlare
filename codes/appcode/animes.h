@@ -10,7 +10,6 @@
 
 void draw_anime_shield(int id, Pos position, double size, int existTicks);
 void draw_anime_bomb(int id, Pos position, double size, double speed);
-void draw_anime_ammo(int id, Pos position, double length, int existTicks);
 void draw_anime_player(int id, Pos position, double size, int existTicks);
 void draw_anime_enemy_base(int id, Pos position, double size, int existTicks);
 void draw_anime_enemy_advanced(int id, Pos position, double size, int existTicks);
@@ -19,6 +18,15 @@ void draw_anime_enemy_bonus(int id, Pos position, double size, int existTicks);
 void draw_anime_victory(int id, Pos position, double size, int existTicks);
 void draw_anime_explode(int id, Pos position, double size, int explodeComp);
 void draw_anime_accelerate(Pos* start, Pos end, double accu);
+void draw_anime_move_down(Pos* start, Pos end, double speed);
+
+typedef enum {
+	Player_Ammo = 0, 
+	Basic_Enemy_Ammo = 1, 
+	Boss_Ammo = 2
+} AmmoType;
+
+void draw_anime_ammo_once(AmmoType ammoType, Pos position, Pos direction);
 
 typedef struct {
 	int id;

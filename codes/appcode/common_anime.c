@@ -39,3 +39,18 @@ void draw_anime_accelerate(Pos* start, Pos end, double accu) {
 	int t = (int)(2 * sqrt((end.x - start->x) / acc.accu.x) + 1);
 	add_func_to_timer(accelerate_anime_drawer, para, 1, Unique_ID("Accu"), t);
 }
+
+void draw_anime_move_down(Pos* start, Pos end, double speed) {
+	Pos dirt = sub_pos(end, *start);
+	AccuAnime acc = {
+		start,
+		new_pos((end.x - start->x) / 2, (end.y - start->y) / 2),
+		end,
+		new_pos(0, 0),
+		new_pos(speed * cos(dirt.x / pos_length(dirt)), speed * sin(dirt.y / pos_length(dirt))),
+	};
+	AccuAnime* para = (AccuAnime*)malloc(sizeof(AccuAnime));
+	*para = acc;
+	int t = (int)(pos_length(dirt) / speed);
+	add_func_to_timer(accelerate_anime_drawer, para, 1, Unique_ID("MoveDown"), t);
+}

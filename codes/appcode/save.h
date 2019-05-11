@@ -1,5 +1,6 @@
 #pragma once
 #include "linked_list.h"
+#include "vector.h"
 #include <stdio.h>
 
 typedef struct {
@@ -50,7 +51,6 @@ int save_data(FILE* file, const void* data, int size);
 ///      maxSize expects the length of the buffer
 ///visb: public
 int get_data(FILE* file, void* buffer, int maxSize);
-
 
 /////name: base64_encode
 /////func: encode binary bits to base64

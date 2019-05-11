@@ -153,6 +153,15 @@
     <Filter Include="Modules\Game">
       <UniqueIdentifier>{e185090c-aacb-4461-bc7d-46cfa8e13a70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Weapon">
+      <UniqueIdentifier>{6320f1ff-b18b-4267-a0d7-45748ddb31b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Ammo">
+      <UniqueIdentifier>{9786e988-ec23-45b3-a707-eed34c3c8d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\AmmoTest">
+      <UniqueIdentifier>{c976166e-2a59-446f-ab34-e888c22f6ae0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -302,8 +311,20 @@
     <ClInclude Include="..\..\codes\appcode\font_test.h">
       <Filter>UnitTest\FontsTest</Filter>
     </ClInclude>
-    <ClInclude Include="ingame.h">
+    <ClInclude Include="..\..\codes\appcode\weapon.h">
+      <Filter>Modules\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\plane.h">
+      <Filter>Modules\Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\ingame.h">
       <Filter>Modules\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\ammo.h">
+      <Filter>Modules\Ammo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\ammo_test.h">
+      <Filter>UnitTest\AmmoTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -484,8 +505,20 @@
     <ClCompile Include="..\..\codes\appcode\font_test.c">
       <Filter>UnitTest\FontsTest</Filter>
     </ClCompile>
-    <ClCompile Include="ingame.c">
+    <ClCompile Include="..\..\codes\appcode\weapon.c">
+      <Filter>Modules\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\plane.c">
+      <Filter>Modules\Plane</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\ingame.c">
       <Filter>Modules\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\ammo.c">
+      <Filter>Modules\Ammo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\ammo_test.c">
+      <Filter>UnitTest\AmmoTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -239,6 +239,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\appcode\ai.h" />
+    <ClInclude Include="..\..\codes\appcode\ammo.h" />
+    <ClInclude Include="..\..\codes\appcode\ammo_test.h" />
     <ClInclude Include="..\..\codes\appcode\animes.h" />
     <ClInclude Include="..\..\codes\appcode\anime_test.h" />
     <ClInclude Include="..\..\codes\appcode\collision.h" />
@@ -252,6 +254,7 @@
     <ClInclude Include="..\..\codes\appcode\gc_test.h" />
     <ClInclude Include="..\..\codes\appcode\hashmap.h" />
     <ClInclude Include="..\..\codes\appcode\hashmap_test.h" />
+    <ClInclude Include="..\..\codes\appcode\ingame.h" />
     <ClInclude Include="..\..\codes\appcode\input.h" />
     <ClInclude Include="..\..\codes\appcode\input_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
@@ -263,6 +266,7 @@
     <ClInclude Include="..\..\codes\appcode\missile_test.h" />
     <ClInclude Include="..\..\codes\appcode\particle.h" />
     <ClInclude Include="..\..\codes\appcode\particle_test.h" />
+    <ClInclude Include="..\..\codes\appcode\plane.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
     <ClInclude Include="..\..\codes\appcode\spline_interpolation.h" />
     <ClInclude Include="..\..\codes\appcode\spline_test.h" />
@@ -278,6 +282,7 @@
     <ClInclude Include="..\..\codes\appcode\ui_test.h" />
     <ClInclude Include="..\..\codes\appcode\vector.h" />
     <ClInclude Include="..\..\codes\appcode\vector_test.h" />
+    <ClInclude Include="..\..\codes\appcode\weapon.h" />
     <ClInclude Include="..\..\codes\libgraphics\exception.h" />
     <ClInclude Include="..\..\codes\libgraphics\extgraph.h" />
     <ClInclude Include="..\..\codes\libgraphics\gcalloc.h" />
@@ -287,10 +292,11 @@
     <ClInclude Include="..\..\codes\libgraphics\simpio.h" />
     <ClInclude Include="..\..\codes\libgraphics\strlib.h" />
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
-    <ClInclude Include="ingame.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\appcode\ai.c" />
+    <ClCompile Include="..\..\codes\appcode\ammo.c" />
+    <ClCompile Include="..\..\codes\appcode\ammo_test.c" />
     <ClCompile Include="..\..\codes\appcode\anime_ammo.c" />
     <ClCompile Include="..\..\codes\appcode\anime_bomb.c" />
     <ClCompile Include="..\..\codes\appcode\anime_enemy_advanced.c" />
@@ -312,6 +318,7 @@
     <ClCompile Include="..\..\codes\appcode\gc_test.c" />
     <ClCompile Include="..\..\codes\appcode\hashmap.c" />
     <ClCompile Include="..\..\codes\appcode\hashmap_test.c" />
+    <ClCompile Include="..\..\codes\appcode\ingame.c" />
     <ClCompile Include="..\..\codes\appcode\input.c" />
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\listbox.c" />
@@ -321,6 +328,7 @@
     <ClCompile Include="..\..\codes\appcode\parabola.c" />
     <ClCompile Include="..\..\codes\appcode\particle.c" />
     <ClCompile Include="..\..\codes\appcode\particle_test.c" />
+    <ClCompile Include="..\..\codes\appcode\plane.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />
@@ -342,6 +350,7 @@
     <ClCompile Include="..\..\codes\appcode\timer_test.c" />
     <ClCompile Include="..\..\codes\appcode\vector.c" />
     <ClCompile Include="..\..\codes\appcode\vector_test.c" />
+    <ClCompile Include="..\..\codes\appcode\weapon.c" />
     <ClCompile Include="..\..\codes\libgraphics\exceptio.c" />
     <ClCompile Include="..\..\codes\libgraphics\genlib.c" />
     <ClCompile Include="..\..\codes\libgraphics\graphics.c" />
@@ -349,7 +358,6 @@
     <ClCompile Include="..\..\codes\libgraphics\simpio.c" />
     <ClCompile Include="..\..\codes\libgraphics\strlib.c" />
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c" />
-    <ClCompile Include="ingame.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

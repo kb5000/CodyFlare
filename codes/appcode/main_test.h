@@ -18,5 +18,6 @@
 #include "hashmap_test.h"
 #include "spline_test.h"
 #include "font_test.h"
+#include "ammo_test.h"
 
 void tests();

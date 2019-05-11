@@ -65,6 +65,8 @@ Pos rect_to_polar(Pos pos);
 ///visb: public
 Pos polar_to_rect(Pos pos);
 
+int pos_in_rect(Pos pos, Pos downLeft, Pos upRight);
+
 ///name: show_now
 ///func: update the screen
 ///visb: public

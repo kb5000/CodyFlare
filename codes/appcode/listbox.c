@@ -92,10 +92,12 @@ static void draw_list_entries(ListHandler* list, int n, Pos position, double yBi
 
 void dir_to_change(int key, Pos* yBias, int event) {
 	if (key == 0x26 && event == 0 && currentMovingFlag == 0) {			//up
+		yBias->x = 0;
 		draw_anime_accelerate(yBias, new_pos(-0.2, 0), 0.005);
 		currentMovingFlag = 1;
 		diffListPos = -1;
 	} else if (key == 0x28 && event == 0 && currentMovingFlag == 0) {		//down
+		yBias->x = 0;
 		draw_anime_accelerate(yBias, new_pos(+0.2, 0), 0.005);
 		currentMovingFlag = 1;
 		diffListPos = 1;
