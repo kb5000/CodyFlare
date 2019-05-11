@@ -77,7 +77,7 @@ void show_missile(Pos a, Pos* b, int num,
 				  int isDirectAttack, 
 				  void explode_anime(int id, Pos position, double size),
  double explodeSize, 
-				  void hit_handler(Pos position), double explodeRadius, int hitID) {
+				  void hit_handler(Pos position, int hitID), double explodeRadius, int hitID) {
 	Missile m = {
 		a,
 		new_pos(0, 0),

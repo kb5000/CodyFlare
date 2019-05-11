@@ -267,6 +267,7 @@
     <ClInclude Include="..\..\codes\appcode\particle.h" />
     <ClInclude Include="..\..\codes\appcode\particle_test.h" />
     <ClInclude Include="..\..\codes\appcode\plane.h" />
+    <ClInclude Include="..\..\codes\appcode\plane_test.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
     <ClInclude Include="..\..\codes\appcode\spline_interpolation.h" />
     <ClInclude Include="..\..\codes\appcode\spline_test.h" />
@@ -329,6 +330,7 @@
     <ClCompile Include="..\..\codes\appcode\particle.c" />
     <ClCompile Include="..\..\codes\appcode\particle_test.c" />
     <ClCompile Include="..\..\codes\appcode\plane.c" />
+    <ClCompile Include="..\..\codes\appcode\plane_test.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />

@@ -162,6 +162,9 @@
     <Filter Include="UnitTest\AmmoTest">
       <UniqueIdentifier>{c976166e-2a59-446f-ab34-e888c22f6ae0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitTest\PlaneTest">
+      <UniqueIdentifier>{958cea3c-1f51-427a-943c-e85c813294ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -325,6 +328,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ammo_test.h">
       <Filter>UnitTest\AmmoTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\plane_test.h">
+      <Filter>UnitTest\PlaneTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -519,6 +525,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ammo_test.c">
       <Filter>UnitTest\AmmoTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\plane_test.c">
+      <Filter>UnitTest\PlaneTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

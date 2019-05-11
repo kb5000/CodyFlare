@@ -22,5 +22,6 @@ void tests() {
 	//test_of_collision();
 	//test_of_slide_bar();
 	//test_of_list_box();
-	test_of_ammo();
+	//test_of_ammo();
+	test_of_plane();
 }

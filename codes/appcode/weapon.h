@@ -8,7 +8,7 @@ typedef enum {
 
 void shoot_gun(int isEnemy, Pos startPos, Pos direction);
 
-void shoot_missile(int isEnemy, Pos startPos, Pos* target, void hitHandler(Pos* pos));
+void shoot_missile(int isEnemy, Pos startPos, Pos * target, int targetID, void hitHandler(Pos pos, int hitID));
 
 void shoot_bomb(int isEnemy, Pos startPos);
 

@@ -17,4 +17,4 @@ void show_missile(Pos start, Pos* b, int num, Color color, double speed,
  int isDirectAttack, 
 					void explode_anime(int id, Pos position, double size),
  double explodeSize, 
-					void hit_handler(Pos position), double explodeRadius, int hitID);
+					void hit_handler(Pos position, int hitID), double explodeRadius, int hitID);

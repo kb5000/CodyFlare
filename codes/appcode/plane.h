@@ -21,7 +21,7 @@ typedef struct {
 
 void init_plane_list();
 
-Plane create_plane(int id, PlaneType type, Pos initPosition, int health, int missileTime, int numOfBombs, int ammoTime); 
+Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs); 
 
 void add_plane(Plane plane);
 

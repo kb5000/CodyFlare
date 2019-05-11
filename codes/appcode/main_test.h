@@ -19,5 +19,6 @@
 #include "spline_test.h"
 #include "font_test.h"
 #include "ammo_test.h"
+#include "plane_test.h"
 
 void tests();

@@ -13,7 +13,7 @@ void bb(int id, Pos pos, double size) {
 	draw_anime_explode(id, pos, size, 3);
 }
 
-void exp_handler(Pos pos) {
+void exp_handler(Pos pos, int id) {
 	static int n = 0;
 	n++;
 	sprintf(buffer, "Hit on (%.2lf, %.2lf), %d times", pos.x, pos.y, n);

@@ -2,22 +2,26 @@
 #include <stdlib.h>
 #include "timer.h"
 #include "collision.h"
+#include "input.h"
+#include "ai.h"
+#include "weapon.h"
 
 static ListHandler planeList;
+static int planeID = 0;
 
 void init_plane_list() {
 	planeList = new_empty_list();
 }
 
-Plane create_plane(int id, PlaneType type, Pos initPosition, int health, int missileTime, int numOfBombs, int ammoTime) {
+Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs) {
 	Plane res = {
-		id, 
+		0,
 		type,
 		initPosition,
 		health,
-		missileTime,
+		0,
 		numOfBombs,
-		ammoTime,
+		0,
 	};
 	return res;
 }
@@ -26,6 +30,7 @@ void add_plane(Plane plane) {
 	hnew(Plane, pln);
 	*pln = plane;
 	calls(planeList, push_back, pln);
+	pln->id = planeID++;
 	switch (plane.type) {
 	case Player_Plane:
 		break;
@@ -66,8 +71,35 @@ void remove_plane_by_id(int id) {
 	calls(planeList, remove_if, remove_plane_helper, &id);
 }
 
-void update_plane(void* unuseful) {
+void update_each_plane(Plane* plane) {
+	MovePen(plane->position.x - 0.2, plane->position.y);
+	DrawLine(0.4, 0);
+	switch (plane->type) {
+	case Player_Plane:
+		move_by_dir_key(&plane->position, new_pos(0.1, 0.1));
+		if (plane->ammoTime++ == 6) {
+			shoot_gun(Player_Ammo, add_pos(plane->position, new_pos(0, 0.1)), new_pos(0, 0.1));
+			plane->ammoTime = 0;
+		}
+		break;
+	case Basic_Enemy_Plane:
+		plane->position = basic_enemy_move(plane->position);
+		if (plane->ammoTime++ == 16) {
+			shoot_gun(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(0, 0.1)), new_pos(0, -0.1));
+			plane->ammoTime = 0;
+		}
+		break;
+	case Advanced_Enemy_Plane:
+		break;
+	case Swift_Enemy_Plane:
+		break;
+	default:
+		break;
+	}
+}
 
+void update_plane(void* unuseful) {
+	calls(planeList, for_each, update_each_plane);
 }
 
 void start_display_planes() {
