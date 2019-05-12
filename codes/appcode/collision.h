@@ -10,9 +10,10 @@ typedef struct {
 	int id;
 	ColType colType;
 	Pos start, end;
+	int isValid;
 } CollisionObj;
 
-typedef void ColHandler(int id1, int id2, void* para);
+typedef void ColHandler(int group1, int id1, int group2, int id2, void* para);
 
 ///these are functions to control collision system
 

@@ -16,11 +16,11 @@ void shoot_missile(int isEnemy, Pos startPos, Pos* target, int targetID, void hi
 	switch (isEnemy) {
 	case Player_Ammo:
 		show_missile(startPos, target, 1, color_by_rgb(225, 158, 68),
-					 0.1, PI / 3, 1.4, 60, 1, anime_explode_pack, 0.6, hitHandler, 0.1, targetID);
+					 0.1, PI / 3, 1.4, 80, 1, anime_explode_pack, 0.6, hitHandler, 0.1, targetID);
 		break;
 	case Basic_Enemy_Ammo:
 		show_missile(startPos, target, 1, color_by_rgb(128, 88, 68),
-					 0.1, PI / 3, 1.4, 80, 1, anime_explode_pack, 0.6, hitHandler, 0.1, targetID);
+					 0.1, PI / 3, 1.2, 80, 1, anime_explode_pack, 0.6, hitHandler, 0.1, targetID);
 		break;
 	case Boss_Ammo:
 		show_missile(startPos, target, 6, color_by_rgb(64, 128, 128),
@@ -29,4 +29,8 @@ void shoot_missile(int isEnemy, Pos startPos, Pos* target, int targetID, void hi
 	default:
 		break;
 	}
+}
+
+void shoot_bomb(int isEnemy, Pos startPos) {
+	
 }

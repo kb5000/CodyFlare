@@ -48,10 +48,15 @@ void update_each_ammo(Ammo* ammo) {
 	} else {
 		ammo->pos = add_pos(ammo->pos, pos_mut(ammo->dirt, playerAmmoSpeed / pos_length(ammo->dirt)));
 	}
+	update_col_info(ammo->isEnemy ? ENM_AMMO_COL_ID : PLR_AMMO_COL_ID, ammo->colObjID, ammo->pos, add_pos(ammo->pos, ammo->dirt));
 }
 
 int is_invalid_ammo(Ammo* ammo, void* unuseful) {
-	return !ammo->isValid || !pos_in_rect(ammo->pos, new_pos(0, 0), new_pos(10, 7));
+	if (!ammo->isValid || !pos_in_rect(ammo->pos, new_pos(0, 0), new_pos(10, 7))) {
+		remove_col_obj(ammo->isEnemy ? ENM_AMMO_COL_ID : PLR_AMMO_COL_ID, ammo->colObjID);
+		return 1;
+	}
+	return 0;
 }
 
 void update_ammo(void* unuseful) {

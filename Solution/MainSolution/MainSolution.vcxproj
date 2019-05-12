@@ -246,6 +246,7 @@
     <ClInclude Include="..\..\codes\appcode\collision.h" />
     <ClInclude Include="..\..\codes\appcode\collision_test.h" />
     <ClInclude Include="..\..\codes\appcode\color.h" />
+    <ClInclude Include="..\..\codes\appcode\col_updater.h" />
     <ClInclude Include="..\..\codes\appcode\font.h" />
     <ClInclude Include="..\..\codes\appcode\font_test.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
@@ -312,6 +313,7 @@
     <ClCompile Include="..\..\codes\appcode\collision.c" />
     <ClCompile Include="..\..\codes\appcode\collision_test.c" />
     <ClCompile Include="..\..\codes\appcode\color.c" />
+    <ClCompile Include="..\..\codes\appcode\col_updater.c" />
     <ClCompile Include="..\..\codes\appcode\common_anime.c" />
     <ClCompile Include="..\..\codes\appcode\font.c" />
     <ClCompile Include="..\..\codes\appcode\font_test.c" />

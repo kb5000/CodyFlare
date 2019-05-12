@@ -17,7 +17,7 @@ typedef struct {
 
 Rect r1, r2;
 
-void collision_handler(int id1, int id2, void* unuseful) {
+void collision_handler(int group1, int id1, int group2, int id2, void* unuseful) {
 	sprintf(lebalText, "the %d coled with %d", id1, id2);
 }
 

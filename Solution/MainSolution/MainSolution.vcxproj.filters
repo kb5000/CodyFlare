@@ -165,6 +165,9 @@
     <Filter Include="UnitTest\PlaneTest">
       <UniqueIdentifier>{958cea3c-1f51-427a-943c-e85c813294ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\ColUpdater">
+      <UniqueIdentifier>{dee4d161-3f7b-4b52-804e-c99d78eba92e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -331,6 +334,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\plane_test.h">
       <Filter>UnitTest\PlaneTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\col_updater.h">
+      <Filter>Modules\ColUpdater</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -528,6 +534,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\plane_test.c">
       <Filter>UnitTest\PlaneTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\col_updater.c">
+      <Filter>Modules\ColUpdater</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

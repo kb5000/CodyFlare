@@ -31,6 +31,8 @@ Plane* find_dangerous_plane();
 
 void remove_plane_by_id(int id);
 
+void generate_plane(void * unuseful);
+
 void start_display_planes();
 
 void stop_display_planes();

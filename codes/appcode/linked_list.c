@@ -255,8 +255,7 @@ void my_list_remove_if(ListHandler* self, int func(void*, void*), void* para) {
 		node = node->next;
 		self->pop_front(self);
 	}
-	if (!node) return;
-	while (node->next) {
+	while (node && node->next) {
 		if (func(node->next->data, para)) {
 			self->nowpos = node;
 			self->remove_after(self);

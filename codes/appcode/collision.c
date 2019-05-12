@@ -16,6 +16,8 @@ typedef struct {
 static ListHandler globalCollisionList;
 static ListHandler globalCollisionHandler;
 
+static int invalidFlag = 0;
+
 void init_col_detector() {
 	globalCollisionList = new_empty_list();
 	globalCollisionHandler = new_empty_list();
@@ -64,6 +66,7 @@ CollisionObj create_col_obj(ColType colType, Pos start, Pos end, int id) {
 		id,
 		colType,
 		start, end,
+		1
 	};
 	return res;
 }
@@ -112,8 +115,12 @@ CollisionObj* find_col_obj(int groupID, int objID) {
 
 void remove_col_obj(int groupID, int objID) {
 	CollisionGroup* cg;
-	if (cg = calls(globalCollisionList, find_if, col_group_equal, &groupID)) {
-		calls(cg->objs, remove_if, col_obj_rm_equal, &objID);
+	if (cg = (CollisionGroup*)calls(globalCollisionList, find_if, col_group_equal, &groupID)) {
+		//calls(cg->objs, remove_if, col_obj_rm_equal, &objID);
+		for (Node* node = cg->objs.head; node; node = node->next) {
+			CollisionObj* co = (CollisionObj*)node->data;
+			if (co->id == objID) co->isValid = 0;
+		}
 	}
 }
 
@@ -154,7 +161,8 @@ static int box_line_col_dec(CollisionObj* b, CollisionObj* l) {
 }
 
 static int line_line_col_dec(CollisionObj* a, CollisionObj* b) {
-	return line_line_base_dec(a->start, a->end, b->start, b->end);
+	int t = line_line_base_dec(a->start, a->end, b->start, b->end);
+	return t;
 }
 
 static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode* colNode) {
@@ -163,6 +171,7 @@ static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode*
 		for (Node* r = rhs->objs.head; l && r; l && r && (r = r->next)) {
 			CollisionObj* lc = (CollisionObj*)l->data;
 			CollisionObj* rc = (CollisionObj*)r->data;
+			if (!lc->isValid || !rc->isValid) continue;
 			int collsionFlag = 0;
 			//call corresponding function by their colType
 			if (lc->colType == Col_Line && rc->colType == Col_Line) {
@@ -174,9 +183,13 @@ static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode*
 			} else if (lc->colType == Col_Line && rc->colType == Col_Box) {
 				if (box_line_col_dec(rc, lc)) collsionFlag = 1;
 			}
-			if (collsionFlag) colNode->colHandler(lc->id, rc->id, colNode->para);
+			if (collsionFlag) colNode->colHandler(lhs->id, lc->id, rhs->id, rc->id, colNode->para);
 		}
 	}
+}
+
+static int remove_invalid_col_objs(CollisionObj* co, void* unuseful) {
+	return !co->isValid;
 }
 
 static void col_detection(void* unuseful) {
@@ -194,6 +207,12 @@ static void col_detection(void* unuseful) {
 		}
 		stabler = stabler->next;
 		floater = stabler->next;
+	}
+	Node* node = globalCollisionList.head;
+	while (node) {
+		CollisionGroup* cg = (CollisionGroup*)node->data;
+		calls(cg->objs, remove_if, remove_invalid_col_objs, NULL);
+		node = node->next;
 	}
 }
 
@@ -218,6 +237,7 @@ void stop_detection() {
 
 void update_col_info(int groupID, int objID, Pos start, Pos end) {
 	CollisionObj* obj = find_col_obj(groupID, objID);
+	if (!obj) return;
 	obj->start = start;
 	obj->end = end;
 }
