@@ -8,3 +8,5 @@ void player_ammo_enemy_plane_col(int group1, int id1, int group2, int id2, void*
 void enemy_ammo_player_plane_col(int group1, int id1, int group2, int id2, void* unuseful);
 
 void missile_target_enemy(Pos pos, int id);
+
+void missile_target_by_player(Pos pos, int id);

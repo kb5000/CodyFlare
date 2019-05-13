@@ -16,11 +16,7 @@ void player_ammo_enemy_plane_col(int group1, int id1, int group2, int id2, void*
 	set_ammo_invalid(id2);
 	Plane* pln = find_plane_by_id(id1);
 	if (!pln) return;
-	pln->health -= 5;
-	if (pln->health <= 0) {
-		draw_anime_explode(17896, pln->position, 0.8, 6);
-		remove_plane_by_id(id1);
-	}
+	plane_explode(pln, 5);
 }
 
 
@@ -32,21 +28,19 @@ void enemy_ammo_player_plane_col(int group1, int id1, int group2, int id2, void*
 	set_ammo_invalid(id2);
 	Plane* pln = find_plane_by_id(id1);
 	if (!pln) return;
-	pln->health -= 2;
-	if (pln->health <= 0) {
-		draw_anime_explode(17896, pln->position, 0.8, 6);
-		remove_plane_by_id(id1);
-	}
+	plane_explode(pln, 2);
 }
 
 void missile_target_enemy(Pos pos, int id) {
 	Plane* pln = find_plane_by_id(id);
 	if (!pln) return;
-	pln->health -= 5;
-	if (pln->health <= 0) {
-		draw_anime_explode(17896, pln->position, 0.8, 6);
-		remove_plane_by_id(id);
-	}
+	plane_explode(pln, 5);
+}
+
+void missile_target_by_player(Pos pos, int id) {
+	Plane* pln = find_plane_by_id(id);
+	if (!pln) return;
+	plane_explode(pln, 12);
 }
 
 

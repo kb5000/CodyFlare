@@ -9,7 +9,7 @@
 #include <string.h>
 
 void draw_anime_shield(int id, Pos position, double size, int existTicks);
-void draw_anime_bomb(int id, Pos position, double size, double speed);
+void draw_anime_bomb(int id, Pos position, double size, double speed, Color color, void explode_handler(Pos bombPos));
 void draw_anime_player(int id, Pos position, double size, int existTicks);
 void draw_anime_enemy_base(int id, Pos position, double size, int existTicks);
 void draw_anime_enemy_advanced(int id, Pos position, double size, int existTicks);

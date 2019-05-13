@@ -11,6 +11,7 @@
 static ListHandler planeList;
 static int planeID = 0;
 static int planeRefreshTime = 0;
+static int score = 0;
 
 void init_plane_list() {
 	planeList = new_empty_list();
@@ -67,9 +68,9 @@ Plane* find_plane_by_id(int id) {
 }
 
 Plane* find_dangerous_plane() {
-	if (planeList.head) return NULL;
-	Plane* dangp = (Plane*)planeList.head->data;
-	for (Node* node = planeList.head; node; node = node->next) {
+	if (!planeList.head || !planeList.head->next) return NULL;
+	Plane* dangp = (Plane*)planeList.head->next->data;
+	for (Node* node = planeList.head->next; node; node = node->next) {
 		Plane* plane = (Plane*)node->data;
 		if (plane->position.y < dangp->position.y) dangp = plane;
 	}
@@ -102,11 +103,13 @@ void update_each_plane(Plane* plane) {
 	DrawLine(0.4, 0);
 	switch (plane->type) {
 	case Player_Plane:
+		if (plane->position.x < 0 && plane->position.y < 0) return;
 		move_by_dir_key(&plane->position, new_pos(0.1, 0.1));
 		if (plane->position.x < 0.2) plane->position.x = 0.2;
 		if (plane->position.x > 9.8) plane->position.x = 9.8;
 		if (plane->position.y < 0.2) plane->position.y = 0.2;
 		if (plane->position.y > 6.8) plane->position.y = 6.8;
+		plane->missileTime++;
 		if (plane->ammoTime++ == 3) {
 			shoot_gun(Player_Ammo, add_pos(plane->position, new_pos(0, 0.1)), new_pos(0, 0.1));
 			plane->ammoTime = 0;
@@ -149,6 +152,10 @@ void update_each_plane(Plane* plane) {
 		plane->position = swift_enemy_move(plane->position, pos);
 		update_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0)),
 						add_pos(plane->position, new_pos(0.2, 0)));
+		if (pos_length(sub_pos(pos, plane->position)) < 0.8) {
+			shoot_bomb(Basic_Enemy_Ammo, plane->position);
+			plane->position = new_pos(-1, -1);
+		}
 	}
 		break;
 	default:
@@ -197,4 +204,41 @@ void start_display_planes() {
 
 void stop_display_planes() {
 	remove_funcs_from_timer(285744);
+}
+
+void plane_explode(Plane* plane, int health) {
+	plane->health -= health;
+	if (plane->health <= 0) {
+		add_score(plane->type);
+		draw_anime_explode(17896, plane->position, 0.8, 6);
+		remove_plane_by_id(plane->id);
+	}
+}
+
+ListHandler planes() {
+	return planeList;
+}
+
+void clear_score() {
+	score = 0;
+}
+
+void add_score(PlaneType plane) {
+	switch (plane) {
+	case Basic_Enemy_Plane:
+		score += 50;
+		break;
+	case Advanced_Enemy_Plane:
+		score += 100;
+		break;
+	case Swift_Enemy_Plane:
+		score += 80;
+		break;
+	default:
+		break;
+	}
+}
+
+int current_score() {
+	return score;
 }
