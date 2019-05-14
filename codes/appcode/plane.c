@@ -104,7 +104,7 @@ void update_each_plane(Plane* plane) {
 	switch (plane->type) {
 	case Player_Plane:
 		if (plane->position.x < 0 && plane->position.y < 0) return;
-		move_by_dir_key(&plane->position, new_pos(0.1, 0.1));
+		move_by_dir_key(&plane->position, new_pos(0.13, 0.1));
 		if (plane->position.x < 0.2) plane->position.x = 0.2;
 		if (plane->position.x > 9.8) plane->position.x = 9.8;
 		if (plane->position.y < 0.2) plane->position.y = 0.2;

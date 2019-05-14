@@ -20,6 +20,8 @@ void draw_anime_explode(int id, Pos position, double size, int explodeComp);
 void draw_anime_accelerate(Pos* start, Pos end, double accu);
 void draw_anime_move_down(Pos* start, Pos end, double speed);
 
+void draw_front_sight(Pos* posp);
+
 typedef enum {
 	Player_Ammo = 0, 
 	Basic_Enemy_Ammo = 1, 

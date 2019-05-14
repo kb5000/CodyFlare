@@ -568,5 +568,8 @@
     <ClCompile Include="..\..\codes\appcode\player_control.c">
       <Filter>Modules\PlayerControl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_front_sight.c">
+      <Filter>Modules\Animes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

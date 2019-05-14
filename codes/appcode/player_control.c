@@ -3,12 +3,15 @@
 #include "weapon.h"
 #include "input.h"
 #include "col_updater.h"
+#include <stdlib.h>
 
 static Pos noTargetPos = {5, 0};
+static Pos* delayPos;
+static int firstPressFlag = 0, firstInFlag = 1;
 
 void start_control() {
 	add_to_key_process(' ', launch_missile, NULL);
-	add_to_key_process('B', place_bomb, NULL);
+	add_to_key_process('F', place_bomb, NULL);
 }
 
 void launch_missile(int key, void* unuseful, int event) {
@@ -26,11 +29,24 @@ void launch_missile(int key, void* unuseful, int event) {
 }
 
 void place_bomb(int key, void* unuseful, int event) {
-	if (event != 0) return;
-	Plane* player = find_plane_by_id(0);
-	if (!player) return;
-	if (player->numOfBombs > 0) {
-		player->numOfBombs--;
-		shoot_bomb(0, player->position);
+	if (event == 0) {
+		Plane* player = find_plane_by_id(0);
+		if (!player) return;
+		if (firstPressFlag == 0) {
+			firstPressFlag = 1;
+			delayPos = (Pos*)malloc(sizeof(Pos));
+			*delayPos = player->position;
+			add_func_to_timer(draw_front_sight, delayPos, 1, 998877636, -1);
+		}
+	} else if (event == 1 && firstPressFlag) {
+		firstPressFlag = 0;
+		//firstInFlag = 1;
+		Plane* player = find_plane_by_id(0);
+		if (!player) return;
+		if (player->numOfBombs > 0) {
+			player->numOfBombs--;
+			shoot_bomb(0, *delayPos);
+			*delayPos = new_pos(-1, -1);
+		}
 	}
 }
