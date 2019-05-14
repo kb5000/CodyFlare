@@ -150,6 +150,9 @@
     <Filter Include="Modules\Plane">
       <UniqueIdentifier>{712f8bb2-155b-4552-8f55-63c47f957d1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitTest\ObjectTest">
+      <UniqueIdentifier>{a1fc05f5-a94d-4869-b3b3-aab922f966e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -298,6 +301,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\font_test.h">
       <Filter>UnitTest\FontsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="object_test.h">
+      <Filter>UnitTest\ObjectTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -477,6 +483,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\font_test.c">
       <Filter>UnitTest\FontsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="object_test.c">
+      <Filter>UnitTest\ObjectTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
