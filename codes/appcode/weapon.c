@@ -40,10 +40,12 @@ void bomb_explode_handler(Pos bombPos) {
 		Plane* pln = (Plane*)node->data;
 		if (!pln) return;
 		double len = pos_length(sub_pos(pln->position, bombPos));
-		if (len < 1.3) {
-			if (pln->type == Player_Plane)
-				pln->health -= (int)(30 / (2 + 2 * len));
-			else pln->health -= (int)(42 / (1 + 2 * len));
+		if (len < 1.5) {
+			if (pln->type == Player_Plane) {
+				if (len < 0.7)
+					pln->health -= (int)(30 / (2 + 2 * len));
+			}
+			else pln->health -= (int)(42 / (1 + 1.6 * len));
 			if (pln->health <= 0) {
 				add_score(pln->type);
 				draw_anime_explode(17896, pln->position, 0.8, 6);

@@ -171,6 +171,9 @@
     <Filter Include="Modules\PlayerControl">
       <UniqueIdentifier>{6c0a06e2-5dc3-43bd-85d0-03468a5fad2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\FixObj">
+      <UniqueIdentifier>{41e2be60-2c70-4357-8c96-b2ea90b94bb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -343,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\player_control.h">
       <Filter>Modules\PlayerControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\fix_obj.h">
+      <Filter>Modules\FixObj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -546,6 +552,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\player_control.c">
       <Filter>Modules\PlayerControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\fix_obj.c">
+      <Filter>Modules\FixObj</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

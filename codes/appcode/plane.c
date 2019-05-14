@@ -133,7 +133,7 @@ void update_each_plane(Plane* plane) {
 		if (plane->position.y > pos.y + 2) {
 			if (plane->missileTime++ == 60) {
 				shoot_missile(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(0, 0.1)), player_plane_pos(),
-							  0, missile_target_enemy); //unimplemented!
+							  0, missile_target_enemy); 
 				plane->missileTime = 0;
 			}
 		} else {
@@ -152,7 +152,7 @@ void update_each_plane(Plane* plane) {
 		plane->position = swift_enemy_move(plane->position, pos);
 		update_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0)),
 						add_pos(plane->position, new_pos(0.2, 0)));
-		if (pos_length(sub_pos(pos, plane->position)) < 0.8) {
+		if (pos_length(sub_pos(pos, plane->position)) < 0.7) {
 			shoot_bomb(Basic_Enemy_Ammo, plane->position);
 			plane->position = new_pos(-1, -1);
 		}
