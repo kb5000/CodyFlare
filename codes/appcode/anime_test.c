@@ -43,7 +43,7 @@ void test_of_anime_accelerate() {
 
 void test_of_anime_bomb() {
 	common_anime_test_init();
-	draw_anime_bomb(12, new_pos(5, 3.5), 1, 1, color_by_name("Black"), NULL);
+	draw_anime_bomb(12, new_pos(5, 3.5), 1, 1);
 }
 
 void show_parabola(Pos* pos) {

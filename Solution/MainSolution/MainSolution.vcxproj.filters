@@ -168,9 +168,6 @@
     <Filter Include="Modules\ColUpdater">
       <UniqueIdentifier>{dee4d161-3f7b-4b52-804e-c99d78eba92e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\PlayerControl">
-      <UniqueIdentifier>{6c0a06e2-5dc3-43bd-85d0-03468a5fad2b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -340,9 +337,6 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\col_updater.h">
       <Filter>Modules\ColUpdater</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\codes\appcode\player_control.h">
-      <Filter>Modules\PlayerControl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -543,9 +537,6 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\col_updater.c">
       <Filter>Modules\ColUpdater</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\player_control.c">
-      <Filter>Modules\PlayerControl</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

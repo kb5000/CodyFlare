@@ -36,11 +36,3 @@ void generate_plane(void * unuseful);
 void start_display_planes();
 
 void stop_display_planes();
-
-void plane_explode(Plane* plane, int health);
-
-void clear_score();
-
-void add_score(PlaneType plane);
-
-int current_score();
