@@ -102,3 +102,12 @@ DrawFuncHolder create_function_holder, 0(Pos(*func)(DrawFuncHolder* para), Pos o
 	return res;
 }
 #endif // NEW_COLOR_SYSTEM
+
+void draw_plain_lines(Vector* lines) {
+	for (unsigned i = 0; i < pcall0(lines, len); i++) {
+		RectPos* rp = (RectPos*)pcalls(lines, at, i);
+		if (!rp) continue;
+		MovePen(rp->start.x, rp->start.y);
+		DrawLine(rp->end.x - rp->start.x, rp->end.y - rp->start.y);
+	}
+}

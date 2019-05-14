@@ -265,6 +265,7 @@
     <ClInclude Include="..\..\codes\appcode\menu.h" />
     <ClInclude Include="..\..\codes\appcode\missile.h" />
     <ClInclude Include="..\..\codes\appcode\missile_test.h" />
+    <ClInclude Include="..\..\codes\appcode\object_test.h" />
     <ClInclude Include="..\..\codes\appcode\particle.h" />
     <ClInclude Include="..\..\codes\appcode\particle_test.h" />
     <ClInclude Include="..\..\codes\appcode\plane.h" />
@@ -294,7 +295,6 @@
     <ClInclude Include="..\..\codes\libgraphics\simpio.h" />
     <ClInclude Include="..\..\codes\libgraphics\strlib.h" />
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
-    <ClInclude Include="object_test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\appcode\ai.c" />
@@ -307,6 +307,7 @@
     <ClCompile Include="..\..\codes\appcode\anime_enemy_bonus.c" />
     <ClCompile Include="..\..\codes\appcode\anime_enemy_boss.c" />
     <ClCompile Include="..\..\codes\appcode\anime_explode.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_objs.c" />
     <ClCompile Include="..\..\codes\appcode\anime_player.c" />
     <ClCompile Include="..\..\codes\appcode\anime_shield.c" />
     <ClCompile Include="..\..\codes\appcode\anime_test.c" />
@@ -329,6 +330,7 @@
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\missile.c" />
     <ClCompile Include="..\..\codes\appcode\missile_test.c" />
+    <ClCompile Include="..\..\codes\appcode\object_test.c" />
     <ClCompile Include="..\..\codes\appcode\parabola.c" />
     <ClCompile Include="..\..\codes\appcode\particle.c" />
     <ClCompile Include="..\..\codes\appcode\particle_test.c" />
@@ -363,7 +365,6 @@
     <ClCompile Include="..\..\codes\libgraphics\simpio.c" />
     <ClCompile Include="..\..\codes\libgraphics\strlib.c" />
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c" />
-    <ClCompile Include="object_test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

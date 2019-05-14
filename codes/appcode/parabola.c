@@ -35,7 +35,8 @@ ParabolaHolder create_parabola(int id, Pos p1, Pos p2, Pos p3, Color color_fun(D
 }
 
 void draw_parabola(ParabolaHolder ph, int existInteval) {
-	hnew(ParabolaHolder, php);
-	*php = ph;
-	add_func_to_timer(draw_one_parabola, php, 1, ph.id, existInteval);
+	//hnew(ParabolaHolder, php);
+	//*php = ph;
+	//add_func_to_timer(draw_one_parabola, php, 1, ph.id, existInteval);
+	draw_one_parabola(&ph);
 }

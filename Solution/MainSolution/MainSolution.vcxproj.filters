@@ -168,6 +168,9 @@
     <Filter Include="Modules\ColUpdater">
       <UniqueIdentifier>{dee4d161-3f7b-4b52-804e-c99d78eba92e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitTest\ObjectTest">
+      <UniqueIdentifier>{d7e558fd-d303-4bfe-a052-ae4c6a4aa9d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -337,6 +340,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\col_updater.h">
       <Filter>Modules\ColUpdater</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\object_test.h">
+      <Filter>UnitTest\ObjectTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +543,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\col_updater.c">
       <Filter>Modules\ColUpdater</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\object_test.c">
+      <Filter>UnitTest\ObjectTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_objs.c">
+      <Filter>Modules\Animes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

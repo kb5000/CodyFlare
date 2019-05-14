@@ -1,25 +1,29 @@
-#include "spline_test.h"
+#include "animes.h"
 #include "spline_interpolation.h"
-#include "timer.h"
-#include "utility.h"
-#include "vector.h"
-#include "object_test.h"
-#include<math.h>
-void test_of_object()
-{
-	InitGraphics();
-	init_global_timer();
-	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
-	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
-	start_global_timer();
-	enemy1_drawer();
-	Myplane();
-	enemy2_drawer();
+void Linkline(double x1, double x2, double y1, double y2, Vector* buffer);
+
+Pos draw_enemy1_2(DrawFuncHolder* dfh) {
+	double t = dfh->tNow;
+	double cs = cos(t), ss = sin(t), c4s = cos(4 * t), s4s = sin(4 * t);
+	return new_pos(-4 * cs * s4s - ss * c4s + cs, -4 * ss * s4s + cs * c4s - ss);
 }
 
+void draw_enemy_t(double* t) {
+	double H = GetWindowHeight(), W = GetWindowWidth();
+	double a = W / 4;//a,b为中心点坐标
+	double b = H / 2;
+	hnew(DrawFuncHolder, dfh);
+	*dfh = create_function_holder(draw_enemy1_2, new_pos(a, b), new_pos(0.25, 0), 0.25, 0, 2 * PI, 0.1, *t, color_by_name("Black"), 1, 0);
+	draw_function(dfh);
+	free(dfh);
+	*t += 0;
+}
+
+//desparated
 //这个东西应该是可以转动的...但是做不得
 void enemy1_drawer()
 {
+	//Vector lines = gen_empty_vector(RectObj);
 	double x[6], y[6];
 	double H = GetWindowHeight(), W = GetWindowWidth();
 	double a = W / 4;//a,b为中心点坐标
@@ -52,6 +56,7 @@ void enemy1_drawer()
 			y[j] = ty;
 		}
 	}
+
 }
 
 void enemy2_drawer()
@@ -78,10 +83,11 @@ void enemy2_drawer()
 	x[14] = a;y[14] = b - 2.5 * e;
 	x[15] = (x[14] + x[7]) / 2.0;y[15] = (y[14] + y[7]) / 2.0;
 
-	Vector v;Pos temp;Spline* sp;
+	//Vector v;Pos temp;Spline* sp;
 
-	int i = 0;
-	for (;i < 2;i++)
+	hnew(Vector, buf);
+	*buf = gen_empty_vector(RectPos);
+	for (int i = 0; i < 2; i++)
 	{
 		double tx[20], ty[20];
 		int j = 0;
@@ -92,22 +98,23 @@ void enemy2_drawer()
 			for (j = 0;j <= 15;j++)
 				tx[j] = 2 * a - x[j], ty[j] = y[j];
 
-		Linkline(tx[1], tx[2], ty[1], ty[2]);
-		Linkline(tx[2], tx[3], ty[2], ty[3]);
-		Linkline(tx[3], tx[5], ty[3], ty[5]);
-		Linkline(tx[2], tx[4], ty[2], ty[4]);
-		Linkline(tx[4], tx[6], ty[4], ty[6]);
-		Linkline(tx[8], tx[9], ty[8], ty[9]);
-		Linkline(tx[9], tx[12], ty[9], ty[12]);
-		Linkline(tx[10], tx[7], ty[10], ty[7]);
-		Linkline(tx[10], tx[11], ty[10], ty[11]);
-		Linkline(tx[11], tx[0], ty[11], ty[0]);
-		Linkline(tx[12], tx[13], ty[12], ty[13]);
-		Linkline(tx[13], tx[15], ty[13], ty[15]);
-		Linkline(tx[14], tx[7], ty[14], ty[7]);
+		Linkline(tx[1], tx[2], ty[1], ty[2], buf);
+		Linkline(tx[2], tx[3], ty[2], ty[3], buf);
+		Linkline(tx[3], tx[5], ty[3], ty[5], buf);
+		Linkline(tx[2], tx[4], ty[2], ty[4], buf);
+		Linkline(tx[4], tx[6], ty[4], ty[6], buf);
+		Linkline(tx[8], tx[9], ty[8], ty[9], buf);
+		Linkline(tx[9], tx[12], ty[9], ty[12], buf);
+		Linkline(tx[10], tx[7], ty[10], ty[7], buf);
+		Linkline(tx[10], tx[11], ty[10], ty[11], buf);
+		Linkline(tx[11], tx[0], ty[11], ty[0], buf);
+		Linkline(tx[12], tx[13], ty[12], ty[13], buf);
+		Linkline(tx[13], tx[15], ty[13], ty[15], buf);
+		Linkline(tx[14], tx[7], ty[14], ty[7], buf);
 
 
 	}
+	add_func_to_timer(draw_plain_lines, buf, 1, 192389, -1);
 }
 
 void Myplane()
@@ -118,7 +125,7 @@ void Myplane()
 	a = GetWindowWidth()/2;
 	b = GetWindowHeight()/2;
 
-	double e = b / 40.0;
+	double e = b / 60.0;
 	x[1] = a;y[1] = b + 6 * e;
 	x[2] = a + e;y[2] = b + 3 * e;
 	x[3] = a + 2 * e;y[3] = b + 2 * e;
@@ -159,15 +166,21 @@ void Myplane()
 }
 
 
-void Linkline(double x1, double x2, double y1, double y2)
+void Linkline(double x1, double x2, double y1, double y2, Vector* buffer)
 {
-	Vector v;
-	Pos temp;
-	Spline* sp;
-	v = gen_empty_vector(Pos);
-	calls(v, push, (temp = new_pos(x1, y1), &temp));
-	calls(v, push, (temp = new_pos(x2, y2), &temp));
+	RectPos rp = {{x1, y1}, {x2, y2}};
+	pcalls(buffer, push, &rp);
+	//MovePen(x1, y1);
+	//DrawLine(x2, y2);
+	//Vector v;
+	//Pos temp;
+	//Spline* sp;
+	//v = gen_empty_vector(Pos);
+	//calls(v, push, (temp = new_pos(x1, y1), &temp));
+	//calls(v, push, (temp = new_pos(x2, y2), &temp));
 
-	sp = create_spline(&v, NULL, 1);
-	add_func_to_timer(draw_spline, sp, 1, 1, -1);
+	//sp = create_spline(&v, NULL, 1);
+	//add_func_to_timer(draw_spline, sp, 1, 1, -1);
 }
+
+

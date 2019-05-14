@@ -3,6 +3,7 @@
 #include "graphics.h"
 #include "utility.h"
 #include "color.h"
+#include "vector.h"
 
 #ifdef NEW_COLOR_SYSTEM
 
@@ -73,6 +74,9 @@ DrawFuncHolder create_function_holder, 0(
 	double rotate, const char* color, int penSize);
 #endif // NEW_COLOR_SYSTEM
 
+typedef struct {
+	Pos start, end;
+} RectPos;
 
-
+void draw_plain_lines(Vector* lines);
 
