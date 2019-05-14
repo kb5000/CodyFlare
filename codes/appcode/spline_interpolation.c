@@ -40,6 +40,7 @@ void draw_spline(Spline* spline) {
 		Pos start = *(Pos*)calls(spline->points, at, 1);
 		DrawLine(start.x - GetCurrentX(), start.y - GetCurrentY());
 	}
+	free(dfh);
 }
 
 Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder *dfh), int isClosed) {
@@ -94,4 +95,9 @@ Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder *dfh), int 
 	hnew(Spline, res);
 	*res = spline;
 	return res;
+}
+
+void destroy_spline(Spline* spline) {
+	call0(spline->parameters, destroy);
+	call0(spline->points, destroy);
 }

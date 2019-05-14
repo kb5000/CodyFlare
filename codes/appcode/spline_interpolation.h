@@ -18,6 +18,8 @@ typedef struct {
 ///      isClosed means if it is a closed curve
 Spline* create_spline(Vector* points, Color color_fun(DrawFuncHolder* dfh), int isClosed);
 
+void destroy_spline(Spline * spline);
+
 ///name: draw_spline
 ///func: draw a curve by points provided, you can add it into the timer
 ///para: spline expects a Spline created by create_spline

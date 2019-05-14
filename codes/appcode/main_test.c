@@ -3,6 +3,7 @@
 void tests() {
 	//test_of_vector();
 	//test_of_list();
+	//test_of_object();
 	//test_of_timer();
 	//test_of_function();
 	//test_of_anime_shield();
@@ -18,10 +19,10 @@ void tests() {
 	//test_of_anime_bomb();
 	//test_of_parabola();
 	//test_of_spline();
-	//test_of_font();
+	test_of_font();
 	//test_of_collision();
 	//test_of_slide_bar();
 	//test_of_list_box();
 	//test_of_ammo();
-	test_of_plane();
+	//test_of_plane();
 }
