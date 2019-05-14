@@ -31,7 +31,7 @@
     <ProjectGuid>{0374D221-AAC3-48E0-9300-12340490F47D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MainSolution</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -295,6 +295,7 @@
     <ClInclude Include="..\..\codes\libgraphics\simpio.h" />
     <ClInclude Include="..\..\codes\libgraphics\strlib.h" />
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
+    <ClInclude Include="object_test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\appcode\ai.c" />
@@ -364,6 +365,7 @@
     <ClCompile Include="..\..\codes\libgraphics\simpio.c" />
     <ClCompile Include="..\..\codes\libgraphics\strlib.c" />
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c" />
+    <ClCompile Include="object_test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
