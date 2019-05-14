@@ -1,12 +1,11 @@
 #pragma once
-#define FontData struct FontData
 
 void test_of_font();
 
-FontData
+typedef struct
 {
 	double size,x,y;
-};
+} FontData;
 
 void ShowLetter(char ch, double size, double x, double y);
 void showA(FontData);

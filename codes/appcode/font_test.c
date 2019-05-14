@@ -5,6 +5,8 @@
 #include "animes.h"
 #include "spline_test.h"
 #include "spline_interpolation.h"
+#include "utility.h"
+
 void test_of_font() 
 {
 	common_anime_test_init();
