@@ -31,7 +31,7 @@
     <ProjectGuid>{0374D221-AAC3-48E0-9300-12340490F47D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MainSolution</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -266,11 +266,11 @@
     <ClInclude Include="..\..\codes\appcode\menu.h" />
     <ClInclude Include="..\..\codes\appcode\missile.h" />
     <ClInclude Include="..\..\codes\appcode\missile_test.h" />
+    <ClInclude Include="..\..\codes\appcode\object_test.h" />
     <ClInclude Include="..\..\codes\appcode\particle.h" />
     <ClInclude Include="..\..\codes\appcode\particle_test.h" />
     <ClInclude Include="..\..\codes\appcode\plane.h" />
     <ClInclude Include="..\..\codes\appcode\plane_test.h" />
-    <ClInclude Include="..\..\codes\appcode\player_control.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
     <ClInclude Include="..\..\codes\appcode\spline_interpolation.h" />
     <ClInclude Include="..\..\codes\appcode\spline_test.h" />
@@ -308,6 +308,7 @@
     <ClCompile Include="..\..\codes\appcode\anime_enemy_bonus.c" />
     <ClCompile Include="..\..\codes\appcode\anime_enemy_boss.c" />
     <ClCompile Include="..\..\codes\appcode\anime_explode.c" />
+    <ClCompile Include="..\..\codes\appcode\anime_objs.c" />
     <ClCompile Include="..\..\codes\appcode\anime_player.c" />
     <ClCompile Include="..\..\codes\appcode\anime_shield.c" />
     <ClCompile Include="..\..\codes\appcode\anime_test.c" />
@@ -331,12 +332,12 @@
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\missile.c" />
     <ClCompile Include="..\..\codes\appcode\missile_test.c" />
+    <ClCompile Include="..\..\codes\appcode\object_test.c" />
     <ClCompile Include="..\..\codes\appcode\parabola.c" />
     <ClCompile Include="..\..\codes\appcode\particle.c" />
     <ClCompile Include="..\..\codes\appcode\particle_test.c" />
     <ClCompile Include="..\..\codes\appcode\plane.c" />
     <ClCompile Include="..\..\codes\appcode\plane_test.c" />
-    <ClCompile Include="..\..\codes\appcode\player_control.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />
