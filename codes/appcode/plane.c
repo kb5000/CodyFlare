@@ -200,7 +200,7 @@ void generate_plane(void* unuseful) {
 		int seed = RandomInteger(0, 8);
 		if (seed < 5) {
 			plane.type = Basic_Enemy_Plane;
-		} else if (seed < 7) {
+		} else if (seed < 8) {
 			plane.type = Advanced_Enemy_Plane;
 			plane.health = 25;
 		} else {

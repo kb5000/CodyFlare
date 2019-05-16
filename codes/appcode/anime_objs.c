@@ -131,6 +131,7 @@ void draw_player_plane(Pos* position)
 	//b = GetWindowHeight()/2;
 
 	double e = 0.05;
+	x[0] = a, y[0] = b;
 	x[1] = a;y[1] = b + 6 * e;
 	x[2] = a + e;y[2] = b + 3 * e;
 	x[3] = a + 2 * e;y[3] = b + 2 * e;
@@ -148,7 +149,7 @@ void draw_player_plane(Pos* position)
 	int j = 0;
 	for (;j < 2;j++)
 	{
-		for (i = 1;i <= 10;i++)
+		for (i = 2;i <= 10;i++)
 		{
 			v = gen_empty_vector(Pos);
 			calls(v, push, (temp = new_pos(x[i - 1], y[i - 1] - e*j*0.5), &temp));
@@ -160,7 +161,7 @@ void draw_player_plane(Pos* position)
 			destroy_spline(sp);
 			free(sp);
 		}
-		for (i = 0;i <= 10;i++)
+		for (i = 2;i <= 10;i++)
 		{
 			v = gen_empty_vector(Pos);
 			calls(v, push, (temp = new_pos(2 * a - x[i - 1], y[i - 1] - e * j*0.5), &temp));

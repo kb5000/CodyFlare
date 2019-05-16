@@ -30,7 +30,7 @@ void test_of_plane() {
 	init_plane_list();
 	init_fix_obj_system();
 	start_show_fix_obj();
-	add_fix_obj(new_pos(5, 3.5), Fix_Obj_Bomb);
+	//add_fix_obj(new_pos(5, 3.5), Fix_Obj_Bomb);
 	add_plane(create_plane(Player_Plane, new_pos(5, 1), 60, 5));
 	//add_plane(create_plane(Basic_Enemy_Plane, new_pos(2, 6.5), 100, 0));
 	//add_plane(create_plane(Advanced_Enemy_Plane, new_pos(8, 6.8), 100, 0));
