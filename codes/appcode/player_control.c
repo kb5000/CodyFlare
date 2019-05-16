@@ -31,12 +31,12 @@ void launch_missile(int key, void* unuseful, int event) {
 void place_bomb(int key, void* unuseful, int event) {
 	if (event == 0) {
 		Plane* player = find_plane_by_id(0);
-		if (!player) return;
+		if (!player || player->numOfBombs <= 0) return;
 		if (firstPressFlag == 0) {
 			firstPressFlag = 1;
 			delayPos = (Pos*)malloc(sizeof(Pos));
 			*delayPos = player->position;
-			add_func_to_timer(draw_front_sight, delayPos, 1, 998877636, -1);
+			add_func_to_timer(draw_front_sight, delayPos, 1, 99887766, -1);
 		}
 	} else if (event == 1 && firstPressFlag) {
 		firstPressFlag = 0;
@@ -46,7 +46,8 @@ void place_bomb(int key, void* unuseful, int event) {
 		if (player->numOfBombs > 0) {
 			player->numOfBombs--;
 			shoot_bomb(0, *delayPos);
-			*delayPos = new_pos(-1, -1);
+			//*delayPos = new_pos(-1, -1);
+			remove_funcs_from_timer(99887766);
 		}
 	}
 }

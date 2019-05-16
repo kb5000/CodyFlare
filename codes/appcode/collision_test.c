@@ -60,8 +60,8 @@ void test_of_collision() {
 	//if uncomment this it will crash
 	//add_col_group(2);
 	//then create collision object, type, start point, end point, obj id
-	CollisionObj r1c = create_col_obj(Col_Box, r1.start, add_pos(r1.start, r1.size), 1);
-	CollisionObj r2c = create_col_obj(Col_Line, r2.start, add_pos(r2.start, r2.size), 1);
+	CollisionObj r1c = create_col_obj(Col_Box, r1.start, add_pos(r1.start, r1.size), 1, new_pos(0, 0));
+	CollisionObj r2c = create_col_obj(Col_Line, r2.start, add_pos(r2.start, r2.size), 1, new_pos(0, 0));
 	//add obj to group
 	add_col_obj_to_group(1, r1c);
 	add_col_obj_to_group(2, r2c);

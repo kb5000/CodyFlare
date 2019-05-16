@@ -105,9 +105,6 @@
     <Filter Include="UnitTest\GCTest">
       <UniqueIdentifier>{32c9c34c-2bc0-4bfe-8d13-4aa0cdfc28e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\GC">
-      <UniqueIdentifier>{559cd5cc-b828-4942-b6ca-c1f960016ba4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UnitTest\LinkedListTest">
       <UniqueIdentifier>{b212febf-e79f-4a70-a47f-adff04322866}</UniqueIdentifier>
     </Filter>
@@ -176,6 +173,12 @@
     </Filter>
     <Filter Include="Modules\PlayerControl">
       <UniqueIdentifier>{9a7821d9-20ea-4151-838d-ec5db2b68115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\GC">
+      <UniqueIdentifier>{559cd5cc-b828-4942-b6ca-c1f960016ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Tortoise">
+      <UniqueIdentifier>{63627c2a-1e35-4159-8e3d-077fc53c2cb3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +358,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\player_control.h">
       <Filter>Modules\PlayerControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\tortoise.h">
+      <Filter>Modules\Tortoise</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -570,6 +576,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_front_sight.c">
       <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\tortoise.c">
+      <Filter>Modules\Tortoise</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

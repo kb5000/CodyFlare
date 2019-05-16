@@ -3,7 +3,7 @@
 #include "utility.h"
 
 typedef enum {
-	Col_Box, Col_Line
+	Col_Box, Col_Line, Col_Triangle
 } ColType;
 
 typedef struct {
@@ -11,6 +11,7 @@ typedef struct {
 	ColType colType;
 	Pos start, end;
 	int isValid;
+	Pos triangleExtra;
 } CollisionObj;
 
 typedef void ColHandler(int group1, int id1, int group2, int id2, void* para);
@@ -45,10 +46,10 @@ void stop_detection();
 void add_col_group(int id);
 ///name: create_col_obj
 ///func: create a Collision Object
-///para: colType expects Col_Box or Col_Line, start expects the pos of the down-left corner,
-///      end expects the pos of the up-right corner, id expects a unique obj id
+///para: colType expects Col_Box or Col_Line or Col_Triangle, start expects the pos of the down-left corner,
+///      end expects the pos of the up-right corner, id expects a unique obj id, triangleExtra expects extra triangle para, random if not a triangle
 ///visb: public
-CollisionObj create_col_obj(ColType colType, Pos start, Pos end, int id);
+CollisionObj create_col_obj(ColType colType, Pos start, Pos end, int id, Pos triangleExtra);
 ///name: add_col_obj_to_group
 ///func: add a collision object to the group
 ///para: groupID expects an exist groupID, colObj expects a CollisionObj
@@ -83,5 +84,5 @@ void remove_col_obj(int groupID, int objID);
 ///visb: public
 void update_col_info(int groupID, int objID, Pos start, Pos end);
 
-
+void update_tri_col_info(int groupID, int objID, Pos start, Pos end, Pos triangleExtra);
 

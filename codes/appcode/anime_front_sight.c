@@ -3,7 +3,7 @@
 
 void draw_front_sight(Pos* posp) {
 	Pos pos = *posp;
-	if (pos.x == -1) disable_me_in_timer();
+	//if (pos.x == -1) disable_me_in_timer();
 	set_color(color_by_rgb(60, 180, 60));
 	double d = 0.04, la = 0.1, lb = 0.1;
 

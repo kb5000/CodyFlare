@@ -8,15 +8,16 @@ Pos draw_enemy1_2(DrawFuncHolder* dfh) {
 	return new_pos(-4 * cs * s4s - ss * c4s + cs, -4 * ss * s4s + cs * c4s - ss);
 }
 
-void draw_enemy_t(double* t) {
-	double H = GetWindowHeight(), W = GetWindowWidth();
-	double a = W / 4;//a,b为中心点坐标
-	double b = H / 2;
+void draw_bonus_enemy(Pos* pos) {
+	//double H = GetWindowHeight(), W = GetWindowWidth();
+	//double a = W / 4;//a,b为中心点坐标
+	//double b = H / 2;
+
 	hnew(DrawFuncHolder, dfh);
-	*dfh = create_function_holder(draw_enemy1_2, new_pos(a, b), new_pos(0.25, 0), 0.25, 0, 2 * PI, 0.1, *t, color_by_name("Black"), 1, 0);
+	*dfh = create_function_holder(draw_enemy1_2, *pos, new_pos(0.16, 0.16), 0.16, 0, 2 * PI, 0.1, -PI / 4, color_by_name("Black"), 1, 0);
 	draw_function(dfh);
 	free(dfh);
-	*t += 0;
+	//*t += 0;
 }
 
 //desparated
@@ -59,13 +60,14 @@ void enemy1_drawer()
 
 }
 
-void enemy2_drawer()
+void draw_basic_enemy(Pos* position)
 {
 	double x[20], y[20];
-	double H = GetWindowHeight(), W = GetWindowWidth();
-	double a = W * 0.8;//a,b为中心点坐标
-	double b = H / 2;
-	double e = H / 60.0;
+	//double H = GetWindowHeight(), W = GetWindowWidth();
+	//double a = W * 0.8;//a,b为中心点坐标
+	//double b = H / 2;
+	//double e = H / 60.0;
+	double a = position->x, b = position->y, e = 0.07;
 	x[0] = a;y[0] = b;
 	x[1] = a;y[1] = b + e;
 	x[2] = a - 0.5*e;y[2] = b;
@@ -114,18 +116,21 @@ void enemy2_drawer()
 
 
 	}
-	add_func_to_timer(draw_plain_lines, buf, 1, 192389, -1);
+	//add_func_to_timer(draw_plain_lines, buf, 1, 192389, -1);
+	draw_plain_lines(buf);
+	pcalls(buf, destroy);
+	free(buf);
 }
 
-void Myplane()
+void draw_player_plane(Pos* position)
 {
-	
+	double a = position->x, b = position->y;
 	double x[15],y[15];
-	double a, b;
-	a = GetWindowWidth()/2;
-	b = GetWindowHeight()/2;
+	//double a, b;
+	//a = GetWindowWidth()/2;
+	//b = GetWindowHeight()/2;
 
-	double e = b / 60.0;
+	double e = 0.05;
 	x[1] = a;y[1] = b + 6 * e;
 	x[2] = a + e;y[2] = b + 3 * e;
 	x[3] = a + 2 * e;y[3] = b + 2 * e;
@@ -150,7 +155,10 @@ void Myplane()
 			calls(v, push, (temp = new_pos(x[i], y[i] - e*j*0.5), &temp));
 
 			sp = create_spline(&v, NULL, 1);
-			add_func_to_timer(draw_spline, sp, 1, 1, -1);
+			//add_func_to_timer(draw_spline, sp, 1, 1, -1);
+			draw_spline(sp);
+			destroy_spline(sp);
+			free(sp);
 		}
 		for (i = 0;i <= 10;i++)
 		{
@@ -159,7 +167,10 @@ void Myplane()
 			calls(v, push, (temp = new_pos(2 * a - x[i], y[i] - e * j*0.5), &temp));
 
 			sp = create_spline(&v, NULL, 1);
-			add_func_to_timer(draw_spline, sp, 1, 1, -1);
+			//add_func_to_timer(draw_spline, sp, 1, 1, -1);
+			draw_spline(sp);
+			destroy_spline(sp);
+			free(sp);
 		}
 	}
 	

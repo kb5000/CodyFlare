@@ -7,7 +7,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-void draw_enemy_t(double* t);
+void draw_bonus_enemy(Pos* t);
 void test_of_object()
 {
 	InitGraphics();
@@ -16,10 +16,14 @@ void test_of_object()
 	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
 	start_global_timer();
 	//enemy1_drawer();
-	Myplane();
-	enemy2_drawer();
-	hnew(double, t);
-	*t = -PI / 4;
-	add_func_to_timer(draw_enemy_t, t, 1, 1221, -1);
+	hnew(Pos, pos);
+	set_pos(pos, 5, 3.5);
+	add_func_to_timer(draw_player_plane, pos, 1, 1221, -1);
+	*pos = add_pos(*pos, new_pos(0.5, 0));
+	draw_basic_enemy(pos);
+	//hnew(double, t);
+	//*t = -PI / 4;
+	*pos = add_pos(*pos, new_pos(0.5, 0));
+	add_func_to_timer(draw_bonus_enemy, pos, 1, 1221, -1);
 }
 

@@ -21,6 +21,9 @@ void draw_anime_accelerate(Pos* start, Pos end, double accu);
 void draw_anime_move_down(Pos* start, Pos end, double speed);
 
 void draw_front_sight(Pos* posp);
+void draw_player_plane(Pos* position);
+void draw_basic_enemy(Pos* position);
+void draw_bonus_enemy(Pos* pos);
 
 typedef enum {
 	Player_Ammo = 0, 

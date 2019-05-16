@@ -7,6 +7,8 @@
 #include "weapon.h"
 #include "random.h"
 #include "col_updater.h"
+#include "animes.h"
+#include "fix_obj.h"
 
 static ListHandler planeList;
 static int planeID = 0;
@@ -39,20 +41,25 @@ void add_plane(Plane plane) {
 	calls(planeList, push_back, pln);
 	switch (plane.type) {
 	case Player_Plane:
-		add_col_obj_to_group(PLR_PLN_COL_ID, create_col_obj(Col_Line, add_pos(pln->position, new_pos(-0.2, 0)),
-													 add_pos(pln->position, new_pos(0.2, 0)), pln->id));
+		add_col_obj_to_group(PLR_PLN_COL_ID, create_col_obj(Col_Triangle,
+						add_pos(pln->position, new_pos(-0.2, -0.1)),
+						add_pos(pln->position, new_pos(0.2, -0.1)), pln->id, 
+						add_pos(pln->position, new_pos(0, 0.4))));
 		break;
 	case Basic_Enemy_Plane:
-		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Line, add_pos(pln->position, new_pos(-0.2, 0)),
-													 add_pos(pln->position, new_pos(0.2, 0)), pln->id));
+		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Triangle,
+ add_pos(pln->position, new_pos(-0.25, 0.1)),
+															add_pos(pln->position, new_pos(0.25, 0.1)), pln->id, add_pos(pln->position, new_pos(0, -0.25))));
 		break;
 	case Advanced_Enemy_Plane:
-		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Line, add_pos(pln->position, new_pos(-0.2, 0)),
-													 add_pos(pln->position, new_pos(0.2, 0)), pln->id));
+		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Line,
+ add_pos(pln->position, new_pos(-0.2, 0)),
+															add_pos(pln->position, new_pos(0.2, 0)), pln->id, new_pos(0, 0)));
 		break;
 	case Swift_Enemy_Plane:
-		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Line, add_pos(pln->position, new_pos(-0.2, 0)),
-													 add_pos(pln->position, new_pos(0.2, 0)), pln->id));
+		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Triangle,
+ add_pos(pln->position, new_pos(-0.2, 0.2)),
+															add_pos(pln->position, new_pos(0.2, 0.2)), pln->id, add_pos(pln->position, new_pos(0, -0.3))));
 		break;
 	default:
 		break;
@@ -99,10 +106,10 @@ Pos* player_plane_pos() {
 }
 
 void update_each_plane(Plane* plane) {
-	MovePen(plane->position.x - 0.2, plane->position.y);
-	DrawLine(0.4, 0);
 	switch (plane->type) {
 	case Player_Plane:
+		draw_player_plane(&plane->position);
+		//Pos p = plane->position;
 		if (plane->position.x < 0 && plane->position.y < 0) return;
 		move_by_dir_key(&plane->position, new_pos(0.13, 0.1));
 		if (plane->position.x < 0.2) plane->position.x = 0.2;
@@ -111,29 +118,32 @@ void update_each_plane(Plane* plane) {
 		if (plane->position.y > 6.8) plane->position.y = 6.8;
 		plane->missileTime++;
 		if (plane->ammoTime++ == 3) {
-			shoot_gun(Player_Ammo, add_pos(plane->position, new_pos(0, 0.1)), new_pos(0, 0.1));
+			shoot_gun(Player_Ammo, add_pos(plane->position, new_pos(0.01, 0.3)), new_pos(0, 0.1));
 			plane->ammoTime = 0;
 		}
-		update_col_info(PLR_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0)),
-						add_pos(plane->position, new_pos(0.2, 0)));
+		update_tri_col_info(PLR_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, -0.1)),
+						add_pos(plane->position, new_pos(0.2, -0.1)), add_pos(plane->position, new_pos(0, 0.4)));
 		break;
 	case Basic_Enemy_Plane:
+		draw_basic_enemy(&plane->position);
 		plane->position = basic_enemy_move(plane->position);
 		if (plane->ammoTime++ == 16) {
-			shoot_gun(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(0, 0.1)), new_pos(0, -0.1));
+			shoot_gun(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(-0.01, -0.1)), new_pos(0, -0.1));
 			plane->ammoTime = 0;
 		}
-		update_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0)),
-						add_pos(plane->position, new_pos(0.2, 0)));
+		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.25, 0.1)),
+						add_pos(plane->position, new_pos(0.25, 0.1)), add_pos(plane->position, new_pos(0, -0.25)));
 		break;
 	case Advanced_Enemy_Plane:
 	{
+		MovePen(plane->position.x - 0.2, plane->position.y);
+		DrawLine(0.4, 0);
 		Pos pos = *player_plane_pos();
 		plane->position = advanced_enemy_move(plane->position, pos);
 		if (plane->position.y > pos.y + 2) {
 			if (plane->missileTime++ == 60) {
 				shoot_missile(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(0, 0.1)), player_plane_pos(),
-							  0, missile_target_enemy); 
+							  0, missile_target_enemy);
 				plane->missileTime = 0;
 			}
 		} else {
@@ -145,19 +155,23 @@ void update_each_plane(Plane* plane) {
 		update_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0)),
 						add_pos(plane->position, new_pos(0.2, 0)));
 	}
-		break;
+	break;
 	case Swift_Enemy_Plane:
 	{
+		draw_bonus_enemy(&plane->position);
+		MovePen(plane->position.x - 0.2, plane->position.y);
+		DrawLine(0.4, 0);
+
 		Pos pos = *player_plane_pos();
 		plane->position = swift_enemy_move(plane->position, pos);
-		update_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0)),
-						add_pos(plane->position, new_pos(0.2, 0)));
-		if (pos_length(sub_pos(pos, plane->position)) < 0.7) {
+		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0.2)),
+						add_pos(plane->position, new_pos(0.2, 0.2)), add_pos(plane->position, new_pos(0, -0.3)));
+		if (pos_length(sub_pos(pos, plane->position)) < 0.8) {
 			shoot_bomb(Basic_Enemy_Ammo, plane->position);
 			plane->position = new_pos(-1, -1);
 		}
 	}
-		break;
+	break;
 	default:
 		break;
 	}
@@ -209,6 +223,9 @@ void stop_display_planes() {
 void plane_explode(Plane* plane, int health) {
 	plane->health -= health;
 	if (plane->health <= 0) {
+		if (plane->type == Swift_Enemy_Plane) {
+			generate_fix_obj(plane->position);
+		}
 		add_score(plane->type);
 		draw_anime_explode(17896, plane->position, 0.8, 6);
 		remove_plane_by_id(plane->id);

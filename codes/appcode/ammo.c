@@ -34,7 +34,7 @@ void add_ammo(int isEnemy, Pos position, Pos direction) {
 		globalAmmoID++,
 		1
 	};
-	CollisionObj co = create_col_obj(Col_Line, position, add_pos(position, dirPos), res.colObjID);
+	CollisionObj co = create_col_obj(Col_Line, position, add_pos(position, dirPos), res.colObjID, new_pos(0, 0));
 	add_col_obj_to_group(isEnemy ? ENM_AMMO_COL_ID : PLR_AMMO_COL_ID, co);
 	hnew(Ammo, ress);
 	*ress = res;

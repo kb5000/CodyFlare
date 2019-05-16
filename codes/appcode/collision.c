@@ -61,12 +61,13 @@ void add_col_obj_to_group(int groupID, CollisionObj colObj) {
 	}
 }
 
-CollisionObj create_col_obj(ColType colType, Pos start, Pos end, int id) {
+CollisionObj create_col_obj(ColType colType, Pos start, Pos end, int id, Pos triangleExtra) {
 	CollisionObj res = {
 		id,
 		colType,
 		start, end,
-		1
+		1,
+		triangleExtra,
 	};
 	return res;
 }
@@ -165,6 +166,27 @@ static int line_line_col_dec(CollisionObj* a, CollisionObj* b) {
 	return t;
 }
 
+static int line_tri_col_dec(CollisionObj* l, CollisionObj* t) {
+	return line_line_base_dec(l->start, l->end, t->start, t->end) ||
+		line_line_base_dec(l->start, l->end, t->start, t->triangleExtra) ||
+		line_line_base_dec(l->start, l->end, t->end, t->triangleExtra);
+}
+
+static int box_tri_col_dec(CollisionObj* b, CollisionObj* t) {
+	Pos bx[4] = {b->start, new_pos(b->end.x, b->start.y), new_pos(b->start.x, b->end.y), b->end};
+	Pos tx[3] = {t->start, t->end, t->triangleExtra};
+	Pos bax[4][2] = {{bx[0], bx[1]}, {bx[1], bx[3]}, {bx[3], bx[2]}, {bx[2], bx[0]}};
+	Pos tax[3][2] = {{tx[0], tx[1]}, {tx[1], tx[2]}, {tx[2], tx[0]}};
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (line_line_base_dec(bax[i][0], bax[i][1], tax[j][0], tax[j][1])) {
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
 static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode* colNode) {
 	//l && (l = l->next) prevents delete object crash
 	for (Node* l = lhs->objs.head; l; l && (l = l->next)) {
@@ -182,6 +204,14 @@ static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode*
 				if (box_line_col_dec(lc, rc)) collsionFlag = 1;
 			} else if (lc->colType == Col_Line && rc->colType == Col_Box) {
 				if (box_line_col_dec(rc, lc)) collsionFlag = 1;
+			} else if (lc->colType == Col_Line && rc->colType == Col_Triangle) {
+				if (line_tri_col_dec(lc, rc)) collsionFlag = 1;
+			} else if (lc->colType == Col_Triangle && rc->colType == Col_Line) {
+				if (line_tri_col_dec(rc, lc)) collsionFlag = 1;
+			} else if (lc->colType == Col_Box && rc->colType == Col_Triangle) {
+				if (box_tri_col_dec(lc, rc)) collsionFlag = 1;
+			} else if (lc->colType == Col_Triangle && rc->colType == Col_Box) {
+				if (box_box_col_dec(rc, lc)) collsionFlag = 1;
 			}
 			if (collsionFlag) colNode->colHandler(lhs->id, lc->id, rhs->id, rc->id, colNode->para);
 		}
@@ -241,3 +271,12 @@ void update_col_info(int groupID, int objID, Pos start, Pos end) {
 	obj->start = start;
 	obj->end = end;
 }
+
+void update_tri_col_info(int groupID, int objID, Pos start, Pos end, Pos triExtra) {
+	CollisionObj* obj = find_col_obj(groupID, objID);
+	if (!obj) return;
+	obj->start = start;
+	obj->end = end;
+	obj->triangleExtra = triExtra;
+}
+

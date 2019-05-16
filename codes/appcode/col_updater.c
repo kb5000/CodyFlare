@@ -2,6 +2,7 @@
 #include "collision.h"
 #include "plane.h"
 #include "ammo.h"
+#include "fix_obj.h"
 
 void start_col_dets() {
 	add_col_handler(PLR_AMMO_COL_ID, ENM_PLN_COL_ID, player_ammo_enemy_plane_col, NULL);
@@ -43,4 +44,23 @@ void missile_target_by_player(Pos pos, int id) {
 	plane_explode(pln, 12);
 }
 
-
+void fix_plane_col(int group1, int id1, int group2, int id2, void* unuseful) {
+	if (group1 == FIX_OBJ_COL_ID && group2 == PLR_PLN_COL_ID) {
+		fix_plane_col(group2, id2, group1, id1, unuseful);
+		return;
+	}
+	Fix_Objs fo = find_fix_obj(id2)->fixObj;
+	set_fix_obj_invalid(id2);
+	Plane* pln = find_plane_by_id(id1);
+	if (!pln) return;
+	switch (fo) {
+	case Fix_Obj_Health:
+		pln->health += 10;
+		break;
+	case Fix_Obj_Bomb:
+		pln->numOfBombs += 1;
+		break;
+	default:
+		break;
+	}
+}
