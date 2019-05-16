@@ -97,6 +97,7 @@ static void draw_fix_obj_bomb(Pos pos) {
 		tts_fd(0.02);
 		tts_rt(30);
 	}
+	tts_pu();
 }
 
 void show_each_fix_obj(FixObj* fo) {
