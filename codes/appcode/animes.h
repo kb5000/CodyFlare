@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include "tortoise.h"
 
 void draw_anime_shield(int id, Pos position, double size, int existTicks);
 void draw_anime_bomb(int id, Pos position, double size, double speed, Color color, void explode_handler(Pos bombPos));
@@ -24,6 +25,8 @@ void draw_front_sight(Pos* posp);
 void draw_player_plane(Pos* position);
 void draw_basic_enemy(Pos* position);
 void draw_bonus_enemy(Pos* pos);
+
+void draw_missile(Pos pos, Pos dirt, Color color);
 
 typedef enum {
 	Player_Ammo = 0, 

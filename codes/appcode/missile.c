@@ -6,6 +6,7 @@
 #include "extgraph.h"
 #include <math.h>
 #include "random.h"
+#include "animes.h"
 
 typedef struct {
 	Pos position;
@@ -41,7 +42,7 @@ void move_missile(Missile* missile, Pos b, double drawSpeed, double flexibility,
 
 void update_missile(void* missiles) {
 	Missiles* miss = (Missiles*)missiles;
-	set_color(miss->color);
+	//set_color(miss->color);
 
 	//MovePen(miss->b->x, miss->b->y);
 	//DrawLine(0.1, 0.1);
@@ -55,9 +56,10 @@ void update_missile(void* missiles) {
 			miss->explode_anime(Unique_ID("Missile"), m->position, miss->explodeSize);
 			continue;
 		}
-		MovePen(m->position.x, m->position.y);
-		double angle = pos_arc(m->momentum);
-		DrawLine(0.1 * cos(angle), 0.1 * sin(angle));
+		//MovePen(m->position.x, m->position.y);
+		//double angle = pos_arc(m->momentum);
+		//DrawLine(0.1 * cos(angle), 0.1 * sin(angle));
+		draw_missile(m->position, m->momentum, miss->color);
 		if (pos_length(sub_pos(*miss->b, m->position)) <= miss->explodeRadius) {
 			m->valid = 0;
 			miss->explode_anime(Unique_ID("Missile"), m->position, miss->explodeSize);

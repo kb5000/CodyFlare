@@ -197,7 +197,7 @@ void update_plane(void* unuseful) {
 void generate_plane(void* unuseful) {
 	if (planeRefreshTime++ == 80) {
 		Plane plane = create_plane(Basic_Enemy_Plane, new_pos(RandomReal(0.2, 9.8), 7.2), 20, 0);
-		int seed = RandomInteger(0, 8);
+		int seed = RandomInteger(0, 9);
 		if (seed < 5) {
 			plane.type = Basic_Enemy_Plane;
 		} else if (seed < 8) {

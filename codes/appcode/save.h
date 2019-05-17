@@ -52,6 +52,10 @@ int save_data(FILE* file, const void* data, int size);
 ///visb: public
 int get_data(FILE* file, void* buffer, int maxSize);
 
+void save_vector(FILE* file, Vector* vec);
+
+Vector read_vector(FILE* file);
+
 /////name: base64_encode
 /////func: encode binary bits to base64
 /////para: buffer expects the memory to write, data expects the memory to encode, 

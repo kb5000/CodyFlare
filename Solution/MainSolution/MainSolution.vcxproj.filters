@@ -433,19 +433,7 @@
     <ClCompile Include="..\..\codes\appcode\anime_ammo.c">
       <Filter>Modules\Animes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\anime_player.c">
-      <Filter>Modules\Animes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\anime_enemy_base.c">
-      <Filter>Modules\Animes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\anime_enemy_advanced.c">
-      <Filter>Modules\Animes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_enemy_boss.c">
-      <Filter>Modules\Animes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\anime_enemy_bonus.c">
       <Filter>Modules\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_victory.c">
@@ -579,6 +567,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\tortoise.c">
       <Filter>Modules\Tortoise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\anime_missile.c">
+      <Filter>Modules\Animes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

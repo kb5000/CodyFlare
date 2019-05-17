@@ -66,6 +66,21 @@ int get_data(FILE* file, void* buffer, int maxSize) {
 	return 1;
 }
 
+void save_vector(FILE* file, Vector* vec) {
+	save_data(file, &vec->sizeOfElement, sizeof(unsigned));
+	save_data(file, &vec->numOfElement, sizeof(unsigned));
+	save_data(file, vec->content, vec->sizeOfElement * vec->numOfElement);
+}
+
+Vector read_vector(FILE* file) {
+	unsigned size, num;
+	get_data(file, &size, sizeof(unsigned));
+	get_data(file, &num, sizeof(unsigned));
+	Vector vec = new_zero_vector(size, num);
+	get_data(file, vec.content, size * num);
+	return vec;
+}
+
 //void bit_to_base64(const int8_t* buf, int8_t* writebuf) {
 //	int8_t bases[4];
 //	bases[0] = (*buf & 0xFFFFFF00 >> 8);
