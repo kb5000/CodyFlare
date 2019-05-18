@@ -8,6 +8,14 @@ Pos draw_enemy1_2(DrawFuncHolder* dfh) {
 	return new_pos(-4 * cs * s4s - ss * c4s + cs, -4 * ss * s4s + cs * c4s - ss);
 }
 
+Pos draw_enemy2_2(DrawFuncHolder* dfh)
+{
+	double t = dfh->tNow;
+	double cs = cos(t), ss = sin(t), c3s = cos(3 * t), s3s = sin(3 * t), s5s = sin(5 * t), c5s = cos(5 * t);
+	return new_pos(3 * s5s*c3s*cs + 5 * s3s*c5s*cs - s3s * s5s*ss,
+					3 * s5s*c3s*ss + 5 * s3s*c5s*ss + cs * s3s*s5s);
+}
+
 void draw_bonus_enemy(Pos* pos) {
 	//double H = GetWindowHeight(), W = GetWindowWidth();
 	//double a = W / 4;//a,b为中心点坐标
@@ -18,6 +26,14 @@ void draw_bonus_enemy(Pos* pos) {
 	draw_function(dfh);
 	free(dfh);
 	//*t += 0;
+}
+
+void draw_infernal_enemy(Pos *pos)
+{
+	hnew(DrawFuncHolder, dfh);
+	*dfh = create_function_holder(draw_enemy2_2, *pos, new_pos(0.16, 0.16), 0.3, 0, 2 * PI, 0.005, 0 , color_by_name("Black"), 1, 0);
+	draw_function(dfh);
+	free(dfh);
 }
 
 //desparated

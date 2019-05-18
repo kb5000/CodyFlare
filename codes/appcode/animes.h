@@ -25,6 +25,7 @@ void draw_front_sight(Pos* posp);
 void draw_player_plane(Pos* position);
 void draw_basic_enemy(Pos* position);
 void draw_bonus_enemy(Pos* pos);
+void draw_infernal_enemy(Pos* pos);
 
 void draw_missile(Pos pos, Pos dirt, Color color);
 
