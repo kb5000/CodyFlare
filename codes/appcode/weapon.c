@@ -17,15 +17,15 @@ void shoot_missile(int isEnemy, Pos startPos, Pos* target, int targetID, void hi
 	switch (isEnemy) {
 	case Player_Ammo:
 		show_missile(startPos, target, 1, color_by_rgb(225, 158, 68),
-					 0.25, PI / 3, 2.1, 60, 1, anime_explode_pack, 0.6, hitHandler, 0.12, targetID);
+					 0.25, PI / 3, 1.9, 60, 1, anime_explode_pack, 0.6, hitHandler, 0.12, targetID);
 		break;
 	case Basic_Enemy_Ammo:
 		show_missile(startPos, target, 1, color_by_rgb(128, 88, 68),
 					 0.13, PI / 3, 1.2, 70, 1, anime_explode_pack, 0.6, hitHandler, 0.12, targetID);
 		break;
 	case Boss_Ammo:
-		show_missile(startPos, target, 6, color_by_rgb(64, 128, 128),
-					 0.2, -PI / 3, 1.8, 40, 1, anime_explode_pack, 0.6, hitHandler, 0.12, targetID);
+		show_missile(startPos, target, 12, color_by_rgb(64, 128, 128),
+					 0.1, -PI, 1.3, 40, 1, anime_explode_pack, 0.6, hitHandler, 0.12, targetID);
 		break;
 	default:
 		break;
@@ -50,6 +50,8 @@ void bomb_explode_handler(Pos bombPos) {
 			if (pln->health <= 0) {
 				if (pln->type == Swift_Enemy_Plane) {
 					generate_fix_obj(pln->position);
+				} else if (pln->type == Boss_Plane) {
+					remove_funcs_from_timer(6666444);
 				}
 				add_score(pln->type);
 				draw_anime_explode(17896, pln->position, 0.8, 6);
@@ -68,6 +70,7 @@ void shoot_bomb(int isEnemy, Pos startPos) {
 		draw_anime_bomb(922338, startPos, 0.35, 1, color_by_rgb(180, 200, 88), bomb_explode_handler);
 		break;
 	case Boss_Ammo:
+		draw_anime_bomb(922339, startPos, 0.35, 1, color_by_rgb(64, 128, 128), bomb_explode_handler);
 		break;
 	default:
 		break;

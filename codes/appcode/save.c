@@ -5,6 +5,7 @@
 #include <io.h>
 #include <string.h>
 #include <stdlib.h>
+#include "utility.h"
 
 void generate_file_name(char* buffer) {
 	char* timeBuffer = (char*)malloc(20);
@@ -79,6 +80,25 @@ Vector read_vector(FILE* file) {
 	Vector vec = new_zero_vector(size, num);
 	get_data(file, vec.content, size * num);
 	return vec;
+}
+
+
+ListHandler vector_to_list(Vector* self) {
+	ListHandler list = new_empty_list();
+	unsigned len = pcalls(self, len);
+	for (unsigned i = 0; i < len; i++) {
+		calls(list, push_back, pcalls(self, at, i));
+	}
+	return list;
+}
+
+Vector list_to_vec(ListHandler* self, unsigned sizeOfElement) {
+	unsigned len = pcalls(self, len);
+	Vector res = new_zero_vector(sizeOfElement, len);
+	for (Node* node = self->head; node; node = node->next) {
+		calls(res, push, node->data);
+	}
+	return res;
 }
 
 //void bit_to_base64(const int8_t* buf, int8_t* writebuf) {

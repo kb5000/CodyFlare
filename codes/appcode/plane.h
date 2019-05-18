@@ -6,7 +6,7 @@
 #define ENM_PLN_COL_ID 330
 
 typedef enum {
-	Player_Plane, Basic_Enemy_Plane, Advanced_Enemy_Plane, Swift_Enemy_Plane, 
+	Player_Plane, Basic_Enemy_Plane, Advanced_Enemy_Plane, Swift_Enemy_Plane, Boss_Plane
 } PlaneType;
 
 typedef struct {
@@ -30,6 +30,8 @@ Plane* find_plane_by_id(int id);
 Plane* find_dangerous_plane();
 
 void remove_plane_by_id(int id);
+
+Plane * get_boss_plane();
 
 void generate_plane(void * unuseful);
 

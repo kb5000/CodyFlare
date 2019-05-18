@@ -14,6 +14,7 @@ static ListHandler planeList;
 static int planeID = 0;
 static int planeRefreshTime = 0;
 static int score = 0;
+static int planeNum = 0;
 
 void init_plane_list() {
 	planeList = new_empty_list();
@@ -42,24 +43,29 @@ void add_plane(Plane plane) {
 	switch (plane.type) {
 	case Player_Plane:
 		add_col_obj_to_group(PLR_PLN_COL_ID, create_col_obj(Col_Triangle,
-						add_pos(pln->position, new_pos(-0.2, -0.1)),
-						add_pos(pln->position, new_pos(0.2, -0.1)), pln->id, 
-						add_pos(pln->position, new_pos(0, 0.4))));
+															add_pos(pln->position, new_pos(-0.2, -0.1)),
+															add_pos(pln->position, new_pos(0.2, -0.1)), pln->id,
+															add_pos(pln->position, new_pos(0, 0.4))));
 		break;
 	case Basic_Enemy_Plane:
 		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Triangle,
- add_pos(pln->position, new_pos(-0.25, 0.1)),
+															add_pos(pln->position, new_pos(-0.25, 0.1)),
 															add_pos(pln->position, new_pos(0.25, 0.1)), pln->id, add_pos(pln->position, new_pos(0, -0.25))));
 		break;
 	case Advanced_Enemy_Plane:
 		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Line,
- add_pos(pln->position, new_pos(-0.2, 0)),
+															add_pos(pln->position, new_pos(-0.2, 0)),
 															add_pos(pln->position, new_pos(0.2, 0)), pln->id, new_pos(0, 0)));
 		break;
 	case Swift_Enemy_Plane:
 		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Triangle,
- add_pos(pln->position, new_pos(-0.2, 0.2)),
+															add_pos(pln->position, new_pos(-0.2, 0.2)),
 															add_pos(pln->position, new_pos(0.2, 0.2)), pln->id, add_pos(pln->position, new_pos(0, -0.3))));
+		break;
+	case Boss_Plane:
+		draw_anime_enemy_boss(6666444, pln->position, 1, -1);
+		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Triangle, add_pos(pln->position, new_pos(0, -0.05)), add_pos(pln->position, new_pos(-2, 2.35)),
+															pln->id, add_pos(pln->position, new_pos(2, 2.35))));
 		break;
 	default:
 		break;
@@ -89,6 +95,9 @@ int remove_plane_helper(Plane* plane, int* id) {
 		if (plane->type == Player_Plane) {
 			remove_col_obj(PLR_PLN_COL_ID, *id);
 		} else {
+			if (plane->type == Boss_Plane) {
+				remove_funcs_from_timer(6666444);
+			}
 			remove_col_obj(ENM_PLN_COL_ID, *id);
 		}
 		return 1;
@@ -103,6 +112,15 @@ void remove_plane_by_id(int id) {
 Pos* player_plane_pos() {
 	//assume that the first plane is the player's plane
 	return &((Plane*)(planeList.head->data))->position;
+}
+
+Plane* get_boss_plane() {
+	for (Node* node = planeList.head; node; node = node->next) {
+		Plane* plane = (Plane*)node->data;
+		if (!plane) continue;
+		if (plane->type == Boss_Plane) return plane;
+	}
+	return NULL;
 }
 
 void update_each_plane(Plane* plane) {
@@ -122,7 +140,7 @@ void update_each_plane(Plane* plane) {
 			plane->ammoTime = 0;
 		}
 		update_tri_col_info(PLR_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, -0.1)),
-						add_pos(plane->position, new_pos(0.2, -0.1)), add_pos(plane->position, new_pos(0, 0.4)));
+							add_pos(plane->position, new_pos(0.2, -0.1)), add_pos(plane->position, new_pos(0, 0.4)));
 		break;
 	case Basic_Enemy_Plane:
 		draw_basic_enemy(&plane->position);
@@ -132,7 +150,7 @@ void update_each_plane(Plane* plane) {
 			plane->ammoTime = 0;
 		}
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.25, 0.1)),
-						add_pos(plane->position, new_pos(0.25, 0.1)), add_pos(plane->position, new_pos(0, -0.25)));
+							add_pos(plane->position, new_pos(0.25, 0.1)), add_pos(plane->position, new_pos(0, -0.25)));
 		break;
 	case Advanced_Enemy_Plane:
 	{
@@ -165,10 +183,33 @@ void update_each_plane(Plane* plane) {
 		Pos pos = *player_plane_pos();
 		plane->position = swift_enemy_move(plane->position, pos);
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0.2)),
-						add_pos(plane->position, new_pos(0.2, 0.2)), add_pos(plane->position, new_pos(0, -0.3)));
+							add_pos(plane->position, new_pos(0.2, 0.2)), add_pos(plane->position, new_pos(0, -0.3)));
 		if (pos_length(sub_pos(pos, plane->position)) < 0.8) {
 			shoot_bomb(Basic_Enemy_Ammo, plane->position);
 			plane->position = new_pos(-1, -1);
+		}
+	}
+	break;
+	case Boss_Plane:
+	{
+		//MovePen(plane->position.x, plane->position.y - 0.05);
+		//DrawLine(-2, 2.4);
+		//MovePen(plane->position.x, plane->position.y - 0.05);
+		//DrawLine(2, 2.4);
+		//MovePen(plane->position.x - 2, plane->position.y + 2.35);
+		//DrawLine(4, 0);
+		//if (plane->ammoTime % 3 == 0)
+		//shoot_gun(Boss_Ammo, plane->position, polar_to_rect(new_pos(0.1, RandomReal(0, 2 * PI))));
+		if (plane->ammoTime++ % 2 == 0) {
+			shoot_gun(Boss_Ammo, plane->position, polar_to_rect(new_pos(0.1, RandomReal(0, 2 * PI))));
+		}
+		if (plane->missileTime++ == 220) {
+			plane->missileTime = 0;
+			shoot_missile(Boss_Ammo, plane->position, player_plane_pos(), 0, missile_target_by_boss);
+		}
+		if (plane->numOfBombs++ == 300) {
+			shoot_bomb(Boss_Ammo, add_pos(*player_plane_pos(), new_pos(0, 1)));
+			plane->numOfBombs = 0;
 		}
 	}
 	break;
@@ -196,19 +237,31 @@ void update_plane(void* unuseful) {
 
 void generate_plane(void* unuseful) {
 	if (planeRefreshTime++ == 80) {
-		Plane plane = create_plane(Basic_Enemy_Plane, new_pos(RandomReal(0.2, 9.8), 7.2), 20, 0);
-		int seed = RandomInteger(0, 9);
-		if (seed < 5) {
-			plane.type = Basic_Enemy_Plane;
-		} else if (seed < 8) {
-			plane.type = Advanced_Enemy_Plane;
-			plane.health = 25;
+		Plane plane;
+		if (planeNum == 58) {
+			add_fix_obj(new_pos(2, 2), Fix_Obj_Health);
+			add_fix_obj(new_pos(5, 2), Fix_Obj_Health);
+			add_fix_obj(new_pos(8, 2), Fix_Obj_Health);
+		} else if (planeNum == 59) {
+			;	//nothing
+		} else if (planeNum == 60) {
+			plane = create_plane(Boss_Plane, new_pos(5, 4), 2000, 37);
 		} else {
-			plane.type = Swift_Enemy_Plane;
-			plane.health = 15;
+			plane = create_plane(Basic_Enemy_Plane, new_pos(RandomReal(0.2, 9.8), 7.2), 20, 0);
+			int seed = RandomInteger(0, 9);
+			if (seed < 5) {
+				plane.type = Basic_Enemy_Plane;
+			} else if (seed < 8) {
+				plane.type = Advanced_Enemy_Plane;
+				plane.health = 25;
+			} else {
+				plane.type = Swift_Enemy_Plane;
+				plane.health = 15;
+			}
 		}
 		add_plane(plane);
 		planeRefreshTime = 0;
+		planeNum++;
 	}
 }
 
@@ -217,6 +270,7 @@ void start_display_planes() {
 }
 
 void stop_display_planes() {
+	remove_funcs_from_timer(6666444);
 	remove_funcs_from_timer(285744);
 }
 

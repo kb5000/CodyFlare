@@ -38,6 +38,12 @@ void missile_target_enemy(Pos pos, int id) {
 	plane_explode(pln, 5);
 }
 
+void missile_target_by_boss(Pos pos, int id) {
+	Plane* pln = find_plane_by_id(id);
+	if (!pln) return;
+	plane_explode(pln, 3);
+}
+
 void missile_target_by_player(Pos pos, int id) {
 	Plane* pln = find_plane_by_id(id);
 	if (!pln) return;
@@ -56,6 +62,7 @@ void fix_plane_col(int group1, int id1, int group2, int id2, void* unuseful) {
 	switch (fo) {
 	case Fix_Obj_Health:
 		pln->health += 10;
+		if (pln->health > 100) pln->health = 100;
 		break;
 	case Fix_Obj_Bomb:
 		pln->numOfBombs += 1;

@@ -1,5 +1,6 @@
 #include "vector.h"
 #include <stdlib.h>
+#include "utility.h"
 
 void my_vector_push(Vector* self, void* content);
 

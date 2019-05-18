@@ -43,8 +43,10 @@ void add_ammo(int isEnemy, Pos position, Pos direction) {
 
 void update_each_ammo(Ammo* ammo) {
 	draw_anime_ammo_once(ammo->isEnemy, ammo->pos, ammo->dirt);
-	if (ammo->isEnemy) {
+	if (ammo->isEnemy == 1) {
 		ammo->pos = add_pos(ammo->pos, pos_mut(ammo->dirt, enemyAmmoSpeed / pos_length(ammo->dirt)));
+	} else if (ammo->isEnemy == 2) {
+		ammo->pos = add_pos(ammo->pos, pos_mut(ammo->dirt, 0.6 * enemyAmmoSpeed / pos_length(ammo->dirt)));
 	} else {
 		ammo->pos = add_pos(ammo->pos, pos_mut(ammo->dirt, playerAmmoSpeed / pos_length(ammo->dirt)));
 	}

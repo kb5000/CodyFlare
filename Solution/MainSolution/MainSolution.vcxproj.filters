@@ -180,6 +180,9 @@
     <Filter Include="Modules\Tortoise">
       <UniqueIdentifier>{63627c2a-1e35-4159-8e3d-077fc53c2cb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\UI\HealthBar">
+      <UniqueIdentifier>{7e0d414a-bc2f-4ade-8152-4dd2fb00b9cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -361,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\tortoise.h">
       <Filter>Modules\Tortoise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\health_bar.h">
+      <Filter>Modules\UI\HealthBar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -570,6 +576,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_missile.c">
       <Filter>Modules\Animes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\health_bar.c">
+      <Filter>Modules\UI\HealthBar</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

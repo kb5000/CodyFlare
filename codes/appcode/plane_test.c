@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "player_control.h"
 #include "fix_obj.h"
+#include "health_bar.h"
 
 static char r[64];
 
@@ -21,6 +22,10 @@ void show_health(void* unuseful) {
 		sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
 	}
 	drawLabel(0.1, 0.1, r);
+	Plane* boss = get_boss_plane();
+	if (boss) {
+		show_health_bar(boss->health, 2000);
+	}
 }
 
 void test_of_plane() {
@@ -35,6 +40,7 @@ void test_of_plane() {
 	//add_plane(create_plane(Basic_Enemy_Plane, new_pos(2, 6.5), 100, 0));
 	//add_plane(create_plane(Advanced_Enemy_Plane, new_pos(8, 6.8), 100, 0));
 	//add_plane(create_plane(Swift_Enemy_Plane, new_pos(5, 6.8), 100, 0));
+	//add_plane(create_plane(Boss_Plane, new_pos(5, 4), 2000, 5));
 	start_display_planes();
 	start_update_ammo();
 	add_func_to_timer(generate_plane, NULL, 1, 1213, -1);

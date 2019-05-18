@@ -56,6 +56,10 @@ void save_vector(FILE* file, Vector* vec);
 
 Vector read_vector(FILE* file);
 
+ListHandler vector_to_list(Vector * self);
+
+Vector list_to_vec(ListHandler * self, unsigned sizeOfElement);
+
 /////name: base64_encode
 /////func: encode binary bits to base64
 /////para: buffer expects the memory to write, data expects the memory to encode, 

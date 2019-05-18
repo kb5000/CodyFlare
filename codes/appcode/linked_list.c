@@ -1,5 +1,6 @@
 #include "linked_list.h"
 #include <stdlib.h>
+#include "utility.h"
 
 ///these are functions packed and could be called by structs
 unsigned my_list_len(ListHandler* self);
@@ -264,3 +265,4 @@ void my_list_remove_if(ListHandler* self, int func(void*, void*), void* para) {
 		}
 	}
 }
+
