@@ -17,6 +17,7 @@ void ShowLetter(char ch, double size, double x, double y) {
 	case 4:add_func_to_timer(showE, pack, 1, 74, -1); break;
 	case 6:add_func_to_timer(showG, pack, 1, 74, -1); break;
 	case 7:add_func_to_timer(showH, pack, 1, 74, -1); break;
+	case 8:add_func_to_timer(showI, pack, 1, 74, -1); break;
 	case 12:add_func_to_timer(showM, pack, 1, 74, -1); break;
 	case 14:add_func_to_timer(showO, pack, 1, 74, -1); break;
 	case 15:add_func_to_timer(showP, pack, 1, 74, -1); break;
@@ -24,6 +25,7 @@ void ShowLetter(char ch, double size, double x, double y) {
 	case 18:add_func_to_timer(showS, pack, 1, 74, -1); break;
 	case 19:add_func_to_timer(showT, pack, 1, 74, -1); break;
 	case 21:add_func_to_timer(showV, pack, 1, 74, -1); break;
+	case 24:add_func_to_timer(showY, pack, 1, 74, -1); break;
 	default:break;
 	}
 }
@@ -148,6 +150,38 @@ void showH(FontData *FD) {
 		draw_parabola(ph, 1);
 	}
 }
+
+void showI(FontData *FD) {
+	double H = GetWindowHeight(), W = GetWindowWidth();
+	double size = FD->size, x = FD->x, y = FD->y;
+	double h = size * H / 20.0;//字体框高
+	double w = size * W / 40.0;//字体框宽
+
+	double i = 0.0;
+	for (; i < 2.1; i += 1.0) {
+		double e = size * i*0.01;
+		double x1, x2, y1, y2;
+		x1 = x + 0.3*w;
+		x2 = x + w * 0.9;
+		y1 = y ;
+		y2 = y + 0.05*h;
+		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2, (y1 + y2) / 2 - e), new_pos(x2, y2 - e),NULL, 1);
+		draw_parabola(ph, 1);
+		double t1 = x1, t2 = x2;
+		x1 = (x1 + x2) / 2.0 - size * 0.01;
+		x2 = x1 - size * 0.03;
+		y2 = y - 0.9*h;
+		ph = create_parabola(74, new_pos(x1 + e, y1), new_pos((x1 + x2) / 2 + e, (y1 + y2) / 2 - 0.03*h), new_pos(x2 + e, y2), NULL, 1);
+		draw_parabola(ph, 1);
+		x1 = t1-0.03*size, x2 = t2-0.03*size;
+		y1 = y2;
+		y2 = y1 + 0.02*size;
+		ph = create_parabola(74, new_pos(x1, y1-e), new_pos((x1 + x2) / 2, (y1 + y2) / 2 - e), new_pos(x2 + e, y2-e), NULL, 1);
+		draw_parabola(ph, 1);
+
+	}
+}
+
 
 void showM(FontData *FD) {
 	double H = GetWindowHeight(), W = GetWindowWidth();
@@ -331,5 +365,31 @@ void showV(FontData *FD) {
 		y2 = y;
 		ph = create_parabola(74, new_pos(x1 + e, y1), new_pos((x2 + x1) / 2 + e, (y1 + y2) / 2), new_pos(x2 + e, y2), NULL, 1);
 		draw_parabola(ph, 1);
+	}
+}
+
+void showY(FontData *FD) {
+	double H = GetWindowHeight(), W = GetWindowWidth();
+	double size = FD->size, x = FD->x, y = FD->y;
+	double h = size * H / 20.0;//字体框高
+	double w = size * W / 40.0;//字体框宽
+
+	double i = 0.0;
+	for (; i < 2.1; i += 1.0) {
+		double e = size * i*0.01;
+		double x1, x2, y1, y2;
+		x1 = x + 0.1*w;
+		x2 = x + w * 0.9;
+		y1 = y - 0.1*h;
+		y2 = y - 0.05*h;
+		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2-0.04*w, (y1 + y2) / 2 - 0.35*h-e), new_pos(x2, y2 - e), NULL, 1);
+		draw_parabola(ph, 1);
+		x1 = x + w / 2.0 - 0.07*w;
+		x2 = x + w / 2.0 - 0.17*w;
+		y1 = y1 - 0.35*h;
+		y2 = y - 0.95*h;
+		ph = create_parabola(74, new_pos(x1 + e, y1), new_pos((x1 + x2) / 2 + e, (y1 + y2) / 2 - 0.03*h), new_pos(x2 + e, y2), NULL, 1);
+		draw_parabola(ph, 1);
+
 	}
 }
