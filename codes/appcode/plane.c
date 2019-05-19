@@ -53,9 +53,9 @@ void add_plane(Plane plane) {
 															add_pos(pln->position, new_pos(0.25, 0.1)), pln->id, add_pos(pln->position, new_pos(0, -0.25))));
 		break;
 	case Advanced_Enemy_Plane:
-		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Line,
-															add_pos(pln->position, new_pos(-0.2, 0)),
-															add_pos(pln->position, new_pos(0.2, 0)), pln->id, new_pos(0, 0)));
+		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Triangle,
+															add_pos(pln->position, new_pos(-0.25, 0.18)),
+															add_pos(pln->position, new_pos(0.25, 0.18)), pln->id, add_pos(pln->position, new_pos(0, -0.22))));
 		break;
 	case Swift_Enemy_Plane:
 		add_col_obj_to_group(ENM_PLN_COL_ID, create_col_obj(Col_Triangle,
@@ -154,8 +154,11 @@ void update_each_plane(Plane* plane) {
 		break;
 	case Advanced_Enemy_Plane:
 	{
-		MovePen(plane->position.x - 0.2, plane->position.y);
-		DrawLine(0.4, 0);
+		//MovePen(plane->position.x, plane->position.y - 0.22);
+		//DrawLine(-0.25, 0.40);
+		//MovePen(plane->position.x, plane->position.y - 0.22);
+		//DrawLine(0.25, 0.40);
+		draw_infernal_enemy(&plane->position);
 		Pos pos = *player_plane_pos();
 		plane->position = advanced_enemy_move(plane->position, pos);
 		if (plane->position.y > pos.y + 2) {
@@ -170,8 +173,8 @@ void update_each_plane(Plane* plane) {
 				plane->ammoTime = 0;
 			}
 		}
-		update_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0)),
-						add_pos(plane->position, new_pos(0.2, 0)));
+		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.25, 0.18)),
+							add_pos(plane->position, new_pos(0.25, 0.18)), add_pos(plane->position, new_pos(0, -0.22)));
 	}
 	break;
 	case Swift_Enemy_Plane:
@@ -246,6 +249,7 @@ void generate_plane(void* unuseful) {
 			;	//nothing
 		} else if (planeNum == 60) {
 			plane = create_plane(Boss_Plane, new_pos(5, 4), 2000, 37);
+			add_plane(plane);
 		} else {
 			plane = create_plane(Basic_Enemy_Plane, new_pos(RandomReal(0.2, 9.8), 7.2), 20, 0);
 			int seed = RandomInteger(0, 9);
@@ -258,8 +262,8 @@ void generate_plane(void* unuseful) {
 				plane.type = Swift_Enemy_Plane;
 				plane.health = 15;
 			}
+			add_plane(plane);
 		}
-		add_plane(plane);
 		planeRefreshTime = 0;
 		planeNum++;
 	}

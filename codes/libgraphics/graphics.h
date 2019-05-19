@@ -29,6 +29,8 @@ void update_drawing_info();
 ///func: update the screen
 ///visb: private
 void show_all_now();
+
+void DisplayLine(double x, double y, double dx, double dy);
 #endif //end of PERFORMANCE_DRAWING
 
 #ifdef NEW_COLOR_SYSTEM

@@ -276,7 +276,7 @@ static void CheckEvents(void);
 static void DoUpdate(void);
 void DisplayClear(void);
 static void PrepareToDraw(void);
-static void DisplayLine(double x, double y, double dx, double dy);
+void DisplayLine(double x, double y, double dx, double dy);
 static void DisplayArc(double xc, double yc, double rx, double ry,
                        double start, double sweep);
 static void RenderArc(double x, double y, double rx, double ry,
@@ -1360,7 +1360,7 @@ static void PrepareToDraw(void)
  * region instead.
  */
 
-static void DisplayLine(double x, double y, double dx, double dy)
+void DisplayLine(double x, double y, double dx, double dy)
 {
     int x0, y0, x1, y1;
     //RECT r;

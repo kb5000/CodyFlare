@@ -17,7 +17,9 @@ Pos advanced_enemy_move(Pos position, Pos playerPos) {
 		}
 	} else {
 		double detx = position.x - playerPos.x;
-		if (detx >= 0) {
+		if (detx >= -0.05 && detx <= 0.05) {
+			dir = new_pos(0, -0.865);
+		} else if (detx > 0) {
 			dir = new_pos(-1.5, -0.865);
 		} else {
 			dir = new_pos(1.5, -0.865);
@@ -33,8 +35,7 @@ Pos swift_enemy_move(Pos position, Pos playerPos) {
 	double detx = position.x - playerPos.x;
 	if (playerPos.x > 9) {
 		dir = new_pos(-3.2, -0.865);
-	}
-	if (0 <= detx && detx <= 3 || playerPos.x < 1) {
+	} else if (0 <= detx && detx <= 3 || playerPos.x < 1) {
 		dir = new_pos(3.2, -0.865);
 	} else if (-3 <= detx && detx < 0) {
 		dir = new_pos(-3.2, -0.865);

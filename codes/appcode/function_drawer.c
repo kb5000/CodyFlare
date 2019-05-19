@@ -5,6 +5,14 @@
 #include <color.h>
 #include "extgraph.h"
 
+///For people who want to pasteling it, never do it. The lib cant support it
+
+//#define PAR_FUN_ACCU
+//
+//#ifdef PAR_FUN_ACCU
+//#include <omp.h>
+//#endif
+
 
 void draw_function(DrawFuncHolder* drawHd) {
 #ifdef NEW_COLOR_SYSTEM
