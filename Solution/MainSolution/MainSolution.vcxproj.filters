@@ -183,6 +183,12 @@
     <Filter Include="Modules\UI\HealthBar">
       <UniqueIdentifier>{7e0d414a-bc2f-4ade-8152-4dd2fb00b9cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\UI\Sheet">
+      <UniqueIdentifier>{e654cabd-b508-4bc9-8806-a07778b3d9ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest\SheetTest">
+      <UniqueIdentifier>{e2ece109-e83e-4f96-b62c-772b2e871ccd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -367,6 +373,12 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\health_bar.h">
       <Filter>Modules\UI\HealthBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\sheet.h">
+      <Filter>Modules\UI\Sheet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\sheet_test.h">
+      <Filter>UnitTest\SheetTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -579,6 +591,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\health_bar.c">
       <Filter>Modules\UI\HealthBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\sheet.c">
+      <Filter>Modules\UI\Sheet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\sheet_test.c">
+      <Filter>UnitTest\SheetTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

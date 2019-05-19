@@ -594,7 +594,6 @@ void drawBox(double x, double y, double w, double h, int fillflag, char *label, 
 {
 	double fa = GetFontAscent();
 	// rect
-	mySetPenColor(labelColor);
 	drawRectangle(x,y,w,h,fillflag);
 	// text
 	if( label && strlen(label)>0 ) {
@@ -604,9 +603,31 @@ void drawBox(double x, double y, double w, double h, int fillflag, char *label, 
 			MovePen(x+w-fa/2-TextStringWidth(label), y+h/2-fa/2);
 		else // if( labelAlignment=='C'
 			MovePen(x+(w-TextStringWidth(label))/2, y+h/2-fa/2);
+		mySetPenColor(labelColor);
 		DrawTextString(label);
 	}
 }
+
+#ifdef NEW_COLOR_SYSTEM
+void drawBoxFree(double x, double y, double w, double h, int fillflag, char *label, char labelAlignment, Color labelColor, int gridFlag)
+{
+	double fa = GetFontAscent();
+	// rect
+	if (gridFlag)
+		drawRectangle(x,y,w,h,fillflag);
+	// text
+	if( label && strlen(label)>0 ) {
+		if( labelAlignment=='L' )
+			MovePen(x+fa/2, y+h/2-fa/2);
+		else if( labelAlignment=='R' )
+			MovePen(x+w-fa/2-TextStringWidth(label), y+h/2-fa/2);
+		else // if( labelAlignment=='C'
+			MovePen(x+(w-TextStringWidth(label))/2, y+h/2-fa/2);
+		set_color(labelColor);
+		DrawTextString(label);
+	}
+}
+#endif
 
 /* ÏÔÊ¾×Ö·û´®±êÇ© */
 void drawLabel(double x, double y, char *label)

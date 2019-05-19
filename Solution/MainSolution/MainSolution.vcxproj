@@ -274,6 +274,8 @@
     <ClInclude Include="..\..\codes\appcode\plane_test.h" />
     <ClInclude Include="..\..\codes\appcode\player_control.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
+    <ClInclude Include="..\..\codes\appcode\sheet.h" />
+    <ClInclude Include="..\..\codes\appcode\sheet_test.h" />
     <ClInclude Include="..\..\codes\appcode\spline_interpolation.h" />
     <ClInclude Include="..\..\codes\appcode\spline_test.h" />
     <ClInclude Include="..\..\codes\appcode\tortoise.h" />
@@ -343,6 +345,8 @@
     <ClCompile Include="..\..\codes\appcode\player_control.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />
+    <ClCompile Include="..\..\codes\appcode\sheet.c" />
+    <ClCompile Include="..\..\codes\appcode\sheet_test.c" />
     <ClCompile Include="..\..\codes\appcode\slide_bar.c" />
     <ClCompile Include="..\..\codes\appcode\spline_interpolation.c" />
     <ClCompile Include="..\..\codes\appcode\spline_test.c" />

@@ -21,6 +21,18 @@
 #define ____ui_button_h______
 
 
+
+
+
+
+///HOOK WARNING
+#include "color.h"
+void drawBoxFree(double x, double y, double w, double h, int fillflag, char *label, char labelAlignment, Color labelColor, int gridFlag);
+
+///END OF HOOK WARNING
+
+
+
 //===========================================================================
 //
 //   [L:16-1][N:16-1]

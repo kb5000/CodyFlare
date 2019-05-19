@@ -20,5 +20,6 @@
 #include "font_test.h"
 #include "ammo_test.h"
 #include "plane_test.h"
+#include "sheet_test.h"
 
 void tests();
