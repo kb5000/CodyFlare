@@ -371,7 +371,7 @@
     <ClInclude Include="..\..\codes\appcode\health_bar.h">
       <Filter>Modules\UI\HealthBar</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\GC\codes\appcode\logo_test.h">
+    <ClInclude Include="..\..\codes\appcode\logo_test.h">
       <Filter>UnitTest\LogoTest</Filter>
     </ClInclude>
   </ItemGroup>
@@ -586,7 +586,7 @@
     <ClCompile Include="..\..\codes\appcode\health_bar.c">
       <Filter>Modules\UI\HealthBar</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\GC\codes\appcode\logo_test.c">
+    <ClCompile Include="..\..\codes\appcode\logo_test.c">
       <Filter>UnitTest\LogoTest</Filter>
     </ClCompile>
   </ItemGroup>

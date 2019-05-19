@@ -594,7 +594,6 @@ void drawBox(double x, double y, double w, double h, int fillflag, char *label, 
 {
 	double fa = GetFontAscent();
 	// rect
-	mySetPenColor(labelColor);
 	drawRectangle(x,y,w,h,fillflag);
 	// text
 	if( label && strlen(label)>0 ) {
@@ -604,6 +603,7 @@ void drawBox(double x, double y, double w, double h, int fillflag, char *label, 
 			MovePen(x+w-fa/2-TextStringWidth(label), y+h/2-fa/2);
 		else // if( labelAlignment=='C'
 			MovePen(x+(w-TextStringWidth(label))/2, y+h/2-fa/2);
+		mySetPenColor(labelColor);
 		DrawTextString(label);
 	}
 }

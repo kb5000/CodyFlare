@@ -238,7 +238,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\GC\codes\appcode\logo_test.h" />
     <ClInclude Include="..\..\codes\appcode\ai.h" />
     <ClInclude Include="..\..\codes\appcode\ammo.h" />
     <ClInclude Include="..\..\codes\appcode\ammo_test.h" />
@@ -264,6 +263,7 @@
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
     <ClInclude Include="..\..\codes\appcode\listbox.h" />
     <ClInclude Include="..\..\codes\appcode\list_test.h" />
+    <ClInclude Include="..\..\codes\appcode\logo_test.h" />
     <ClInclude Include="..\..\codes\appcode\main_test.h" />
     <ClInclude Include="..\..\codes\appcode\menu.h" />
     <ClInclude Include="..\..\codes\appcode\missile.h" />
@@ -302,7 +302,6 @@
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\GC\codes\appcode\logo_test.c" />
     <ClCompile Include="..\..\codes\appcode\ai.c" />
     <ClCompile Include="..\..\codes\appcode\ammo.c" />
     <ClCompile Include="..\..\codes\appcode\ammo_test.c" />
@@ -333,6 +332,7 @@
     <ClCompile Include="..\..\codes\appcode\input.c" />
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\listbox.c" />
+    <ClCompile Include="..\..\codes\appcode\logo_test.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
     <ClCompile Include="..\..\codes\appcode\missile.c" />
     <ClCompile Include="..\..\codes\appcode\missile_test.c" />
