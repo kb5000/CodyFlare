@@ -238,6 +238,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\GC\codes\appcode\logo_test.h" />
     <ClInclude Include="..\..\codes\appcode\ai.h" />
     <ClInclude Include="..\..\codes\appcode\ammo.h" />
     <ClInclude Include="..\..\codes\appcode\ammo_test.h" />
@@ -301,6 +302,7 @@
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\GC\codes\appcode\logo_test.c" />
     <ClCompile Include="..\..\codes\appcode\ai.c" />
     <ClCompile Include="..\..\codes\appcode\ammo.c" />
     <ClCompile Include="..\..\codes\appcode\ammo_test.c" />

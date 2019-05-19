@@ -183,6 +183,9 @@
     <Filter Include="Modules\UI\HealthBar">
       <UniqueIdentifier>{7e0d414a-bc2f-4ade-8152-4dd2fb00b9cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnitTest\LogoTest">
+      <UniqueIdentifier>{e65483c7-de22-4eb6-891e-0736b8ac0d58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -367,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\health_bar.h">
       <Filter>Modules\UI\HealthBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GC\codes\appcode\logo_test.h">
+      <Filter>UnitTest\LogoTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -579,6 +585,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\health_bar.c">
       <Filter>Modules\UI\HealthBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GC\codes\appcode\logo_test.c">
+      <Filter>UnitTest\LogoTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
