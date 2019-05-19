@@ -4,9 +4,9 @@
 #include "timer.h"
 #include <stdlib.h>
 
-static const char chrs[5][3][10] = {{"标题", "no", "at"}, {"b", "kalos", "np"}, {"rp"}, {"", "内容", ""}, {"", "", "YSL1"}};
+static char chrs[5][3][10] = {{"标题", "no", "at"}, {"b", "kalos", "np"}, {"rp"}, {"", "内容", ""}, {"", "", "YSL1"}};
 
-static const char chb[8][40] = {
+static char chb[8][40] = {
 	"游戏帮助",
 	//"",
 	"这款游戏采用键盘交互",
