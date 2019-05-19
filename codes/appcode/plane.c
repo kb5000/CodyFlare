@@ -17,6 +17,13 @@ static int score = 0;
 static int planeNum = 0;
 
 void init_plane_list() {
+	if (planeList.destroy) {
+		calls(planeList, destroy);
+	}
+	planeID = 0;
+	planeRefreshTime = 0;
+	score = 0;
+	planeNum = 0;
 	planeList = new_empty_list();
 	add_col_group(PLR_PLN_COL_ID);
 	add_col_group(ENM_PLN_COL_ID);

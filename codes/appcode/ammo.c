@@ -21,6 +21,10 @@ typedef struct {
 } Ammo;
 
 void init_ammo_system() {
+	if (ammoList.destroy) {
+		calls(ammoList, destroy);
+	}
+	globalAmmoID = 0;
 	ammoList = new_empty_list();
 	add_col_group(ENM_AMMO_COL_ID);
 	add_col_group(PLR_AMMO_COL_ID);

@@ -12,6 +12,10 @@ static ListHandler fixObjList;
 static int fixObjID = 0;
 
 void init_fix_obj_system() {
+	if (fixObjList.destroy) {
+		calls(fixObjList, destroy);
+	}
+	fixObjID = 0;
 	fixObjList = new_empty_list();
 	add_col_group(FIX_OBJ_COL_ID);
 	add_col_handler(FIX_OBJ_COL_ID, PLR_PLN_COL_ID, fix_plane_col, NULL);

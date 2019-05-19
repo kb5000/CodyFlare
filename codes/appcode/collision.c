@@ -19,6 +19,13 @@ static ListHandler globalCollisionHandler;
 static int invalidFlag = 0;
 
 void init_col_detector() {
+	//Have content then destroy, not a bug
+	if (globalCollisionList.destroy) {
+		calls(globalCollisionList, destroy);
+	}
+	if (globalCollisionHandler.destroy) {
+		calls(globalCollisionHandler, destroy);
+	}
 	globalCollisionList = new_empty_list();
 	globalCollisionHandler = new_empty_list();
 }

@@ -14,6 +14,9 @@ typedef struct {
 HashMap globalVaribleSet;
 
 void init_gc() {
+	if (globalVaribleSet.destroy) {
+		calls(globalVaribleSet, destroy);
+	}
 	globalVaribleSet = new_hash_map();
 }
 

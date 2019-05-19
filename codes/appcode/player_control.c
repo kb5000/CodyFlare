@@ -5,7 +5,7 @@
 #include "col_updater.h"
 #include <stdlib.h>
 
-static Pos noTargetPos = {5, 0};
+static const Pos noTargetPos = {5, 0};
 static Pos* delayPos;
 static int firstPressFlag = 0, firstInFlag = 1;
 
