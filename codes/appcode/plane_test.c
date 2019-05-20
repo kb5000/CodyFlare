@@ -11,17 +11,19 @@
 #include "player_control.h"
 #include "fix_obj.h"
 #include "health_bar.h"
+#include "status_line.h"
 
 static char r[64];
 
 void show_health(void* unuseful) {
 	Plane* p = find_plane_by_id(0);
-	if (!p) {
-		sprintf(r, "Your final score is %d", current_score());
-	} else {
-		sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
-	}
-	drawLabel(0.1, 0.1, r);
+	//if (!p) {
+	//	sprintf(r, "Your final score is %d", current_score());
+	//} else {
+	//	sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
+	//}
+	//drawLabel(0.1, 0.1, r);
+	show_status_line(current_score(), p->health, p->numOfBombs);
 	Plane* boss = get_boss_plane();
 	if (boss) {
 		show_health_bar(boss->health, 2000);

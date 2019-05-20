@@ -2,12 +2,13 @@
 #include "graphics.h"
 #include "imgui.h"
 #include "extgraph.h"
+#include "input.h"
 
 //void draw_grid(Pos start, Pos size, int row, int col) {
 //	
 //}
 
-void show_sheet(Vector* content, Pos start, Pos size, int row, int col, int hasTitle, int hasInnerLines, double titleHight, 
+int show_sheet(Vector* content, Pos start, Pos size, int row, int col, int hasTitle, int hasInnerLines, double titleHight, 
 				Color gridColor, Color textColor, Color backColor, 
 				const char* titleFont, int titleSize, const char* textFont, int textSize) {
 	Pos elementSize = new_pos(size.x / col, (size.y - !!hasTitle * titleHight) / (row - !!hasTitle)); //normalize
@@ -33,4 +34,6 @@ void show_sheet(Vector* content, Pos start, Pos size, int row, int col, int hasT
 						elementSize.x, elementSize.y, 0, a, 'C', textColor, hasInnerLines);
 		}
 	}
+	MouseKeys mk = get_mouse_key();
+	return mk.left == 0 && pos_in_rect(mk.pos, start, add_pos(start, size));
 }

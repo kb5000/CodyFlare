@@ -54,35 +54,14 @@
     <Filter Include="UnitTest\FunctionTest">
       <UniqueIdentifier>{3e3a7c79-4937-4b58-acd6-28d1f09e9f60}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Animes">
-      <UniqueIdentifier>{d1a9aae0-ba8d-44a2-bcce-6de082f2ecf4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UnitTest\AnimeTest">
       <UniqueIdentifier>{f39a0996-d21d-4d25-a40a-7c628d658179}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\UI">
-      <UniqueIdentifier>{9f6c733b-e870-4100-9fbd-9915480bf0b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\UI\Menu">
-      <UniqueIdentifier>{fdde2562-7406-4b80-a6f1-bff5bd1bc0dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\UI\ToolBox">
-      <UniqueIdentifier>{ba8df76b-3492-4815-ac21-b88b43de7993}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\UI\StatusLine">
-      <UniqueIdentifier>{c9f4e5e6-5722-4897-b3b3-30ce606e483d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\UI\StartPage">
-      <UniqueIdentifier>{7492884a-e304-44c2-b53a-ef08dc2386dd}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTest\UITest">
       <UniqueIdentifier>{4c83326f-8370-4b4b-a325-8b6697846ae4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules\Color">
       <UniqueIdentifier>{d1091bda-4d4d-4f0c-909b-17664db58a83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\UI\SlideBar">
-      <UniqueIdentifier>{73aef577-468e-4cff-8aa4-90196667a54b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules\Save">
       <UniqueIdentifier>{85582994-5255-4baf-ae00-7be7086d2bd0}</UniqueIdentifier>
@@ -98,9 +77,6 @@
     </Filter>
     <Filter Include="UnitTest\SaveTest">
       <UniqueIdentifier>{f6a74eaf-787a-4df3-ad6a-e7f78bb5f606}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\AI">
-      <UniqueIdentifier>{520436f9-d458-4d2d-a2fe-651480bd2778}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTest\GCTest">
       <UniqueIdentifier>{32c9c34c-2bc0-4bfe-8d13-4aa0cdfc28e5}</UniqueIdentifier>
@@ -126,17 +102,11 @@
     <Filter Include="UnitTest\HashMapTest">
       <UniqueIdentifier>{20daeef9-43f8-431b-9e95-712ae6e04625}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\UI\ListBox">
-      <UniqueIdentifier>{a1bff709-2892-4ffb-935b-f7b28efcaa64}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\SplineInterpolation">
       <UniqueIdentifier>{711afd44-8945-472d-aaac-41e0d3753654}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTest\SplineInterpolationTest">
       <UniqueIdentifier>{75c19f95-3d0c-424b-a88c-42fa3cbe7425}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Fonts">
-      <UniqueIdentifier>{d8a00eed-a6ef-4205-8246-9d7940aba4cb}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTest\FontsTest">
       <UniqueIdentifier>{bcd74ba0-1ceb-4e4f-873b-3579c44990a5}</UniqueIdentifier>
@@ -144,35 +114,14 @@
     <Filter Include="Modules\CollisionDetection">
       <UniqueIdentifier>{e89fa1f3-95c0-457c-a92e-d285efd60181}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Plane">
-      <UniqueIdentifier>{712f8bb2-155b-4552-8f55-63c47f957d1e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Game">
-      <UniqueIdentifier>{e185090c-aacb-4461-bc7d-46cfa8e13a70}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Weapon">
-      <UniqueIdentifier>{6320f1ff-b18b-4267-a0d7-45748ddb31b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Ammo">
-      <UniqueIdentifier>{9786e988-ec23-45b3-a707-eed34c3c8d70}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UnitTest\AmmoTest">
       <UniqueIdentifier>{c976166e-2a59-446f-ab34-e888c22f6ae0}</UniqueIdentifier>
     </Filter>
     <Filter Include="UnitTest\PlaneTest">
       <UniqueIdentifier>{958cea3c-1f51-427a-943c-e85c813294ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\ColUpdater">
-      <UniqueIdentifier>{dee4d161-3f7b-4b52-804e-c99d78eba92e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UnitTest\ObjectTest">
       <UniqueIdentifier>{d7e558fd-d303-4bfe-a052-ae4c6a4aa9d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\FixObj">
-      <UniqueIdentifier>{41e2be60-2c70-4357-8c96-b2ea90b94bb3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\PlayerControl">
-      <UniqueIdentifier>{9a7821d9-20ea-4151-838d-ec5db2b68115}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules\GC">
       <UniqueIdentifier>{559cd5cc-b828-4942-b6ca-c1f960016ba4}</UniqueIdentifier>
@@ -180,14 +129,74 @@
     <Filter Include="Modules\Tortoise">
       <UniqueIdentifier>{63627c2a-1e35-4159-8e3d-077fc53c2cb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\UI\HealthBar">
-      <UniqueIdentifier>{7e0d414a-bc2f-4ade-8152-4dd2fb00b9cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\UI\Sheet">
-      <UniqueIdentifier>{e654cabd-b508-4bc9-8806-a07778b3d9ac}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UnitTest\SheetTest">
       <UniqueIdentifier>{e2ece109-e83e-4f96-b62c-772b2e871ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{8438a731-1d0c-42b5-b9f2-13f2f48a02e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI">
+      <UniqueIdentifier>{9f6c733b-e870-4100-9fbd-9915480bf0b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\Menu">
+      <UniqueIdentifier>{fdde2562-7406-4b80-a6f1-bff5bd1bc0dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\ToolBox">
+      <UniqueIdentifier>{ba8df76b-3492-4815-ac21-b88b43de7993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\StatusLine">
+      <UniqueIdentifier>{c9f4e5e6-5722-4897-b3b3-30ce606e483d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\StartPage">
+      <UniqueIdentifier>{7492884a-e304-44c2-b53a-ef08dc2386dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\SlideBar">
+      <UniqueIdentifier>{73aef577-468e-4cff-8aa4-90196667a54b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\ListBox">
+      <UniqueIdentifier>{a1bff709-2892-4ffb-935b-f7b28efcaa64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\HealthBar">
+      <UniqueIdentifier>{7e0d414a-bc2f-4ade-8152-4dd2fb00b9cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\Sheet">
+      <UniqueIdentifier>{e654cabd-b508-4bc9-8806-a07778b3d9ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\EndPage">
+      <UniqueIdentifier>{feeda730-fb39-45dc-8342-f61a6eff7e52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Weapon">
+      <UniqueIdentifier>{6320f1ff-b18b-4267-a0d7-45748ddb31b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\PlayerControl">
+      <UniqueIdentifier>{9a7821d9-20ea-4151-838d-ec5db2b68115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Plane">
+      <UniqueIdentifier>{712f8bb2-155b-4552-8f55-63c47f957d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SavePlane">
+      <UniqueIdentifier>{08c6b112-d66b-4166-a390-59e20b63d69c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Game">
+      <UniqueIdentifier>{e185090c-aacb-4461-bc7d-46cfa8e13a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Fonts">
+      <UniqueIdentifier>{d8a00eed-a6ef-4205-8246-9d7940aba4cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\FixObj">
+      <UniqueIdentifier>{41e2be60-2c70-4357-8c96-b2ea90b94bb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ColUpdater">
+      <UniqueIdentifier>{dee4d161-3f7b-4b52-804e-c99d78eba92e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Animes">
+      <UniqueIdentifier>{d1a9aae0-ba8d-44a2-bcce-6de082f2ecf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\AI">
+      <UniqueIdentifier>{520436f9-d458-4d2d-a2fe-651480bd2778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Ammo">
+      <UniqueIdentifier>{9786e988-ec23-45b3-a707-eed34c3c8d70}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -249,7 +258,7 @@
       <Filter>UnitTest\FunctionTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\animes.h">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\anime_test.h">
       <Filter>UnitTest\AnimeTest</Filter>
@@ -258,19 +267,19 @@
       <Filter>UnitTest\CollisionTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ui.h">
-      <Filter>Modules\UI</Filter>
+      <Filter>Game\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\menu.h">
-      <Filter>Modules\UI\Menu</Filter>
+      <Filter>Game\UI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\start_page.h">
-      <Filter>Modules\UI\StartPage</Filter>
+      <Filter>Game\UI\StartPage</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\status_line.h">
-      <Filter>Modules\UI\StatusLine</Filter>
+      <Filter>Game\UI\StatusLine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\tool_box.h">
-      <Filter>Modules\UI\ToolBox</Filter>
+      <Filter>Game\UI\ToolBox</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ui_test.h">
       <Filter>UnitTest\UITest</Filter>
@@ -279,7 +288,7 @@
       <Filter>Modules\Color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\slide_bar.h">
-      <Filter>Modules\UI\SlideBar</Filter>
+      <Filter>Game\UI\SlideBar</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\save.h">
       <Filter>Modules\Save</Filter>
@@ -297,10 +306,10 @@
       <Filter>UnitTest\SaveTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\listbox.h">
-      <Filter>Modules\UI\ListBox</Filter>
+      <Filter>Game\UI\ListBox</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ai.h">
-      <Filter>Modules\AI</Filter>
+      <Filter>Game\AI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\gc_test.h">
       <Filter>UnitTest\GCTest</Filter>
@@ -333,22 +342,22 @@
       <Filter>UnitTest\SplineInterpolationTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\font.h">
-      <Filter>Modules\Fonts</Filter>
+      <Filter>Game\Fonts</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\font_test.h">
       <Filter>UnitTest\FontsTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\weapon.h">
-      <Filter>Modules\Weapon</Filter>
+      <Filter>Game\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\plane.h">
-      <Filter>Modules\Plane</Filter>
+      <Filter>Game\Plane</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ingame.h">
-      <Filter>Modules\Game</Filter>
+      <Filter>Game\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ammo.h">
-      <Filter>Modules\Ammo</Filter>
+      <Filter>Game\Ammo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ammo_test.h">
       <Filter>UnitTest\AmmoTest</Filter>
@@ -357,25 +366,25 @@
       <Filter>UnitTest\PlaneTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\col_updater.h">
-      <Filter>Modules\ColUpdater</Filter>
+      <Filter>Game\ColUpdater</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\object_test.h">
       <Filter>UnitTest\ObjectTest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\fix_obj.h">
-      <Filter>Modules\FixObj</Filter>
+      <Filter>Game\FixObj</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\player_control.h">
-      <Filter>Modules\PlayerControl</Filter>
+      <Filter>Game\PlayerControl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\tortoise.h">
       <Filter>Modules\Tortoise</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\health_bar.h">
-      <Filter>Modules\UI\HealthBar</Filter>
+      <Filter>Game\UI\HealthBar</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\sheet.h">
-      <Filter>Modules\UI\Sheet</Filter>
+      <Filter>Game\UI\Sheet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\sheet_test.h">
       <Filter>UnitTest\SheetTest</Filter>
@@ -437,10 +446,10 @@
       <Filter>UnitTest\FunctionTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_bomb.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_shield.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_test.c">
       <Filter>UnitTest\AnimeTest</Filter>
@@ -449,28 +458,28 @@
       <Filter>UnitTest\CollisionTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_ammo.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_enemy_boss.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_victory.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ui.c">
-      <Filter>Modules\UI</Filter>
+      <Filter>Game\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\menu.c">
-      <Filter>Modules\UI\Menu</Filter>
+      <Filter>Game\UI\Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\start_page.c">
-      <Filter>Modules\UI\StartPage</Filter>
+      <Filter>Game\UI\StartPage</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\status_line.c">
-      <Filter>Modules\UI\StatusLine</Filter>
+      <Filter>Game\UI\StatusLine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\tool_box.c">
-      <Filter>Modules\UI\ToolBox</Filter>
+      <Filter>Game\UI\ToolBox</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ui_test.c">
       <Filter>UnitTest\UITest</Filter>
@@ -479,7 +488,7 @@
       <Filter>Modules\Color</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\slide_bar.c">
-      <Filter>Modules\UI\SlideBar</Filter>
+      <Filter>Game\UI\SlideBar</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\save.c">
       <Filter>Modules\Save</Filter>
@@ -497,10 +506,10 @@
       <Filter>UnitTest\SaveTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\listbox.c">
-      <Filter>Modules\UI\ListBox</Filter>
+      <Filter>Game\UI\ListBox</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ai.c">
-      <Filter>Modules\AI</Filter>
+      <Filter>Game\AI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\gc_test.c">
       <Filter>UnitTest\GCTest</Filter>
@@ -521,7 +530,7 @@
       <Filter>UnitTest\MissileTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_explode.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\hashmap.c">
       <Filter>Modules\HashMap</Filter>
@@ -530,10 +539,10 @@
       <Filter>UnitTest\HashMapTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\common_anime.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\parabola.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\spline_interpolation.c">
       <Filter>Modules\SplineInterpolation</Filter>
@@ -542,22 +551,22 @@
       <Filter>UnitTest\SplineInterpolationTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\font.c">
-      <Filter>Modules\Fonts</Filter>
+      <Filter>Game\Fonts</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\font_test.c">
       <Filter>UnitTest\FontsTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\weapon.c">
-      <Filter>Modules\Weapon</Filter>
+      <Filter>Game\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\plane.c">
-      <Filter>Modules\Plane</Filter>
+      <Filter>Game\Plane</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ingame.c">
-      <Filter>Modules\Game</Filter>
+      <Filter>Game\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ammo.c">
-      <Filter>Modules\Ammo</Filter>
+      <Filter>Game\Ammo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ammo_test.c">
       <Filter>UnitTest\AmmoTest</Filter>
@@ -566,34 +575,34 @@
       <Filter>UnitTest\PlaneTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\col_updater.c">
-      <Filter>Modules\ColUpdater</Filter>
+      <Filter>Game\ColUpdater</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\object_test.c">
       <Filter>UnitTest\ObjectTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_objs.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\fix_obj.c">
-      <Filter>Modules\FixObj</Filter>
+      <Filter>Game\FixObj</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\player_control.c">
-      <Filter>Modules\PlayerControl</Filter>
+      <Filter>Game\PlayerControl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_front_sight.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\tortoise.c">
       <Filter>Modules\Tortoise</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\anime_missile.c">
-      <Filter>Modules\Animes</Filter>
+      <Filter>Game\Animes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\health_bar.c">
-      <Filter>Modules\UI\HealthBar</Filter>
+      <Filter>Game\UI\HealthBar</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\sheet.c">
-      <Filter>Modules\UI\Sheet</Filter>
+      <Filter>Game\UI\Sheet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\sheet_test.c">
       <Filter>UnitTest\SheetTest</Filter>

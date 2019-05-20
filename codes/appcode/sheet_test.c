@@ -16,8 +16,8 @@ static char chb[8][40] = {
 };
 
 void show_sheets(Vector* vec) {
-	show_sheet(vec, new_pos(1, 2), new_pos(3, 3), 5, 3, 1, 1, 0.4, color_by_name("DarkGrey"), color_by_name("Black"), color_by_rgb(216, 192, 180), 
-			   "黑体", 20, "楷体", 18);
+	if (show_sheet(vec, new_pos(1, 2), new_pos(3, 3), 5, 3, 1, 1, 0.4, color_by_name("DarkGrey"), color_by_name("Black"), color_by_rgb(216, 192, 180), 
+			   "黑体", 20, "楷体", 18)) disable_me_in_timer();
 }
 
 void show_sheetb(Vector* vec) {
