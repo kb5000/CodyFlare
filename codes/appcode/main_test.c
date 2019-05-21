@@ -19,7 +19,7 @@ void tests() {
 	//test_of_anime_accelerate();
 	//test_of_anime_bomb();
 	//test_of_parabola();
-	test_of_spline();
+	//test_of_spline();
 	//test_of_font();
 	//test_of_collision();
 	//test_of_slide_bar();
@@ -27,5 +27,6 @@ void tests() {
 	//test_of_ammo();
 	//test_of_plane();
 	//test_of_sheet();
-	//tst();
+	tst();
+	//test_of_stat();
 }

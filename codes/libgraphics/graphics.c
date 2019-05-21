@@ -1146,6 +1146,8 @@ static void RegisterWindowClass(void)
  * is the paint event, which forces a screen update.
  */
 
+static int freshTime = 0;
+
 static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                                          WPARAM wParam, LPARAM lParam)
 {
@@ -1155,6 +1157,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
 		//         无需系统擦除背景，避免闪烁
 		//         感谢18级石蒙同学，提供这个方法解决刷新闪烁问题
 		case WM_ERASEBKGND: 
+			//if (freshTime++ >= 1000) return DefWindowProc(hwnd, msg, wParam, lParam);
 			return 0; 
 
         case WM_PAINT:

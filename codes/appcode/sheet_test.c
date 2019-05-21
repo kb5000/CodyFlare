@@ -4,6 +4,9 @@
 #include "timer.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "stat_line.h"
+#include "imgui.h"
+#include "extgraph.h"
 
 static char chrs[5][3][10] = {{"标题", "no", "at"}, {"b", "kalos", "np"}, {"rp"}, {"", "内容", ""}, {"", "", "YSL1"}};
 
@@ -16,10 +19,12 @@ static char chb[8][40] = {
 	"（长按）F键发炸弹",
 };
 
+Pos pos = {1, 2};
+
 void show_sheets(Vector* vec) {
-	if (show_sheet(vec, new_pos(1, 2), new_pos(3, 3), 5, 3, 1, 1, 0.4, color_by_name("DarkGrey"), color_by_name("Black"),
- color_by_rgb(216, 192, 180), 
-			   "黑体", 20, "楷体", 18, 'C')) disable_me_in_timer();
+	if (show_sheet(vec, pos, new_pos(3, 3), 5, 3, 1, 1, 0.4, color_by_name("DarkGrey"), color_by_name("Black"),
+				   color_by_rgb(216, 192, 180),
+				   "黑体", 20, "楷体", 18, 'C')) pos.x += 0.05;;
 }
 
 void show_sheetb(Vector* vec) {
@@ -69,4 +74,24 @@ void test_of_sheet() {
 	}
 	add_func_to_timer(show_sheetb, vect, 1, 9423, -1);
 	add_func_to_timer(show_moving_sheet, vect, 1, 9423, -1);
+}
+
+static int n = 0;
+
+void ss(char* t) {
+}
+
+void show_status_liner(int score, int hp, int bombs, int hitPlane, int missPlane) {
+	SetFont((char*)"宋体");
+}
+
+void show_stats(void* u) {
+	button(0, 1, 1, 0.8, 0.3, "E");
+	for (int i = 0; i < 1000; i++) //ss("宋体");
+	show_status_line(1, 1, 1, i, 0);
+}
+
+void test_of_stat() {
+	common_anime_test_init();
+	add_func_to_timer(show_stats, NULL, 1, 12, -1);
 }

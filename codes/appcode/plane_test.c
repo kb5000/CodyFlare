@@ -11,7 +11,7 @@
 #include "player_control.h"
 #include "fix_obj.h"
 #include "health_bar.h"
-#include "status_line.h"
+#include "stat_line.h"
 
 static char r[64];
 

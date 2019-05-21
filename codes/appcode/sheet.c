@@ -36,4 +36,5 @@ int show_sheet(Vector* content, Pos start, Pos size, int row, int col, int hasTi
 	}
 	MouseKeys mk = get_mouse_key();
 	return mk.left == 0 && pos_in_rect(mk.pos, start, add_pos(start, size));
+	//return 0;
 }

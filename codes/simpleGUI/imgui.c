@@ -579,15 +579,15 @@ int textbox(int id, double x, double y, double w, double h, char textbuf[], int 
 void drawRectangle(double x, double y, double w, double h, int fillflag)
 {
 	MovePen(x, y);
-	//if( fillflag ) StartFilledRegion(1); 
+	if( fillflag ) StartFilledRegion(1); 
 	{
 		DrawLine(0, h);
 		DrawLine(w, 0);
 		DrawLine(0, -h);
 		DrawLine(-w, 0);
 	}
-	if (fillflag) fill_rectangle(x, y, w, h);
-	//if( fillflag ) EndFilledRegion();
+	//if (fillflag) fill_rectangle(x, y, w, h);
+	if( fillflag ) EndFilledRegion();
 }
 
 /* 画一个矩形，并在其内部居中显示一个字符串标签label */

@@ -2,6 +2,7 @@
 #include "animes.h"
 #include "input.h"
 
+
 void common_anime_test_init() {
 	InitGraphics();
 	init_input();

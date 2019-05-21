@@ -144,9 +144,6 @@
     <Filter Include="Game\UI\ToolBox">
       <UniqueIdentifier>{ba8df76b-3492-4815-ac21-b88b43de7993}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\UI\StatusLine">
-      <UniqueIdentifier>{c9f4e5e6-5722-4897-b3b3-30ce606e483d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\UI\StartPage">
       <UniqueIdentifier>{7492884a-e304-44c2-b53a-ef08dc2386dd}</UniqueIdentifier>
     </Filter>
@@ -197,6 +194,9 @@
     </Filter>
     <Filter Include="Game\Ammo">
       <UniqueIdentifier>{9786e988-ec23-45b3-a707-eed34c3c8d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\StatLine">
+      <UniqueIdentifier>{185b4fb0-2276-4518-9ed9-4d7417568610}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -274,9 +274,6 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\start_page.h">
       <Filter>Game\UI\StartPage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\codes\appcode\status_line.h">
-      <Filter>Game\UI\StatusLine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\tool_box.h">
       <Filter>Game\UI\ToolBox</Filter>
@@ -392,6 +389,9 @@
     <ClInclude Include="..\..\codes\appcode\save_plane.h">
       <Filter>Game\SavePlane</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\stat_line.h">
+      <Filter>Game\UI\StatLine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
@@ -477,9 +477,6 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\start_page.c">
       <Filter>Game\UI\StartPage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\status_line.c">
-      <Filter>Game\UI\StatusLine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\tool_box.c">
       <Filter>Game\UI\ToolBox</Filter>
@@ -612,6 +609,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\save_plane.c">
       <Filter>Game\SavePlane</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\stat_line.c">
+      <Filter>Game\UI\StatLine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

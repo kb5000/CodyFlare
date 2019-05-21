@@ -11,7 +11,7 @@
 #include "player_control.h"
 #include "graphics.h"
 #include "imgui.h"
-#include "status_line.h"
+#include "stat_line.h"
 #include <stdio.h>
 
 static char r[64];
@@ -24,7 +24,7 @@ void show_stat(void* unuseful) {
 		drawLabel(0.1, 0.1, r);
 	} else {
 		//sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
-		//show_status_line(current_score(), p->health, p->numOfBombs, current_hit_plane(), 0);
+		show_status_line(current_score(), p->health, p->numOfBombs, current_hit_plane(), 0);
 	}
 	Plane* boss = get_boss_plane();
 	if (boss) {
