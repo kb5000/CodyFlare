@@ -10,7 +10,7 @@ static Color(*color_fun)(DrawFuncHolder* dfh) = default_color_fun;
 
 
 Pos parabola_drawer(DrawFuncHolder* dfh) {
-	color_fun(dfh);
+	set_color(color_fun(dfh));
 	return new_pos(pa.x * dfh->tNow + pb.x, pa.y * dfh->tNow + pb.y);
 }
 

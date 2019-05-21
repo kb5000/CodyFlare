@@ -15,7 +15,7 @@ static PolyCoeff currentPoly;
 
 Pos spline_drawer(DrawFuncHolder* dfh) {
 	//call color func to change color, you should use extraPara + tNow 
-	current_color_func(dfh);
+	set_color(current_color_func(dfh));
 	double t = dfh->tNow;
 	//Use t to generate a * t^2 + b * t + c
 	return new_pos(currentPoly.coeffx[0] * t * t + currentPoly.coeffx[1] * t + currentPoly.coeffx[2],
