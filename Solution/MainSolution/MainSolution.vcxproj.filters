@@ -389,6 +389,9 @@
     <ClInclude Include="..\..\codes\appcode\sheet_test.h">
       <Filter>UnitTest\SheetTest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\save_plane.h">
+      <Filter>Game\SavePlane</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\codes\simpleGUI\imgui.c">
@@ -606,6 +609,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\sheet_test.c">
       <Filter>UnitTest\SheetTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\save_plane.c">
+      <Filter>Game\SavePlane</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

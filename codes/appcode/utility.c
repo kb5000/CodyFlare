@@ -63,8 +63,11 @@ double evaluate_polynomia(double* coeff, int n, double x) {
 }
 
 int crash_now(const char* info) {
+#ifdef _DEBUG
+	int a = *(int*)NULL;
 	exit(-1);
-	return -1; //Never return
+#endif // _DEBUG
+	return -1;
 }
 
 int my_bit_map_get(BitMap* self, int n);

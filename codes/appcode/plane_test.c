@@ -17,13 +17,13 @@ static char r[64];
 
 void show_health(void* unuseful) {
 	Plane* p = find_plane_by_id(0);
-	//if (!p) {
-	//	sprintf(r, "Your final score is %d", current_score());
-	//} else {
-	//	sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
-	//}
-	//drawLabel(0.1, 0.1, r);
-	show_status_line(current_score(), p->health, p->numOfBombs);
+	if (!p) {
+		sprintf(r, "Your final score is %d", current_score());
+		drawLabel(0.1, 0.1, r);
+	} else {
+		//sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
+		show_status_line(current_score(), p->health, p->numOfBombs, current_hit_plane(), 0);
+	}
 	Plane* boss = get_boss_plane();
 	if (boss) {
 		show_health_bar(boss->health, 2000);

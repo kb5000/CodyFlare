@@ -338,6 +338,7 @@ void show_all_now() {
 }
 #endif //end of PERFORMANCE_DRAWING
 
+
 ///This is a modify to the color system
 ///It will change how the color function behaves
 ///If you want to use the new color system
@@ -361,6 +362,20 @@ unsigned long get_global_color_handler() {
 
 #endif //end of NEW_COLOR_SYSTEM
 
+
+///This is a modify to avoid the problem that fill has some problem
+
+void fill_rectangle(double x, double y, double w, double h) {
+	SetPenSize(2);
+	for (double t = y; t < y + h; t += 0.02) {
+		MovePen(x, t);
+		DrawLine(w, 0);
+	}
+	SetPenSize(1);
+}
+
+
+///END OF HOOK WARNING
 
 
 /* Exported entries */
@@ -1505,6 +1520,15 @@ static void DisplayText(double x, double y, string text)
  * is found, its data is entered into the font table.
  */
 
+////HOOK WARNING
+
+///Fix the bug that display font will cause memory leak
+
+///"Please, no more memory leak! It makes me so doubtful."
+
+static int changedFont = 0;
+
+
 static void DisplayFont(string font, int size, int style)
 {
     char fontBuffer[MaxFontName + 1];
@@ -1555,11 +1579,18 @@ static void DisplayFont(string font, int size, int style)
     } else {
         (void) SelectObject(osdc, fontTable[fontIndex].font);
         currentFont = fontIndex;
+		if (changedFont) {
+			free(textFont);
+		}
         textFont = CopyString(font);
+		changedFont = 1;
         pointSize = fontTable[fontIndex].points;
         textStyle = style;
     }
 }
+
+////END OF HOOK
+
 
 /*
  * Function: FindExistingFont
@@ -1742,7 +1773,8 @@ static void DisplayPolygon(void)
     oldPen = (HPEN) SelectObject(osdc, fillPen);
     brush = CreatePatternBrush(fillBitmaps[px]);
     if (brush == NULL) {
-        Error("Internal error: Can't load brush");
+        //Error("Internal error: Can't load brush");
+		return;
     }
     oldBrush = (HBRUSH) SelectObject(osdc, brush);
     Polygon(osdc, polygonPoints, nPolygonPoints);

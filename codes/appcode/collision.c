@@ -19,8 +19,13 @@ static ListHandler globalCollisionHandler;
 static int invalidFlag = 0;
 
 void init_col_detector() {
+	invalidFlag = 0;
 	//Have content then destroy, not a bug
 	if (globalCollisionList.destroy) {
+		for (Node* node = globalCollisionList.head; node; node = node->next) {
+			CollisionGroup* cg = node->data;
+			if (cg && cg->objs.destroy) calls(cg->objs, destroy);
+		}
 		calls(globalCollisionList, destroy);
 	}
 	if (globalCollisionHandler.destroy) {
@@ -48,6 +53,7 @@ void add_col_group(int id) {
 		cg->id = id;
 		cg->objs = new_empty_list();
 		calls(globalCollisionList, push_back, cg);
+		//free(cg);
 	} else {
 		crash_now("Add an exist group id");
 	}

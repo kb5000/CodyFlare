@@ -10,8 +10,15 @@ static Pos* delayPos;
 static int firstPressFlag = 0, firstInFlag = 1;
 
 void start_control() {
+	firstInFlag = 1;
+	firstPressFlag = 0;
 	add_to_key_process(' ', launch_missile, NULL);
 	add_to_key_process('F', place_bomb, NULL);
+}
+
+void stop_control() {
+	clear_key_process(' ');
+	clear_key_process('F');
 }
 
 void launch_missile(int key, void* unuseful, int event) {

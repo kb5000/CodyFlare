@@ -41,6 +41,8 @@ void stop_global_timer();
 ///note: in fact, this is a simple version of coroutine
 void change_timer_stack(int id);
 
+void destroy_timer_stack(int id);
+
 
 ///these are functions to control the funcs to be called by the timer
 

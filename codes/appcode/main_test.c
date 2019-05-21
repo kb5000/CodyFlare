@@ -1,4 +1,5 @@
 #include "main_test.h"
+#include "ingame.h"
 
 void tests() {
 	//test_of_vector();
@@ -25,5 +26,6 @@ void tests() {
 	//test_of_list_box();
 	//test_of_ammo();
 	//test_of_plane();
-	test_of_sheet();
+	//test_of_sheet();
+	tst();
 }

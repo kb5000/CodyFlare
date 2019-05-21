@@ -318,6 +318,7 @@ void showS(FontData *FD) {
 	}
 }
 
+
 void showT(FontData *FD) {
 	double H = GetWindowHeight(), W = GetWindowWidth();
 	double size = FD->size, x = FD->x, y = FD->y;
@@ -330,19 +331,20 @@ void showT(FontData *FD) {
 		double x1, x2, y1, y2;
 		x1 = x + 0.07*w;
 		x2 = x + w * 0.93;
-		y1 = y - 0.05*h;
+		y1 = y - 0.1*h;
 		y2 = y - 0.05*h;
-		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - 2 * e), new_pos((x2 + x1) / 2, (y1 + y2) / 2 - 0.03*h - e), new_pos(x2, y2 - 2 * e), NULL, 1);
+		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2, (y1 + y2) / 2 - e), new_pos(x2, y2 -  e), NULL, 1);
 		draw_parabola(ph, 1);
 		x1 = x + w / 2.0 - 0.02*w;
 		x2 = x + w / 2.0 - 0.1*w;
-		y1 -= 0.06*h;
+
 		y2 = y - 0.95*h;
-		ph = create_parabola(74, new_pos(x1 + 0.7*e, y1), new_pos((x1 + x2)*0.5 + (x1 - x2)*0.3 + e, (y1 + y2) / 2 - 0.03*h), new_pos(x2 + 2.5*e, y2), NULL, 1);
+		ph = create_parabola(74, new_pos(x1 + e, y1), new_pos((x1 + x2)/2 + e, (y1 + y2) / 2 - 0.03*h), new_pos(x2 + e, y2), NULL, 1);
 		draw_parabola(ph, 1);
 
 	}
 }
+
 
 void showV(FontData *FD) {
 	double H = GetWindowHeight(), W = GetWindowWidth();

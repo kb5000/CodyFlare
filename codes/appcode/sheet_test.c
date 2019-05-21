@@ -3,6 +3,7 @@
 #include "anime_test.h"
 #include "timer.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static char chrs[5][3][10] = {{"标题", "no", "at"}, {"b", "kalos", "np"}, {"rp"}, {"", "内容", ""}, {"", "", "YSL1"}};
 
@@ -16,13 +17,33 @@ static char chb[8][40] = {
 };
 
 void show_sheets(Vector* vec) {
-	if (show_sheet(vec, new_pos(1, 2), new_pos(3, 3), 5, 3, 1, 1, 0.4, color_by_name("DarkGrey"), color_by_name("Black"), color_by_rgb(216, 192, 180), 
-			   "黑体", 20, "楷体", 18)) disable_me_in_timer();
+	if (show_sheet(vec, new_pos(1, 2), new_pos(3, 3), 5, 3, 1, 1, 0.4, color_by_name("DarkGrey"), color_by_name("Black"),
+ color_by_rgb(216, 192, 180), 
+			   "黑体", 20, "楷体", 18, 'C')) disable_me_in_timer();
 }
 
 void show_sheetb(Vector* vec) {
-	show_sheet(vec, new_pos(6, 2), new_pos(3, 3), 7, 1, 1, 0, 0.8, color_by_name("DarkGrey"), color_by_name("Black"), color_by_rgb(216, 192, 180), 
-			   "黑体", 20, "楷体", 18);
+	show_sheet(vec, new_pos(6, 2), new_pos(3, 3), 7, 1, 1, 0, 0.8, color_by_name("DarkGrey"), color_by_name("Black"),
+ color_by_rgb(216, 192, 180), 
+			   "黑体", 20, "楷体", 18, 'C');
+}
+
+void show_moving_sheet(void* unuseful) {
+	hnew(Vector, vec);
+	*vec = gen_empty_vector(Vector);
+	Vector v = gen_empty_vector(char[3]); //This is a bug? Whatever, we must use its true size when using static array
+	char sdsd[6];
+	sprintf(sdsd, "22");
+	for (int j = 0; j < 3; j++) {
+		calls(v, push, sdsd);
+	}
+	pcalls(vec, push, &v);
+	show_sheet(vec, new_pos(1, 1), new_pos(3, 0.2), 1, 3, 0, 0, 0.8, color_by_name("DarkGrey"), color_by_name("Black"),
+ color_by_rgb(216, 192, 180), 
+			   "黑体", 20, "楷体", 18, 'C');
+	calls(v, destroy);
+	pcalls(vec, destroy);
+	free(vec);
 }
 
 void test_of_sheet() {
@@ -47,4 +68,5 @@ void test_of_sheet() {
 		pcalls(vect, push, &v);
 	}
 	add_func_to_timer(show_sheetb, vect, 1, 9423, -1);
+	add_func_to_timer(show_moving_sheet, vect, 1, 9423, -1);
 }

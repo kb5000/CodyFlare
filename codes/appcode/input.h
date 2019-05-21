@@ -29,6 +29,8 @@ void init_input();
 ///warn: you cant pass a stack memory(not malloced) to the para, or it will cause CRASH
 void add_to_key_process(char key, void(*func)(int, void*, int), void* para);
 
+void clear_key_process(char key);
+
 ///name: get_dir_key
 ///func: get the status of four direction keys
 ///visb: public

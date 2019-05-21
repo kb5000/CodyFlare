@@ -18,6 +18,7 @@ typedef struct {
 
 static ListHandler timerStacks;
 static int currentTimerStack = 0;
+static int isRunning = 0;
 
 void startTimer(int id, int timeinterval);
 void cancelTimer(int id);
@@ -27,6 +28,7 @@ void DisplayClear();
 void timer_func_caller_helper(void* data) {
 	TimerFunc* tmf = (TimerFunc*)data;
 	//every tickInterval ticks it will call
+	if (!isRunning) return;
 	if (globalTickCount % tmf->tickInterval == 0 && tmf->callCount != tmf->maxCallCount && tmf->func) {
 		tmf->func(tmf->paras);
 		tmf->callCount++;
@@ -35,6 +37,7 @@ void timer_func_caller_helper(void* data) {
 			tmf->callCount = tmf->maxCallCount;
 			functionDisableFlag = 0;
 		}
+		if (!isRunning) return;
 	}
 }
 
@@ -66,6 +69,7 @@ void init_global_timer() {
 
 void start_global_timer() {
 	startTimer(globalTimerID, globalTimerInterval);
+	isRunning = 1;
 }
 
 void restart_global_timer() {
@@ -75,6 +79,7 @@ void restart_global_timer() {
 
 void stop_global_timer() {
 	cancelTimer(globalTimerID);
+	isRunning = 0;
 }
 
 void add_func_to_timer(void func(void*), void* paras, int tickInterval, int id, int maxCallCount) {
@@ -150,7 +155,7 @@ void change_timer_stack(int id) {
 	stop_global_timer();
 	TimerStack* tnow = calls(timerStacks, find_if, id_equal, &currentTimerStack);
 	TimerStack* tms = calls(timerStacks, find_if, id_equal, &id);
-	tnow->timerFuncs = globalTimerFunctionList;
+	if (tnow) tnow->timerFuncs = globalTimerFunctionList;
 	if (tms) {
 		globalTimerFunctionList = tms->timerFuncs;
 		currentTimerStack = id;
@@ -163,4 +168,15 @@ void change_timer_stack(int id) {
 		currentTimerStack = id;
 	}
 	start_global_timer();
+}
+
+static int id_requal(TimerStack* a, int* id) {
+	return a->id == *id;
+}
+
+void destroy_timer_stack(int id) {
+	TimerStack* tms = calls(timerStacks, find_if, id_equal, &id);
+	if (!tms) return;
+	calls(tms->timerFuncs, destroy);
+	calls(timerStacks, remove_if, id_requal, &id);
 }

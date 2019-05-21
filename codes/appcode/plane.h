@@ -21,7 +21,11 @@ typedef struct {
 
 void init_plane_list();
 
-Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs); 
+ListHandler * plane_list();
+
+void set_score_info(int scr, int hit);
+
+Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs);
 
 void add_plane(Plane plane);
 
@@ -46,3 +50,7 @@ void clear_score();
 void add_score(PlaneType plane);
 
 int current_score();
+
+void inc_hit_plane();
+
+int current_hit_plane();

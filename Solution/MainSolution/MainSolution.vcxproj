@@ -273,6 +273,7 @@
     <ClInclude Include="..\..\codes\appcode\plane.h" />
     <ClInclude Include="..\..\codes\appcode\plane_test.h" />
     <ClInclude Include="..\..\codes\appcode\player_control.h" />
+    <ClInclude Include="..\..\codes\appcode\save_plane.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
     <ClInclude Include="..\..\codes\appcode\sheet.h" />
     <ClInclude Include="..\..\codes\appcode\sheet_test.h" />
@@ -344,6 +345,7 @@
     <ClCompile Include="..\..\codes\appcode\plane_test.c" />
     <ClCompile Include="..\..\codes\appcode\player_control.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
+    <ClCompile Include="..\..\codes\appcode\save_plane.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />
     <ClCompile Include="..\..\codes\appcode\sheet.c" />
     <ClCompile Include="..\..\codes\appcode\sheet_test.c" />

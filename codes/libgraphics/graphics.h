@@ -45,6 +45,8 @@ void set_global_color_handler(int r, int g, int b);
 unsigned long get_global_color_handler();
 #endif //end of NEW_COLOR_SYSTEM
 
+void fill_rectangle(double x, double y, double w, double h);
+
 ////END OF HOOK
 
 

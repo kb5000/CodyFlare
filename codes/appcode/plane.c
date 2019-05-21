@@ -15,6 +15,7 @@ static int planeID = 0;
 static int planeRefreshTime = 0;
 static int score = 0;
 static int planeNum = 0;
+static int hitPlane = 0;
 
 void init_plane_list() {
 	if (planeList.destroy) {
@@ -24,9 +25,26 @@ void init_plane_list() {
 	planeRefreshTime = 0;
 	score = 0;
 	planeNum = 0;
+	hitPlane = 0;
 	planeList = new_empty_list();
 	add_col_group(PLR_PLN_COL_ID);
 	add_col_group(ENM_PLN_COL_ID);
+}
+
+ListHandler* plane_list() {
+	return &planeList;
+}
+
+void set_plane_list(ListHandler plane) {
+	if (planeList.destroy) {
+		calls(planeList, destroy);
+	}
+	planeList = plane;
+}
+
+void set_score_info(int scr, int hit) {
+	score = scr;
+	hitPlane = hit;
 }
 
 Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs) {
@@ -139,7 +157,7 @@ void update_each_plane(Plane* plane) {
 		move_by_dir_key(&plane->position, new_pos(0.13, 0.1));
 		if (plane->position.x < 0.2) plane->position.x = 0.2;
 		if (plane->position.x > 9.8) plane->position.x = 9.8;
-		if (plane->position.y < 0.2) plane->position.y = 0.2;
+		if (plane->position.y < 0.34) plane->position.y = 0.34;
 		if (plane->position.y > 6.8) plane->position.y = 6.8;
 		plane->missileTime++;
 		if (plane->ammoTime++ == 3) {
@@ -288,6 +306,7 @@ void stop_display_planes() {
 void plane_explode(Plane* plane, int health) {
 	plane->health -= health;
 	if (plane->health <= 0) {
+		hitPlane++;
 		if (plane->type == Swift_Enemy_Plane) {
 			generate_fix_obj(plane->position);
 		}
@@ -323,4 +342,12 @@ void add_score(PlaneType plane) {
 
 int current_score() {
 	return score;
+}
+
+void inc_hit_plane() {
+	hitPlane++;
+}
+
+int current_hit_plane() {
+	return hitPlane;
 }

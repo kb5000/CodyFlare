@@ -52,6 +52,8 @@ void bomb_explode_handler(Pos bombPos) {
 					generate_fix_obj(pln->position);
 				} else if (pln->type == Boss_Plane) {
 					remove_funcs_from_timer(6666444);
+				} else {
+					inc_hit_plane();
 				}
 				add_score(pln->type);
 				draw_anime_explode(17896, pln->position, 0.8, 6);

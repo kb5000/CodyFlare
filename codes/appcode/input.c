@@ -55,6 +55,11 @@ void add_to_key_process(char key, void (*func)(int, void*, int), void* para) {
 	keyFuncDatas[key] = para;
 }
 
+void clear_key_process(char key) {
+	keyToCallFunc[key] = NULL;
+	keyFuncDatas[key] = NULL;
+}
+
 DirKeys get_dir_key() {
 	return dirKeys;
 }
