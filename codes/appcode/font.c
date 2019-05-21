@@ -2,6 +2,22 @@
 #include "spline_interpolation.h"
 #include "animes.h"
 
+
+void show_font(const char* str) {
+	double size = 2.8;
+	double H = GetWindowHeight();
+	double W = GetWindowWidth();
+	double h = size * H / 20.0;//×ÖÌå¿ò¸ß
+	double w = size * W / 40.0;//×ÖÌå¿ò¿í
+	int len = strlen(str);
+	double xStart = W / 2.0 - w * len / 2.0;
+	for (int i = 0; i < len; i++) {
+		if (str[i] == ' ')continue;
+		ShowLetter(str[i], size, xStart + i * w, (H + 1.7*h) / 2);
+	}
+
+}
+
 void ShowLetter(char ch, double size, double x, double y) {
 	int X = ch - 'A';
 

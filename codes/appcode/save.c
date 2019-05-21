@@ -36,6 +36,7 @@ ListHandler explore_files() {
 	ListHandler lh = new_empty_list();
 	struct _finddata_t fileInfo;
 	int fileHandle = _findfirst("save_*.sav", &fileInfo);
+	if (fileHandle == -1) return lh;
 	do {
 		FileName* fileName = (FileName*)malloc(sizeof(FileName));
 		strcpy(fileName->name, fileInfo.name);
@@ -93,8 +94,8 @@ ListHandler vector_to_list(Vector* self) {
 }
 
 Vector list_to_vec(ListHandler* self, unsigned sizeOfElement) {
-	unsigned len = pcalls(self, len);
-	Vector res = new_zero_vector(sizeOfElement, len);
+	//unsigned len = pcalls(self, len);
+	Vector res = new_zero_vector(sizeOfElement, 0);
 	for (Node* node = self->head; node; node = node->next) {
 		calls(res, push, node->data);
 	}

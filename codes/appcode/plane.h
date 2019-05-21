@@ -23,6 +23,8 @@ void init_plane_list();
 
 ListHandler * plane_list();
 
+void set_plane_list(ListHandler plane);
+
 void set_score_info(int scr, int hit);
 
 Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs);

@@ -6,6 +6,7 @@
 #include "color.h"
 #include "save.h"
 #include "animes.h"
+#include <Windows.h>
 
 static int boxValidFlag = 1;
 static Pos bias;
@@ -29,6 +30,7 @@ static Node* get_pth_cycle_entry(ListHandler* lh, int n, int p) {
 static void draw_list_entries(ListHandler* list, int n, Pos position, double yBias) {
 	if (!boxValidFlag) {
 		boxValidFlag = 1;
+		//pcalls(list, destroy);
 		disable_me_in_timer();
 	}
 	if (currentListPos < 0) currentListPos = pcall0(list, len) - 1;
@@ -109,6 +111,8 @@ void draw_list_entries_pack(ListBoxHolder* lbh) {
 }
 
 void show_list_box(int id, ListHandler list, Pos position, int currentItem) {
+	if (calls(list, len) == 0) return;
+	boxValidFlag = 1;
 	hnew(ListBoxHolder, lbh);
 	lbh->list = list;
 	lbh->n = currentItem;
@@ -117,12 +121,17 @@ void show_list_box(int id, ListHandler list, Pos position, int currentItem) {
 	add_func_to_timer(draw_list_entries_pack, lbh, 1, id, -1);
 	add_to_key_process(0x26, dir_to_change, &bias); //down
 	add_to_key_process(0x28, dir_to_change, &bias); //up
+	add_to_key_process('A', close_list_box, NULL);
 }
 
 int get_current_list_index() {
 	return currentListPos;
 }
 
-void close_list_box() {
+int is_box_open() {
+	return boxValidFlag;
+}
+
+void close_list_box(void* unuseful) {
 	boxValidFlag = 0;
 }
