@@ -46,9 +46,13 @@ void test_of_anime_bomb() {
 	draw_anime_bomb(12, new_pos(5, 3.5), 1, 1, color_by_name("Black"), NULL);
 }
 
+Color color_changing(DrawFuncHolder* dfh) {
+	double t = dfh->tNow;
+	return color_by_rgb(t * 128, t * 96 + 100, 205 - 10 * t);
+}
 void show_parabola(Pos* pos) {
 	move_by_dir_key(pos, new_pos(0.1, 0.1));
-	ParabolaHolder ph = create_parabola(12, new_pos(1, 6), *pos, new_pos(1, 1), NULL, 1);
+	ParabolaHolder ph = create_parabola(12, new_pos(1, 6), *pos, new_pos(1, 1), color_changing, 1);
 	draw_parabola(ph, 1);
 }
 
