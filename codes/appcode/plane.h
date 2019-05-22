@@ -21,6 +21,14 @@ typedef struct {
 
 void init_plane_list();
 
+void set_game_mode(int mode);
+
+int get_game_mode();
+
+void set_refresh_time(int refresh);
+
+int get_refresh_time();
+
 ListHandler * plane_list();
 
 void set_plane_list(ListHandler plane);

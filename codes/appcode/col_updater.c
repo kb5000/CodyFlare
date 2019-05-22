@@ -61,8 +61,12 @@ void fix_plane_col(int group1, int id1, int group2, int id2, void* unuseful) {
 	if (!pln) return;
 	switch (fo) {
 	case Fix_Obj_Health:
+		//if (pln->health >= 100) break;
+		//if (pln->health >= 90) {
+		//	pln->health = 100;
+		//	break;
+		//}
 		pln->health += 10;
-		if (pln->health > 100) pln->health = 100;
 		break;
 	case Fix_Obj_Bomb:
 		pln->numOfBombs += 1;

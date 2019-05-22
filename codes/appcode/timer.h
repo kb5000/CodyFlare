@@ -43,6 +43,8 @@ void change_timer_stack(int id);
 
 void destroy_timer_stack(int id);
 
+int get_timer_stack();
+
 
 ///these are functions to control the funcs to be called by the timer
 

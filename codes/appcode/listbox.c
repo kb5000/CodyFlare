@@ -15,6 +15,7 @@ static int preserve = 0;
 static int diffListPos = 0;
 static int currentMovingFlag = 0;
 static int lockMoveTime = 0;
+static int isDelFile = 0;
 
 typedef struct {
 	ListHandler list;
@@ -29,7 +30,7 @@ static Node* get_pth_cycle_entry(ListHandler* lh, int n, int p) {
 
 static void draw_list_entries(ListHandler* list, int n, Pos position, double yBias) {
 	if (!boxValidFlag) {
-		boxValidFlag = 1;
+		//boxValidFlag = 1;
 		//pcalls(list, destroy);
 		disable_me_in_timer();
 	}
@@ -122,6 +123,7 @@ void show_list_box(int id, ListHandler list, Pos position, int currentItem) {
 	add_to_key_process(0x26, dir_to_change, &bias); //down
 	add_to_key_process(0x28, dir_to_change, &bias); //up
 	add_to_key_process('A', close_list_box, NULL);
+	add_to_key_process('D', del_save_file, lbh);
 }
 
 int get_current_list_index() {
@@ -132,6 +134,20 @@ int is_box_open() {
 	return boxValidFlag;
 }
 
-void close_list_box(void* unuseful) {
+void close_list_box(int key, void* unuseful, int event) {
 	boxValidFlag = 0;
+	isDelFile = 0;
+}
+
+void del_save_file(int key, ListHandler* lh, int event) {
+	if (boxValidFlag && event == 0) {
+		isDelFile = 1;
+		FileName* fn = (FileName*)pcalls(lh, at, currentListPos)->data;
+		remove(fn->name);
+		boxValidFlag = 0;
+	}
+}
+
+int is_del_file() {
+	return isDelFile;
 }

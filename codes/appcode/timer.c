@@ -180,3 +180,7 @@ void destroy_timer_stack(int id) {
 	calls(tms->timerFuncs, destroy);
 	calls(timerStacks, remove_if, id_requal, &id);
 }
+
+int get_timer_stack() {
+	return currentTimerStack;
+}

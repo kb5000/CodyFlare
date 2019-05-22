@@ -16,6 +16,8 @@ static int planeRefreshTime = 0;
 static int score = 0;
 static int planeNum = 0;
 static int hitPlane = 0;
+static int gameMode = 0;
+static int refreshTime = 80;
 
 void init_plane_list() {
 	if (planeList.destroy) {
@@ -26,9 +28,28 @@ void init_plane_list() {
 	score = 0;
 	planeNum = 0;
 	hitPlane = 0;
+	gameMode = 0;
 	planeList = new_empty_list();
 	add_col_group(PLR_PLN_COL_ID);
 	add_col_group(ENM_PLN_COL_ID);
+}
+
+void set_game_mode(int mode) {
+	gameMode = mode;
+	if (mode == 0) refreshTime = 80;
+	else refreshTime = 90;
+}
+
+int get_game_mode() {
+	return gameMode;
+}
+
+void set_refresh_time(int refresh) {
+	refreshTime = refresh;
+}
+
+int get_refresh_time() {
+	return refreshTime;
 }
 
 ListHandler* plane_list() {
@@ -264,15 +285,18 @@ void update_plane(void* unuseful) {
 }
 
 void generate_plane(void* unuseful) {
-	if (planeRefreshTime++ == 80) {
+	int fresh = refreshTime;
+	fresh -= (int)(7 * sqrt(planeNum));
+	if (fresh < 3) fresh = 3;
+	if (planeRefreshTime++ >= fresh) {
 		Plane plane;
-		if (planeNum == 58) {
+		if (planeNum == 58 && !gameMode) {
 			add_fix_obj(new_pos(2, 2), Fix_Obj_Health);
 			add_fix_obj(new_pos(5, 2), Fix_Obj_Health);
 			add_fix_obj(new_pos(8, 2), Fix_Obj_Health);
-		} else if (planeNum == 59) {
+		} else if (planeNum == 59 && !gameMode) {
 			;	//nothing
-		} else if (planeNum == 60) {
+		} else if (planeNum == 60 && !gameMode) {
 			plane = create_plane(Boss_Plane, new_pos(5, 4), 2000, 37);
 			add_plane(plane);
 		} else {

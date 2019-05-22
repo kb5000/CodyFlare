@@ -10,9 +10,11 @@ void save_plane() {
 	Vector vec = list_to_vec(plane, sizeof(Plane));
 	FILE* f = start_save();
 	save_vector(f, &vec);
-	int a = current_score(), b = current_hit_plane();
+	int a = current_score(), b = current_hit_plane(), c = get_game_mode(), d = get_refresh_time();
 	save_data(f, &a, sizeof(int));
 	save_data(f, &b, sizeof(int));
+	save_data(f, &c, sizeof(int));
+	save_data(f, &d, sizeof(int));
 	end_save_or_read(f);
 }
 
@@ -22,10 +24,13 @@ void read_plane(FILE* f) {
 		Plane p = cast(Plane, calls(v, at, i));
 		add_plane(p);
 	}
-	int score, hit;
+	int score, hit, save, refresh;
 	get_data(f, &score, sizeof(int));
 	get_data(f, &hit, sizeof(int));
+	get_data(f, &save, sizeof(int));
+	get_data(f, &refresh, sizeof(int));
 	set_score_info(score, hit);
+	set_game_mode(save);
 	end_save_or_read(f);
 }
 
@@ -37,10 +42,11 @@ void select_saves() {
 }
 
 void get_element_to_load(void* unuseful) {
-	if (!is_box_open()) {
+	if (!is_box_open() && !is_del_file()) {
 		int n = get_current_list_index();
 		ListHandler lh = explore_files();
 		Node* node = (Node*)(calls(lh, at, n));
+		if (!node) return;
 		FILE* f = start_read(cast(FileName, node->data));
 		
 		reload_game();

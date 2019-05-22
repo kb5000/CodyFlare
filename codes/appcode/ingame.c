@@ -15,9 +15,12 @@
 #include <stdio.h>
 #include "save_plane.h"
 #include "font.h"
+#include "random.h"
 
 static char r[64];
 static int timerStack = 3;
+static int gameStack = 0;
+static int pauseLoded = 0;
 
 void show_stat(void* unuseful) {
 	Plane* p = find_plane_by_id(0);
@@ -27,7 +30,7 @@ void show_stat(void* unuseful) {
 		end_game();
 	} else {
 		//sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
-		show_status_line(current_score(), p->health, p->numOfBombs, current_hit_plane(), 0);
+		show_status_line(current_score(), p->health, p->numOfBombs, current_hit_plane(), get_game_mode());
 	}
 	Plane* boss = get_boss_plane();
 	if (boss) {
@@ -41,7 +44,7 @@ void start_game() {
 	init_plane_list();
 	init_fix_obj_system();
 	start_show_fix_obj();
-	add_plane(create_plane(Player_Plane, new_pos(5, 1), 60, 5));
+	add_plane(create_plane(Player_Plane, new_pos(5, 1), 3000, 5));
 	//add_plane(create_plane(Boss_Plane, new_pos(5, 4), 2000, 5));
 	start_display_planes();
 	start_update_ammo();
@@ -54,6 +57,7 @@ void start_game() {
 
 void load_game() {
 	InitGraphics();
+	Randomize();
 	init_input();
 	init_global_timer();
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
@@ -67,11 +71,23 @@ void butt(void* unuseful) {
 		reload_game();
 		start_game();
 	}
+	if (button(99, 4, 1, 0.8, 0.25, "MODE")) {
+		set_game_mode(!get_game_mode());
+	}
 	if (button(12, 2, 1, 0.8, 0.25, "SAVE")) {
 		save_plane();
 	}
 	if (button(13, 3, 1, 0.8, 0.25, "LOAD")) {
 		select_saves();
+	}
+	if (button(14, 5, 1, 0.8, 0.25, "PAUSE")) {
+		pause_game();
+	}
+}
+
+void butt_b(void* unuseful) {
+	if (button(123, 1, 1, 0.8, 0.25, "CONTINUE")) {
+		continue_game();
 	}
 }
 
@@ -111,4 +127,18 @@ void tst() {
 	load_game();
 	show_font("TO THE SPACE");
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
+}
+
+void pause_game() {
+	gameStack = get_timer_stack();
+	change_timer_stack(9999);
+	if (!pauseLoded) {
+		pauseLoded = 1;
+		add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
+		add_func_to_timer(butt_b, NULL, 1, 124444, -1);
+	}
+}
+
+void continue_game() {
+	change_timer_stack(gameStack);
 }

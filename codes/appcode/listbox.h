@@ -9,4 +9,9 @@ int get_current_list_index();
 
 int is_box_open();
 
-void close_list_box();
+void close_list_box(int key, void * unuseful, int event);
+
+void del_save_file(int key, ListHandler* lbh, int event);
+
+int is_del_file();
+

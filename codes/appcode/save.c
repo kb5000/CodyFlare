@@ -58,7 +58,7 @@ int save_data(FILE* file, void* data, int size) {
 
 int get_data(FILE* file, void* buffer, int maxSize) {
 	int8_t* writePtr = (int8_t*)buffer;
-	int chr;
+	int chr = EOF;
 	for (int i = 0; i < maxSize; i++) {
 		chr = getc(file);
 		if (chr == EOF) break;
