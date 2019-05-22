@@ -72,14 +72,19 @@ void start_global_timer() {
 	isRunning = 1;
 }
 
-void restart_global_timer() {
+void restart_global_timer(int timeInterval) {
 	cancelTimer(globalTimerID);
+	globalTimerInterval = timeInterval;
 	startTimer(globalTimerID, globalTimerInterval);
 }
 
 void stop_global_timer() {
 	cancelTimer(globalTimerID);
 	isRunning = 0;
+}
+
+int get_timer_interval() {
+	return globalTimerInterval;
 }
 
 void add_func_to_timer(void func(void*), void* paras, int tickInterval, int id, int maxCallCount) {

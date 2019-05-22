@@ -286,7 +286,7 @@ void update_plane(void* unuseful) {
 
 void generate_plane(void* unuseful) {
 	int fresh = refreshTime;
-	fresh -= (int)(7 * sqrt(planeNum));
+	if (gameMode) fresh -= (int)(7 * sqrt(planeNum));
 	if (fresh < 3) fresh = 3;
 	if (planeRefreshTime++ >= fresh) {
 		Plane plane;

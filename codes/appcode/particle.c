@@ -45,18 +45,19 @@ void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed
 
 void show_particles_tick(void* para) {
 	ParticleGroup* part = (ParticleGroup*)para;
+	SetPenSize(3);
 	for (unsigned i = 0; i < part->parts.len(&part->parts); i++) {
 		Particle* p = part->parts.at(&part->parts, i);
 		if (++p->existTime == part->life) continue;
 		p->color = part->color_generator(p, get_tick() - part->startTime);
 		set_color(p->color);
-		SetPenSize(3);
 		MovePen(part->center.x + p->bias.x, part->center.y + p->bias.y);
 		DrawLine(0, 0);
 		p->bias = add_pos(p->bias, p->momentum);
 		if (fabs(p->momentum.y) < part->maxSpeed)
 			p->momentum.y += part->gravity;
 	}
+	SetPenSize(1);
 }
 
 

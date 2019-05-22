@@ -34,6 +34,7 @@ void restart_global_timer();
 ///func: stop the timer
 ///visb: public
 void stop_global_timer();
+int get_timer_interval();
 ///name: change_timer_stack
 ///func: switch the timer to another stack
 ///para: id expects the timer stack id

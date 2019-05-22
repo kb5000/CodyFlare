@@ -252,6 +252,7 @@
     <ClInclude Include="..\..\codes\appcode\font_test.h" />
     <ClInclude Include="..\..\codes\appcode\function_drawer.h" />
     <ClInclude Include="..\..\codes\appcode\function_test.h" />
+    <ClInclude Include="..\..\codes\appcode\game_particle.h" />
     <ClInclude Include="..\..\codes\appcode\gc.h" />
     <ClInclude Include="..\..\codes\appcode\gc_test.h" />
     <ClInclude Include="..\..\codes\appcode\hashmap.h" />
@@ -325,6 +326,7 @@
     <ClCompile Include="..\..\codes\appcode\fix_obj.c" />
     <ClCompile Include="..\..\codes\appcode\font.c" />
     <ClCompile Include="..\..\codes\appcode\font_test.c" />
+    <ClCompile Include="..\..\codes\appcode\game_particle.c" />
     <ClCompile Include="..\..\codes\appcode\gc.c" />
     <ClCompile Include="..\..\codes\appcode\gc_test.c" />
     <ClCompile Include="..\..\codes\appcode\hashmap.c" />

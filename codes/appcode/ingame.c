@@ -83,6 +83,12 @@ void butt(void* unuseful) {
 	if (button(14, 5, 1, 0.8, 0.25, "PAUSE")) {
 		pause_game();
 	}
+	if (button(15, 6, 1, 0.8, 0.25, "FAST")) {
+		speed_up();
+	}
+	if (button(16, 7, 1, 0.8, 0.25, "SLOW")) {
+		speed_down();
+	}
 }
 
 void butt_b(void* unuseful) {
@@ -142,3 +148,24 @@ void pause_game() {
 void continue_game() {
 	change_timer_stack(gameStack);
 }
+
+void speed_up() {
+	int t = get_timer_interval();
+	if (t > 8) t /= 1.5;
+	restart_global_timer(t);
+}
+
+void speed_down() {
+	int t = get_timer_interval();
+	if (t < 64) t *= 1.5;
+	restart_global_timer(t);
+}
+
+void god_mode() {
+	Plane* player = find_plane_by_id(0);
+	if (player) {
+		player->health += 10000;
+	}
+}
+
+

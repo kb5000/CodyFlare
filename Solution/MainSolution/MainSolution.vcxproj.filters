@@ -198,6 +198,9 @@
     <Filter Include="Game\UI\StatLine">
       <UniqueIdentifier>{185b4fb0-2276-4518-9ed9-4d7417568610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameParticle">
+      <UniqueIdentifier>{e791b7ba-9549-4f07-ad91-049fe58c9a72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -391,6 +394,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\stat_line.h">
       <Filter>Game\UI\StatLine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\game_particle.h">
+      <Filter>Game\GameParticle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -612,6 +618,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\stat_line.c">
       <Filter>Game\UI\StatLine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\game_particle.c">
+      <Filter>Game\GameParticle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
