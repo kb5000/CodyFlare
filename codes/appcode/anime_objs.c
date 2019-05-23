@@ -138,7 +138,7 @@ void draw_player_plane(Pos* position) {
 	//double a, b;
 	//a = GetWindowWidth()/2;
 	//b = GetWindowHeight()/2;
-
+	set_color(color_by_rgb(0, 0, 0));
 	double e = 0.05;
 	x[0] = a, y[0] = b;
 	x[1] = a; y[1] = b + 6 * e;
@@ -152,32 +152,34 @@ void draw_player_plane(Pos* position) {
 	x[9] = a + 2.2 * e; y[9] = b - 2 * e;
 	x[10] = a; y[10] = b - e;
 	int i = 2;
-	Vector v;
-	Pos temp;
-	Spline* sp;
+	//Vector v;
+	//Pos temp;
+	//Spline* sp;
 	int j = 0;
 	for (; j < 2; j++) {
 		for (i = 2; i <= 10; i++) {
-			v = gen_empty_vector(Pos);
-			calls(v, push, (temp = new_pos(x[i - 1], y[i - 1] - e * j*0.5), &temp));
-			calls(v, push, (temp = new_pos(x[i], y[i] - e * j*0.5), &temp));
-
-			sp = create_spline(&v, NULL, 1);
-			//add_func_to_timer(draw_spline, sp, 1, 1, -1);
-			draw_spline(sp);
-			destroy_spline(sp);
-			free(sp);
+			//v = gen_empty_vector(Pos);
+			//calls(v, push, (temp = new_pos(x[i - 1], y[i - 1] - e * j*0.5), &temp));
+			//calls(v, push, (temp = new_pos(x[i], y[i] - e * j*0.5), &temp));
+			MovePen(x[i - 1], y[i - 1] - e * j * 0.5);
+			DrawLine(x[i] - x[i - 1], y[i] - y[i - 1]);
+			//sp = create_spline(&v, NULL, 1);
+			////add_func_to_timer(draw_spline, sp, 1, 1, -1);
+			//draw_spline(sp);
+			//destroy_spline(sp);
+			//free(sp);
 		}
 		for (i = 2; i <= 10; i++) {
-			v = gen_empty_vector(Pos);
-			calls(v, push, (temp = new_pos(2 * a - x[i - 1], y[i - 1] - e * j*0.5), &temp));
-			calls(v, push, (temp = new_pos(2 * a - x[i], y[i] - e * j*0.5), &temp));
-
-			sp = create_spline(&v, NULL, 1);
-			//add_func_to_timer(draw_spline, sp, 1, 1, -1);
-			draw_spline(sp);
-			destroy_spline(sp);
-			free(sp);
+			MovePen(2 * a - x[i - 1], y[i - 1] - e * j*0.5);
+			DrawLine(x[i - 1] - x[i], y[i] - y[i - 1]);
+			//v = gen_empty_vector(Pos);
+			//calls(v, push, (temp = new_pos(2 * a - x[i - 1], y[i - 1] - e * j*0.5), &temp));
+			//calls(v, push, (temp = new_pos(2 * a - x[i], y[i] - e * j*0.5), &temp));
+			//sp = create_spline(&v, NULL, 1);
+			////add_func_to_timer(draw_spline, sp, 1, 1, -1);
+			//draw_spline(sp);
+			//destroy_spline(sp);
+			//free(sp);
 		}
 	}
 

@@ -73,6 +73,7 @@ void test_of_sheet() {
 		pcalls(vect, push, &v);
 	}
 	add_func_to_timer(show_sheetb, vect, 1, 9423, -1);
+
 	add_func_to_timer(show_moving_sheet, vect, 1, 9423, -1);
 }
 

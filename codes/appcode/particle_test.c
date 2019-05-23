@@ -16,9 +16,9 @@ Color cgenerb(Particle* p, int time) {
 void test_of_particle() {
 	InitGraphics();
 	init_global_timer();
-	ParticleGroup* pts = create_particle_group(new_pos(5, 3.5), 1400, 3000, 0.1, -0.00015, cgener);
+	ParticleGroup* pts = create_particle_group(new_pos(5, 3.5), 1400, 3000, 0.1, -0.00015, cgener, 0);
 	ball_particle(pts, 0.05);
-	ParticleGroup* ptb = create_particle_group(new_pos(0, 0), -1, 3000, 0.05, -0.0002, cgenerb);
+	ParticleGroup* ptb = create_particle_group(new_pos(0, 0), -1, 3000, 0.05, -0.0002, cgenerb, 0);
 	uniform_particle(ptb, new_pos(20, 50), new_pos(-0.009, -0.04), new_pos(0, 0));
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	show_particles(pts);

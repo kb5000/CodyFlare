@@ -16,6 +16,7 @@
 #include "save_plane.h"
 #include "font.h"
 #include "random.h"
+#include "game_particle.h"
 
 static char r[64];
 static int timerStack = 3;
@@ -52,6 +53,7 @@ void start_game() {
 	start_col_dets();
 	start_detection(1);
 	start_control();
+	show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 }
 
@@ -109,6 +111,7 @@ void load_from_file() {
 	start_col_dets();
 	start_detection(1);
 	start_control();
+	show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 }
 
@@ -137,7 +140,7 @@ void tst() {
 
 void pause_game() {
 	gameStack = get_timer_stack();
-	change_timer_stack(9999);
+	change_timer_stack(99999);
 	if (!pauseLoded) {
 		pauseLoded = 1;
 		add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);

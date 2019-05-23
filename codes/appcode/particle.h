@@ -18,6 +18,7 @@ typedef struct {
 	double gravity;
 	Color (*color_generator)(Particle*, int time);
 	int startTime;
+	int isCycle;
 } ParticleGroup;
 
 ///name: create_particle_group
@@ -26,7 +27,7 @@ typedef struct {
 ///      number expects the num of particles, maxSpeed expects the max Speed the particle will have,
 ///      gravity exptects the y accceleration, color_generator expects the function to give every particle color
 ///visb: public
-ParticleGroup* create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time));
+ParticleGroup* create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time), int isCycle);
 
 ///name: ball_particle
 ///func: make particles like a ball

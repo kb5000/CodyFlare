@@ -5,7 +5,7 @@
 #include "extgraph.h"
 #include <math.h>
 
-ParticleGroup* create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time)) {
+ParticleGroup* create_particle_group(Pos center, int life, int number, double maxSpeed, double gravity, Color color_generator(Particle*, int time), int isCycle) {
 	Particle p = {
 		new_pos(0, 0),
 		new_pos(0, 0),
@@ -20,6 +20,7 @@ ParticleGroup* create_particle_group(Pos center, int life, int number, double ma
 		gravity,
 		color_generator,
 		0,
+		isCycle,
 	};
 	ParticleGroup* pars = (ParticleGroup*)malloc(sizeof(ParticleGroup));
 	*pars = res;
@@ -56,6 +57,12 @@ void show_particles_tick(void* para) {
 		p->bias = add_pos(p->bias, p->momentum);
 		if (fabs(p->momentum.y) < part->maxSpeed)
 			p->momentum.y += part->gravity;
+		if (part->isCycle) {
+			if (part->center.x + p->bias.x < -0.01) p->bias.x = 10 - part->center.x;
+			else if (part->center.x + p->bias.x > 10.01) p->bias.x = -part->center.x;
+			if (part->center.y + p->bias.y < -0.01) p->bias.y = 7 - part->center.y;
+			else if (part->center.y + p->bias.y > 7.01) p->bias.y = -part->center.y;
+		}
 	}
 	SetPenSize(1);
 }
