@@ -170,13 +170,13 @@ void continue_game() {
 
 void speed_up() {
 	int t = get_timer_interval();
-	if (t > 8) t -= 8;
+	if (t > 8) t /= 2;
 	restart_global_timer(t);
 }
 
 void speed_down() {
 	int t = get_timer_interval();
-	if (t < 64) t += 8;
+	if (t < 128) t *= 2;
 	restart_global_timer(t);
 }
 
