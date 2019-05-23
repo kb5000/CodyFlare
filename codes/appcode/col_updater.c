@@ -3,6 +3,7 @@
 #include "plane.h"
 #include "ammo.h"
 #include "fix_obj.h"
+#include "animes.h"
 
 void start_col_dets() {
 	add_col_handler(PLR_AMMO_COL_ID, ENM_PLN_COL_ID, player_ammo_enemy_plane_col, NULL);

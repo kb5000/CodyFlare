@@ -37,6 +37,8 @@ typedef enum {
 
 void draw_anime_ammo_once(AmmoType ammoType, Pos position, Pos direction);
 
+void draw_anime_ammo_hit(Pos position);
+
 typedef struct {
 	int id;
 	DrawFuncHolder dfh;

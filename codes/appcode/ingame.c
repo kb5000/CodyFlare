@@ -154,13 +154,13 @@ void continue_game() {
 
 void speed_up() {
 	int t = get_timer_interval();
-	if (t > 8) t /= 1.5;
+	if (t > 8) t -= 8;
 	restart_global_timer(t);
 }
 
 void speed_down() {
 	int t = get_timer_interval();
-	if (t < 64) t *= 1.5;
+	if (t < 64) t += 8;
 	restart_global_timer(t);
 }
 

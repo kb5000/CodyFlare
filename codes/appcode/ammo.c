@@ -76,6 +76,7 @@ void set_ammo_invalid(int id) {
 		Ammo* ammo = &cast(Ammo, node->data);
 		if (ammo->colObjID == id) {
 			ammo->isValid = 0;
+			draw_anime_ammo_hit(ammo->pos);
 			return;
 		}
 	}

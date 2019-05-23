@@ -26,7 +26,7 @@ void tests() {
 	//test_of_list_box();
 	//test_of_ammo();
 	//test_of_plane();
-	test_of_sheet();
-	//tst();
+	//test_of_sheet();
+	tst();
 	//test_of_stat();
 }
