@@ -50,7 +50,7 @@ void anime_bomb_booster(BombAnimePack* bap) {
 
 void draw_anime_bomb(int id, Pos position, double size, double speed, Color color, void explode_handler(Pos bombPos)) {
 	DrawFuncHolder* dfh = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
-	*dfh = create_function_holder(anime_bomb_drawer, position, new_pos(0, 0), size, 0, PI / 4, 0.02,
+	*dfh = create_function_holder(anime_bomb_drawer, position, new_pos(0, 0), size, 0, PI / 4, 0.01 * PI,
 								  PI / 6, color, 1, 0);
 	//tickPara = 0.2;
 	BombAnimePack* bap = (BombAnimePack*)malloc(sizeof(BombAnimePack));

@@ -38,6 +38,7 @@ void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed
 	for (unsigned i = 0; i < parts->parts.len(&parts->parts); i++) {
 		Particle* pt = parts->parts.at(&parts->parts, i);
 		Pos start = parts->center;
+		pt->existTime = 0;
 		pt->bias = new_pos(RandomReal(start.x, start.x + size.x), RandomReal(start.y, start.y + size.y));
 		pt->momentum = new_pos(RandomReal(minSpeed.x, maxSpeed.x), RandomReal(minSpeed.y, maxSpeed.y));
 	}
@@ -46,10 +47,11 @@ void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed
 
 void show_particles_tick(void* para) {
 	ParticleGroup* part = (ParticleGroup*)para;
+	if (!part) return;
 	SetPenSize(3);
 	for (unsigned i = 0; i < part->parts.len(&part->parts); i++) {
 		Particle* p = part->parts.at(&part->parts, i);
-		if (++p->existTime == part->life) continue;
+		if (!p || (++p->existTime >= part->life && part->life >= 0) || (part->life == -5)) continue;
 		p->color = part->color_generator(p, get_tick() - part->startTime);
 		set_color(p->color);
 		MovePen(part->center.x + p->bias.x, part->center.y + p->bias.y);
@@ -73,4 +75,7 @@ void show_particles(ParticleGroup* part) {
 	add_func_to_timer(show_particles_tick, part, 1, Unique_ID("Part"), part->life);
 }
 
+void disable_particles(ParticleGroup* part) {
+	if (part) part->life = -5;
+}
 

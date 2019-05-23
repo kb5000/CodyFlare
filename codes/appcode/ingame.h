@@ -4,7 +4,7 @@ void start_game();
 
 void load_game();
 
-void tst();
+void start_page();
 
 void pause_game();
 

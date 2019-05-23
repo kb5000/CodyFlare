@@ -37,5 +37,5 @@ void anime_ammo_hit_drawer(Pos* pos) {
 void draw_anime_ammo_hit(Pos position) {
 	hnew(Pos, pos);
 	*pos = position;
-	add_func_to_timer(anime_ammo_hit_drawer, pos, 1, 832467, 3);
+	add_func_to_timer(anime_ammo_hit_drawer, pos, 1, 832467, 5);
 }

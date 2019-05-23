@@ -7,7 +7,7 @@ ListHandler globalTimerFunctionList;
 int globalTimerInterval = 32;		//can change
 
 static int globalTimerID = 1;		//only one timer
-static int globalTickCount = 0;		//every tick it will add 1
+static int globalTickCount = 1;		//every tick it will add 1
 static int functionDisableFlag = 0;	//used by disable_me_from_timer
 //static int functionRemoveFlag = 0;
 
@@ -182,10 +182,18 @@ static int id_requal(TimerStack* a, int* id) {
 void destroy_timer_stack(int id) {
 	TimerStack* tms = calls(timerStacks, find_if, id_equal, &id);
 	if (!tms) return;
+	for (Node* node = tms->timerFuncs.head; node; node = node->next) {
+		TimerFunc* tmf = node->data;
+		free(tmf->paras);
+	}
 	calls(tms->timerFuncs, destroy);
 	calls(timerStacks, remove_if, id_requal, &id);
 }
 
 int get_timer_stack() {
 	return currentTimerStack;
+}
+
+void future_do(int time, void fun(void*), void* para) {
+	add_func_to_timer(fun, para, get_tick() + time, 1048575, 1);
 }

@@ -19,6 +19,7 @@ void showP(FontData*);
 void showR(FontData*);
 void showS(FontData*);
 void showT(FontData*);
+void showU(FontData*);
 void showV(FontData*);
 void showY(FontData*);
 

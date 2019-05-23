@@ -18,7 +18,7 @@
 #include "random.h"
 #include "game_particle.h"
 
-static char r[64];
+//static char r[64];
 static int timerStack = 3;
 static int gameStack = 0;
 static int pauseLoded = 0;
@@ -26,8 +26,6 @@ static int pauseLoded = 0;
 void show_stat(void* unuseful) {
 	Plane* p = find_plane_by_id(0);
 	if (!p) {
-		sprintf(r, "Your final score is %d", current_score());
-		drawLabel(0.1, 0.1, r);
 		end_game();
 	} else {
 		//sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
@@ -39,13 +37,19 @@ void show_stat(void* unuseful) {
 	}
 }
 
+void end_show(void* unuseful) {
+	char r[64];
+	sprintf(r, "Your final score is %d", current_score());
+	drawLabel(0.1, 0.1, r);
+}
+
 void start_game() {
 	init_col_detector();
 	init_ammo_system();
 	init_plane_list();
 	init_fix_obj_system();
 	start_show_fix_obj();
-	add_plane(create_plane(Player_Plane, new_pos(5, 1), 3000, 5));
+	add_plane(create_plane(Player_Plane, new_pos(5, 1), 60, 5));
 	//add_plane(create_plane(Boss_Plane, new_pos(5, 4), 2000, 5));
 	start_display_planes();
 	start_update_ammo();
@@ -91,6 +95,9 @@ void butt(void* unuseful) {
 	if (button(16, 7, 1, 0.8, 0.25, "SLOW")) {
 		speed_down();
 	}
+	if (button(17, 8, 1, 0.8, 0.25, "BKGRND")) {
+		toggle_long_particle();
+	}
 }
 
 void butt_b(void* unuseful) {
@@ -115,9 +122,16 @@ void load_from_file() {
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 }
 
+void destroy_last_stack(int* lastStack) {
+	destroy_timer_stack(*lastStack);
+}
+
 void reload_game() {
 	//destroy_timer_stack(timerStack);
+	hnew(int, lastStack);
+	*lastStack = get_timer_stack();
 	change_timer_stack(timerStack);
+	future_do(3, destroy_last_stack, lastStack);
 	timerStack++;
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
@@ -130,9 +144,10 @@ void end_game() {
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
 	show_font("GAME OVER");
+	add_func_to_timer(end_show, NULL, 1, 12, -1);
 }
 
-void tst() {
+void start_page() {
 	load_game();
 	show_font("TO THE SPACE");
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
@@ -144,6 +159,7 @@ void pause_game() {
 	if (!pauseLoded) {
 		pauseLoded = 1;
 		add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
+		show_font("PAUSE");
 		add_func_to_timer(butt_b, NULL, 1, 124444, -1);
 	}
 }

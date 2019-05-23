@@ -25,7 +25,7 @@ Pos advanced_enemy_move(Pos position, Pos playerPos) {
 			dir = new_pos(1.5, -0.865);
 		}
 	}
-	if (position.x < 0.3 || position.x > 9.7) dir.x = 0;
+	if (position.x < 0.2 && dir.x < 0 || position.x > 9.8 && dir.x > 0) dir.x = 0;
 	dir = pos_mut(dir, 0.02);
 	return add_pos(position, dir);
 }

@@ -40,6 +40,7 @@ void ShowLetter(char ch, double size, double x, double y) {
 	case 17:add_func_to_timer(showR, pack, 1, 74, -1); break;
 	case 18:add_func_to_timer(showS, pack, 1, 74, -1); break;
 	case 19:add_func_to_timer(showT, pack, 1, 74, -1); break;
+	case 20:add_func_to_timer(showU, pack, 1, 74, -1); break;
 	case 21:add_func_to_timer(showV, pack, 1, 74, -1); break;
 	case 24:add_func_to_timer(showY, pack, 1, 74, -1); break;
 	default:break;
@@ -179,9 +180,9 @@ void showI(FontData *FD) {
 		double x1, x2, y1, y2;
 		x1 = x + 0.3*w;
 		x2 = x + w * 0.9;
-		y1 = y ;
+		y1 = y;
 		y2 = y + 0.05*h;
-		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2, (y1 + y2) / 2 - e), new_pos(x2, y2 - e),NULL, 1);
+		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2, (y1 + y2) / 2 - e), new_pos(x2, y2 - e), NULL, 1);
 		draw_parabola(ph, 1);
 		double t1 = x1, t2 = x2;
 		x1 = (x1 + x2) / 2.0 - size * 0.01;
@@ -189,10 +190,10 @@ void showI(FontData *FD) {
 		y2 = y - 0.9*h;
 		ph = create_parabola(74, new_pos(x1 + e, y1), new_pos((x1 + x2) / 2 + e, (y1 + y2) / 2 - 0.03*h), new_pos(x2 + e, y2), NULL, 1);
 		draw_parabola(ph, 1);
-		x1 = t1-0.03*size, x2 = t2-0.03*size;
+		x1 = t1 - 0.03*size, x2 = t2 - 0.03*size;
 		y1 = y2;
 		y2 = y1 + 0.02*size;
-		ph = create_parabola(74, new_pos(x1, y1-e), new_pos((x1 + x2) / 2, (y1 + y2) / 2 - e), new_pos(x2 + e, y2-e), NULL, 1);
+		ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x1 + x2) / 2, (y1 + y2) / 2 - e), new_pos(x2 + e, y2 - e), NULL, 1);
 		draw_parabola(ph, 1);
 
 	}
@@ -349,18 +350,42 @@ void showT(FontData *FD) {
 		x2 = x + w * 0.93;
 		y1 = y - 0.1*h;
 		y2 = y - 0.05*h;
-		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2, (y1 + y2) / 2 - e), new_pos(x2, y2 -  e), NULL, 1);
+		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2, (y1 + y2) / 2 - e), new_pos(x2, y2 - e), NULL, 1);
 		draw_parabola(ph, 1);
 		x1 = x + w / 2.0 - 0.02*w;
 		x2 = x + w / 2.0 - 0.1*w;
 
 		y2 = y - 0.95*h;
-		ph = create_parabola(74, new_pos(x1 + e, y1), new_pos((x1 + x2)/2 + e, (y1 + y2) / 2 - 0.03*h), new_pos(x2 + e, y2), NULL, 1);
+		ph = create_parabola(74, new_pos(x1 + e, y1), new_pos((x1 + x2) / 2 + e, (y1 + y2) / 2 - 0.03*h), new_pos(x2 + e, y2), NULL, 1);
 		draw_parabola(ph, 1);
 
 	}
 }
 
+void showU(FontData *FD) {
+	double H = GetWindowHeight(), W = GetWindowWidth();
+	double size = FD->size, x = FD->x, y = FD->y - 0.015*size;
+	double h = size * H / 20.0;//×ÖÌו¿ע¸‗
+	double w = size * W / 40.0;//×ÖÌו¿ע¿ם
+
+	double i = 0.0;
+	for (; i < 2.1; i += 1.0) {
+		double e = size * i*0.01;
+		Vector v = gen_empty_vector(Pos);
+		Pos temp;
+		calls(v, push, (temp = new_pos(x + 0.2*w + e, y - 0.02*h ), &temp));
+		calls(v, push, (temp = new_pos(x + 0.28*w + e, y - 0.7*h ), &temp));
+		calls(v, push, (temp = new_pos(x + 0.46*w + e, y - 0.9*h ), &temp));
+		calls(v, push, (temp = new_pos(x + 0.8*w + e, y - 0.7*h), &temp));
+		calls(v, push, (temp = new_pos(x + 0.9*w + e, y - 0.02*h), &temp));
+
+		Spline* sp = create_spline(&v, NULL, 0);
+		//add_func_to_timer(draw_spline, sp, 1, 1, -1);
+		draw_spline(sp);
+		destroy_spline(sp);
+		free(sp);
+	}
+}
 
 void showV(FontData *FD) {
 	double H = GetWindowHeight(), W = GetWindowWidth();
@@ -400,7 +425,7 @@ void showY(FontData *FD) {
 		x2 = x + w * 0.9;
 		y1 = y - 0.1*h;
 		y2 = y - 0.05*h;
-		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2-0.04*w, (y1 + y2) / 2 - 0.35*h-e), new_pos(x2, y2 - e), NULL, 1);
+		ParabolaHolder ph = create_parabola(74, new_pos(x1, y1 - e), new_pos((x2 + x1) / 2 - 0.04*w, (y1 + y2) / 2 - 0.35*h - e), new_pos(x2, y2 - e), NULL, 1);
 		draw_parabola(ph, 1);
 		x1 = x + w / 2.0 - 0.07*w;
 		x2 = x + w / 2.0 - 0.17*w;

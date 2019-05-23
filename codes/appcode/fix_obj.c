@@ -123,7 +123,7 @@ void show_each_fix_obj(FixObj* fo) {
 	update_col_info(FIX_OBJ_COL_ID, fo->id, sub_pos(fo->pos, new_pos(0.1, 0.1)),
 					add_pos(fo->pos, new_pos(0.1, 0.1)));
 	fo->existTime++;
-	if (fo->pos.y > 0.5) fo->pos.y -= 0.02;
+	if (fo->pos.y > 0.3) fo->pos.y -= 0.02;
 }
 
 void show_fix_obj(void* unuseful) {

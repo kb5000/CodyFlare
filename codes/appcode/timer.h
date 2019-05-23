@@ -46,6 +46,8 @@ void destroy_timer_stack(int id);
 
 int get_timer_stack();
 
+void future_do(int time, void fun(void *), void * para);
+
 
 ///these are functions to control the funcs to be called by the timer
 

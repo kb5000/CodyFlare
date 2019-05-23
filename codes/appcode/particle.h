@@ -47,3 +47,5 @@ void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed
 ///visb: public
 void show_particles(ParticleGroup* part);
 
+void disable_particles(ParticleGroup * part);
+

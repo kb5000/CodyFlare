@@ -15,7 +15,7 @@ void test_of_font() {
 	double W = GetWindowWidth();
 	double h = size * H / 20.0;//×ÖÌå¿ò¸ß
 	double w = size * W / 40.0;//×ÖÌå¿ò¿í
-	char title[20] = {"ACEGHIMOPRSTVY"};
+	char title[20] = {"PAUSE"};
 	int len = strlen(title);
 	double xStart = W / 2.0 - w * len / 2.0;
 	for (i = 0; i < len; i++) {
