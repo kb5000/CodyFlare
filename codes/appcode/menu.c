@@ -149,7 +149,7 @@ void draw_tool_animes() {
 	//下列代码是存档图标
 	if (pos_in_rect(ms.pos, new_pos(8.9, 6.65), new_pos(9.4, 7))) {
 		set_color(activeColor);
-		if (ms.left == 2) {
+		if (ms.left == 2 && pos_in_rect(last_mouse_up_pos(), new_pos(8.9, 6.65), new_pos(9.4, 7))) {
 			if (!inPause) save_plane();
 			reset_mouse_key(1);
 		}
@@ -176,7 +176,7 @@ void draw_tool_animes() {
 	//下列代码是退出图标
 	if (pos_in_rect(ms.pos, new_pos(9.4, 6.65), new_pos(9.9, 7))) {
 		set_color(activeColor);
-		if (ms.left == 2) {
+		if (ms.left == 2 && pos_in_rect(last_mouse_up_pos(), new_pos(9.4, 6.65), new_pos(9.9, 7))) {
 			exit(0);
 			reset_mouse_key(1);
 		}
@@ -201,7 +201,7 @@ void draw_tool_animes() {
 
 	if (pos_in_rect(ms.pos, new_pos(8.3, 6.65), new_pos(8.9, 7))) {
 		set_color(activeColor);
-		if (ms.left == 2) {
+		if (ms.left == 2 && pos_in_rect(last_mouse_up_pos(), new_pos(8.3, 6.65), new_pos(8.9, 7))) {
 			if (inPause) {
 				continue_game();
 			} else {
@@ -244,7 +244,7 @@ void draw_tool_animes() {
 
 	if (pos_in_rect(ms.pos, new_pos(7.6, 6.65), new_pos(8.3, 7))) {
 		set_color(activeColor);
-		if (ms.left == 2) {
+		if (ms.left == 2 && pos_in_rect(last_mouse_up_pos(), new_pos(7.6, 6.65), new_pos(8.3, 7))) {
 			if (!inPause) pause_game();
 			select_saves();
 			reset_mouse_key(1);
@@ -276,7 +276,7 @@ void draw_tool_animes() {
 
 	if (pos_in_rect(ms.pos, new_pos(7.05, 6.65), new_pos(7.6, 7))) {
 		set_color(activeColor);
-		if (ms.left == 2) {
+		if (ms.left == 2 && pos_in_rect(last_mouse_up_pos(), new_pos(7.05, 6.65), new_pos(7.6, 7))) {
 			if (inPause) continue_game();
 			reload_game();
 			start_game();

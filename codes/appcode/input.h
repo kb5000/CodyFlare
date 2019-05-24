@@ -54,3 +54,5 @@ void destroy_input_process();
 int get_last_key();
 
 int mouse_at_edge();
+
+Pos last_mouse_up_pos();

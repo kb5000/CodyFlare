@@ -4,7 +4,7 @@ void start_game();
 
 void load_game();
 
-void start_page();
+void start_page(void*);
 
 void pause_game();
 
@@ -19,6 +19,8 @@ void god_mode();
 void god_bomb_mode();
 
 int is_pause();
+
+void open_game();
 
 void update_in_game(void* data);
 

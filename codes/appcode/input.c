@@ -10,7 +10,7 @@ static void* keyFuncDatas[256];
 static DirKeys dirKeys = {-1, -1, -1, -1};
 static MouseKeys mouseKeys = {-1, -1, -1};
 static int lastKey;
-static Pos lastMousePos;
+static Pos lastMousePos, lastMouseUpPos = {-1, -1};
 
 void CharEventProcess(char ch) {
 	uiGetChar(ch);
@@ -32,6 +32,9 @@ void MouseEventProcess(int x, int y, int button, int event) {
 	uiGetMouse(x, y, button, event);
 	if (button == 1) {
 		mouseKeys.left = event;
+		if (event == 2) {
+			lastMouseUpPos = new_pos(ScaleXInches(x), ScaleYInches(y));
+		}
 	}
 	else if (button == 2) {
 		mouseKeys.middle = event;
@@ -109,4 +112,8 @@ int mouse_at_edge() {
 	Pos pos = get_mouse_key().pos;
 	if (pos.x >= 9.83 || pos.x <= 0.04 || pos.y >= 6.95 || pos.y <= 0.14) return 1;
 	return 0;
+}
+
+Pos last_mouse_up_pos() {
+	return lastMouseUpPos;
 }

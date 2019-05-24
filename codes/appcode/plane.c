@@ -189,8 +189,10 @@ void update_each_plane(Plane* plane) {
 							add_pos(plane->position, new_pos(0.2, -0.1)), add_pos(plane->position, new_pos(0, 0.4)));
 		break;
 	case Basic_Enemy_Plane:
+	{
+		Pos pos = *player_plane_pos();
 		draw_basic_enemy(&plane->position);
-		plane->position = basic_enemy_move(plane->position);
+		plane->position = basic_enemy_move(plane->position, pos);
 		if (plane->ammoTime++ == 16) {
 			shoot_gun(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(-0.01, -0.1)), new_pos(0, -0.1));
 			plane->ammoTime = 0;
@@ -198,6 +200,7 @@ void update_each_plane(Plane* plane) {
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.25, 0.1)),
 							add_pos(plane->position, new_pos(0.25, 0.1)), add_pos(plane->position, new_pos(0, -0.25)));
 		break;
+	}
 	case Advanced_Enemy_Plane:
 	{
 		//MovePen(plane->position.x, plane->position.y - 0.22);

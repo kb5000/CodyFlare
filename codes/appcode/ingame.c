@@ -18,6 +18,7 @@
 #include "random.h"
 #include "game_particle.h"
 #include "menu.h"
+#include "start_page.h"
 
 //static char r[64];
 static int timerStack = 5;
@@ -147,15 +148,20 @@ void end_game() {
 	change_timer_stack(timerStack);
 	timerStack++;
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
+	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
 	show_font("GAME OVER");
 	add_func_to_timer(end_show, NULL, 1, 12, -1);
 }
 
-void start_page() {
-	load_game();
+void start_page(void* unuseful) {
+	//load_game();
+	change_timer_stack(1);
+	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
+	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
 	show_font("TO THE SPACE");
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
+	reset_mouse_key(1);
 }
 
 void pause_game() {
@@ -190,17 +196,23 @@ void speed_down() {
 void god_mode() {
 	Plane* player = find_plane_by_id(0);
 	if (player) {
-		player->health += 10000;
+		player->health += 2000;
 	}
 }
 
 void god_bomb_mode() {
 	Plane* player = find_plane_by_id(0);
 	if (player) {
-		player->numOfBombs += 1000;
+		player->numOfBombs += 100;
 	}
 }
 
 int is_pause() {
 	return inPause;
+}
+
+void open_game() {
+	load_game();
+	show_start_page();
+	future_do(83, start_page, NULL);
 }
