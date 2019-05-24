@@ -158,12 +158,12 @@ static int id_equal(const ListHandler* unuseful, TimerStack* a, int* id) {
 
 void change_timer_stack(int id) {
 	stop_global_timer();
-	TimerStack* tnow = calls(timerStacks, find_if, id_equal, &currentTimerStack);
+	TimerStack* tnow = calls(timerStacks, find_if, id_equal, &currentTimerStack);;
 	TimerStack* tms = calls(timerStacks, find_if, id_equal, &id);
 	if (tnow) tnow->timerFuncs = globalTimerFunctionList;
 	if (tms) {
 		globalTimerFunctionList = tms->timerFuncs;
-		//currentTimerStack = id;
+		currentTimerStack = id;
 		currentTimerStack = id;
 	} else {
 		hnew(TimerStack, tmstk);
