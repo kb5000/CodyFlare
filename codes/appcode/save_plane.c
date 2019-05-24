@@ -48,7 +48,7 @@ void get_element_to_load(void* unuseful) {
 		Node* node = (Node*)(calls(lh, at, n));
 		if (!node) return;
 		FILE* f = start_read(cast(FileName, node->data));
-		
+		if (is_pause()) continue_game();
 		reload_game();
 		load_from_file();
 		read_plane(f);

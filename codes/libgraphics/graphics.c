@@ -1843,6 +1843,8 @@ static void InitColors(void)
     DefineColor("Violet", .93, .5, .93);
     DefineColor("Magenta", 1, 0, 1);
     DefineColor("Cyan", 0, 1, 1);
+	DefineColor("Menu1", 0.7, 0.9, 0.11);
+	DefineColor("Menu2", 0.25, 0.5, 0.5);
 }
 
 /*

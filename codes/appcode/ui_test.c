@@ -8,6 +8,7 @@
 #include "save.h"
 #include <stdlib.h>
 #include "listbox.h"
+#include "menu.h"
 
 static char labelText[64];
 
@@ -32,4 +33,14 @@ void test_of_list_box() {
 	common_anime_test_init();
 	ListHandler lh = explore_files();
 	show_list_box(1, lh, new_pos(1, 1), 0);
+}
+
+void test_of_menu() {
+	InitGraphics();
+	InitGUI();
+	init_input();
+	init_global_timer();
+	start_global_timer();
+	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
+	add_func_to_timer(show_menu, NULL, 1, 123, -1);
 }

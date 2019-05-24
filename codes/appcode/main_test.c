@@ -29,4 +29,5 @@ void tests() {
 	//test_of_sheet();
 	start_page();
 	//test_of_stat();
+	//test_of_menu();
 }

@@ -10,11 +10,11 @@ void show_status_line(int score, int hp, int bombs, int hitPlane, int gameMode) 
 	*vec = gen_empty_vector(Vector);
 	Vector v = gen_empty_vector(char[24]); //This is a bug? Whatever, we must use its true size when using static array
 	char chrs[5][24] = {""};
-	sprintf(chrs[0], "health: %d", hp);
-	sprintf(chrs[1], "bombs: %d", bombs);
-	sprintf(chrs[2], "score: %d", score);
-	sprintf(chrs[3], "hit plane: %d", hitPlane);
-	sprintf(chrs[4], gameMode ? "Survive" : "Boss");
+	sprintf(chrs[0], "血量: %d", hp);
+	sprintf(chrs[1], "炸弹: %d", bombs);
+	sprintf(chrs[2], "分数: %d", score);
+	sprintf(chrs[3], "击落飞机: %d", hitPlane);
+	sprintf(chrs[4], gameMode ? "生存模式" : "剧情模式");
 	for (int j = 0; j < 5; j++) {
 		calls(v, push, chrs[j]);
 	}

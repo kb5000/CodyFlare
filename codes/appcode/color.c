@@ -26,6 +26,8 @@ static ColorEntry globalColorTable[COLOR_NUMS] = {
 	{"Violet", {238, 128, 238}},
 	{"Magenta", {255, 0, 255}},
 	{"Cyan", {0, 255, 255}},
+	{"Menu1", {181, 181, 201}},
+	{"Menu2", {64, 128, 128}},
 };
 
 

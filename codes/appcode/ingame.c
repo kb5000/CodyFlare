@@ -17,11 +17,13 @@
 #include "font.h"
 #include "random.h"
 #include "game_particle.h"
+#include "menu.h"
 
 //static char r[64];
 static int timerStack = 3;
 static int gameStack = 0;
 static int pauseLoded = 0;
+static int inPause = 0;
 
 void show_stat(void* unuseful) {
 	Plane* p = find_plane_by_id(0);
@@ -73,31 +75,32 @@ void load_game() {
 
 
 void butt(void* unuseful) {
-	if (button(12314, 1, 1, 0.8, 0.25, "RELOAD")) {
-		reload_game();
-		start_game();
-	}
-	if (button(99, 4, 1, 0.8, 0.25, "MODE")) {
-		set_game_mode(!get_game_mode());
-	}
-	if (button(12, 2, 1, 0.8, 0.25, "SAVE")) {
-		save_plane();
-	}
-	if (button(13, 3, 1, 0.8, 0.25, "LOAD")) {
-		select_saves();
-	}
-	if (button(14, 5, 1, 0.8, 0.25, "PAUSE")) {
-		pause_game();
-	}
-	if (button(15, 6, 1, 0.8, 0.25, "FAST")) {
-		speed_up();
-	}
-	if (button(16, 7, 1, 0.8, 0.25, "SLOW")) {
-		speed_down();
-	}
-	if (button(17, 8, 1, 0.8, 0.25, "BKGRND")) {
-		toggle_long_particle();
-	}
+	show_menu(unuseful);
+	//if (button(12314, 1, 1, 0.8, 0.25, "RELOAD")) {
+	//	reload_game();
+	//	start_game();
+	//}
+	//if (button(99, 4, 1, 0.8, 0.25, "MODE")) {
+	//	set_game_mode(!get_game_mode());
+	//}
+	//if (button(12, 2, 1, 0.8, 0.25, "SAVE")) {
+	//	save_plane();
+	//}
+	//if (button(13, 3, 1, 0.8, 0.25, "LOAD")) {
+	//	select_saves();
+	//}
+	//if (button(14, 5, 1, 0.8, 0.25, "PAUSE")) {
+	//	pause_game();
+	//}
+	//if (button(15, 6, 1, 0.8, 0.25, "FAST")) {
+	//	speed_up();
+	//}
+	//if (button(16, 7, 1, 0.8, 0.25, "SLOW")) {
+	//	speed_down();
+	//}
+	//if (button(17, 8, 1, 0.8, 0.25, "BKGRND")) {
+	//	toggle_long_particle();
+	//}
 }
 
 void butt_b(void* unuseful) {
@@ -160,12 +163,14 @@ void pause_game() {
 		pauseLoded = 1;
 		add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 		show_font("PAUSE");
-		add_func_to_timer(butt_b, NULL, 1, 124444, -1);
+		add_func_to_timer(butt, NULL, 1, 124444, -1);
 	}
+	inPause = 1;
 }
 
 void continue_game() {
 	change_timer_stack(gameStack);
+	inPause = 0;
 }
 
 void speed_up() {
@@ -187,4 +192,13 @@ void god_mode() {
 	}
 }
 
+void god_bomb_mode() {
+	Plane* player = find_plane_by_id(0);
+	if (player) {
+		player->numOfBombs += 1000;
+	}
+}
 
+int is_pause() {
+	return inPause;
+}

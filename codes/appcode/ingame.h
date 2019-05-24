@@ -14,6 +14,12 @@ void speed_up();
 
 void speed_down();
 
+void god_mode();
+
+void god_bomb_mode();
+
+int is_pause();
+
 void update_in_game(void* data);
 
 void end_game();
