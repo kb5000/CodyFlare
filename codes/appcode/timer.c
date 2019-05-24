@@ -163,6 +163,7 @@ void change_timer_stack(int id) {
 	if (tnow) tnow->timerFuncs = globalTimerFunctionList;
 	if (tms) {
 		globalTimerFunctionList = tms->timerFuncs;
+		//currentTimerStack = id;
 		currentTimerStack = id;
 	} else {
 		hnew(TimerStack, tmstk);
