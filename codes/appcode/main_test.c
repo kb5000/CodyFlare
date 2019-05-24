@@ -6,7 +6,7 @@ void tests() {
 	//test_of_list();
 	//test_of_object();
 	//test_of_timer();
-	//test_of_function();
+	test_of_function();
 	//test_of_anime_shield();
 	//test_of_anime_boss();
 	//test_of_input();
@@ -27,7 +27,7 @@ void tests() {
 	//test_of_ammo();
 	//test_of_plane();
 	//test_of_sheet();
-	start_page();
+	//start_page();
 	//test_of_stat();
 	//test_of_menu();
 }

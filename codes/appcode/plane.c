@@ -209,13 +209,14 @@ void update_each_plane(Plane* plane) {
 		plane->position = advanced_enemy_move(plane->position, pos);
 		if (plane->position.y > pos.y + 2) {
 			if (plane->missileTime++ == 60) {
-				shoot_missile(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(0, 0.1)), player_plane_pos(),
+				shoot_missile(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(0, -0.1)), player_plane_pos(),
 							  0, missile_target_enemy);
 				plane->missileTime = 0;
 			}
 		} else {
 			if (plane->ammoTime++ == 6) {
-				shoot_gun(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(0, 0.1)), sub_pos(pos, plane->position));
+				Pos launchPos = add_pos(plane->position, new_pos(0, -0.2));
+				shoot_gun(Basic_Enemy_Ammo, launchPos, sub_pos(pos, add_pos(launchPos, new_pos(0, 0.1))));
 				plane->ammoTime = 0;
 			}
 		}

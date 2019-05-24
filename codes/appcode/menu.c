@@ -17,8 +17,8 @@
 static char * menuListFile[] = {"    文 件",
 		"保存 | Ctrl-S",
 		"读取 | Ctrl-L",
-		//"返回主界面 | Ctrl-B",
-		"退出 | Ctrl-X"};
+	//"返回主界面 | Ctrl-B",
+	"退出 | Ctrl-X"};
 static char * menuListGame[] = {"    游 戏",
 		"开始新游戏 | Ctrl-R",
 		"切换暂停 | Ctrl-P",
@@ -64,6 +64,7 @@ void show_menu(void* u) {
 			break;
 		}
 	}
+	if (selection >= 0) reset_mouse_key(1);
 	selection = menuList(2, 0.85, winheight - 0.3, 0.85, 2, 0.3, menuListGame, sizeof(menuListGame) / sizeof(menuListGame[0]));
 	if (selection > 0) {
 		selectedLabel = menuListGame[selection];
@@ -91,6 +92,7 @@ void show_menu(void* u) {
 			break;
 		}
 	}
+	if (selection >= 0) reset_mouse_key(1);
 	selection = menuList(3, 1.7, winheight - 0.3, 0.85, 2, 0.3, menuListCheat, sizeof(menuListCheat) / sizeof(menuListCheat[0]));
 	if (selection > 0) {
 		selectedLabel = menuListCheat[selection];
@@ -113,6 +115,7 @@ void show_menu(void* u) {
 			}
 		}
 	}
+	if (selection >= 0) reset_mouse_key(1);
 	selection = menuList(4, 2.55, winheight - 0.3, 0.85, 2, 0.3, menuListAbout, sizeof(menuListAbout) / sizeof(menuListAbout[0]));
 	if (selection > 0) {
 		selectedLabel = menuListAbout[selection];
@@ -125,6 +128,7 @@ void show_menu(void* u) {
 			break;
 		}
 	}
+	if (selection >= 0) reset_mouse_key(1);
 
 	//上面的代码没有颜色，下面所有图标0.25*0.25大小，图标左下顶点间距离为0.6
 
@@ -137,8 +141,21 @@ void draw_tool_animes() {
 	double winheight = GetWindowHeight();
 	set_color(color_by_name("Menu1"));
 	drawRectangle(7.05, 6.68, 3.1, 0.32, 1);
-	set_color(color_by_rgb(190, 45, 106));
+	//set_color(color_by_rgb(190, 45, 106));
+	Color entryColor = color_by_rgb(190, 45, 106);
+	Color activeColor = color_by_rgb(92, 45, 186);
+	MouseKeys ms = get_mouse_key();
+	int inPause = is_pause();
 	//下列代码是存档图标
+	if (pos_in_rect(ms.pos, new_pos(8.9, 6.65), new_pos(9.4, 7))) {
+		set_color(activeColor);
+		if (ms.left == 2) {
+			if (!inPause) save_plane();
+			reset_mouse_key(1);
+		}
+	} else {
+		set_color(entryColor);
+	}
 	MovePen(winwidth - 1.0, winheight - 0.275);
 	DrawLine(0, 0.25);
 	DrawLine(0.05, 0);
@@ -157,6 +174,15 @@ void draw_tool_animes() {
 	DrawLine(0.2, 0);
 
 	//下列代码是退出图标
+	if (pos_in_rect(ms.pos, new_pos(9.4, 6.65), new_pos(9.9, 7))) {
+		set_color(activeColor);
+		if (ms.left == 2) {
+			exit(0);
+			reset_mouse_key(1);
+		}
+	} else {
+		set_color(entryColor);
+	}
 	MovePen(winwidth - 0.2, winheight - 0.225);
 	DrawLine(0, -0.05);
 	DrawLine(-0.2, 0);
@@ -172,9 +198,21 @@ void draw_tool_animes() {
 	DrawLine(0.1, 0);
 	DrawLine(0, -0.1);
 
-	int poc = is_pause();
 
-	if (poc == 0) {
+	if (pos_in_rect(ms.pos, new_pos(8.3, 6.65), new_pos(8.9, 7))) {
+		set_color(activeColor);
+		if (ms.left == 2) {
+			if (inPause) {
+				continue_game();
+			} else {
+				pause_game();
+			}
+			reset_mouse_key(1);
+		}
+	} else {
+		set_color(entryColor);
+	}
+	if (inPause == 0) {
 		//下列代码是暂停图标
 		MovePen(winwidth - 1.6, winheight - 0.275);
 		DrawLine(0, 0.25);
@@ -204,6 +242,16 @@ void draw_tool_animes() {
 		DrawLine(-0.125, 0.075);
 	}
 
+	if (pos_in_rect(ms.pos, new_pos(7.6, 6.65), new_pos(8.3, 7))) {
+		set_color(activeColor);
+		if (ms.left == 2) {
+			if (!inPause) pause_game();
+			select_saves();
+			reset_mouse_key(1);
+		}
+	} else {
+		set_color(entryColor);
+	}
 	//下列代码是读档图标
 	MovePen(winwidth - 2.2, winheight - 0.275);
 	DrawLine(0, 0.2);
@@ -226,6 +274,17 @@ void draw_tool_animes() {
 	DrawLine(-0.075, 0.05);
 	DrawLine(-0.075, -0.05);
 
+	if (pos_in_rect(ms.pos, new_pos(7.05, 6.65), new_pos(7.6, 7))) {
+		set_color(activeColor);
+		if (ms.left == 2) {
+			if (inPause) continue_game();
+			reload_game();
+			start_game();
+			reset_mouse_key(1);
+		}
+	} else {
+		set_color(entryColor);
+	}
 	//下列代码是重开图标
 	MovePen(winwidth - 2.8, winheight - 0.275);
 	DrawLine(0, 0.25);

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 static ParticleGroup* pg, * backPg;
-//static int particleOn = 1;
+static int particleOn = 1;
 
 Color part_color_render(Particle* part, int time) {
 	return color_by_rgb(180, 76, 200);
@@ -29,13 +29,29 @@ void show_long_particle() {
 	show_particles(pg);
 }
 
-void toggle_long_particle() {
+void destroy_long_particle() {
 	if (pg) {
 		disable_particles(pg);
 		calls(pg->parts, destroy);
 		pg = NULL;
 	}
-	else show_long_particle();
+}
+
+void toggle_long_particle() {
+	if (pg) {
+		disable_particles(pg);
+		calls(pg->parts, destroy);
+		pg = NULL;
+		particleOn = 0;
+	}
+	else {
+		show_long_particle();
+		particleOn = 1;
+	}
+}
+
+int is_show_particle() {
+	return particleOn;
 }
 
 void show_bonus_particle() {

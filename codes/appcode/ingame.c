@@ -20,10 +20,11 @@
 #include "menu.h"
 
 //static char r[64];
-static int timerStack = 3;
+static int timerStack = 5;
 static int gameStack = 0;
 static int pauseLoded = 0;
 static int inPause = 0;
+//static int showBackGround = 1;
 
 void show_stat(void* unuseful) {
 	Plane* p = find_plane_by_id(0);
@@ -59,7 +60,8 @@ void start_game() {
 	start_col_dets();
 	start_detection(1);
 	start_control();
-	show_long_particle();
+	destroy_long_particle();
+	if (is_show_particle()) show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 }
 
@@ -121,7 +123,7 @@ void load_from_file() {
 	start_col_dets();
 	start_detection(1);
 	start_control();
-	show_long_particle();
+	if (is_show_particle()) show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 }
 

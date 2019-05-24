@@ -419,7 +419,7 @@ static char shortcutkey(char *s)
 int menuList(int id, double x, double y, double w, double wlist, double h, char *labels[], int n)
 {
 	static int unfoldMenu = 0;
-	int result = 0;
+	int result = -1;
 	int k = -1;
 
 	// ´¦Àí¿ì½İ¼ü
