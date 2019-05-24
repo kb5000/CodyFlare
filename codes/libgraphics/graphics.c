@@ -930,7 +930,8 @@ static void InitDisplay(void)
     yResolution *= scaleFactor;
     SetRectFromSize(&graphicsRect, LeftMargin, TopMargin,
                     PixelsX(windowWidth), PixelsY(windowHeight));
-    style = WS_OVERLAPPEDWINDOW & ~(WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+    style = (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME) & ~(WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+    //style = (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME) & ~WS_MAXIMIZEBOX;
     
     g_keyboard = NULL;
 	g_mouse = NULL;

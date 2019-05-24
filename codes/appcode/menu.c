@@ -17,8 +17,8 @@
 static char * menuListFile[] = {"    文 件",
 		"保存 | Ctrl-S",
 		"读取 | Ctrl-L",
-	//"返回主界面 | Ctrl-B",
-	"退出 | Ctrl-X"};
+		//"返回主界面 | Ctrl-B",
+		"退出 | Ctrl-X"};
 static char * menuListGame[] = {"    游 戏",
 		"开始新游戏 | Ctrl-R",
 		"切换暂停 | Ctrl-P",
@@ -27,7 +27,7 @@ static char * menuListGame[] = {"    游 戏",
 		"排行榜 | Ctrl-C"};
 static char * menuListCheat[] = {"  金 手 指",
 		"更多炸弹 | Ctrl-M",
-		"更多血量 | Ctrl-F",
+		"更多血量 | Ctrl-N",
 		"加速 | Ctrl-A",
 		"减速 | Ctrl-D"};
 static char * menuListAbout[] = {"    帮 助",

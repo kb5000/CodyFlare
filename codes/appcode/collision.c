@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include "timer.h"
 
+//#define COL_DEBUG
+#ifdef COL_DEBUG
+#include "color.h"
+#include "graphics.h"
+#endif // COL_DEBUG
+
+
 typedef struct {
 	IntPair ids;
 	ColHandler* colHandler;
@@ -148,13 +155,13 @@ static int box_box_col_dec(CollisionObj* a, CollisionObj* b) {
 }
 
 static int line_line_base_dec(Pos A, Pos B, Pos C, Pos D) {
-	const double zero = 1e-9;
+	const double zero = 0;
 	Pos AC = sub_pos(C, A);
 	Pos AD = sub_pos(D, A);
 	Pos BC = sub_pos(C, B);
 	Pos BD = sub_pos(D, B);
-	return det_2_dim(AC, AD) * det_2_dim(BC, BD) <= zero &&
-		   det_2_dim(AC, BC) * det_2_dim(AD, BD) <= zero;
+	return det_2_dim(AC, AD) * det_2_dim(BC, BD) < zero &&
+		   det_2_dim(AC, BC) * det_2_dim(AD, BD) < zero;
 }
 
 static int point_in_box(Pos p, Pos a, Pos b) {
@@ -200,6 +207,21 @@ static int box_tri_col_dec(CollisionObj* b, CollisionObj* t) {
 	return 0;
 }
 
+static int tri_tri_col_dec(CollisionObj* l, CollisionObj* r) {
+	Pos lx[3] = {l->start, l->end, l->triangleExtra};
+	Pos rx[3] = {r->start, r->end, r->triangleExtra};
+	Pos lax[3][2] = {{lx[0], lx[1]}, {lx[1], lx[2]}, {lx[2], lx[0]}};
+	Pos rax[3][2] = {{rx[0], rx[1]}, {rx[1], rx[2]}, {rx[2], rx[0]}};
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (line_line_base_dec(lax[i][0], lax[i][1], rax[j][0], rax[j][1])) {
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
 static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode* colNode) {
 	//l && (l = l->next) prevents delete object crash
 	for (Node* l = lhs->objs.head; l; l && (l = l->next)) {
@@ -224,7 +246,9 @@ static void col_obj_detection(CollisionGroup* lhs, CollisionGroup* rhs, ColNode*
 			} else if (lc->colType == Col_Box && rc->colType == Col_Triangle) {
 				if (box_tri_col_dec(lc, rc)) collsionFlag = 1;
 			} else if (lc->colType == Col_Triangle && rc->colType == Col_Box) {
-				if (box_box_col_dec(rc, lc)) collsionFlag = 1;
+				if (box_tri_col_dec(rc, lc)) collsionFlag = 1;
+			} else if (lc->colType == Col_Triangle && rc->colType == Col_Triangle) {
+				if (tri_tri_col_dec(lc, rc)) collsionFlag = 1;
 			}
 			if (collsionFlag) colNode->colHandler(lhs->id, lc->id, rhs->id, rc->id, colNode->para);
 		}
@@ -283,6 +307,19 @@ void update_col_info(int groupID, int objID, Pos start, Pos end) {
 	if (!obj) return;
 	obj->start = start;
 	obj->end = end;
+#ifdef COL_DEBUG
+	set_color(color_by_rgb(0, 0, 90));
+	MovePen(start.x, start.y);
+	Pos len = sub_pos(end, start);
+	if (obj->colType == Col_Box) {
+		DrawLine(len.x, 0);
+		DrawLine(0, len.y);
+		DrawLine(-len.x, 0);
+		DrawLine(0, -len.y);
+	} else {
+		DrawLine(len.x, len.y);
+	}
+#endif // COL_DEBUG
 }
 
 void update_tri_col_info(int groupID, int objID, Pos start, Pos end, Pos triExtra) {
@@ -291,5 +328,13 @@ void update_tri_col_info(int groupID, int objID, Pos start, Pos end, Pos triExtr
 	obj->start = start;
 	obj->end = end;
 	obj->triangleExtra = triExtra;
+#ifdef COL_DEBUG
+	set_color(color_by_rgb(0, 0, 90));
+	MovePen(start.x, start.y);
+	DrawLine(end.x - start.x, end.y - start.y);
+	DrawLine(triExtra.x - end.x, triExtra.y - end.y);
+	DrawLine(start.x - triExtra.x, start.y - triExtra.y);
+#endif // COL_DEBUG
+
 }
 

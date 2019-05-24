@@ -6,7 +6,7 @@ void tests() {
 	//test_of_list();
 	//test_of_object();
 	//test_of_timer();
-	test_of_function();
+	//test_of_function();
 	//test_of_anime_shield();
 	//test_of_anime_boss();
 	//test_of_input();

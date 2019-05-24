@@ -27,16 +27,17 @@ void draw_rec(Rect* r) {
 }
 
 void draw_line(Rect* r) {
-	set_color(r->color);
-	MovePen(r->start.x, r->start.y);
-	DrawLine(r->size.x, r->size.y);
+	//set_color(r->color);
+	//MovePen(r->start.x, r->start.y);
+	//DrawLine(r->size.x, r->size.y);
 }
 
 void col_test(void* unuseful) {
+	move_by_dir_key(&r2.start, new_pos(0.1, 0.1));
 	draw_rec(&r1);
 	draw_line(&r2);
-	move_by_dir_key(&r2.start, new_pos(0.1, 0.1));
-	update_col_info(2, 1, r2.start, add_pos(r2.start, r2.size));
+	update_col_info(1, 1, new_pos(1, 1), new_pos(1.26, 1.22));
+	update_tri_col_info(2, 1, add_pos(r2.start, new_pos(-0.2, -0.1)), add_pos(r2.start, new_pos(0.2, -0.1)), add_pos(r2.start, new_pos(0, 0.4)));
 	drawLabel(0.1, 0.1, lebalText);
 	sprintf(lebalText, "No collision now");
 }
@@ -61,7 +62,7 @@ void test_of_collision() {
 	//add_col_group(2);
 	//then create collision object, type, start point, end point, obj id
 	CollisionObj r1c = create_col_obj(Col_Box, r1.start, add_pos(r1.start, r1.size), 1, new_pos(0, 0));
-	CollisionObj r2c = create_col_obj(Col_Line, r2.start, add_pos(r2.start, r2.size), 1, new_pos(0, 0));
+	CollisionObj r2c = create_col_obj(Col_Triangle, r2.start, add_pos(r2.start, r2.size), 1, new_pos(0, 0));
 	//add obj to group
 	add_col_obj_to_group(1, r1c);
 	add_col_obj_to_group(2, r2c);

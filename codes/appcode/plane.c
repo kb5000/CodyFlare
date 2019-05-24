@@ -172,7 +172,6 @@ Plane* get_boss_plane() {
 void update_each_plane(Plane* plane) {
 	switch (plane->type) {
 	case Player_Plane:
-		draw_player_plane(&plane->position);
 		//Pos p = plane->position;
 		if (plane->position.x < 0 && plane->position.y < 0) return;
 		move_by_dir_key(&plane->position, new_pos(0.13, 0.1));
@@ -182,21 +181,22 @@ void update_each_plane(Plane* plane) {
 		if (plane->position.y > 6.8) plane->position.y = 6.8;
 		plane->missileTime++;
 		if (plane->ammoTime++ == 3) {
-			shoot_gun(Player_Ammo, add_pos(plane->position, new_pos(0.01, 0.3)), new_pos(0, 0.1));
+			shoot_gun(Player_Ammo, add_pos(plane->position, new_pos(0.01, 0.2)), new_pos(0, 0.1));
 			plane->ammoTime = 0;
 		}
+		draw_player_plane(&plane->position);
 		update_tri_col_info(PLR_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, -0.1)),
-							add_pos(plane->position, new_pos(0.2, -0.1)), add_pos(plane->position, new_pos(0, 0.4)));
+							add_pos(plane->position, new_pos(0.2, -0.1)), add_pos(plane->position, new_pos(0, 0.35)));
 		break;
 	case Basic_Enemy_Plane:
 	{
 		Pos pos = *player_plane_pos();
-		draw_basic_enemy(&plane->position);
 		plane->position = basic_enemy_move(plane->position, pos);
 		if (plane->ammoTime++ == 16) {
 			shoot_gun(Basic_Enemy_Ammo, add_pos(plane->position, new_pos(-0.01, -0.1)), new_pos(0, -0.1));
 			plane->ammoTime = 0;
 		}
+		draw_basic_enemy(&plane->position);
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.25, 0.1)),
 							add_pos(plane->position, new_pos(0.25, 0.1)), add_pos(plane->position, new_pos(0, -0.25)));
 		break;
@@ -207,7 +207,6 @@ void update_each_plane(Plane* plane) {
 		//DrawLine(-0.25, 0.40);
 		//MovePen(plane->position.x, plane->position.y - 0.22);
 		//DrawLine(0.25, 0.40);
-		draw_infernal_enemy(&plane->position);
 		Pos pos = *player_plane_pos();
 		plane->position = advanced_enemy_move(plane->position, pos);
 		if (plane->position.y > pos.y + 2) {
@@ -223,18 +222,19 @@ void update_each_plane(Plane* plane) {
 				plane->ammoTime = 0;
 			}
 		}
+		draw_infernal_enemy(&plane->position);
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.25, 0.18)),
 							add_pos(plane->position, new_pos(0.25, 0.18)), add_pos(plane->position, new_pos(0, -0.22)));
 	}
 	break;
 	case Swift_Enemy_Plane:
 	{
-		draw_bonus_enemy(&plane->position);
 		MovePen(plane->position.x - 0.2, plane->position.y);
 		DrawLine(0.4, 0);
 
 		Pos pos = *player_plane_pos();
 		plane->position = swift_enemy_move(plane->position, pos);
+		draw_bonus_enemy(&plane->position);
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0.2)),
 							add_pos(plane->position, new_pos(0.2, 0.2)), add_pos(plane->position, new_pos(0, -0.3)));
 		if (pos_length(sub_pos(pos, plane->position)) < 0.8) {

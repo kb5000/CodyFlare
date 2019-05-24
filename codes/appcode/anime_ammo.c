@@ -2,7 +2,6 @@
 #include "extgraph.h"
 
 void draw_anime_ammo_once(AmmoType ammoType, Pos position, Pos direction) {
-	MovePen(position.x, position.y);
 	switch (ammoType) {
 	case Player_Ammo:
 		set_color(color_by_rgb(63, 72, 204));
@@ -16,8 +15,9 @@ void draw_anime_ammo_once(AmmoType ammoType, Pos position, Pos direction) {
 	default:
 		break;
 	}
-	DrawLine(direction.x, direction.y);
 	Pos normal = add_pos(position, polar_to_rect(new_pos(0.02, PI / 2 + pos_arc(direction))));
+	MovePen(position.x, position.y);
+	DrawLine(direction.x, direction.y);
 	MovePen(normal.x, normal.y);
 	DrawLine(direction.x, direction.y);
 }

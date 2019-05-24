@@ -46,7 +46,6 @@ void add_ammo(int isEnemy, Pos position, Pos direction) {
 }
 
 void update_each_ammo(Ammo* ammo) {
-	draw_anime_ammo_once(ammo->isEnemy, ammo->pos, ammo->dirt);
 	if (ammo->isEnemy == 1) {
 		ammo->pos = add_pos(ammo->pos, pos_mut(ammo->dirt, enemyAmmoSpeed / pos_length(ammo->dirt)));
 	} else if (ammo->isEnemy == 2) {
@@ -54,7 +53,10 @@ void update_each_ammo(Ammo* ammo) {
 	} else {
 		ammo->pos = add_pos(ammo->pos, pos_mut(ammo->dirt, playerAmmoSpeed / pos_length(ammo->dirt)));
 	}
-	update_col_info(ammo->isEnemy ? ENM_AMMO_COL_ID : PLR_AMMO_COL_ID, ammo->colObjID, ammo->pos, add_pos(ammo->pos, ammo->dirt));
+	draw_anime_ammo_once(ammo->isEnemy, ammo->pos, ammo->dirt);
+	Pos normal = add_pos(ammo->pos, polar_to_rect(new_pos(0.01, PI / 2 + pos_arc(ammo->dirt))));
+	Pos lp = pos_mut(ammo->dirt, 1.02);
+	update_col_info(ammo->isEnemy ? ENM_AMMO_COL_ID : PLR_AMMO_COL_ID, ammo->colObjID, normal, add_pos(normal, lp));
 }
 
 int is_invalid_ammo(Ammo* ammo, void* unuseful) {

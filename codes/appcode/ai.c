@@ -3,8 +3,8 @@
 
 Pos basic_enemy_move(Pos postion, Pos playerPos) {
 	Pos dir;
-	if (pos_length(sub_pos(postion, playerPos)) < 3 && fabs(postion.x - playerPos.x) < 0.7 && postion.y > playerPos.y) {
-		dir = new_pos(0, -0.08);
+	if (pos_length(sub_pos(postion, playerPos)) < 3.5 && fabs(postion.x - playerPos.x) < 0.7 && postion.y > playerPos.y) {
+		dir = new_pos(0, -0.07);
 	} else {
 		dir = new_pos(0, -0.02);
 	}

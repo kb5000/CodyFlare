@@ -37,8 +37,8 @@ void add_fix_obj(Pos pos, Fix_Objs type) {
 	hnew(FixObj, fix);
 	*fix = fixObj;
 	calls(fixObjList, push_back, fix);
-	add_col_obj_to_group(FIX_OBJ_COL_ID, create_col_obj(Col_Box, sub_pos(pos, new_pos(0.1, 0.1)),
-														add_pos(pos, new_pos(0.1, 0.1)), fixObj.id, new_pos(0, 0)));
+	add_col_obj_to_group(FIX_OBJ_COL_ID, create_col_obj(Col_Box, sub_pos(pos, new_pos(0.13, 0.13)),
+														add_pos(pos, new_pos(0.13, 0.13)), fixObj.id, new_pos(0, 0)));
 }
 
 int remove_fix_obj_handler(FixObj* fixObj, int* id) {
@@ -120,10 +120,11 @@ void show_each_fix_obj(FixObj* fo) {
 			break;
 		}
 	}
-	update_col_info(FIX_OBJ_COL_ID, fo->id, sub_pos(fo->pos, new_pos(0.1, 0.1)),
-					add_pos(fo->pos, new_pos(0.1, 0.1)));
 	fo->existTime++;
+	update_col_info(FIX_OBJ_COL_ID, fo->id, add_pos(fo->pos, new_pos(-0.1, 0.1)),
+					add_pos(fo->pos, new_pos(0.1, 0.3)));
 	if (fo->pos.y > 0.3) fo->pos.y -= 0.02;
+	else fo->pos.y = 0.3;
 }
 
 void show_fix_obj(void* unuseful) {
