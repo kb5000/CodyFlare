@@ -3,6 +3,7 @@
 #include "missile.h"
 #include "animes.h"
 #include "fix_obj.h"
+#include "ingame.h"
 
 void shoot_gun(int isEnemy, Pos startPos, Pos direction) {
 	add_ammo(isEnemy, startPos, direction);
@@ -52,6 +53,7 @@ void bomb_explode_handler(Pos bombPos) {
 					generate_fix_obj(pln->position);
 				} else if (pln->type == Boss_Plane) {
 					remove_funcs_from_timer(6666444);
+					future_do(20, game_victory, NULL);
 				} else {
 					inc_hit_plane();
 				}

@@ -156,12 +156,6 @@
     <Filter Include="Game\UI\HealthBar">
       <UniqueIdentifier>{7e0d414a-bc2f-4ade-8152-4dd2fb00b9cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\UI\Sheet">
-      <UniqueIdentifier>{e654cabd-b508-4bc9-8806-a07778b3d9ac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\UI\EndPage">
-      <UniqueIdentifier>{feeda730-fb39-45dc-8342-f61a6eff7e52}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Weapon">
       <UniqueIdentifier>{6320f1ff-b18b-4267-a0d7-45748ddb31b3}</UniqueIdentifier>
     </Filter>
@@ -200,6 +194,12 @@
     </Filter>
     <Filter Include="Game\GameParticle">
       <UniqueIdentifier>{e791b7ba-9549-4f07-ad91-049fe58c9a72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Sheet">
+      <UniqueIdentifier>{e654cabd-b508-4bc9-8806-a07778b3d9ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\EndPage">
+      <UniqueIdentifier>{a3cf695e-6bd9-4c24-a2b3-59b249215cd9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -384,7 +384,7 @@
       <Filter>Game\UI\HealthBar</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\sheet.h">
-      <Filter>Game\UI\Sheet</Filter>
+      <Filter>Modules\Sheet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\sheet_test.h">
       <Filter>UnitTest\SheetTest</Filter>
@@ -397,6 +397,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\game_particle.h">
       <Filter>Game\GameParticle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\end_page.h">
+      <Filter>Game\UI\EndPage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -608,7 +611,7 @@
       <Filter>Game\UI\HealthBar</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\sheet.c">
-      <Filter>Game\UI\Sheet</Filter>
+      <Filter>Modules\Sheet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\sheet_test.c">
       <Filter>UnitTest\SheetTest</Filter>
@@ -621,6 +624,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\game_particle.c">
       <Filter>Game\GameParticle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\end_page.c">
+      <Filter>Game\UI\EndPage</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

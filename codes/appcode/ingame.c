@@ -19,18 +19,21 @@
 #include "game_particle.h"
 #include "menu.h"
 #include "start_page.h"
+#include "end_page.h"
 
 //static char r[64];
 static int timerStack = 5;
 static int gameStack = 0;
 static int pauseLoded = 0;
 static int inPause = 0;
+static int inVictory = 0;
 //static int showBackGround = 1;
 
 void show_stat(void* unuseful) {
 	Plane* p = find_plane_by_id(0);
 	if (!p) {
-		end_game();
+		future_do(30, end_game, NULL);
+		show_status_line(current_score(), 0, 0, current_hit_plane(), get_game_mode());
 	} else {
 		//sprintf(r, "Score: %d Health: %d Bomb: %d", current_score(), p->health, p->numOfBombs);
 		show_status_line(current_score(), p->health, p->numOfBombs, current_hit_plane(), get_game_mode());
@@ -64,6 +67,7 @@ void start_game() {
 	destroy_long_particle();
 	if (is_show_particle()) show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
+	inVictory = 0;
 }
 
 void load_game() {
@@ -126,6 +130,7 @@ void load_from_file() {
 	start_control();
 	if (is_show_particle()) show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
+	inVictory = 0;
 }
 
 void destroy_last_stack(int* lastStack) {
@@ -144,12 +149,13 @@ void reload_game() {
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
 }
 
-void end_game() {
-	change_timer_stack(timerStack);
-	timerStack++;
-	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
-	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
-	add_func_to_timer(butt, NULL, 1, 124444, -1);
+void end_game(void* unuseful) {
+	//change_timer_stack(timerStack);
+	//timerStack++;
+	//add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
+	//add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
+	//add_func_to_timer(butt, NULL, 1, 124444, -1);
+	reload_game();
 	show_font("GAME OVER");
 	add_func_to_timer(end_show, NULL, 1, 12, -1);
 }
@@ -211,8 +217,19 @@ int is_pause() {
 	return inPause;
 }
 
+int is_vic() {
+	return inVictory;
+}
+
 void open_game() {
 	load_game();
 	show_start_page();
 	future_do(83, start_page, NULL);
+}
+
+void game_victory(void* unuseful) {
+	destroy_long_particle();
+	inVictory = 1;
+	reload_game();
+	show_end_page();
 }

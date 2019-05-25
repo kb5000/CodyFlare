@@ -49,7 +49,7 @@ void test_of_anime_bomb() {
 
 Color color_changing(DrawFuncHolder* dfh) {
 	double t = dfh->tNow;
-	return color_by_rgb(t * 128, t * 96 + 100, 205 - 10 * t);
+	return color_by_rgb((int)(t * 128), (int)(t * 96 + 100), (int)(205 - 10 * t));
 }
 
 void show_parabola(Pos* pos) {

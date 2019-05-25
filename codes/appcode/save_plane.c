@@ -32,6 +32,7 @@ void read_plane(FILE* f) {
 	set_score_info(score, hit);
 	set_game_mode(save);
 	end_save_or_read(f);
+	calls(v, destroy);
 }
 
 void select_saves() {

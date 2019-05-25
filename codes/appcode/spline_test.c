@@ -6,7 +6,7 @@
 
 Color color_changingb(DrawFuncHolder* dfh) {
 	double t = (dfh->tNow + dfh->extraPara) / 5;
-	return color_by_rgb(t * 128, t * 96 + 100, 205 - 10 * t);
+	return color_by_rgb((int)(t * 128), (int)(t * 96 + 100), (int)(205 - 10 * t));
 }
 
 void test_of_spline() {

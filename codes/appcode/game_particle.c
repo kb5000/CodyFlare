@@ -2,11 +2,13 @@
 #include "timer.h"
 #include "game_particle.h"
 #include <stdlib.h>
+#include "utility.h"
+#include "ingame.h"
 
 static ParticleGroup* pg, * backPg;
 static int particleOn = 1;
 
-Color part_color_render(Particle* part, int time) {
+static Color part_color_render(Particle* part, int time) {
 	return color_by_rgb(180, 76, 200);
 }
 
@@ -38,6 +40,7 @@ void destroy_long_particle() {
 }
 
 void toggle_long_particle() {
+	if (is_vic()) return;
 	if (pg) {
 		disable_particles(pg);
 		calls(pg->parts, destroy);
@@ -54,6 +57,19 @@ int is_show_particle() {
 	return particleOn;
 }
 
-void show_bonus_particle() {
-	
+static Color bonus_particle_color(Particle* part, int time) {
+	return color_by_rgb(150 + time, (int)(110 + 0.4 * time), (int)(0.6 * time));
+}
+
+//It will use the timer gc to free something
+void gc_activer(void* any) {}
+
+void show_bonus_particle(Pos pos) {
+	ParticleGroup* pg = create_particle_group(pos, 90, 3000, 0.3, 0, bonus_particle_color, 0);
+	ball_particle(pg, 0.4);
+	show_particles(pg);
+	Vector pt = pg->parts;
+	future_do(95, gc_activer, pt.content);
+	//future_do(95, free, pt);
+	//future_do(95, destroy_particles, pg);
 }

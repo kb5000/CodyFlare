@@ -9,6 +9,7 @@
 #include "col_updater.h"
 #include "animes.h"
 #include "fix_obj.h"
+#include "ingame.h"
 
 static ListHandler planeList;
 static int planeID = 0;
@@ -335,6 +336,9 @@ void plane_explode(Plane* plane, int health) {
 	plane->health -= health;
 	if (plane->health <= 0) {
 		hitPlane++;
+		if (plane->type == Boss_Plane) {
+			future_do(20, game_victory, NULL);
+		}
 		if (plane->type == Swift_Enemy_Plane) {
 			generate_fix_obj(plane->position);
 		}

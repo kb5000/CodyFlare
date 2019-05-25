@@ -79,3 +79,10 @@ void disable_particles(ParticleGroup* part) {
 	if (part) part->life = -5;
 }
 
+void destroy_particles(ParticleGroup* pg) {
+	if (pg) {
+		calls(pg->parts, destroy);
+		free(pg);
+	}
+}
+

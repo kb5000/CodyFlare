@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "listbox.h"
 #include "menu.h"
+#include "graphics.h"
 
 static char labelText[64];
 

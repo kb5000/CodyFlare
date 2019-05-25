@@ -49,3 +49,5 @@ void show_particles(ParticleGroup* part);
 
 void disable_particles(ParticleGroup * part);
 
+void destroy_particles(ParticleGroup * pg);
+
