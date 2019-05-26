@@ -23,6 +23,10 @@ FILE* start_save() {
 	return file;
 }
 
+FILE* start_custom_save(FileName fileName) {
+	return fopen(fileName.name, "wb");
+}
+
 FILE* start_read(FileName name) {
 	FILE* file = fopen(name.name, "rb");
 	return file;

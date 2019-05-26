@@ -22,6 +22,8 @@ int is_pause();
 
 int is_vic();
 
+int is_game();
+
 void open_game();
 
 void game_victory(void* unuseful);

@@ -10,6 +10,7 @@
 #include "animes.h"
 #include "fix_obj.h"
 #include "ingame.h"
+//#include "extgraph.h"
 
 static ListHandler planeList;
 static int planeID = 0;
@@ -19,6 +20,8 @@ static int planeNum = 0;
 static int hitPlane = 0;
 static int gameMode = 0;
 static int refreshTime = 80;
+static int accuTime = 25;
+static int accuFlag = 0;
 
 void init_plane_list() {
 	if (planeList.destroy) {
@@ -30,6 +33,8 @@ void init_plane_list() {
 	planeNum = 0;
 	hitPlane = 0;
 	gameMode = 0;
+	accuTime = 25;
+	accuFlag = 0;
 	planeList = new_empty_list();
 	add_col_group(PLR_PLN_COL_ID);
 	add_col_group(ENM_PLN_COL_ID);
@@ -45,12 +50,12 @@ int get_game_mode() {
 	return gameMode;
 }
 
-void set_refresh_time(int refresh) {
-	refreshTime = refresh;
+void set_plane_num(int refresh) {
+	planeNum = refresh;
 }
 
-int get_refresh_time() {
-	return refreshTime;
+int get_plane_num() {
+	return planeNum;
 }
 
 ListHandler* plane_list() {
@@ -67,6 +72,10 @@ void set_plane_list(ListHandler plane) {
 void set_score_info(int scr, int hit) {
 	score = scr;
 	hitPlane = hit;
+}
+
+void set_accu_flag(int flag) {
+	accuFlag = flag;
 }
 
 Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs) {
@@ -175,16 +184,30 @@ void update_each_plane(Plane* plane) {
 	case Player_Plane:
 		//Pos p = plane->position;
 		if (plane->position.x < 0 && plane->position.y < 0) return;
-		move_by_dir_key(&plane->position, new_pos(0.13, 0.1));
+		if (accuFlag && accuTime > 0) {
+			move_by_dir_key(&plane->position, new_pos(0.32, 0.28));
+			accuTime -= 6;
+			if (accuTime < 0) accuTime = 0;
+		} else {
+			move_by_dir_key(&plane->position, new_pos(0.13, 0.1));
+		}
 		if (plane->position.x < 0.2) plane->position.x = 0.2;
 		if (plane->position.x > 9.8) plane->position.x = 9.8;
-		if (plane->position.y < 0.34) plane->position.y = 0.34;
+		if (plane->position.y < 0.41) plane->position.y = 0.41;
 		if (plane->position.y > 6.8) plane->position.y = 6.8;
 		plane->missileTime++;
+		if (plane->missileTime > 100) plane->missileTime = 100;
 		if (plane->ammoTime++ == 3) {
 			shoot_gun(Player_Ammo, add_pos(plane->position, new_pos(0.01, 0.2)), new_pos(0, 0.1));
 			plane->ammoTime = 0;
 		}
+		if (accuTime < 25 && !accuFlag) accuTime++;
+		MovePen(plane->position.x - 0.2, plane->position.y - 0.19);
+		set_color(color_by_name("Blue"));
+		DrawLine(accuTime / 25.0 * 0.4, 0);
+		MovePen(plane->position.x - 0.2, plane->position.y - 0.16);
+		set_color(color_by_rgb(196, 100, 40));
+		DrawLine(plane->missileTime / 100.0 * 0.4, 0);
 		draw_player_plane(&plane->position);
 		update_tri_col_info(PLR_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, -0.1)),
 							add_pos(plane->position, new_pos(0.2, -0.1)), add_pos(plane->position, new_pos(0, 0.35)));

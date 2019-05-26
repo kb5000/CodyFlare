@@ -65,7 +65,7 @@ static Color bonus_particle_color(Particle* part, int time) {
 void gc_activer(void* any) {}
 
 void show_bonus_particle(Pos pos) {
-	ParticleGroup* pg = create_particle_group(pos, 90, 3000, 0.3, 0, bonus_particle_color, 0);
+	ParticleGroup* pg = create_particle_group(pos, 90, 5000, 0.3, 0, bonus_particle_color, 0);
 	ball_particle(pg, 0.4);
 	show_particles(pg);
 	Vector pt = pg->parts;

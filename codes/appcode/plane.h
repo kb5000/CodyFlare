@@ -25,15 +25,17 @@ void set_game_mode(int mode);
 
 int get_game_mode();
 
-void set_refresh_time(int refresh);
+void set_plane_num(int refresh);
 
-int get_refresh_time();
+int get_plane_num();
 
 ListHandler * plane_list();
 
 void set_plane_list(ListHandler plane);
 
 void set_score_info(int scr, int hit);
+
+void set_accu_flag(int flag);
 
 Plane create_plane(PlaneType type, Pos initPosition, int health, int numOfBombs);
 

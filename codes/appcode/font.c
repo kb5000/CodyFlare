@@ -13,7 +13,7 @@ void show_font(const char* str) {
 	double xStart = W / 2.0 - w * len / 2.0;
 	for (int i = 0; i < len; i++) {
 		if (str[i] == ' ')continue;
-		ShowLetter(str[i], size, xStart + i * w, (H + 1.7*h) / 2);
+		ShowLetter(str[i], size, xStart + i * w, (H + 5*h) / 2);
 	}
 
 }

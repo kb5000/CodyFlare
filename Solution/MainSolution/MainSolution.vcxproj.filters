@@ -201,6 +201,12 @@
     <Filter Include="Game\UI\EndPage">
       <UniqueIdentifier>{a3cf695e-6bd9-4c24-a2b3-59b249215cd9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\UI\Rank">
+      <UniqueIdentifier>{7fd0ac3a-b9ab-4aa7-8f6b-39c15726c206}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI\InputBox">
+      <UniqueIdentifier>{dfae8e93-ff56-4804-a5b5-e2002ab7f890}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -400,6 +406,12 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\end_page.h">
       <Filter>Game\UI\EndPage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\rank.h">
+      <Filter>Game\UI\Rank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\input_box.h">
+      <Filter>Game\UI\InputBox</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -627,6 +639,12 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\end_page.c">
       <Filter>Game\UI\EndPage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\rank.c">
+      <Filter>Game\UI\Rank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\input_box.c">
+      <Filter>Game\UI\InputBox</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@
 #include "menu.h"
 #include "start_page.h"
 #include "end_page.h"
+#include "rank.h"
 
 //static char r[64];
 static int timerStack = 5;
@@ -27,6 +28,7 @@ static int gameStack = 0;
 static int pauseLoded = 0;
 static int inPause = 0;
 static int inVictory = 0;
+static int inGame = 0;
 //static int showBackGround = 1;
 
 void show_stat(void* unuseful) {
@@ -68,6 +70,7 @@ void start_game() {
 	if (is_show_particle()) show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 	inVictory = 0;
+	inGame = 1;
 }
 
 void load_game() {
@@ -131,6 +134,7 @@ void load_from_file() {
 	if (is_show_particle()) show_long_particle();
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 	inVictory = 0;
+	inGame = 1;
 }
 
 void destroy_last_stack(int* lastStack) {
@@ -155,9 +159,12 @@ void end_game(void* unuseful) {
 	//add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	//add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
 	//add_func_to_timer(butt, NULL, 1, 124444, -1);
+	destroy_long_particle();
 	reload_game();
 	show_font("GAME OVER");
+	update_rank(current_score());
 	add_func_to_timer(end_show, NULL, 1, 12, -1);
+	inGame = 0;
 }
 
 void start_page(void* unuseful) {
@@ -221,6 +228,10 @@ int is_vic() {
 	return inVictory;
 }
 
+int is_game() {
+	return inGame;
+}
+
 void open_game() {
 	load_game();
 	show_start_page();
@@ -232,4 +243,6 @@ void game_victory(void* unuseful) {
 	inVictory = 1;
 	reload_game();
 	show_end_page();
+	update_rank(current_score());
+	inGame = 0;
 }

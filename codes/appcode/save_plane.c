@@ -10,7 +10,7 @@ void save_plane() {
 	Vector vec = list_to_vec(plane, sizeof(Plane));
 	FILE* f = start_save();
 	save_vector(f, &vec);
-	int a = current_score(), b = current_hit_plane(), c = get_game_mode(), d = get_refresh_time();
+	int a = current_score(), b = current_hit_plane(), c = get_game_mode(), d = get_plane_num();
 	save_data(f, &a, sizeof(int));
 	save_data(f, &b, sizeof(int));
 	save_data(f, &c, sizeof(int));
@@ -31,6 +31,7 @@ void read_plane(FILE* f) {
 	get_data(f, &refresh, sizeof(int));
 	set_score_info(score, hit);
 	set_game_mode(save);
+	set_plane_num(refresh);
 	end_save_or_read(f);
 	calls(v, destroy);
 }

@@ -19,6 +19,8 @@ void generate_file_name(char* buffer);
 ///warn: never forget to end it
 FILE* start_save();
 
+FILE * start_custom_save(FileName fileName);
+
 ///name: start_read
 ///func: open a file to read
 ///para: name expects a filename packed by the FileName struct

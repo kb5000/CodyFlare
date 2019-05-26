@@ -261,6 +261,7 @@
     <ClInclude Include="..\..\codes\appcode\health_bar.h" />
     <ClInclude Include="..\..\codes\appcode\ingame.h" />
     <ClInclude Include="..\..\codes\appcode\input.h" />
+    <ClInclude Include="..\..\codes\appcode\input_box.h" />
     <ClInclude Include="..\..\codes\appcode\input_test.h" />
     <ClInclude Include="..\..\codes\appcode\linked_list.h" />
     <ClInclude Include="..\..\codes\appcode\listbox.h" />
@@ -275,6 +276,7 @@
     <ClInclude Include="..\..\codes\appcode\plane.h" />
     <ClInclude Include="..\..\codes\appcode\plane_test.h" />
     <ClInclude Include="..\..\codes\appcode\player_control.h" />
+    <ClInclude Include="..\..\codes\appcode\rank.h" />
     <ClInclude Include="..\..\codes\appcode\save_plane.h" />
     <ClInclude Include="..\..\codes\appcode\save_test.h" />
     <ClInclude Include="..\..\codes\appcode\sheet.h" />
@@ -336,6 +338,7 @@
     <ClCompile Include="..\..\codes\appcode\health_bar.c" />
     <ClCompile Include="..\..\codes\appcode\ingame.c" />
     <ClCompile Include="..\..\codes\appcode\input.c" />
+    <ClCompile Include="..\..\codes\appcode\input_box.c" />
     <ClCompile Include="..\..\codes\appcode\input_test.c" />
     <ClCompile Include="..\..\codes\appcode\listbox.c" />
     <ClCompile Include="..\..\codes\appcode\menu.c" />
@@ -348,6 +351,7 @@
     <ClCompile Include="..\..\codes\appcode\plane.c" />
     <ClCompile Include="..\..\codes\appcode\plane_test.c" />
     <ClCompile Include="..\..\codes\appcode\player_control.c" />
+    <ClCompile Include="..\..\codes\appcode\rank.c" />
     <ClCompile Include="..\..\codes\appcode\save.c" />
     <ClCompile Include="..\..\codes\appcode\save_plane.c" />
     <ClCompile Include="..\..\codes\appcode\save_test.c" />

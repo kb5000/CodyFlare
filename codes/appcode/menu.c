@@ -12,6 +12,7 @@
 #include "game_particle.h"
 #include "extgraph.h"
 #include "plane.h"
+#include "rank.h"
 
 //#define POC 2
 static char * menuListFile[] = {"    нд ╪Ч",
@@ -87,6 +88,8 @@ void show_menu(void* u) {
 			set_game_mode(!get_game_mode());
 			break;
 		case 5: //rank
+			if (!inPause) pause_game();
+			show_rank();
 			break;
 		default:
 			break;
