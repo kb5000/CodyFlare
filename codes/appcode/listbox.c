@@ -56,7 +56,7 @@ static void draw_list_entries(ListHandler* list, int n, Pos position, double yBi
 		preserve = 6;
 		currentMovingFlag = 0;
 	}
-	if (preserve-- > 0 || lockMoveTime++ > 24) {
+	if (preserve-- > 0 || lockMoveTime++ > 10) {
 		diffListPos = 0;
 		bias.x = 0;
 		currentMovingFlag = 0;
@@ -91,17 +91,24 @@ static void draw_list_entries(ListHandler* list, int n, Pos position, double yBi
 	set_color(color_by_name("Red"));
 	drawRectangle(position.x, position.y, 1.8, 0.6, 0);
 	drawRectangle(position.x - 0.03, position.y - 0.03, 1.86, 0.67, 0);
+	set_color(color_by_name("Black"));
+	if (button(4857, position.x, position.y - 0.4, 0.8, 0.2, "¶ÁÈ¡")) {
+		close_list_box('A', NULL, 0);
+	}
+	if (button(4858, position.x + 0.9, position.y - 0.4, 0.8, 0.2, "É¾³ı")) {
+		del_save_file('D', list, 0);
+	}
 }
 
 void dir_to_change(int key, Pos* yBias, int event) {
 	if (key == 0x26 && event == 0 && currentMovingFlag == 0) {			//up
 		yBias->x = 0;
-		draw_anime_accelerate(yBias, new_pos(-0.2, 0), 0.005);
+		draw_anime_accelerate(yBias, new_pos(-0.2, 0), 0.1);
 		currentMovingFlag = 1;
 		diffListPos = -1;
 	} else if (key == 0x28 && event == 0 && currentMovingFlag == 0) {		//down
 		yBias->x = 0;
-		draw_anime_accelerate(yBias, new_pos(+0.2, 0), 0.005);
+		draw_anime_accelerate(yBias, new_pos(+0.2, 0), 0.1);
 		currentMovingFlag = 1;
 		diffListPos = 1;
 	}
@@ -123,7 +130,7 @@ void show_list_box(int id, ListHandler list, Pos position, int currentItem) {
 	add_to_key_process(0x26, dir_to_change, &bias); //down
 	add_to_key_process(0x28, dir_to_change, &bias); //up
 	add_to_key_process('A', close_list_box, NULL);
-	add_to_key_process('D', del_save_file, lbh);
+	add_to_key_process('D', del_save_file, &lbh->list);
 }
 
 int get_current_list_index() {

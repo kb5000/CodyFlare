@@ -390,6 +390,9 @@ void add_score(PlaneType plane) {
 	case Swift_Enemy_Plane:
 		score += 80;
 		break;
+	case Boss_Plane:
+		score += 1000;
+		break;
 	default:
 		break;
 	}
