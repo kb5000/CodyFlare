@@ -89,7 +89,7 @@ int saa_add_rank(char* name, int score) {
 }
 
 void show_each_rank(Vector* vec) {
-	if (show_sheet(vec, new_pos(7.7, 1), new_pos(2, 5), 16, 2, 0, 1, 0, color_by_name("DarkGrey"), color_by_name("Black"),
+	if (show_sheet(vec, new_pos(7.7, 0.5), new_pos(2, 4.5), 16, 2, 0, 1, 0, color_by_name("DarkGrey"), color_by_name("Black"),
 				   color_by_rgb(216, 192, 180), "ºÚÌå", 20, "¿¬Ìå", 18, 'C'));//disable_me_in_timer();
 }
 
