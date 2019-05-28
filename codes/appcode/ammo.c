@@ -55,7 +55,7 @@ void update_each_ammo(Ammo* ammo) {
 	}
 	draw_anime_ammo_once(ammo->isEnemy, ammo->pos, ammo->dirt);
 	Pos normal = add_pos(ammo->pos, polar_to_rect(new_pos(0.01, PI / 2 + pos_arc(ammo->dirt))));
-	Pos lp = pos_mut(ammo->dirt, 1.02);
+	Pos lp = pos_mut(ammo->dirt, 1.018);
 	update_col_info(ammo->isEnemy ? ENM_AMMO_COL_ID : PLR_AMMO_COL_ID, ammo->colObjID, normal, add_pos(normal, lp));
 }
 

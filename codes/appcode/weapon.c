@@ -42,12 +42,12 @@ void bomb_explode_handler(Pos bombPos) {
 		Plane* pln = (Plane*)node->data;
 		if (!pln) return;
 		double len = pos_length(sub_pos(pln->position, bombPos));
-		if (len < 1.4) {
+		if (len < 1.55) {
 			if (pln->type == Player_Plane) {
 				if (len < 0.9)
 					pln->health -= (int)(30 / (2 + 2 * len));
 			}
-			else pln->health -= (int)(42 / (1 + 2 * len));
+			else pln->health -= (int)(42 / (1 + 1.6 * len));
 			if (pln->health <= 0) {
 				if (pln->type == Swift_Enemy_Plane) {
 					generate_fix_obj(pln->position);
