@@ -153,8 +153,8 @@ void del_save_file(int key, ListHandler* lh, int event) {
 		FileName* fn = (FileName*)pcalls(lh, at, currentListPos)->data;
 		remove(fn->name);
 		boxValidFlag = 0;
+		future_do(1, select_saves, NULL);
 	}
-	future_do(1, select_saves, NULL);
 }
 
 int is_del_file() {

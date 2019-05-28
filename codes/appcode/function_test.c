@@ -7,28 +7,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-///This file is also a demo to display how the function_drawer works.
-///We use the new color system to show it.
-///First, we need a function "Pos calc_det(DrawFuncHolder* dfh)", which calculates 
-///the dx and dy by the parameter. We often use dfh->tNow, but you can use other infomation 
-///such as rotate to generate a more complex function. If this is still not enough, 
-///you should use global variable or static variable (not recommand for it cant be 
-///easily cleared to the initial status).
-///Using this we can draw one function, this is enough in most cases, but if you want to draw
-///more than one functions, you should use a handler function "void tts(void* tts)". The parameter
-///is in the type of DrawFuncHolder, but we will call it by the timer, so we must use void* type.
-///You can update the infomation either in tts or in calc_det. We recommand to update in tts unless
-///it is ralated to the parameter tNow, for it will reduce the time to process.
-///At last, you can simply add it to the timer list.
+/// This file is also a demo to display how the function_drawer works.
+/// We use the new color system to show it.
+/// First, we need a function "Pos calc_det(DrawFuncHolder* dfh)", which calculates 
+/// the dx and dy by the parameter. We often use dfh->tNow, but you can use other infomation 
+/// such as rotate to generate a more complex function. If this is still not enough, 
+/// you should use global variable or static variable (not recommand for it cant be 
+/// easily cleared to the initial status).
+/// Using this we can draw one function, this is enough in most cases, but if you want to draw
+/// more than one functions, you should use a handler function "void tts(void* tts)". The parameter
+/// is in the type of DrawFuncHolder, but we will call it by the timer, so we must use void* type.
+/// You can update the infomation either in tts or in calc_det. We recommand to update in tts unless
+/// it is ralated to the parameter tNow, for it will reduce the time to process.
+/// At last, you can simply add it to the timer list.
 
-///中文翻译版：
-///这是一个修改库的demo文件，里面展示了FunctionDrawer, Timer, Color, Point这些组件的用法
-///要画一个函数，我们首先需要编写一个函数用于根据参数t计算出dx和dy，这里也就是calc_det函数
-///当然，除了t以外，你也可以用其他的参数，比如这里用到了旋转角和全局tick（时钟滴答数）。
-///之后，我们就可以调用draw_function或者draw_function_one_step来画一个函数了。
-///为了画多个函数图像，又编写了一个函数tts，它是由定时器调用，它接受的是void*型，实际上是DrawFuncHolder*，
-///但是为了让定时器使用，就必须改为void*
-///只要把这个函数用add_func_to_timer添加即可
+/// 中文翻译版：
+/// 这是一个修改库的demo文件，里面展示了FunctionDrawer, Timer, Color, Point这些组件的用法
+/// 要画一个函数，我们首先需要编写一个函数用于根据参数t计算出dx和dy，这里也就是calc_det函数
+/// 当然，除了t以外，你也可以用其他的参数，比如这里用到了旋转角和全局tick（时钟滴答数）。
+/// 之后，我们就可以调用draw_function或者draw_function_one_step来画一个函数了。
+/// 为了画多个函数图像，又编写了一个函数tts，它是由定时器调用，它接受的是void*型，实际上是DrawFuncHolder*，
+/// 但是为了让定时器使用，就必须改为void*
+/// 只要把这个函数用add_func_to_timer添加即可
 
 //static double para = 62.8;
 static int flag = 1;

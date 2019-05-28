@@ -314,15 +314,15 @@ static int Max(int x, int y);
 
 
 
-////HOOK WARNING
+/// /HOOK WARNING
 
 
-///This is a modify to the libgraphics
-///This is a modify which promoted the drawing performance
-///It can increase the max lines in the screen from 7000 to 50000!
-///Just define PERFORMANCE_DRAWING to activate it
-///But you should manually call this function when change the color or the penSize
-///Using my libs, you dont need to call it.
+/// This is a modify to the libgraphics
+/// This is a modify which promoted the drawing performance
+/// It can increase the max lines in the screen from 7000 to 50000!
+/// Just define PERFORMANCE_DRAWING to activate it
+/// But you should manually call this function when change the color or the penSize
+/// Using my libs, you dont need to call it.
 
 #ifdef PERFORMANCE_DRAWING
 
@@ -339,12 +339,12 @@ void show_all_now() {
 #endif //end of PERFORMANCE_DRAWING
 
 
-///This is a modify to the color system
-///It will change how the color function behaves
-///If you want to use the new color system
-///Please just define NEW_COLOR_SYSTEM
-///But remember, the two systems are not compatible
-///So only use one system
+/// This is a modify to the color system
+/// It will change how the color function behaves
+/// If you want to use the new color system
+/// Please just define NEW_COLOR_SYSTEM
+/// But remember, the two systems are not compatible
+/// So only use one system
 //#define NEW_COLOR_SYSTEM
 
 #ifdef NEW_COLOR_SYSTEM
@@ -363,7 +363,7 @@ unsigned long get_global_color_handler() {
 #endif //end of NEW_COLOR_SYSTEM
 
 
-///This is a modify to avoid the problem that fill has some problem
+/// This is a modify to avoid the problem that fill has some problem
 
 void fill_rectangle(double x, double y, double w, double h) {
 	SetPenSize(2);
@@ -375,7 +375,7 @@ void fill_rectangle(double x, double y, double w, double h) {
 }
 
 
-///END OF HOOK WARNING
+/// END OF HOOK WARNING
 
 
 /* Exported entries */
@@ -1368,7 +1368,7 @@ static void PrepareToDraw(void)
 
 
 
-////END OF HOOK
+/// /END OF HOOK
 
 /*
  * Function: DisplayLine
@@ -1391,7 +1391,7 @@ void DisplayLine(double x, double y, double dx, double dy)
     y1 = ScaleY(y + dy);
     if (regionState == NoRegion) {
         //SetLineBB(&r, x, y, dx, dy); //This line is unuseful, just delete it ^o^
-////HOOK LINE
+/// /HOOK LINE
 #ifndef PERFORMANCE_DRAWING
         InvalidateRect(graphicsWindow, &r, TRUE);
 #endif //end of PERFORMANCE_DRAWING
@@ -1422,7 +1422,7 @@ static void DisplayArc(double xc, double yc, double rx, double ry,
 
     PrepareToDraw();
     //SetArcBB(&r, xc, yc, rx, ry, start, sweep);
-////HOOK LINE
+/// /HOOK LINE
 #ifndef PERFORMANCE_DRAWING
 	InvalidateRect(graphicsWindow, &r, TRUE);
 #endif //end of PERFORMANCE_DRAWING
@@ -1501,7 +1501,7 @@ static void DisplayText(double x, double y, string text)
 
     PrepareToDraw();
     SetTextBB(&r, x, y, text);
-////HOOK LINE
+/// /HOOK LINE
 #ifndef PERFORMANCE_DRAWING
 	InvalidateRect(graphicsWindow, &r, TRUE);
 #endif //end of PERFORMANCE_DRAWING
@@ -1524,11 +1524,11 @@ static void DisplayText(double x, double y, string text)
  * is found, its data is entered into the font table.
  */
 
-////HOOK WARNING
+/// /HOOK WARNING
 
-///Fix the bug that display font will cause memory leak
+/// Fix the bug that display font will cause memory leak
 
-///"Please, no more memory leak! It makes me so doubtful."
+/// "Please, no more memory leak! It makes me so doubtful."
 
 static int changedFont = 0;
 
@@ -1593,7 +1593,7 @@ static void DisplayFont(string font, int size, int style)
     }
 }
 
-////END OF HOOK
+/// /END OF HOOK
 
 
 /*

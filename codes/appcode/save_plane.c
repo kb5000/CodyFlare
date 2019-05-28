@@ -38,8 +38,8 @@ void read_plane(FILE* f) {
 	calls(v, destroy);
 }
 
-void select_saves() {
-	if (select_saves) {
+void select_saves(void* unuseful) {
+	if (selectActive) {
 		close_list_box(0, NULL, 0);
 		remove_funcs_from_timer(998800);
 	}

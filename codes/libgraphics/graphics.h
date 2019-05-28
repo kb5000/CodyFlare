@@ -14,40 +14,40 @@
 #define _graphics_h
 
 
-////HOOK WARNING
+/// /HOOK WARNING
 
 #define PERFORMANCE_DRAWING
 #define NEW_COLOR_SYSTEM
 
 #ifdef PERFORMANCE_DRAWING
-///name: update_drawing_info
-///func: update the color and the penSize, no need to call it manually
-///visb: private
+/// name: update_drawing_info
+/// func: update the color and the penSize, no need to call it manually
+/// visb: private
 void update_drawing_info();
 
-///name: show_all_now
-///func: update the screen
-///visb: private
+/// name: show_all_now
+/// func: update the screen
+/// visb: private
 void show_all_now();
 
 void DisplayLine(double x, double y, double dx, double dy);
 #endif //end of PERFORMANCE_DRAWING
 
 #ifdef NEW_COLOR_SYSTEM
-///name: set_global_color_handler
-///func: set the color by r, g and b, no need to call it manually
-///visb: private
+/// name: set_global_color_handler
+/// func: set the color by r, g and b, no need to call it manually
+/// visb: private
 void set_global_color_handler(int r, int g, int b);
 
-///name: get_global_color_handler
-///func: return the raw data of the color, no need to call it manually
-///visb: private
+/// name: get_global_color_handler
+/// func: return the raw data of the color, no need to call it manually
+/// visb: private
 unsigned long get_global_color_handler();
 #endif //end of NEW_COLOR_SYSTEM
 
 void fill_rectangle(double x, double y, double w, double h);
 
-////END OF HOOK
+/// /END OF HOOK
 
 
 

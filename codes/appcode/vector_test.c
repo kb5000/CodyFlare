@@ -21,7 +21,7 @@ void test_of_vector() {
 		printf("%d\n", *(int*)v.at(&v, i));
 	}
 	v.destroy(&v);
-	///there is a vector with gc example
+	/// there is a vector with gc example
 	init_gc();
 	Vector vb = gen_empty_vector(int);
 	for (int i = 0; i < 100000; i++) {

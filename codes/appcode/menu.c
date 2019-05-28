@@ -61,7 +61,7 @@ void show_menu(void* u) {
 			break;
 		case 2:	//load
 			if (!inPause) pause_game();
-			select_saves();
+			select_saves(NULL);
 			break;
 		case 3: //exit
 			exit(0);
@@ -257,7 +257,7 @@ void draw_tool_animes() {
 		set_color(activeColor);
 		if (ms.left == 2 && pos_in_rect(last_mouse_up_pos(), new_pos(7.6, 6.65), new_pos(8.3, 7))) {
 			if (!inPause) pause_game();
-			select_saves();
+			select_saves(NULL);
 			reset_mouse_key(1);
 		}
 	} else {

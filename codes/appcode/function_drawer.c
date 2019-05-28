@@ -5,7 +5,7 @@
 #include <color.h>
 #include "extgraph.h"
 
-///For people who want to pasteling it, never do it. The lib cant support it
+/// For people who want to pasteling it, never do it. The lib cant support it
 
 //#define PAR_FUN_ACCU
 //

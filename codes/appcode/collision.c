@@ -145,7 +145,7 @@ void remove_col_obj(int groupID, int objID) {
 	}
 }
 
-///the det of 2D matrix
+/// the det of 2D matrix
 static double det_2_dim(Pos a, Pos b) {
 	return a.x * b.y - a.y * b.x;
 }

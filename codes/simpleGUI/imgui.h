@@ -25,11 +25,11 @@
 
 
 
-///HOOK WARNING
+/// HOOK WARNING
 #include "color.h"
 void drawBoxFree(double x, double y, double w, double h, int fillflag, char *label, char labelAlignment, Color labelColor, int gridFlag);
 
-///END OF HOOK WARNING
+/// END OF HOOK WARNING
 
 
 
