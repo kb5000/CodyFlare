@@ -145,6 +145,7 @@ void remove_col_obj(int groupID, int objID) {
 	}
 }
 
+///the det of 2D matrix
 static double det_2_dim(Pos a, Pos b) {
 	return a.x * b.y - a.y * b.x;
 }
@@ -155,6 +156,7 @@ static int box_box_col_dec(CollisionObj* a, CollisionObj* b) {
 }
 
 static int line_line_base_dec(Pos A, Pos B, Pos C, Pos D) {
+	//use vector to acclerate the speed
 	const double zero = 0;
 	Pos AC = sub_pos(C, A);
 	Pos AD = sub_pos(D, A);

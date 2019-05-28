@@ -2,8 +2,8 @@
 
 #include "linked_list.h"
 
-extern ListHandler globalTimerFunctionList;
-extern int globalTimerInterval;
+//extern ListHandler globalTimerFunctionList;
+//extern int globalTimerInterval;
 
 typedef struct {
 	void (*func)(void*); //call every tickInterval ticks and pass paras to it
@@ -27,26 +27,37 @@ void init_global_timer();
 void start_global_timer();
 ///name: restart_global_timer
 ///func: reset the timer and can change the timer interval
+///para: timeInterval expects the new timeInterval
 ///visb: public
 ///warn: when you changed the interval, you must call this to apply the change
-void restart_global_timer();
+void restart_global_timer(int timeInterval);
 ///name: stop_global_timer
 ///func: stop the timer
 ///visb: public
 void stop_global_timer();
+///name: get_timer_interval
+///func: get current time interval
+///visb: public
 int get_timer_interval();
+
+///these are functions to control the timer stack
+
 ///name: change_timer_stack
 ///func: switch the timer to another stack
 ///para: id expects the timer stack id
+///visb: public
 ///warn: you need to add all timer functions in the new stack
 ///note: in fact, this is a simple version of coroutine
 void change_timer_stack(int id);
-
+///name: destroy_timer_stack
+///func: destroy certain timer stack
+///para: id expects the timer stack id
+///visb: public
 void destroy_timer_stack(int id);
-
+///name: get_timer_stack
+///func: get current timer stack id
+///visb: public
 int get_timer_stack();
-
-void future_do(int time, void fun(void *), void * para);
 
 
 ///these are functions to control the funcs to be called by the timer
@@ -89,3 +100,14 @@ void disable_me_in_timer();
 ///func: get the ticks since the timer was started
 ///visb: public
 int get_tick();
+///name: future_do
+///func: call func after time ticks
+///para: time expects the ticks, fun expects a function, para expects the para passed to fun
+///visb: public
+///warn: if timer stack was changed, it wont call at that time
+void future_do(int time, void fun(void *), void* para);
+///name: gc_activer
+///func: free the pointer passed, usually call it with future_do to free something after a while
+///para: any expects a pointer malloced
+///visb: public
+void gc_activer(void* any);

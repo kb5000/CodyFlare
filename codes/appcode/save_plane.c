@@ -5,6 +5,8 @@
 #include "save_plane.h"
 #include "ingame.h"
 
+int selectActive = 0;
+
 void save_plane() {
 	ListHandler* plane = plane_list();
 	Vector vec = list_to_vec(plane, sizeof(Plane));
@@ -37,9 +39,14 @@ void read_plane(FILE* f) {
 }
 
 void select_saves() {
+	if (select_saves) {
+		close_list_box(0, NULL, 0);
+		remove_funcs_from_timer(998800);
+	}
 	ListHandler lh = explore_files();
-	if (calls(lh, len) == 0) return;
-	show_list_box(1, lh, new_pos(1, 2), 0);
+	int len = calls(lh, len);
+	if (len == 0) return;
+	show_list_box(1, lh, new_pos(1, 2), len - 1);
 	add_func_to_timer(get_element_to_load, NULL, 1, 998800, -1);
 }
 
@@ -56,5 +63,6 @@ void get_element_to_load(void* unuseful) {
 		read_plane(f);
 		start_display_planes();
 		disable_me_in_timer();
+		selectActive = 0;
 	}
 }

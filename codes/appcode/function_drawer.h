@@ -78,5 +78,9 @@ typedef struct {
 	Pos start, end;
 } RectPos;
 
+///name: draw_plain_lines
+///func: draw all lines in the list
+///para: lines expects a Vector* contains RectPos
+///visb: public
 void draw_plain_lines(Vector* lines);
 

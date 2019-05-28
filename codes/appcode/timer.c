@@ -198,3 +198,5 @@ int get_timer_stack() {
 void future_do(int time, void fun(void*), void* para) {
 	add_func_to_timer(fun, para, get_tick() + time, 1048575, 1);
 }
+
+void gc_activer(void* any) {}

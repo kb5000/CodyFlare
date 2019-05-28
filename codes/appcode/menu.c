@@ -18,8 +18,8 @@
 static char * menuListFile[] = {"    文 件",
 		"保存 | Ctrl-S",
 		"读取 | Ctrl-L",
-		//"返回主界面 | Ctrl-B",
-		"退出 | Ctrl-X"};
+	//"返回主界面 | Ctrl-B",
+	"退出 | Ctrl-X"};
 static char * menuListGame[] = {"    游 戏",
 		"开始新游戏 | Ctrl-R",
 		"切换暂停 | Ctrl-P",
@@ -37,6 +37,10 @@ static char * menuListAbout[] = {"    帮 助",
 
 void draw_tool_animes();
 
+void draw_save_success(void* unuseful) {
+	drawBoxFree(4, 6.3, 2, 0.5, 0, "保存成功", 'C', color_by_rgb(92, 45, 186), 0);
+}
+
 void show_menu(void* u) {
 	int inPause = is_pause();
 	char * selectedLabel = NULL;
@@ -51,8 +55,9 @@ void show_menu(void* u) {
 		selectedLabel = menuListFile[selection];
 		switch (selection) {
 		case 1:	//save
-			if (inPause) break;
+			if (inPause || !is_game()) break;
 			save_plane();
+			add_func_to_timer(draw_save_success, NULL, 1, 23498, 10);
 			break;
 		case 2:	//load
 			if (!inPause) pause_game();
@@ -153,7 +158,10 @@ void draw_tool_animes() {
 	if (pos_in_rect(ms.pos, new_pos(8.9, 6.65), new_pos(9.4, 7))) {
 		set_color(activeColor);
 		if (ms.left == 2 && pos_in_rect(last_mouse_up_pos(), new_pos(8.9, 6.65), new_pos(9.4, 7))) {
-			if (!inPause) save_plane();
+			if (!inPause && is_game()) {
+				save_plane();
+				add_func_to_timer(draw_save_success, NULL, 1, 23498, 10);
+			}
 			reset_mouse_key(1);
 		}
 	} else {

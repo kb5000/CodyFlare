@@ -14,7 +14,7 @@ typedef struct _My_Linked_List_Handler {
 	///para: self expects the ListHandler itself
 	///visb: public
 	///warn: O(n)
-	unsigned (*len)(struct _My_Linked_List_Handler* self);
+	unsigned(*len)(struct _My_Linked_List_Handler* self);
 	///name: at
 	///func: return the node at the given position
 	///para: self expects the ListHandler itself, position expects a valid position
@@ -25,59 +25,63 @@ typedef struct _My_Linked_List_Handler {
 	///func: push data to the end of the list
 	///para: self expects the ListHandler itself, data expects a data malloced independently
 	///visb: public
-	void (*push_back)(struct _My_Linked_List_Handler* self, void* data);
+	void(*push_back)(struct _My_Linked_List_Handler* self, void* data);
 	///name: push_front
 	///func: push data to the begin of the list
 	///para: self expects the ListHandler itself, data expects a data malloced independently
 	///visb: public
-	void (*push_front)(struct _My_Linked_List_Handler* self, void* data);
+	void(*push_front)(struct _My_Linked_List_Handler* self, void* data);
 	///name: pop_front
 	///func: pop data from the begin of the list
 	///para: self expects the ListHandler itself
 	///visb: public
-	void (*pop_front)(struct _My_Linked_List_Handler* self);
+	void(*pop_front)(struct _My_Linked_List_Handler* self);
 	///name: pop_back
 	///func: pop data from the end of the list
 	///para: self expects the ListHandler itself
 	///visb: public
 	///warn: O(n)
-	void (*pop_back)(struct _My_Linked_List_Handler* self);
+	void(*pop_back)(struct _My_Linked_List_Handler* self);
 	///name: insert_after
 	///func: insert data to the next of member nowpos
 	///para: self expects the ListHandler itself, data expects a data malloced independently
 	///visb: public
 	///warn: nowpos must be a valid node of this list, or NULL create a new node and throw the previous list
-	void (*insert_after)(struct _My_Linked_List_Handler* self, void* data);
+	void(*insert_after)(struct _My_Linked_List_Handler* self, void* data);
 	///name: remove_after
 	///func: remove data after the nowpos
 	///para: self expects the ListHandler itself
 	///visb: public
 	///warn: if nowpos is the last node, it will be O(n)
-	void (*remove_after)(struct _My_Linked_List_Handler* self);
+	void(*remove_after)(struct _My_Linked_List_Handler* self);
 	///name: destroy
 	///func: destroy the whole list
 	///para: self expects the ListHandler itself
 	///visb: public
 	///warn: it will also free the data inside
-	void (*destroy)(struct _My_Linked_List_Handler* self);
+	void(*destroy)(struct _My_Linked_List_Handler* self);
 	///name: for_each
 	///func: apply func for every data in the list
 	///para: self expects the ListHandler itself
 	///visb: public
 	///warn: you can change the data
-	void (*for_each)(struct _My_Linked_List_Handler* self, void func(void*));
+	void(*for_each)(struct _My_Linked_List_Handler* self, void func(void*));
 	///name: sort_by
 	///func: sort the list by func
 	///para: self expects the ListHandler itself, func expects to return negtive num when left para is smaller than right para, 
 	///      0 if they are equal, positive num if left para is bigger than right para
 	///visb: public
-	void (*sort_by)(struct _My_Linked_List_Handler* self, int func(void*, void*));
+	void(*sort_by)(struct _My_Linked_List_Handler* self, int func(void*, void*));
 	///name: find_if
 	///func: return the data of the first node matches, NULL if no match
 	///para: self expects the ListHandler itself, func expects to return 1 if match successful, 0 if match failed
 	///visb: public
 	void* (*find_if)(struct _My_Linked_List_Handler* self, int func(const struct _My_Linked_List_Handler*, void*, void*), void* para);
-	void (*remove_if)(struct _My_Linked_List_Handler* self, int func(void* data, void* para), void* para);
+	///name: remove_if
+	///func: remove the node if func return 1
+	///para: self expects the ListHandler itself, func expects to return 1 if match successful, 0 if match failed, para expects para to pass
+	///visb: public
+	void(*remove_if)(struct _My_Linked_List_Handler* self, int func(void* data, void* para), void* para);
 } ListHandler;
 
 ///name: new_node

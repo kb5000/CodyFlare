@@ -47,12 +47,28 @@ MouseKeys get_mouse_key();
 ///warn: always call it after the roll handle
 void reset_mouse_key(int key);
 
+///name: move_by_dir_key
+///func: move target on speed by dir keys
+///func: target expects Pos to change, speed expects the x and y speed
+///visb: public
 void move_by_dir_key(Pos* target, Pos speed);
 
+///name: destroy_input_process
+///func: terminate the input system
+///visb: public
 void destroy_input_process();
 
+///name: get_last_key
+///func: get last key which have event
+///visb: public
 int get_last_key();
 
+///name: mouse_at_edge
+///func: return whether the mouse is at the edge of the window
+///visb: public
 int mouse_at_edge();
 
+///name: last_mouse_up_pos
+///func: return the last pos when moues left button was up
+///visb: public
 Pos last_mouse_up_pos();

@@ -47,7 +47,15 @@ void uniform_particle(ParticleGroup* parts, Pos size, Pos minSpeed, Pos maxSpeed
 ///visb: public
 void show_particles(ParticleGroup* part);
 
-void disable_particles(ParticleGroup * part);
+///name: disable_particles
+///func: disable a particle group
+///para: part expects a particle group to disable
+///visb: public
+void disable_particles(ParticleGroup* part);
 
-void destroy_particles(ParticleGroup * pg);
+///name: destroy_particles
+///func: destroy a particle group and release memory
+///para: part expects a particle group to destroy
+///visb: public
+void destroy_particles(ParticleGroup* pg);
 

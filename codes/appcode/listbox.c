@@ -7,6 +7,7 @@
 #include "save.h"
 #include "animes.h"
 #include <Windows.h>
+#include "save_plane.h"
 
 static int boxValidFlag = 1;
 static Pos bias;
@@ -63,39 +64,39 @@ static void draw_list_entries(ListHandler* list, int n, Pos position, double yBi
 		lockMoveTime = 0;
 	}
 	if (diffListPos == 1) {
-		drawBox(position.x, position.y + yBias, 1.8, 0.2, 0, name[3].name, 'M', "Blue");
+		drawBox(position.x, position.y + yBias, 2, 0.2, 0, name[3].name, 'M', "Blue");
 	} else {
-		drawBox(position.x, position.y + yBias, 1.8, 0.2, 0, name[3].name, 'M', "Red");
+		drawBox(position.x, position.y + yBias, 2, 0.2, 0, name[3].name, 'M', "Red");
 	}
 	if (diffListPos == -1) {
-		drawBox(position.x, position.y + 0.4 + yBias, 1.8, 0.2, 0, name[1].name, 'M', "Blue");
+		drawBox(position.x, position.y + 0.4 + yBias, 2, 0.2, 0, name[1].name, 'M', "Blue");
 	} else {
-		drawBox(position.x, position.y + 0.4 + yBias, 1.8, 0.2, 0, name[1].name, 'M', "Red");
+		drawBox(position.x, position.y + 0.4 + yBias, 2, 0.2, 0, name[1].name, 'M', "Red");
 	}
 
 	if (yBias > 0) {
-		drawBox(position.x, position.y - 0.2 + yBias , 1.8, 0.2, 0, name[4].name, 'M', "Red");
+		drawBox(position.x, position.y - 0.2 + yBias , 2, 0.2, 0, name[4].name, 'M', "Red");
 	} else if (yBias < 0) {
-		drawBox(position.x, position.y + 0.6 + yBias, 1.8, 0.2, 0, name[0].name, 'M', "Red");
+		drawBox(position.x, position.y + 0.6 + yBias, 2, 0.2, 0, name[0].name, 'M', "Red");
 	}
 
 	if (diffListPos != 0) {
-		drawBox(position.x, position.y + 0.2 + yBias, 1.8, 0.2, 0, name[2].name, 'M', "Red");
+		drawBox(position.x, position.y + 0.2 + yBias, 2, 0.2, 0, name[2].name, 'M', "Red");
 	} else {
-		drawBox(position.x, position.y + 0.2 + yBias, 1.8, 0.2, 0, name[2].name, 'M', "Blue");
+		drawBox(position.x, position.y + 0.2 + yBias, 2, 0.2, 0, name[2].name, 'M', "Blue");
 	}
 
 	set_color(color_by_name("White"));
-	drawRectangle(position.x, position.y - 0.21, 1.8, 0.2, 1);
-	drawRectangle(position.x, position.y + 0.61, 1.8, 0.2, 1);
+	drawRectangle(position.x, position.y - 0.21, 2, 0.2, 1);
+	drawRectangle(position.x, position.y + 0.61, 2, 0.2, 1);
 	set_color(color_by_name("Red"));
-	drawRectangle(position.x, position.y, 1.8, 0.6, 0);
-	drawRectangle(position.x - 0.03, position.y - 0.03, 1.86, 0.67, 0);
+	drawRectangle(position.x, position.y, 2, 0.6, 0);
+	drawRectangle(position.x - 0.03, position.y - 0.03, 2.06, 0.67, 0);
 	set_color(color_by_name("Black"));
-	if (button(4857, position.x, position.y - 0.4, 0.8, 0.2, "¶ÁÈ¡")) {
+	if (button(4857, position.x, position.y - 0.4, 0.9, 0.3, "¶ÁÈ¡")) {
 		close_list_box('A', NULL, 0);
 	}
-	if (button(4858, position.x + 0.9, position.y - 0.4, 0.8, 0.2, "É¾³ý")) {
+	if (button(4858, position.x + 1.1, position.y - 0.4, 0.9, 0.3, "É¾³ý")) {
 		del_save_file('D', list, 0);
 	}
 }
@@ -153,6 +154,7 @@ void del_save_file(int key, ListHandler* lh, int event) {
 		remove(fn->name);
 		boxValidFlag = 0;
 	}
+	future_do(1, select_saves, NULL);
 }
 
 int is_del_file() {

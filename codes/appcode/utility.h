@@ -83,6 +83,10 @@ typedef struct {
 	int a, b;
 } IntPair;
 
+///name: crash_now
+///func: crash and see error info
+///para: info expects the error describtion
+///visb: public
 int crash_now(const char* info);
 
 typedef struct _My_Bit_Map{
@@ -92,6 +96,9 @@ typedef struct _My_Bit_Map{
 	void (*flip)(struct _My_Bit_Map* self, int n);
 } BitMap;
 
+///name: new_bit_map
+///func: create a empty bit map
+///visb: public
 BitMap new_bit_map();
 
 ///func: generate a unique id, inspired by the Gen_UIID(n)
@@ -115,6 +122,7 @@ BitMap new_bit_map();
 ///name: call 0 to 3, pcall 0 to 3
 ///func: a simple way to call member function
 ///example: call0(vector, len); pcall2(map, insert, 1, NULL);
+///note: always use calls and pcalls is better
 #define call0(obj, func) (obj).func(&(obj))
 #define call1(obj, func, p1) (obj).func(&(obj), p1)
 #define call2(obj, func, p1, p2) (obj).func(&(obj), p1, p2)

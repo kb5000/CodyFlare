@@ -61,9 +61,6 @@ static Color bonus_particle_color(Particle* part, int time) {
 	return color_by_rgb(150 + time, (int)(110 + 0.4 * time), (int)(0.6 * time));
 }
 
-//It will use the timer gc to free something
-void gc_activer(void* any) {}
-
 void show_bonus_particle(Pos pos) {
 	ParticleGroup* pg = create_particle_group(pos, 90, 5000, 0.3, 0, bonus_particle_color, 0);
 	ball_particle(pg, 0.4);

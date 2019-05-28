@@ -83,6 +83,7 @@ Color color_by_name(const char* name) {
 }
 
 Color color_by_hsl(int h, int s, int l) {
+	//hsl algorithm by wiki
 	double mh = h / 360.0, ms = s / 256.0, ml = l / 256.0;
 	double p, q;
 	if (ml < 0.5) {
@@ -110,6 +111,7 @@ Color color_by_hsl(int h, int s, int l) {
 }
 
 Color color_by_yuv(int y, int u, int v) {
+	//yuv algorithm by wiki
 	u -= 128;
 	v -= 128;
 	Color res = {

@@ -83,6 +83,9 @@ void remove_col_obj(int groupID, int objID);
 ///para: groupID and objID expects valid ID, start and end expects the new position
 ///visb: public
 void update_col_info(int groupID, int objID, Pos start, Pos end);
-
+///name: update_tri_col_info
+///func: update an triangle col obj
+///para: groupID and objID expects valid ID, start, end and triangleExtra expects the new position
+///visb: public
 void update_tri_col_info(int groupID, int objID, Pos start, Pos end, Pos triangleExtra);
 

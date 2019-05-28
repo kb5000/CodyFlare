@@ -47,6 +47,5 @@ void test_of_timer() {
 	add_func_to_timer(func, p, 4, 1, 10);
 	//add_func_to_timer(func, q, 3, 1, -1);
 	start_global_timer();
-	globalTimerInterval = 100;
 	restart_global_timer(32);
 }

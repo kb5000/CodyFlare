@@ -21,7 +21,7 @@ void show_status_line(int score, int hp, int bombs, int hitPlane, int gameMode) 
 	pcalls(vec, push, &v);
 	show_sheet(vec, new_pos(0, 0), new_pos(10, 0.2), 1, 5, 0, 1, 0.8, color_by_name("DarkGrey"), color_by_name("Black"),
  color_by_rgb(210, 205, 200), 
-			   "÷ÚÌו", 20, "ËÎÌו", 14, 'L');
+			   "÷ÚÌו", 20, "Default", 14, 'L');
 	calls(v, destroy);
 	pcalls(vec, destroy);
 	free(vec);

@@ -19,7 +19,12 @@ void generate_file_name(char* buffer);
 ///warn: never forget to end it
 FILE* start_save();
 
-FILE * start_custom_save(FileName fileName);
+///name: start_custom_save
+///func: open a file to save
+///para: fileName expects a valid file name
+///visb: public
+///warn: never forget to end it
+FILE* start_custom_save(FileName fileName);
 
 ///name: start_read
 ///func: open a file to read
@@ -54,13 +59,29 @@ int save_data(FILE* file, const void* data, int size);
 ///visb: public
 int get_data(FILE* file, void* buffer, int maxSize);
 
+///name: save_vector
+///func: save a vector to file
+///para: file expects a file can be written, vec expects a vector
+///visb: public
 void save_vector(FILE* file, Vector* vec);
 
+///name: read_vector
+///func: read a vector from file
+///para: file expects a vector can be read
+///visb: public
 Vector read_vector(FILE* file);
 
-ListHandler vector_to_list(Vector * self);
+///name: vector_to_list
+///func: convert a vector to list
+///para: self expects a vector
+///visb: public
+ListHandler vector_to_list(Vector* self);
 
-Vector list_to_vec(ListHandler * self, unsigned sizeOfElement);
+///name: list_to_vec
+///func: convert a list to vector
+///para: self expects a list, sizeOfElement expects the size of each element
+///visb: public
+Vector list_to_vec(ListHandler* self, unsigned sizeOfElement);
 
 /////name: base64_encode
 /////func: encode binary bits to base64
