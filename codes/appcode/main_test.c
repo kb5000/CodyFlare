@@ -20,7 +20,7 @@ void tests() {
 	//test_of_anime_bomb();
 	//test_of_parabola();
 	//test_of_spline();
-	//test_of_font();
+	test_of_font();
 	//test_of_collision();
 	//test_of_slide_bar();
 	//test_of_list_box();
@@ -29,5 +29,5 @@ void tests() {
 	//test_of_sheet();
 	//test_of_stat();
 	//test_of_menu();
-	open_game();
+	//open_game();
 }

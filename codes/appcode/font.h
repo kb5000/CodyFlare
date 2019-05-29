@@ -6,6 +6,8 @@ typedef struct {
 
 void show_font(const char * str);
 
+int letter_color;
+
 void ShowLetter(char ch, double size, double x, double y);
 void showA(FontData*);
 void showC(FontData*);
