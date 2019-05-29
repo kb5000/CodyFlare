@@ -1,6 +1,8 @@
 #include "animes.h"
+#include "extgraph.h"
+#include "imgui.h"
 
-static const double rotateRate = 0.01;
+static const double rotateRate = 0.02;
 static const int ticksBetweenDraw = 1;
 
 Pos draw_curve_sin(DrawFuncHolder* dfh);
@@ -10,6 +12,10 @@ void sins_drawer(void* dfhv) {
 	DrawFuncHolder* dfh = (DrawFuncHolder*)dfhv;
 	draw_function(dfh);
 	dfh->rotate += rotateRate;
+}
+
+void font_shower(Pos* pos) {
+	drawLabel(pos->x, pos->y, "¿ªÊ¼ÓÎÏ·");
 }
 
 void draw_anime_shield(int id, Pos position, double size, int existTicks) {
@@ -39,6 +45,9 @@ void draw_anime_shield(int id, Pos position, double size, int existTicks) {
 	add_func_to_timer(draw_function, dfh[3], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	add_func_to_timer(draw_function, dfh[4], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	add_func_to_timer(draw_function, dfh[5], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	hnew(Pos, pos);
+	*pos = sub_pos(position, new_pos(0.33, 0.05));
+	add_func_to_timer(font_shower, pos, 1, 93939, -1);
 }
 
 Pos draw_curve_sin(DrawFuncHolder* dfh) {

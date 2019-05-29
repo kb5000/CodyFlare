@@ -7,6 +7,8 @@
 #include "start_page.h"
 #include "ingame.h"
 #include "extgraph.h"
+#include "animes.h"
+#include "input.h"
 
 static int flag = 1;
 static int n = 0;
@@ -22,7 +24,7 @@ Pos calc_det_s(DrawFuncHolder* dfh) {
 	int colrs = (int)((p.x - 5) * (p.x - 5) * 256);
 	set_color(color_by_hsl(colrh < 0 ? 360 - colrh : colrh, colrs < 90 ? 90 : colrs, 128));
 	return new_pos(-sin(3 * t) * cos(4 * dfh->rotate + PI / 3),
-					0.5 - 0.5 * sin(3 * t) * cos(para * t));
+				   0.5 - 0.5 * sin(3 * t) * cos(para * t));
 }
 
 void tts_s(void* dds) {
@@ -68,4 +70,20 @@ void show_start_page() {
 	*dfh = create_function_holder(calc_det_s, new_pos(5, 3.5), new_pos(0, 0), 0.9, 0, 13, 0.1, 0, color_by_name("Black"), 1, 55.9);
 	add_func_to_timer(tts_s, dfh, 1, Unique_ID("BossAnime"), 900);
 	//clear it in a long time interval, this can increase the performance
+}
+
+void game_page_handler(Pos* pos) {
+	//MouseKeys mk = get_mouse_key();
+	if (pos_length(sub_pos(last_mouse_up_pos(), *pos)) < 0.5) {
+		if (is_pause()) continue_game();
+		reload_game();
+		start_game();
+	}
+}
+
+void draw_game_page_anime() {
+	hnew(Pos, pos);
+	set_pos(pos, 3, 3);
+	draw_anime_shield(83838, *pos, 0.5, -1);
+	add_func_to_timer(game_page_handler, pos, 1, 93939, -1);
 }

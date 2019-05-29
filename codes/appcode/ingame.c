@@ -10,6 +10,7 @@
 #include "fix_obj.h"
 #include "player_control.h"
 #include "graphics.h"
+#include "extgraph.h"
 #include "imgui.h"
 #include "stat_line.h"
 #include <stdio.h>
@@ -75,6 +76,7 @@ void start_game() {
 
 void load_game() {
 	InitGraphics();
+	SetWindowTitle("TO THE SPACE");
 	Randomize();
 	init_input();
 	init_global_timer();
@@ -174,6 +176,7 @@ void start_page(void* unuseful) {
 	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
 	show_font("TO THE SPACE");
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
+	draw_game_page_anime();
 	reset_mouse_key(1);
 }
 
