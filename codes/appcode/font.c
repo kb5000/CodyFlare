@@ -3,6 +3,32 @@
 #include "animes.h"
 
 
+Color changing_color(DrawFuncHolder* dfh)
+{
+	double t = dfh->tNow;
+	switch (letter_color)
+	{
+	case 1:return color_by_rgb(90 + t * 156, t * 96, 100 - 20 * t);break;
+	case 2:return color_by_rgb(40 + t * 20, 60 + t * 192, 20);break;
+	case 3:return color_by_rgb(60 + t * 192, 60 + t * 192, 0);break;
+	case 4:return color_by_rgb(t * 192, t * 40, 30 + t * 128);break;
+	default:return color_by_name("Black");break;
+	}
+}
+
+Color changing_color_sp(DrawFuncHolder* dfh)
+{
+	double t = (dfh->tNow + dfh->extraPara) / 6;
+	switch (letter_color)
+	{
+	case 1:return color_by_rgb(90 + t * 156, t * 96, 100 - 20 * t);break;
+	case 2:return color_by_rgb(40 + t * 20, 60 + t * 192, 20);break;
+	case 3:return color_by_rgb(40 + t * 192, 40 + t * 192, 0);break;
+	case 4:return color_by_rgb(t * 192, t * 40, 30 + t * 128);break;
+	default:return color_by_name("Black");break;
+	}
+}
+
 void show_font(const char* str) {
 	double size = 2.8;
 	double H = GetWindowHeight();
