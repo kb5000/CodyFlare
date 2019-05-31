@@ -207,6 +207,9 @@
     <Filter Include="Game\UI\InputBox">
       <UniqueIdentifier>{dfae8e93-ff56-4804-a5b5-e2002ab7f890}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\UI\HelpPage">
+      <UniqueIdentifier>{7cc67603-77f0-4545-8e4e-8d3336cddf8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\codes\simpleGUI\imgui.h">
@@ -412,6 +415,9 @@
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\input_box.h">
       <Filter>Game\UI\InputBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\codes\appcode\help_page.h">
+      <Filter>Game\UI\HelpPage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -645,6 +651,9 @@
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\input_box.c">
       <Filter>Game\UI\InputBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\codes\appcode\help_page.c">
+      <Filter>Game\UI\HelpPage</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

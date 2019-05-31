@@ -42,7 +42,7 @@ void missile_target_enemy(Pos pos, int id) {
 void missile_target_by_boss(Pos pos, int id) {
 	Plane* pln = find_plane_by_id(id);
 	if (!pln) return;
-	plane_explode(pln, 3);
+	plane_explode(pln, 4);
 }
 
 void missile_target_by_player(Pos pos, int id) {

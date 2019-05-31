@@ -259,6 +259,7 @@
     <ClInclude Include="..\..\codes\appcode\hashmap.h" />
     <ClInclude Include="..\..\codes\appcode\hashmap_test.h" />
     <ClInclude Include="..\..\codes\appcode\health_bar.h" />
+    <ClInclude Include="..\..\codes\appcode\help_page.h" />
     <ClInclude Include="..\..\codes\appcode\ingame.h" />
     <ClInclude Include="..\..\codes\appcode\input.h" />
     <ClInclude Include="..\..\codes\appcode\input_box.h" />
@@ -336,6 +337,7 @@
     <ClCompile Include="..\..\codes\appcode\hashmap.c" />
     <ClCompile Include="..\..\codes\appcode\hashmap_test.c" />
     <ClCompile Include="..\..\codes\appcode\health_bar.c" />
+    <ClCompile Include="..\..\codes\appcode\help_page.c" />
     <ClCompile Include="..\..\codes\appcode\ingame.c" />
     <ClCompile Include="..\..\codes\appcode\input.c" />
     <ClCompile Include="..\..\codes\appcode\input_box.c" />

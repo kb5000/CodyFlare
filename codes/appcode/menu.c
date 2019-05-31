@@ -13,6 +13,7 @@
 #include "extgraph.h"
 #include "plane.h"
 #include "rank.h"
+#include "help_page.h"
 
 //#define POC 2
 static char * menuListFile[] = {"    нд ╪Ч",
@@ -129,6 +130,8 @@ void show_menu(void* u) {
 		selectedLabel = menuListAbout[selection];
 		switch (selection) {
 		case 1: //help
+			if (!inPause) pause_game();
+			show_help();
 			break;
 		case 2: //about
 			break;

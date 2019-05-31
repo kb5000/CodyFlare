@@ -139,9 +139,15 @@ Plane* find_plane_by_id(int id) {
 Plane* find_dangerous_plane() {
 	if (!planeList.head || !planeList.head->next) return NULL;
 	Plane* dangp = (Plane*)planeList.head->next->data;
+	double maxScore = -1000;
 	for (Node* node = planeList.head->next; node; node = node->next) {
 		Plane* plane = (Plane*)node->data;
-		if (plane->position.y < dangp->position.y) dangp = plane;
+		double score = 50 - plane->position.y - 10 * (plane->position.y < 0.5) +
+			15 * (plane->health <= 12) - 4 * (fabs(plane->position.x - player_plane_pos()->x) < 1) + 4 * (plane->type == Advanced_Enemy_Plane);
+		if (score > maxScore) {
+			dangp = plane;
+			maxScore = score;
+		}
 	}
 	return dangp;
 }
@@ -253,11 +259,10 @@ void update_each_plane(Plane* plane) {
 	break;
 	case Swift_Enemy_Plane:
 	{
-		MovePen(plane->position.x - 0.2, plane->position.y);
-		DrawLine(0.4, 0);
-
 		Pos pos = *player_plane_pos();
 		plane->position = swift_enemy_move(plane->position, pos);
+		MovePen(plane->position.x - 0.2, plane->position.y);
+		DrawLine(0.4, 0);
 		draw_bonus_enemy(&plane->position);
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0.2)),
 							add_pos(plane->position, new_pos(0.2, 0.2)), add_pos(plane->position, new_pos(0, -0.3)));
@@ -280,12 +285,12 @@ void update_each_plane(Plane* plane) {
 		if (plane->ammoTime++ % 2 == 0) {
 			shoot_gun(Boss_Ammo, plane->position, polar_to_rect(new_pos(0.1, RandomReal(0, 2 * PI))));
 		}
-		if (plane->missileTime++ == 220) {
+		if (plane->missileTime++ == 210) {
 			plane->missileTime = 0;
 			shoot_missile(Boss_Ammo, plane->position, player_plane_pos(), 0, missile_target_by_boss);
 		}
 		if (plane->numOfBombs++ == 300) {
-			shoot_bomb(Boss_Ammo, add_pos(*player_plane_pos(), new_pos(0, 1)));
+			shoot_bomb(Boss_Ammo, add_pos(*player_plane_pos(), new_pos(0, 0.5)));
 			plane->numOfBombs = 0;
 		}
 	}
@@ -317,6 +322,7 @@ void generate_plane(void* unuseful) {
 	if (gameMode) fresh -= (int)(7 * sqrt(planeNum));
 	if (fresh < 3) fresh = 3;
 	if (planeRefreshTime++ >= fresh) {
+		if (gameMode) add_score(-1);
 		Plane plane;
 		if (planeNum == 58 && !gameMode) {
 			add_fix_obj(new_pos(2, 2), Fix_Obj_Health);
@@ -393,6 +399,8 @@ void add_score(PlaneType plane) {
 	case Boss_Plane:
 		score += 1000;
 		break;
+	case -1:
+		score += 20;
 	default:
 		break;
 	}

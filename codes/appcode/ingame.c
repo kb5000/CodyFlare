@@ -22,6 +22,8 @@
 #include "start_page.h"
 #include "end_page.h"
 #include "rank.h"
+#include "listbox.h"
+#include "help_page.h"
 
 //static char r[64];
 static int timerStack = 5;
@@ -80,6 +82,7 @@ void load_game() {
 	Randomize();
 	init_input();
 	init_global_timer();
+	init_help();
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
 	start_global_timer();
@@ -184,16 +187,27 @@ void pause_game() {
 	gameStack = get_timer_stack();
 	change_timer_stack(99999);
 	if (!pauseLoded) {
-		pauseLoded = 1;
+		//pauseLoded = 1;
 		add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 		show_font("PAUSE");
 		add_func_to_timer(butt, NULL, 1, 124444, -1);
+	} else {
+		close_list_box(0, NULL, 0);
+		remove_rank();
 	}
 	inPause = 1;
 }
 
+static void future_destroy_tms(int* stk) {
+	destroy_timer_stack(*stk);
+}
+
 void continue_game() {
 	change_timer_stack(gameStack);
+	//destroy_timer_stack(gameStack);
+	//hnew(int, pauseStack);
+	//*pauseStack = 99999;
+	//future_do(1, future_destroy_tms, pauseStack);
 	inPause = 0;
 }
 

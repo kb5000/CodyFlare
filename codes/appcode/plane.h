@@ -47,6 +47,8 @@ Plane* find_dangerous_plane();
 
 void remove_plane_by_id(int id);
 
+Pos * player_plane_pos();
+
 Plane * get_boss_plane();
 
 void generate_plane(void * unuseful);

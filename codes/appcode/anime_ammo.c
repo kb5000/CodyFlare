@@ -15,7 +15,7 @@ void draw_anime_ammo_once(AmmoType ammoType, Pos position, Pos direction) {
 	default:
 		break;
 	}
-	Pos normal = add_pos(position, polar_to_rect(new_pos(0.021, PI / 2 + pos_arc(direction))));
+	Pos normal = add_pos(position, polar_to_rect(new_pos(0.0208, PI / 2 + pos_arc(direction))));
 	MovePen(position.x, position.y);
 	DrawLine(direction.x, direction.y);
 	MovePen(normal.x, normal.y);

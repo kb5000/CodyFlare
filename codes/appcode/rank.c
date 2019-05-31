@@ -116,3 +116,7 @@ void update_rank(int score) {
 		show_input_box(score);
 	}
 }
+
+void remove_rank() {
+	remove_funcs_from_timer(4587444);
+}
