@@ -134,6 +134,8 @@ void show_menu(void* u) {
 			show_help();
 			break;
 		case 2: //about
+			if (!inPause) pause_game();
+			show_about();
 			break;
 		default:
 			break;

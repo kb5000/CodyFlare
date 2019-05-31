@@ -6,7 +6,7 @@
 
 static int page = 0;
 static int pageCoolDown = 0;
-static Vector helpInfo[6];
+static Vector helpInfo[6], aboutInfo;
 
 static char helpStrs[6][30][2][80] = {
 	{
@@ -93,6 +93,14 @@ static char helpStrs[6][30][2][80] = {
 		{"届时将统计最终得分计入排行榜。"},
 	},
 };
+static char aboutStrs[6][80] = {
+	"关于",
+	"TO THE SPACE, 由 /点一下/玩一年/ 小组开发",
+	"成员：马梓睿，白凤杨，李保宏",
+	"Powered by CodyFlare，基于libgraphics构建的强大游戏引擎",
+	"私货：由Rust语言重写的CodyFlareR已开始开发",
+	"欢迎有兴趣者到GitHub: kb5000上提建议"
+};
 
 static void move_page() {
 	if (pageCoolDown < 5) return;
@@ -145,6 +153,11 @@ static void show_help_page(void* unuseful) {
 	pageCoolDown++;
 }
 
+static void show_about_page(void* unuseful) {
+	show_sheet(&aboutInfo, new_pos(1, 1.2), new_pos(5, 3),  6, 1, 1, 0, 0.3, color_by_name("DarkGrey"), color_by_name("Black"),
+			   color_by_rgb(216, 192, 180), "Default", 16, "Default", 16, 'L');
+}
+
 void init_help() {
 	for (int i = 0; i < 6; i++) {
 		helpInfo[i] = gen_empty_vector(Vector);
@@ -156,8 +169,18 @@ void init_help() {
 			calls(helpInfo[i], push, &vec);
 		}
 	}
+	aboutInfo = gen_empty_vector(Vector);
+	for (int i = 0; i < 6; i++) {
+		Vector vec = gen_empty_vector(char[80]);
+		calls(vec, push, aboutStrs[i]);
+		calls(aboutInfo, push, &vec);
+	}
 }
 
 void show_help() {
 	add_func_to_timer(show_help_page, NULL, 1, 8322365, -1);
+}
+
+void show_about() {
+	add_func_to_timer(show_about_page, NULL, 1, 8322366, -1);
 }
