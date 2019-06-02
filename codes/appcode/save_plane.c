@@ -4,8 +4,10 @@
 #include "listbox.h"
 #include "save_plane.h"
 #include "ingame.h"
+#include "rank.h"
+#include "help_page.h"
 
-int selectActive = 0;
+static int selectActive = 0;
 
 void save_plane() {
 	ListHandler* plane = plane_list();
@@ -39,6 +41,9 @@ void read_plane(FILE* f) {
 }
 
 void select_saves(void* unuseful) {
+	remove_rank();
+	close_about();
+	close_help();
 	if (selectActive) {
 		close_list_box(0, NULL, 0);
 		remove_funcs_from_timer(998800);

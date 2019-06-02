@@ -3,10 +3,13 @@
 #include "timer.h"
 #include "input.h"
 #include "imgui.h"
+#include "rank.h"
+#include "listbox.h"
 
 static int page = 0;
 static int pageCoolDown = 0;
 static Vector helpInfo[6], aboutInfo;
+static int helpValid, aboutValid;
 
 static char helpStrs[6][30][2][80] = {
 	{
@@ -115,6 +118,7 @@ static void move_page() {
 }
 
 static void show_help_page(void* unuseful) {
+	if (!helpValid) disable_me_in_timer();
 	int row = 1, col = 1;
 	switch (page) {
 	case 0:
@@ -154,6 +158,7 @@ static void show_help_page(void* unuseful) {
 }
 
 static void show_about_page(void* unuseful) {
+	if (!aboutValid) disable_me_in_timer();
 	show_sheet(&aboutInfo, new_pos(1, 1.2), new_pos(5, 3),  6, 1, 1, 0, 0.3, color_by_name("DarkGrey"), color_by_name("Black"),
 			   color_by_rgb(216, 192, 180), "Default", 16, "Default", 16, 'L');
 }
@@ -178,9 +183,29 @@ void init_help() {
 }
 
 void show_help() {
+	close_about();
+	close_help();
+	close_list_box(0, NULL, 0);
+	remove_funcs_from_timer(998800);
+	remove_rank();
+	helpValid = 1;
 	add_func_to_timer(show_help_page, NULL, 1, 8322365, -1);
 }
 
 void show_about() {
+	close_about();
+	close_help();
+	close_list_box(0, NULL, 0);
+	remove_funcs_from_timer(998800);
+	remove_rank();
+	aboutValid = 1;
 	add_func_to_timer(show_about_page, NULL, 1, 8322366, -1);
+}
+
+void close_help() {
+	helpValid = 0;
+}
+
+void close_about() {
+	aboutValid = 0;
 }

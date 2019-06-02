@@ -6,6 +6,8 @@
 #include "rank.h"
 #include <stdlib.h>
 #include "input_box.h"
+#include "help_page.h"
+#include "listbox.h"
 
 typedef struct {
 	char name[16];
@@ -94,6 +96,10 @@ void show_each_rank(Vector* vec) {
 }
 
 void show_rank() {
+	close_about();
+	close_help();
+	close_list_box(0, NULL, 0);
+	remove_funcs_from_timer(998800);
 	init_rank();
 	hnew(Vector, strs);
 	*strs = gen_empty_vector(Vector);
