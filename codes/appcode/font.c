@@ -102,7 +102,7 @@ void showC(FontData *FD) {
 		double e = size * i*0.01;
 		Vector v = gen_empty_vector(Pos);
 		Pos temp;
-		calls(v, push, (temp = new_pos(x + 0.85*w, y - 0.2*h + e), &temp));
+		
 		calls(v, push, (temp = new_pos(x + 0.5*w, y - 0.1*h + e), &temp));
 		calls(v, push, (temp = new_pos(x + w * 0.1, y - 0.7*h + e), &temp));
 		calls(v, push, (temp = new_pos(x + 0.4*w, y - 0.9*h + e), &temp));
