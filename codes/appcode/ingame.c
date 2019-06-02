@@ -51,6 +51,7 @@ void show_stat(void* unuseful) {
 
 void end_show(void* unuseful) {
 	char r[64];
+	set_color(color_by_name("Blue"));
 	sprintf(r, "Your final score is %d", current_score());
 	drawLabel(0.1, 0.1, r);
 }
@@ -76,7 +77,7 @@ void start_game() {
 	inGame = 1;
 }
 
-void load_game() {
+void load_game(int mode) {
 	InitGraphics();
 	SetWindowTitle("TO THE SPACE");
 	Randomize();
@@ -86,6 +87,7 @@ void load_game() {
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
 	start_global_timer();
+	set_game_mode(mode);
 }
 
 
@@ -166,7 +168,7 @@ void end_game(void* unuseful) {
 	//add_func_to_timer(butt, NULL, 1, 124444, -1);
 	destroy_long_particle();
 	reload_game();
-	show_font("GAME OVER");
+	show_font("GAME OVER", 4);
 	update_rank(current_score());
 	add_func_to_timer(end_show, NULL, 1, 12, -1);
 	inGame = 0;
@@ -177,8 +179,11 @@ void start_page(void* unuseful) {
 	change_timer_stack(1);
 	add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
 	add_func_to_timer(remove_invalid_funcs, NULL, 30, 0, -1);
-	show_font("TO THE SPACE");
+	show_font("TO THE SPACE", 1);
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
+	hnew(Pos, pos);
+	set_pos(pos, 4.7, 3.8);
+	add_func_to_timer(big_plane, pos, 1, 7373888, -1);
 	draw_game_page_anime();
 	reset_mouse_key(1);
 }
@@ -189,7 +194,7 @@ void pause_game() {
 	if (!pauseLoded) {
 		//pauseLoded = 1;
 		add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
-		show_font("PAUSE");
+		show_font("PAUSE", 5);
 		add_func_to_timer(butt, NULL, 1, 124444, -1);
 	} else {
 		close_list_box(0, NULL, 0);
@@ -250,7 +255,7 @@ int is_game() {
 }
 
 void open_game() {
-	load_game();
+	load_game(0);
 	show_start_page();
 	future_do(83, start_page, NULL);
 }

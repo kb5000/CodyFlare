@@ -4,9 +4,9 @@ typedef struct {
 	double size,x,y;
 } FontData;
 
-void show_font(const char * str);
+void show_font(const char* str, int color);
 
-int letter_color;
+//int letterColor;
 
 void ShowLetter(char ch, double size, double x, double y);
 void showA(FontData*);

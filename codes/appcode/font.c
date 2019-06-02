@@ -2,11 +2,12 @@
 #include "spline_interpolation.h"
 #include "animes.h"
 
+static int letterColor;
 
 Color changing_color(DrawFuncHolder* dfh)
 {
 	double t = dfh->tNow;
-	switch (letter_color)
+	switch (letterColor)
 	{
 	case 1:return color_by_rgb(90 + t * 156, t * 96, 100 - 20 * t);break;
 	case 2:return color_by_rgb(40 + t * 20, 60 + t * 192, 20);break;
@@ -20,7 +21,7 @@ Color changing_color(DrawFuncHolder* dfh)
 Color changing_color_sp(DrawFuncHolder* dfh)
 {
 	double t = (dfh->tNow + dfh->extraPara) / 6;
-	switch (letter_color)
+	switch (letterColor)
 	{
 	case 1:return color_by_rgb(90 + t * 156, t * 96, 100 - 20 * t);break;
 	case 2:return color_by_rgb(40 + t * 20, 60 + t * 192, 20);break;
@@ -31,7 +32,8 @@ Color changing_color_sp(DrawFuncHolder* dfh)
 	}
 }
 
-void show_font(const char* str) {
+void show_font(const char* str, int color) {
+	letterColor = color;
 	double size = 2.8;
 	double H = GetWindowHeight();
 	double W = GetWindowWidth();
@@ -102,7 +104,7 @@ void showC(FontData *FD) {
 		double e = size * i*0.01;
 		Vector v = gen_empty_vector(Pos);
 		Pos temp;
-		
+		calls(v, push, (temp = new_pos(x + 0.8*w + e, y - 0.2*h ), &temp));
 		calls(v, push, (temp = new_pos(x + 0.5*w, y - 0.1*h + e), &temp));
 		calls(v, push, (temp = new_pos(x + w * 0.1, y - 0.7*h + e), &temp));
 		calls(v, push, (temp = new_pos(x + 0.4*w, y - 0.9*h + e), &temp));

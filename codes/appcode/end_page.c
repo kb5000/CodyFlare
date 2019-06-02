@@ -12,6 +12,6 @@ void draw_firework(void* unuseful) {
 }
 
 void show_end_page() {
-	show_font("VICTORY");
+	show_font("VICTORY", 3);
 	add_func_to_timer(draw_firework, NULL, 90, 123400, -1);
 }

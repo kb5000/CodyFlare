@@ -11,20 +11,28 @@ Pos draw_curve_circle(DrawFuncHolder* dfh);
 void sins_drawer(void* dfhv) {
 	DrawFuncHolder* dfh = (DrawFuncHolder*)dfhv;
 	draw_function(dfh);
-	dfh->rotate += rotateRate;
+	if (dfh->extraPara > 0.5) {
+		dfh->rotate += rotateRate;
+	} else {
+		dfh->rotate -= rotateRate;
+	}
 }
 
 void font_shower(Pos* pos) {
-	drawLabel(pos->x, pos->y, "开始游戏");
+	if (pos->x < 0) {
+		drawLabel(-pos->x, pos->y, "生存模式");
+	} else {
+		drawLabel(pos->x, pos->y, "开始游戏");
+	}
 }
 
-void draw_anime_shield(int id, Pos position, double size, int existTicks) {
+void draw_anime_shield(int id, Pos position, double size, int existTicks, int mode) {
 	DrawFuncHolder* dfh[6];
 	for (int i = 0; i < 6; i++) {
 		dfh[i] = (DrawFuncHolder*)malloc(sizeof(DrawFuncHolder));
 	}
 	for (int i = 0; i < 3; i++) {
-		*dfh[i] = create_function_holder(draw_curve_sin, position, new_pos(size * 1, 0), size * 0.5, 0, 2 * PI, 0.02, 0, color_by_name("Red"), 2, 0);
+		*dfh[i] = create_function_holder(draw_curve_sin, position, new_pos(size * 1, 0), size * 0.5, 0, 2 * PI, 0.02, 0, color_by_name("Red"), 2, mode);
 	}
 	for (int i = 3; i < 6; i++) {
 		*dfh[i] = create_function_holder(draw_curve_circle, position, new_pos(size * 1.26, size * -0.06), size * 1.26, 0, 2 * PI, 0.1, 0, color_by_name("Black"), 2, 0);
@@ -47,6 +55,7 @@ void draw_anime_shield(int id, Pos position, double size, int existTicks) {
 	add_func_to_timer(draw_function, dfh[5], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	hnew(Pos, pos);
 	*pos = sub_pos(position, new_pos(0.33, 0.05));
+	if (mode) pos->x = -pos->x;
 	add_func_to_timer(font_shower, pos, 1, 93939, -1);
 }
 

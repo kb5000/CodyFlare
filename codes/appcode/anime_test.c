@@ -14,7 +14,7 @@ void common_anime_test_init() {
 
 void test_of_anime_shield() {
 	common_anime_test_init();
-	draw_anime_shield(2, new_pos(5, 3.5), 0.6, -1);
+	draw_anime_shield(2, new_pos(5, 3.5), 0.6, -1, 0);
 }
 
 void test_of_anime_explode() {
