@@ -5,12 +5,14 @@ void Linkline(double x1, double x2, double y1, double y2, Vector* buffer);
 Pos draw_enemy1_2(DrawFuncHolder* dfh) {
 	double t = dfh->tNow;
 	double cs = cos(t), ss = sin(t), c4s = cos(4 * t), s4s = sin(4 * t);
+	set_color(color_by_yuv(t * 20 - 10, t * 4 + 80, -t * 3 + 160));
 	return new_pos(-4 * cs * s4s - ss * c4s + cs, -4 * ss * s4s + cs * c4s - ss);
 }
 
 Pos draw_enemy2_2(DrawFuncHolder* dfh) {
 	double t = dfh->tNow;
 	double cs = cos(2 * t), ss = sin(t), c3s = cos(2 * t), s3s = sin(2 * t), s5s = sin(6 * t), c5s = cos(6 * t);
+	set_color(color_by_yuv(t * 20 - 10, t * 4 + 100, -t * 3 + 200));
 	Pos res = new_pos(3 * s5s*c3s*cs + 6 * s3s*c5s*cs - 1 * s3s * s5s*ss,
 					  3 * s5s*c3s*ss + 6 * s3s*c5s*ss + 1 * cs * s3s*s5s);
 	return res;
@@ -79,6 +81,7 @@ void draw_basic_enemy(Pos* position) {
 	//double b = H / 2;
 	//double e = H / 60.0;
 	double a = position->x, b = position->y, e = 0.07;
+	set_color(color_by_rgb(192, 185, 85));
 	x[0] = a; y[0] = b;
 	x[1] = a; y[1] = b + e;
 	x[2] = a - 0.5*e; y[2] = b;

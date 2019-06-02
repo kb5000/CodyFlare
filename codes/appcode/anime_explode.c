@@ -14,6 +14,7 @@ Pos explode_lines(DrawFuncHolder* dfh) {
 
 void draw_explode(ExplodeAnimePack* eap) {
 	DrawFuncHolder* dfh = eap->dfh;
+	dfh->color = color_by_hsl(45, dfh->extraPara / 8 * 250 + 100, -dfh->extraPara * 45 + 260);
 	for (double r = 0; r < 2 * PI; r += PI / eap->expComp) {
 		draw_function(dfh);
 		dfh->rotate = r;

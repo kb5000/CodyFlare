@@ -262,6 +262,7 @@ void update_each_plane(Plane* plane) {
 		Pos pos = *player_plane_pos();
 		plane->position = swift_enemy_move(plane->position, pos);
 		MovePen(plane->position.x - 0.2, plane->position.y);
+		set_color(color_by_rgb(92, 85, 85));
 		DrawLine(0.4, 0);
 		draw_bonus_enemy(&plane->position);
 		update_tri_col_info(ENM_PLN_COL_ID, plane->id, add_pos(plane->position, new_pos(-0.2, 0.2)),
