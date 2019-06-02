@@ -125,6 +125,26 @@ void draw_game_play() {
 	add_func_to_timer(game_play_drawer, info, 1, 3999, -1);
 }
 
+static char shortHelp[1][80] = {
+	"提示：上下左右移动，空格导弹，F键炸弹，S键加速"
+};
+
+void short_help_drawer(Vector* vec) {
+	show_sheet(vec, new_pos(5.5, 0.6), new_pos(4.2, 0.3),  1, 1, 0, 0, 0.3, color_by_name("DarkGrey"), color_by_rgb(0, 17, 203),
+			   color_by_rgb(216, 192, 180), "Default", 18, "Default", 18, 'L');
+}
+
+void draw_short_help() {
+	hnew(Vector, info);
+	*info = gen_empty_vector(Vector);
+	for (int i = 0; i < 1; i++) {
+		Vector vec = gen_empty_vector(char[80]);
+		calls(vec, push, shortHelp[i]);
+		pcalls(info, push, &vec);
+	}
+	add_func_to_timer(short_help_drawer, info, 1, 3999, -1);
+}
+
 void draw_game_page_anime() {
 	hnew(Pos, pos);
 	set_pos(pos, 4.5, 3.32);

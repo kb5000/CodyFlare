@@ -4,6 +4,10 @@ typedef struct {
 	double size,x,y;
 } FontData;
 
+int get_letter_color();
+
+void set_letter_color(int color);
+
 void show_font(const char* str, int color);
 
 //int letterColor;

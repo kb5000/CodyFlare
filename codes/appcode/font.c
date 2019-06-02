@@ -32,6 +32,14 @@ Color changing_color_sp(DrawFuncHolder* dfh)
 	}
 }
 
+int get_letter_color() {
+	return letterColor;
+}
+
+void set_letter_color(int color) {
+	letterColor = color;
+}
+
 void show_font(const char* str, int color) {
 	letterColor = color;
 	double size = 2.8;

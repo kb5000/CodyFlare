@@ -186,12 +186,16 @@ void start_page(void* unuseful) {
 	add_func_to_timer(big_plane, pos, 1, 7373888, -1);
 	draw_game_page_anime();
 	draw_game_play();
+	draw_short_help();
 	reset_mouse_key(1);
 }
+
+static int lastFontColor;
 
 void pause_game() {
 	gameStack = get_timer_stack();
 	change_timer_stack(99999);
+	lastFontColor = get_letter_color();
 	if (!pauseLoded) {
 		//pauseLoded = 1;
 		add_func_to_timer(auto_clear_display, NULL, 1, 0, -1);
@@ -210,6 +214,7 @@ static void future_destroy_tms(int* stk) {
 
 void continue_game() {
 	change_timer_stack(gameStack);
+	set_letter_color(lastFontColor);
 	//destroy_timer_stack(gameStack);
 	//hnew(int, pauseStack);
 	//*pauseStack = 99999;
