@@ -2,6 +2,7 @@
 #include "extgraph.h"
 #include "imgui.h"
 #include "random.h"
+#include "input.h"
 
 static double rotateRate = 0.0;
 static const int ticksBetweenDraw = 1;
@@ -10,13 +11,13 @@ Pos draw_curve_sin(DrawFuncHolder* dfh);
 Pos draw_curve_circle(DrawFuncHolder* dfh);
 
 void sins_drawer(void* dfhv) {
-	DrawFuncHolder* dfh = (DrawFuncHolder*)dfhv;
-	draw_function(dfh);
-	if (dfh->extraPara > 0.5) {
-		dfh->rotate += rotateRate;
+	DrawFuncHolder dfh = *(DrawFuncHolder*)dfhv;
+	if (dfh.extraPara > 0.5) {
+		dfh.rotate += rotateRate;
 	} else {
-		dfh->rotate -= rotateRate;
+		dfh.rotate -= rotateRate;
 	}
+	draw_function(&dfh);
 }
 
 void font_shower(Pos* pos) {
@@ -31,7 +32,9 @@ void draw_sins(DrawFuncHolder dfh[3]) {
 	sins_drawer(&dfh[0]);
 	sins_drawer(&dfh[1]);
 	sins_drawer(&dfh[2]);
-	rotateRate += RandomReal(-0.015, 0.015);
+	//rotateRate += RandomReal(-0.015, 0.015);
+	MouseKeys mk = get_mouse_key();
+	rotateRate = mk.pos.x / 3;
 }
 
 void draw_anime_shield(int id, Pos position, double size, int existTicks, int mode) {
