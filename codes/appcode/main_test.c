@@ -4,7 +4,7 @@
 void tests() {
 	//test_of_vector();
 	//test_of_list();
-	//test_of_object();
+	test_of_object();
 	//test_of_timer();
 	//test_of_function();
 	//test_of_anime_shield();
@@ -29,5 +29,5 @@ void tests() {
 	//test_of_sheet();
 	//test_of_stat();
 	//test_of_menu();
-	open_game();
+	//open_game();
 }
