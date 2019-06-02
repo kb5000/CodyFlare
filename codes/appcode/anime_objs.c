@@ -81,7 +81,7 @@ void draw_basic_enemy(Pos* position) {
 	//double b = H / 2;
 	//double e = H / 60.0;
 	double a = position->x, b = position->y, e = 0.07;
-	set_color(color_by_rgb(192, 185, 85));
+	set_color(color_by_rgb(122, 125, 55));
 	x[0] = a; y[0] = b;
 	x[1] = a; y[1] = b + e;
 	x[2] = a - 0.5*e; y[2] = b;

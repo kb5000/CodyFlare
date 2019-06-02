@@ -182,9 +182,10 @@ void start_page(void* unuseful) {
 	show_font("TO THE SPACE", 1);
 	add_func_to_timer(butt, NULL, 1, 124444, -1);
 	hnew(Pos, pos);
-	set_pos(pos, 4.7, 3.8);
+	set_pos(pos, 2, 3);
 	add_func_to_timer(big_plane, pos, 1, 7373888, -1);
 	draw_game_page_anime();
+	draw_game_play();
 	reset_mouse_key(1);
 }
 

@@ -11,6 +11,7 @@
 #include "input.h"
 #include "spline_interpolation.h"
 #include "plane.h"
+#include "sheet.h"
 
 static int flag = 1;
 static int n = 0;
@@ -94,12 +95,42 @@ void game_page_handler_b(Pos* pos) {
 	}
 }
 
+static char gamePlay[11][80] = {
+	"经过在瓦坎达的殊死奋战，地球上的超级英雄们依然未",
+	"能组止灭霸拿走最后一块心灵宝石，打下那夺走宇宙一",
+	"半生命的响指。而远在宇宙另一边的泰坦星球上，钢铁",
+	"侠托尼史塔克与星云在失去战友的悲痛中修复飞船，踏",
+	"上了希望渺茫的归乡之旅。而地球上的幸存者们也在面",
+	"对着浩瀚的星海，不惜一切代价地寻找史塔克的踪迹...",
+	"而来自中华人民共和国，被中国人民誉为\"京奇队长\"",
+	"，代号\"冷锋\"的航天员刘培强，光荣地接受了组织给",
+	"他的任务--孤身驾驶战机前往宇宙寻找并拯救钢铁侠",
+	"托尼史塔克。而在搜救途中，冷锋遭遇了克里人指控者",
+	"部队的阻击，一场大战一触即发..."
+};
+
+void game_play_drawer(Vector* vec) {
+	show_sheet(vec, new_pos(5.5, 1.2), new_pos(4.2, 3),  11, 1, 0, 0, 0.3, color_by_name("DarkGrey"), color_by_name("Black"),
+			   color_by_rgb(216, 192, 180), "Default", 16, "Default", 16, 'L');
+}
+
+void draw_game_play() {
+	hnew(Vector, info);
+	*info = gen_empty_vector(Vector);
+	for (int i = 0; i < 11; i++) {
+		Vector vec = gen_empty_vector(char[80]);
+		calls(vec, push, gamePlay[i]);
+		pcalls(info, push, &vec);
+	}
+	add_func_to_timer(game_play_drawer, info, 1, 3999, -1);
+}
+
 void draw_game_page_anime() {
 	hnew(Pos, pos);
-	set_pos(pos, 3.6, 1.4);
+	set_pos(pos, 4.5, 3.32);
 	draw_anime_shield(83838, *pos, 0.5, -1, 0);
 	hnew(Pos, posb);
-	set_pos(posb, 5.3, 1.3);
+	set_pos(posb, 4.5, 2.05);
 	draw_anime_shield(83838, *posb, 0.5, -1, 1);
 	add_func_to_timer(game_page_handler, pos, 1, 93939, -1);
 	add_func_to_timer(game_page_handler_b, posb, 1, 93939, -1);

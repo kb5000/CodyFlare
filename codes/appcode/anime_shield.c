@@ -1,8 +1,9 @@
 #include "animes.h"
 #include "extgraph.h"
 #include "imgui.h"
+#include "random.h"
 
-static const double rotateRate = 0.02;
+static double rotateRate = 0.0;
 static const int ticksBetweenDraw = 1;
 
 Pos draw_curve_sin(DrawFuncHolder* dfh);
@@ -26,6 +27,13 @@ void font_shower(Pos* pos) {
 	}
 }
 
+void draw_sins(DrawFuncHolder dfh[3]) {
+	sins_drawer(&dfh[0]);
+	sins_drawer(&dfh[1]);
+	sins_drawer(&dfh[2]);
+	rotateRate += RandomReal(-0.015, 0.015);
+}
+
 void draw_anime_shield(int id, Pos position, double size, int existTicks, int mode) {
 	DrawFuncHolder* dfh[6];
 	for (int i = 0; i < 6; i++) {
@@ -47,9 +55,14 @@ void draw_anime_shield(int id, Pos position, double size, int existTicks, int mo
 	dfh[5]->drawPositionBias = new_pos(size * 1.04, size * -0.06);
 	dfh[4]->size = size * 0.75;
 	dfh[5]->size = size * 1.03;
-	add_func_to_timer(sins_drawer, dfh[0], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
-	add_func_to_timer(sins_drawer, dfh[1], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
-	add_func_to_timer(sins_drawer, dfh[2], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	DrawFuncHolder* sins = (DrawFuncHolder*)malloc(3 * sizeof(DrawFuncHolder));
+	sins[0] = *dfh[0];
+	sins[1] = *dfh[1];
+	sins[2] = *dfh[2];
+	add_func_to_timer(draw_sins, sins, ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	//add_func_to_timer(sins_drawer, dfh[0], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	//add_func_to_timer(sins_drawer, dfh[1], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
+	//add_func_to_timer(sins_drawer, dfh[2], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	add_func_to_timer(draw_function, dfh[3], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	add_func_to_timer(draw_function, dfh[4], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);
 	add_func_to_timer(draw_function, dfh[5], ticksBetweenDraw, id, existTicks / ticksBetweenDraw);

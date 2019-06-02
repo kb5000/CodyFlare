@@ -12,13 +12,13 @@ static char buffer[16], name[16];
 
 void input_box(int* score) {
 	set_color(color_by_rgb(216, 192, 180));
-	drawRectangle(3, 1.5, 4, 1.6, 1);
+	drawRectangle(3, 1.2, 4, 1.6, 1);
 	set_color(color_by_name("Black"));
 	char sc[64];
 	sprintf(sc, "Congratulations! Your score is %d", current_score());
-	drawLabel(3.8, 2.8, sc);
-	drawLabel(4.5, 2.5, "Enter Your Name");
-	if (textbox(2423423, 3.5, 2, 3, 0.3, buffer, 10)) {
+	drawLabel(3.8, 2.5, sc);
+	drawLabel(4.5, 2.2, "Enter Your Name");
+	if (textbox(2423423, 3.5, 1.7, 3, 0.3, buffer, 10)) {
 		for (int i = 0; i < 9; i++) {
 			buffer[i] = toupper(buffer[i]);
 		}
@@ -30,7 +30,7 @@ void input_box(int* score) {
 		}
 		strcpy(buffer, name);
 	}
-	if (button(20413433, 4.6, 1.7, 0.8, 0.2, "确定")) {
+	if (button(20413433, 4.6, 1.4, 0.8, 0.2, "确定")) {
 		saa_add_rank(name, *score);
 		show_rank();
 		disable_me_in_timer();
