@@ -23,7 +23,7 @@ void input_box(int* score) {
 			buffer[i] = toupper(buffer[i]);
 		}
 		for (int i = 0, j = 0; i < 10; i++) {
-			if (buffer[i] >= 'A' && buffer[i] <= 'Z' || buffer[i] == '\0') {
+			if (buffer[i] >= 'A' && buffer[i] <= 'Z' || buffer[i] >= '0' && buffer[i] <= '9' || buffer[i] == '\0') {
 				name[j] = buffer[i];
 				j++;
 			}
