@@ -9,11 +9,11 @@ Color changing_color(DrawFuncHolder* dfh)
 	double t = dfh->tNow;
 	switch (letterColor)
 	{
-	case 1:return color_by_rgb(90 + t * 156, t * 96, 100 - 20 * t);break;
-	case 2:return color_by_rgb(40 + t * 20, 60 + t * 192, 20);break;
-	case 3:return color_by_rgb(60 + t * 192, 60 + t * 192, 0);break;
-	case 4:return color_by_rgb(t * 192, t * 40, 30 + t * 128);break;
-	case 5:return color_by_rgb(20 - t * 20, 128 + t * 128, 128 + t * 128);break;
+	case 1:return color_by_rgb((int)(90 + t * 156), (int)(t * 96), (int)(100 - 20 * t));break;
+	case 2:return color_by_rgb((int)(40 + t * 20), (int)(60 + t * 192), 20);break;
+	case 3:return color_by_rgb((int)(60 + t * 192), (int)(60 + t * 192), 0);break;
+	case 4:return color_by_rgb((int)(t * 192), (int)(t * 40), (int)(30 + t * 128));break;
+	case 5:return color_by_rgb((int)(20 - t * 20), (int)(128 + t * 128), (int)(128 + t * 128));break;
 	default:return color_by_name("Black");break;
 	}
 }
@@ -23,11 +23,11 @@ Color changing_color_sp(DrawFuncHolder* dfh)
 	double t = (dfh->tNow + dfh->extraPara) / 6;
 	switch (letterColor)
 	{
-	case 1:return color_by_rgb(90 + t * 156, t * 96, 100 - 20 * t);break;
-	case 2:return color_by_rgb(40 + t * 20, 60 + t * 192, 20);break;
-	case 3:return color_by_rgb(40 + t * 192, 40 + t * 192, 0);break;
-	case 4:return color_by_rgb(t * 192, t * 40, 30 + t * 128);break;
-	case 5:return color_by_rgb(20 - t * 20, 128 + t * 128, 128 + t * 128);break;
+	case 1:return color_by_rgb((int)(90 + t * 156), (int)(t * 96), (int)(100 - 20 * t));break;
+	case 2:return color_by_rgb((int)(40 + t * 20), (int)(60 + t * 192), 20);break;
+	case 3:return color_by_rgb((int)(60 + t * 192), (int)(60 + t * 192), 0);break;
+	case 4:return color_by_rgb((int)(t * 192), (int)(t * 40), (int)(30 + t * 128));break;
+	case 5:return color_by_rgb((int)(20 - t * 20), (int)(128 + t * 128), (int)(128 + t * 128));break;
 	default:return color_by_name("Black");break;
 	}
 }

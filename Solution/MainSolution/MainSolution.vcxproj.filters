@@ -141,9 +141,6 @@
     <Filter Include="Game\UI\Menu">
       <UniqueIdentifier>{fdde2562-7406-4b80-a6f1-bff5bd1bc0dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\UI\ToolBox">
-      <UniqueIdentifier>{ba8df76b-3492-4815-ac21-b88b43de7993}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\UI\StartPage">
       <UniqueIdentifier>{7492884a-e304-44c2-b53a-ef08dc2386dd}</UniqueIdentifier>
     </Filter>
@@ -278,17 +275,11 @@
     <ClInclude Include="..\..\codes\appcode\collision_test.h">
       <Filter>UnitTest\CollisionTest</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\codes\appcode\ui.h">
-      <Filter>Game\UI</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\codes\appcode\menu.h">
       <Filter>Game\UI\Menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\start_page.h">
       <Filter>Game\UI\StartPage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\codes\appcode\tool_box.h">
-      <Filter>Game\UI\ToolBox</Filter>
     </ClInclude>
     <ClInclude Include="..\..\codes\appcode\ui_test.h">
       <Filter>UnitTest\UITest</Filter>
@@ -496,17 +487,11 @@
     <ClCompile Include="..\..\codes\appcode\anime_victory.c">
       <Filter>Game\Animes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\ui.c">
-      <Filter>Game\UI</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\codes\appcode\menu.c">
       <Filter>Game\UI\Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\start_page.c">
       <Filter>Game\UI\StartPage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\codes\appcode\tool_box.c">
-      <Filter>Game\UI\ToolBox</Filter>
     </ClCompile>
     <ClCompile Include="..\..\codes\appcode\ui_test.c">
       <Filter>UnitTest\UITest</Filter>
