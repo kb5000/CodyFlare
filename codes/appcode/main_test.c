@@ -29,5 +29,5 @@ void tests() {
 	//test_of_sheet();
 	//test_of_stat();
 	//test_of_menu();
-	open_game();
+	//open_game();
 }

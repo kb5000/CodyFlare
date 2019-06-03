@@ -1,5 +1,7 @@
 #include "main_test.h"
+#include "ingame.h"
 
 void Main() {
-	tests();
+	open_game();
+	//tests();
 }
