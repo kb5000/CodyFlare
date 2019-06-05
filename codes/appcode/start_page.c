@@ -111,7 +111,7 @@ static char gamePlay[11][80] = {
 
 void game_play_drawer(Vector* vec) {
 	show_sheet(vec, new_pos(5.5, 1.2), new_pos(4.2, 3),  11, 1, 0, 0, 0.3, color_by_name("DarkGrey"), color_by_name("Black"),
-			   color_by_rgb(216, 192, 180), "Default", 16, "Default", 16, 'L');
+			   color_by_rgb(216, 192, 180), "Default", 16, "ËÎÌו", 16, 'L');
 }
 
 void draw_game_play() {
@@ -131,7 +131,7 @@ static char shortHelp[1][80] = {
 
 void short_help_drawer(Vector* vec) {
 	show_sheet(vec, new_pos(5.5, 0.6), new_pos(4.2, 0.3),  1, 1, 0, 0, 0.3, color_by_name("DarkGrey"), color_by_rgb(0, 17, 203),
-			   color_by_rgb(216, 192, 180), "Default", 18, "Default", 18, 'L');
+			   color_by_rgb(216, 192, 180), "Default", 18, "ËÎÌו", 16, 'L');
 }
 
 void draw_short_help() {

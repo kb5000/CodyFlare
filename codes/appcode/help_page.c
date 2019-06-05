@@ -17,7 +17,7 @@ static char helpStrs[6][30][2][80] = {
 		{"按键", "动作"},
 		{"方向键上下左右", "控制战机上下左右移动"},
 		{"空格（Space）键", "发射导弹"},
-		{"F键（可长按）", "发射炸弹（据按键时长决定发射距离）"},
+		{"F键（可长按）", "发射炸弹（ 根据按键时长决定发射距离）"},
 		{"S键", "冲刺"},
 		{"A键", "读取存档（暂停界面中）"},
 		{"D键", "删除存档（暂停界面中）"},
@@ -149,7 +149,7 @@ static void show_help_page(void* unuseful) {
 		break;
 	}
 	show_sheet(&helpInfo[page], new_pos(4, 1.2), new_pos(6, 5), row, col, 1, 0, 0.3, color_by_name("DarkGrey"), color_by_name("Black"),
-			   color_by_rgb(216, 192, 180), "Default", 16, "Default", 16, 'L');
+			   color_by_rgb(216, 192, 180), "Default", 16, "宋体", 16, 'L');
 	set_color(color_by_rgb(216, 192, 180));
 	drawBoxFree(4, 0.98, 3, 0.22, 1, "按左右键查看更多信息", 'L', color_by_name("Black"), 1);
 	drawRectangle(4, 0.98, 3, 0.22, 0);
@@ -160,7 +160,7 @@ static void show_help_page(void* unuseful) {
 static void show_about_page(void* unuseful) {
 	if (!aboutValid) disable_me_in_timer();
 	show_sheet(&aboutInfo, new_pos(1, 1.2), new_pos(5, 3),  6, 1, 1, 0, 0.3, color_by_name("DarkGrey"), color_by_name("Black"),
-			   color_by_rgb(216, 192, 180), "Default", 16, "Default", 16, 'L');
+			   color_by_rgb(216, 192, 180), "Default", 16, "宋体", 16, 'L');
 }
 
 void init_help() {

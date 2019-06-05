@@ -51,12 +51,14 @@ void show_stat(void* unuseful) {
 
 void end_show(void* unuseful) {
 	char r[64];
+	SetPointSize(20);
 	set_color(color_by_name("Blue"));
-	sprintf(r, "Your final score is %d", current_score());
-	drawLabel(0.1, 0.1, r);
+	sprintf(r, "敌舰击穿了你的装甲！最终得分%d", current_score());
+	drawLabel(2, 4.5, r);
 }
 
 void start_game() {
+	int mode = get_game_mode();
 	init_col_detector();
 	init_ammo_system();
 	init_plane_list();
@@ -75,6 +77,7 @@ void start_game() {
 	add_func_to_timer(show_stat, NULL, 1, 12, -1);
 	inVictory = 0;
 	inGame = 1;
+	set_game_mode(mode);
 }
 
 void load_game(int mode) {

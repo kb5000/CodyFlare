@@ -25,7 +25,7 @@ void shoot_missile(int isEnemy, Pos startPos, Pos* target, int targetID, void hi
 					 0.13, PI / 3, 1.2, 60, 1, anime_explode_pack, 0.6, hitHandler, 0.12, targetID);
 		break;
 	case Boss_Ammo:
-		show_missile(startPos, target, 48, color_by_rgb(64, 128, 128),
+		show_missile(startPos, target, 50, color_by_rgb(64, 128, 128),
 					 0.2, -PI, 0.8, 17, 1, anime_explode_pack, 0.6, hitHandler, 0.12, targetID);
 		break;
 	default:

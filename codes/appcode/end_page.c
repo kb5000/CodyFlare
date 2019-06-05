@@ -33,7 +33,7 @@ static char vicPlay[6][80] = {
 
 void vic_play_drawer(Vector* vec) {
 	show_sheet(vec, new_pos(2.9, 3), new_pos(4.2, 1.8), 6, 1, 0, 0, 0.3, color_by_name("DarkGrey"), color_by_name("Black"),
-			   color_by_rgb(216, 192, 180), "Default", 16, "Default", 16, 'L');
+			   color_by_rgb(216, 192, 180), "Default", 16, "ËÎÌו", 16, 'L');
 }
 
 void draw_vic_play() {

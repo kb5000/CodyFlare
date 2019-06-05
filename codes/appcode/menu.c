@@ -16,23 +16,23 @@
 #include "help_page.h"
 
 //#define POC 2
-static char * menuListFile[] = {"    文 件",
+static char * menuListFile[] = {"  文  件",
 		"保存 | Ctrl-S",
 		"读取 | Ctrl-L",
 	//"返回主界面 | Ctrl-B",
 	"退出 | Ctrl-X"};
-static char * menuListGame[] = {"    游 戏",
+static char * menuListGame[] = {"  游  戏",
 		"开始新游戏 | Ctrl-R",
 		"切换暂停 | Ctrl-P",
 		"切换背景特效 | Ctrl-G",
 		"切换游戏模式 | Ctrl-O",
 		"排行榜 | Ctrl-C"};
-static char * menuListCheat[] = {"  金 手 指",
+static char * menuListCheat[] = {" 金 手 指",
 		"更多炸弹 | Ctrl-M",
 		"更多血量 | Ctrl-N",
 		"加速 | Ctrl-A",
 		"减速 | Ctrl-D"};
-static char * menuListAbout[] = {"    帮 助",
+static char * menuListAbout[] = {"  帮  助",
 		"查看帮助 | Ctrl-H",
 		"关于 | Ctrl-T"};
 
@@ -49,7 +49,8 @@ void show_menu(void* u) {
 	double winheight = GetWindowHeight();
 	//setMenuColors(char *frame, char*label, char *hotFrame, char *hotLabel, int fillflag);
 	setMenuColors("Menu1", "Black", "Menu2", "Black", 1);
-	SetFont("Default");
+	SetFont("宋体");
+	SetPointSize(14);
 	int selection;
 	selection = menuList(1, 0, winheight - 0.3, 0.85, 2, 0.3, menuListFile, sizeof(menuListFile) / sizeof(menuListFile[0]));
 	if (selection > 0) {

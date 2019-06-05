@@ -21,6 +21,8 @@ void sins_drawer(void* dfhv) {
 }
 
 void font_shower(Pos* pos) {
+	SetFont("宋体");
+	SetPointSize(16);
 	if (pos->x < 0) {
 		drawLabel(-pos->x, pos->y, "生存模式");
 	} else {
