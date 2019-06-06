@@ -10,6 +10,7 @@
 #include "color.h"
 #include "timer.h"
 #include <stdlib.h>
+#include "imgui.h"
 
 void draw_firework(void* unuseful) {
 	Pos pos = new_pos(RandomReal(1, 9), RandomReal(1, 6));
@@ -20,6 +21,10 @@ void show_end_page() {
 	show_font("VICTORY", 3);
 	add_func_to_timer(draw_firework, NULL, 90, 123400, -1);
 	draw_vic_play();
+	char r[64];
+	set_color(color_by_name("Blue"));
+	sprintf(r, "你的最终得分为%d", current_score());
+	drawLabel(0.1, 0.1, r);
 }
 
 static char vicPlay[6][80] = {
